@@ -14,9 +14,11 @@ namespace GodSeekerPlus {
 			if (self.gameObject.name == "Knight" || self.FsmName == "Dream Nail") {
 				FsmState stateWarpCharge = FsmUtil.GetState(self, "Warp Charge");
 				FsmUtil.InsertAction(stateWarpCharge, 0, new GGCheckIfBossScene {
-					// If in boss scene, fire CHARGE event immediately
+					// If in boss scene, fire CHARGED event immediately
 					bossSceneEvent = FsmUtil.GetAction<Wait>(stateWarpCharge).finishEvent,
 				});
+
+				GodSeekerPlus.LoadedInstance.Log("Dream Nail FSM modified");
 			}
 		}
 	}
