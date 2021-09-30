@@ -27,9 +27,15 @@ namespace GodSeekerPlus {
 		}
 
 
-		private void Hook() {}
+		private void Hook() {
+			if (GlobalSettings.fastDreamWarp) {
+				FastDreamWarp.Hook();
+			}
+		}
 
-		private void UnHook() {}
+		private void UnHook() {
+			FastDreamWarp.UnHook();
+		}
 
 
 		public void OnLoadGlobal(GlobalSettings s) => GlobalSettings = s;
