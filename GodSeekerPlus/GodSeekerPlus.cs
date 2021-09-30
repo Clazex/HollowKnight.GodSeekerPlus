@@ -4,7 +4,7 @@ using Modding;
 namespace GodSeekerPlus {
 	public class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
 		public static GodSeekerPlus LoadedInstance { get; private set; }
-		public override string GetVersion() => "0.1.0";
+		public override string GetVersion() => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
 		public GlobalSettings GlobalSettings { get; set; } = new GlobalSettings();
 		public LocalSettings LocalSettings { get; set; } = new LocalSettings();
