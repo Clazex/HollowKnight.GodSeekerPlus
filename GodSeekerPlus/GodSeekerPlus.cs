@@ -2,7 +2,7 @@ using System.Reflection;
 using Modding;
 
 namespace GodSeekerPlus {
-	public class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
+	public sealed class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
 		public static GodSeekerPlus LoadedInstance { get; private set; }
 		public override string GetVersion() => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
@@ -16,14 +16,12 @@ namespace GodSeekerPlus {
 			}
 
 			LoadedInstance = this;
-
 			Hook();
 		}
 
 		public void Unload() {
-			LoadedInstance = null;
-
 			UnHook();
+			LoadedInstance = null;
 		}
 
 
