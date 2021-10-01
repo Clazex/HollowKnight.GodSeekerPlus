@@ -29,10 +29,15 @@ namespace GodSeekerPlus {
 			if (GlobalSettings.fastDreamWarp) {
 				FastDreamWarp.Hook();
 			}
+
+			if (GlobalSettings.frameRateLimit) {
+				FrameRateLimit.Hook();
+			}
 		}
 
 		private void UnHook() {
 			FastDreamWarp.UnHook();
+			FrameRateLimit.UnHook();
 		}
 
 
