@@ -3,7 +3,7 @@ using Modding;
 
 namespace GodSeekerPlus {
 	public sealed class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
-		public static GodSeekerPlus LoadedInstance { get; private set; }
+		public static GodSeekerPlus Instance { get; private set; }
 		public override string GetVersion() => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
 		public GlobalSettings GlobalSettings { get; set; } = new GlobalSettings();
@@ -11,17 +11,18 @@ namespace GodSeekerPlus {
 
 
 		public override void Initialize() {
-			if (LoadedInstance != null) {
+			if (Instance != null) {
 				return;
 			}
 
-			LoadedInstance = this;
+			Instance = this;
+			GlobalSettings.Coerce();
 			Hook();
 		}
 
 		public void Unload() {
 			UnHook();
-			LoadedInstance = null;
+			Instance = null;
 		}
 
 

@@ -7,6 +7,6 @@ namespace GodSeekerPlus {
 
 		public static void UnHook() => ModHooks.HeroUpdateHook -= OnHeroUpdate;
 
-		public static void OnHeroUpdate() => Thread.Sleep(50);
+		public static void OnHeroUpdate() => Thread.Sleep(10 * GodSeekerPlus.Instance.GlobalSettings.frameRateLimitMultiplier);
 	}
 }
