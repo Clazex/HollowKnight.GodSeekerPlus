@@ -10,21 +10,21 @@ namespace GodSeekerPlus {
 
 		private static void ModifyFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
-				FsmState stateWsSpdBuff = FsmUtil.CreateState(self, "GSP Workshop Speed Buff");
+				FsmState stateWsSpdBuff = self.CreateState("GSP Workshop Speed Buff");
 
-				FsmUtil.AddAction(stateWsSpdBuff, new CheckSceneName() {
+				stateWsSpdBuff.AddAction(new CheckSceneName() {
 					sceneName = "GG_Workshop",
 					notEqualEvent = FsmEvent.Finished
 				});
-				FsmUtil.AddAction(stateWsSpdBuff, new FloatMultiply() {
+				stateWsSpdBuff.AddAction(new FloatMultiply() {
 					floatVariable = self.FsmVariables.FindFsmFloat("Current SD Speed"),
 					multiplyBy = GodSeekerPlus.Instance.GlobalSettings.fastSuperDashSpeedMultiplier
 				});
 
-				FsmUtil.ChangeTransition(FsmUtil.GetState(self, "Left"), FsmEvent.Finished.Name, stateWsSpdBuff.Name);
-				FsmUtil.ChangeTransition(FsmUtil.GetState(self, "Right"), FsmEvent.Finished.Name, stateWsSpdBuff.Name);
+				self.GetState("Left").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
+				self.GetState("Right").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
 
-				FsmUtil.AddTransition(stateWsSpdBuff, FsmEvent.Finished.Name, "Dash Start");
+				stateWsSpdBuff.AddTransition(FsmEvent.Finished.Name, "Dash Start");
 
 				GodSeekerPlus.Instance.Log("Superdash FSM modified");
 			}

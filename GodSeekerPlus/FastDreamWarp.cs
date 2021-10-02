@@ -10,10 +10,10 @@ namespace GodSeekerPlus {
 
 		private static void ModifyFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Knight" && self.FsmName == "Dream Nail") {
-				FsmState stateWarpCharge = FsmUtil.GetState(self, "Warp Charge");
-				FsmUtil.InsertAction(stateWarpCharge, 0, new GGCheckIfBossScene {
+				FsmState stateWarpCharge = self.GetState("Warp Charge");
+				stateWarpCharge.InsertAction(0, new GGCheckIfBossScene {
 					// If in boss scene, fire CHARGED event immediately
-					bossSceneEvent = FsmUtil.GetAction<Wait>(stateWarpCharge).finishEvent,
+					bossSceneEvent = stateWarpCharge.GetAction<Wait>().finishEvent,
 				});
 
 				GodSeekerPlus.Instance.Log("Dream Nail FSM modified");
