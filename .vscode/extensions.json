@@ -1,0 +1,16 @@
+{
+	"recommendations": [
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"editorconfig.editorconfig",
+		"github.vscode-pull-request-github",
+		"lacroixdavid1.vscode-format-context-menu",
+		"mkxml.vscode-filesize",
+		"ms-dotnettools.csharp",
+		"nhoizey.gremlins",
+		"redhat.vscode-xml",
+		"redhat.vscode-yaml",
+		"streetsidesoftware.code-spell-checker",
+		"visualstudioexptteam.vscodeintellicode"
+	]
+}
