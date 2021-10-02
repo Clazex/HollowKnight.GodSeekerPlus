@@ -4,8 +4,6 @@ using Vasi;
 
 namespace GodSeekerPlus {
 	internal static class FastSuperDash {
-		public static int times = 0;
-
 		public static void Hook() => On.PlayMakerFSM.OnEnable += ModifyFSM;
 
 		public static void UnHook() => On.PlayMakerFSM.OnEnable -= ModifyFSM;
@@ -20,7 +18,7 @@ namespace GodSeekerPlus {
 				});
 				FsmUtil.AddAction(stateWsSpdBuff, new FloatMultiply() {
 					floatVariable = self.FsmVariables.FindFsmFloat("Current SD Speed"),
-					multiplyBy = 1.5f
+					multiplyBy = GodSeekerPlus.Instance.GlobalSettings.fastSuperDashSpeedMultiplier
 				});
 
 				FsmUtil.ChangeTransition(FsmUtil.GetState(self, "Left"), FsmEvent.Finished.Name, stateWsSpdBuff.Name);
