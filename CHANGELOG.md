@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.3.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.3.0...v0.3.1) (2021-10-02)
+
+### Bug Fixes
+
+* sd speed config not taken into account ([c105e31](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/c105e3147e03acedc3498e9d977d22561632ca91))
+
 # [v0.3.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.2.1...v0.3.0) (2021-10-02)
 
 ### Bug Fixes
