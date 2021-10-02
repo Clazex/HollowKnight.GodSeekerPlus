@@ -1,5 +1,15 @@
 # Unreleased
 
+# [v0.3.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.2.1...v0.3.0) (2021-10-02)
+
+### Bug Fixes
+
+* unintendedly touched fsm ([0c4fe7f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/0c4fe7f7d8e06e017cf666c32c4a91b6757a2c08))
+
+### Features
+
+* fast super dash ([5fbbc6b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/5fbbc6bbc1229f4aaca4f8141b778929f472073b))
+
 # [v0.2.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.2.0...v0.2.1) (2021-10-01)
 
 ### Features
