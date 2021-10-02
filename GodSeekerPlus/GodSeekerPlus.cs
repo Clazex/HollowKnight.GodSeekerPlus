@@ -31,6 +31,10 @@ namespace GodSeekerPlus {
 				FastDreamWarp.Hook();
 			}
 
+			if (GlobalSettings.fastSuperDash) {
+				FastSuperDash.Hook();
+			}
+
 			if (GlobalSettings.frameRateLimit) {
 				FrameRateLimit.Hook();
 			}
@@ -38,6 +42,7 @@ namespace GodSeekerPlus {
 
 		private void UnHook() {
 			FastDreamWarp.UnHook();
+			FastSuperDash.UnHook();
 			FrameRateLimit.UnHook();
 		}
 
