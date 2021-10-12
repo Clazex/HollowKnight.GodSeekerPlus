@@ -7,12 +7,14 @@ Compatible with `Hollow Knight` 1.5.
 
 ## Features
 
+- **Carefree Melody Fix**: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
 - **Fast Dream Warping**: Remove dream warping charge time when in Godhome boss fight rooms. This decrease the total warping time from 2.25s to 0.25s.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
 - **Frame Rate Limit**: Create a lag in every in-game frame.
 
 ## Configuration
 
+- `carefreeMelodyFix` (`Boolean`): Whether to enable the Carefree Melody Fix feature. Defaults to `true`.
 - `fastDreamWarp` (`Boolean`): Whether to enable the Fast Dream Warping feature. Defaults to `true`.
 - `fastSuperDash` (`Boolean`): Whether to enable the Fast Super Dash feature. Defaults to `true`.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
