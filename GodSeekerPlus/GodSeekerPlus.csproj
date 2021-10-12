@@ -47,7 +47,7 @@
 			Name="CopyMod"
 			AfterTargets="PostBuildEvent">
 		<Copy
-				SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md"
+				SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/LICENSE"
 				DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)"
 				SkipUnchangedFiles="true" />
 	</Target>
@@ -59,7 +59,7 @@
 		<RemoveDir Directories="$(ProjectDir)/dist" />
 		<MakeDir Directories="$(ProjectDir)/dist/tmp" />
 		<Copy
-				SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md"
+				SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/LICENSE"
 				DestinationFolder="$(ProjectDir)/dist/tmp" />
 		<ZipDirectory
 				DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip"
