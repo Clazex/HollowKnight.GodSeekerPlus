@@ -27,6 +27,10 @@ namespace GodSeekerPlus {
 
 
 		private void Hook() {
+			if (GlobalSettings.carefreeMelodyFix) {
+				CarefreeMelodyFix.Hook();
+			}
+
 			if (GlobalSettings.fastDreamWarp) {
 				FastDreamWarp.Hook();
 			}
@@ -41,6 +45,7 @@ namespace GodSeekerPlus {
 		}
 
 		private void UnHook() {
+			CarefreeMelodyFix.UnHook();
 			FastDreamWarp.UnHook();
 			FastSuperDash.UnHook();
 			FrameRateLimit.UnHook();
