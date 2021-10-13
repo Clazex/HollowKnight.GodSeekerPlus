@@ -43,27 +43,15 @@
 		</Reference>
 	</ItemGroup>
 
-	<Target
-			Name="CopyMod"
-			AfterTargets="PostBuildEvent">
-		<Copy
-				SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/LICENSE"
-				DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)"
-				SkipUnchangedFiles="true" />
+	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE" DestinationFolder="$(HollowKnightRefs)/Mods/$(TargetName)" SkipUnchangedFiles="true" />
 	</Target>
 
-	<Target
-			Name="CreateReleaseZip"
-			AfterTargets="PostBuildEvent"
-			Condition="'$(Configuration)' == 'Release'">
+	<Target Name="CreateReleaseZip" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
 		<RemoveDir Directories="$(ProjectDir)/dist" />
 		<MakeDir Directories="$(ProjectDir)/dist/tmp" />
-		<Copy
-				SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/LICENSE"
-				DestinationFolder="$(ProjectDir)/dist/tmp" />
-		<ZipDirectory
-				DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip"
-				SourceDirectory="$(ProjectDir)/dist/tmp" />
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE" DestinationFolder="$(ProjectDir)/dist/tmp" />
+		<ZipDirectory DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip" SourceDirectory="$(ProjectDir)/dist/tmp" />
 		<RemoveDir Directories="$(ProjectDir)/dist/tmp" />
 	</Target>
 </Project>
