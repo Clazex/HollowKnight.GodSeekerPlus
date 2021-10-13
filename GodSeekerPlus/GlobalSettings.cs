@@ -1,5 +1,5 @@
 namespace GodSeekerPlus {
-	public class GlobalSettings {
+	public sealed class GlobalSettings {
 		public bool carefreeMelodyFix = true;
 		public bool fastDreamWarp = true;
 		public bool fastSuperDash = true;

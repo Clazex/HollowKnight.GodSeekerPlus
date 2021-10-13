@@ -1,5 +1,6 @@
 using System.Reflection;
 using Modding;
+using GodSeekerPlus.Modules;
 
 namespace GodSeekerPlus {
 	public sealed class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
@@ -17,40 +18,15 @@ namespace GodSeekerPlus {
 
 			Instance = this;
 			GlobalSettings.Coerce();
-			Hook();
+
+			this.LoadModules();
 		}
 
 		public void Unload() {
-			UnHook();
+			this.UnloadModules();
+
 			Instance = null;
 		}
-
-
-		private void Hook() {
-			if (GlobalSettings.carefreeMelodyFix) {
-				CarefreeMelodyFix.Hook();
-			}
-
-			if (GlobalSettings.fastDreamWarp) {
-				FastDreamWarp.Hook();
-			}
-
-			if (GlobalSettings.fastSuperDash) {
-				FastSuperDash.Hook();
-			}
-
-			if (GlobalSettings.frameRateLimit) {
-				FrameRateLimit.Hook();
-			}
-		}
-
-		private void UnHook() {
-			CarefreeMelodyFix.UnHook();
-			FastDreamWarp.UnHook();
-			FastSuperDash.UnHook();
-			FrameRateLimit.UnHook();
-		}
-
 
 		public void OnLoadGlobal(GlobalSettings s) => GlobalSettings = s;
 

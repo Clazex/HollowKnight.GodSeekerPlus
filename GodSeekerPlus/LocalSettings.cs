@@ -1,4 +1,4 @@
 namespace GodSeekerPlus {
-	public class LocalSettings {
+	public sealed class LocalSettings {
 	}
 }

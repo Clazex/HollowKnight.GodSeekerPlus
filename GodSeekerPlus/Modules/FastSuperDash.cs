@@ -2,13 +2,13 @@ using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using Vasi;
 
-namespace GodSeekerPlus {
+namespace GodSeekerPlus.Modules {
 	internal static class FastSuperDash {
-		public static void Hook() => On.PlayMakerFSM.OnEnable += ModifyFSM;
+		public static void Load() => On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
 
-		public static void UnHook() => On.PlayMakerFSM.OnEnable -= ModifyFSM;
+		public static void Unload() => On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
 
-		private static void ModifyFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
 				FsmState stateWsSpdBuff = self.CreateState("GSP Workshop Speed Buff");
 
