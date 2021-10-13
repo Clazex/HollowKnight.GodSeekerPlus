@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.4.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.3.1...v0.4.0) (2021-10-13)
+
+### Features
+
+* carefree melody fix ([4e413c4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4e413c427ef72148ebbbd1c912d2f743eae520b7))
+
 # [v0.3.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.3.0...v0.3.1) (2021-10-02)
 
 ### Bug Fixes
