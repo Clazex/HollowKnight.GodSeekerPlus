@@ -1,6 +1,6 @@
 using System.Reflection;
-using Modding;
 using GodSeekerPlus.Modules;
+using Modding;
 
 namespace GodSeekerPlus {
 	public sealed class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {

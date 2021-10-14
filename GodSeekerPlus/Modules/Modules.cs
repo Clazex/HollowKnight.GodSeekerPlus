@@ -16,6 +16,10 @@ namespace GodSeekerPlus.Modules {
 			if (self.GlobalSettings.frameRateLimit) {
 				FrameRateLimit.Load();
 			}
+
+			if (self.GlobalSettings.memorizeBindings) {
+				MemorizeBindings.Load();
+			}
 		}
 
 		public static void UnloadModules(this GodSeekerPlus _) {
@@ -23,6 +27,7 @@ namespace GodSeekerPlus.Modules {
 			FastDreamWarp.Unload();
 			FastSuperDash.Unload();
 			FrameRateLimit.Unload();
+			MemorizeBindings.Unload();
 		}
 	}
 }

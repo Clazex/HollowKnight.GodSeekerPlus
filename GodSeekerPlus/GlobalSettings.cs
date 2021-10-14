@@ -1,11 +1,16 @@
 namespace GodSeekerPlus {
 	public sealed class GlobalSettings {
 		public bool carefreeMelodyFix = true;
+
 		public bool fastDreamWarp = true;
+
 		public bool fastSuperDash = true;
 		public float fastSuperDashSpeedMultiplier = 1.5f;
+
 		public bool frameRateLimit = false;
 		public int frameRateLimitMultiplier = 5;
+
+		public bool memorizeBindings = true;
 
 		public void Coerce() {
 			if (fastSuperDashSpeedMultiplier < 1f) {
