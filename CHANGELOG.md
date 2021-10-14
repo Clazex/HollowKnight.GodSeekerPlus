@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.5.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.4.0...v0.5.0) (2021-10-14)
+
+### Features
+
+* memorize bindings ([b3bb648](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/b3bb6486d360e140d650ff27c86878133f88090a))
+
 # [v0.4.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.3.1...v0.4.0) (2021-10-13)
 
 ### Features
