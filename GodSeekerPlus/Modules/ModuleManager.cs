@@ -7,7 +7,7 @@ namespace GodSeekerPlus.Modules {
 	internal static class ModuleManager {
 		private static readonly List<Module> modules = new();
 
-		public static void LoadModules() => modules.InsertRange(0, Assembly
+		internal static void LoadModules() => modules.InsertRange(0, Assembly
 			.GetExecutingAssembly()
 			.GetTypes()
 			.Where(type => type.IsSubclassOf(typeof(Module)))
@@ -20,6 +20,6 @@ namespace GodSeekerPlus.Modules {
 			.Cast<Module>()
 		);
 
-		public static void UnloadModules() => modules.Clear();
+		internal static void UnloadModules() => modules.Clear();
 	}
 }

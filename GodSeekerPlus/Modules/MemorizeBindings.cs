@@ -1,18 +1,18 @@
 using System.Collections;
 
 namespace GodSeekerPlus.Modules {
-	public sealed class MemorizeBindings : Module {
-		public override void Load() {
+	internal sealed class MemorizeBindings : Module {
+		private protected override void Load() {
 			On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;
 			On.BossDoorChallengeUI.HideSequence += RecordBindingStates;
 		}
 
-		public override void Unload() {
+		private protected override void Unload() {
 			On.BossDoorChallengeUI.ShowSequence -= ApplyBindingStates;
 			On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
 		}
 
-		public override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.memorizeBindings;
+		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.memorizeBindings;
 
 		private static IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
 			yield return orig(self);

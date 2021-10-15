@@ -1,5 +1,5 @@
 namespace GodSeekerPlus.Modules {
-	public abstract class Module {
+	internal abstract class Module {
 		internal Module() {
 			if (ShouldLoad()) {
 				Load();
@@ -16,12 +16,12 @@ namespace GodSeekerPlus.Modules {
 			}
 		}
 
-		public bool Loaded { get; protected set; }
+		private bool Loaded { get; set; } = false;
 
-		public abstract void Load();
+		private protected abstract void Load();
 
-		public abstract void Unload();
+		private protected abstract void Unload();
 
-		public abstract bool ShouldLoad();
+		private protected abstract bool ShouldLoad();
 	}
 }

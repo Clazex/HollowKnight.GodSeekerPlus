@@ -12,7 +12,7 @@ namespace GodSeekerPlus {
 
 		public bool memorizeBindings = true;
 
-		public void Coerce() {
+		internal void Coerce() {
 			if (fastSuperDashSpeedMultiplier < 1f) {
 				fastSuperDashSpeedMultiplier = 1f;
 			} else if (fastSuperDashSpeedMultiplier > 2f) {
