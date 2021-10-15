@@ -2,11 +2,13 @@ using System.Threading;
 using Modding;
 
 namespace GodSeekerPlus.Modules {
-	internal static class FrameRateLimit {
-		public static void Load() => ModHooks.HeroUpdateHook += ThreadSleep;
+	internal sealed class FrameRateLimit : Module {
+		public override void Load() => ModHooks.HeroUpdateHook += ThreadSleep;
 
-		public static void Unload() => ModHooks.HeroUpdateHook -= ThreadSleep;
+		public override void Unload() => ModHooks.HeroUpdateHook -= ThreadSleep;
 
-		public static void ThreadSleep() => Thread.Sleep(10 * GodSeekerPlus.Instance.GlobalSettings.frameRateLimitMultiplier);
+		public override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.frameRateLimit;
+
+		private static void ThreadSleep() => Thread.Sleep(10 * GodSeekerPlus.Instance.GlobalSettings.frameRateLimitMultiplier);
 	}
 }

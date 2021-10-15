@@ -5,11 +5,11 @@ using Modding;
 namespace GodSeekerPlus {
 	public sealed class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
 		public static GodSeekerPlus Instance { get; private set; }
+
 		public override string GetVersion() => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
 
-		public GlobalSettings GlobalSettings { get; set; } = new GlobalSettings();
-		public LocalSettings LocalSettings { get; set; } = new LocalSettings();
-
+		public GlobalSettings GlobalSettings { get; internal set; } = new();
+		public LocalSettings LocalSettings { get; internal set; } = new();
 
 		public override void Initialize() {
 			if (Instance != null) {
@@ -19,21 +19,19 @@ namespace GodSeekerPlus {
 			Instance = this;
 			GlobalSettings.Coerce();
 
-			this.LoadModules();
+			ModuleManager.LoadModules();
 		}
 
 		public void Unload() {
-			this.UnloadModules();
+			ModuleManager.UnloadModules();
 
 			Instance = null;
 		}
 
 		public void OnLoadGlobal(GlobalSettings s) => GlobalSettings = s;
-
 		public GlobalSettings OnSaveGlobal() => GlobalSettings;
 
 		public void OnLoadLocal(LocalSettings s) => LocalSettings = s;
-
 		public LocalSettings OnSaveLocal() => LocalSettings;
 	}
 }

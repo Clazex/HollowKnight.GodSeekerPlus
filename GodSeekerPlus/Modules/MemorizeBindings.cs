@@ -1,24 +1,26 @@
 using System.Collections;
 
 namespace GodSeekerPlus.Modules {
-	public static class MemorizeBindings {
-		public static void Load() {
+	public sealed class MemorizeBindings : Module {
+		public override void Load() {
 			On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;
 			On.BossDoorChallengeUI.HideSequence += RecordBindingStates;
 		}
 
-		public static void Unload() {
+		public override void Unload() {
 			On.BossDoorChallengeUI.ShowSequence -= ApplyBindingStates;
 			On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
 		}
 
+		public override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.memorizeBindings;
+
 		private static IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
 			yield return orig(self);
 
-			self.boundNailButton.SetSelected(GodSeekerPlus.Instance.LocalSettings.boundNail);
-			self.boundHeartButton.SetSelected(GodSeekerPlus.Instance.LocalSettings.boundHeart);
-			self.boundCharmsButton.SetSelected(GodSeekerPlus.Instance.LocalSettings.boundCharms);
-			self.boundSoulButton.SetSelected(GodSeekerPlus.Instance.LocalSettings.boundSoul);
+			SetButtonState(self.boundNailButton, GodSeekerPlus.Instance.LocalSettings.boundNail);
+			SetButtonState(self.boundHeartButton, GodSeekerPlus.Instance.LocalSettings.boundHeart);
+			SetButtonState(self.boundCharmsButton, GodSeekerPlus.Instance.LocalSettings.boundCharms);
+			SetButtonState(self.boundSoulButton, GodSeekerPlus.Instance.LocalSettings.boundSoul);
 
 			GodSeekerPlus.Instance.Log("Binding states applied");
 		}
@@ -34,7 +36,7 @@ namespace GodSeekerPlus.Modules {
 			yield return orig(self, sendEvent);
 		}
 
-		private static void SetSelected(this BossDoorChallengeUIBindingButton self, bool state) {
+		private static void SetButtonState(BossDoorChallengeUIBindingButton self, bool state) {
 			if (state) {
 				self.OnSubmit(null);
 			}

@@ -3,10 +3,12 @@ using HutongGames.PlayMaker.Actions;
 using Vasi;
 
 namespace GodSeekerPlus.Modules {
-	internal static class FastSuperDash {
-		public static void Load() => On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
+	internal sealed class FastSuperDash : Module {
+		public override void Load() => On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
 
-		public static void Unload() => On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
+		public override void Unload() => On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
+
+		public override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.fastSuperDash;
 
 		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
