@@ -12,7 +12,7 @@ namespace GodSeekerPlus.Modules {
 			.GetTypes()
 			.Where(type => type.IsSubclassOf(typeof(Module)))
 			.Select(type => {
-				GodSeekerPlus.Instance.Log($"Found module {type.Name}");
+				Logger.LogDebug($"Found module {type.Name}");
 				return type;
 			})
 			.Select(type => type.GetConstructor(Type.EmptyTypes))

@@ -3,7 +3,7 @@ namespace GodSeekerPlus.Modules {
 		internal Module() {
 			if (ShouldLoad()) {
 				Load();
-				GodSeekerPlus.Instance.Log($"Loaded module {GetType().Name}");
+				Logger.LogDebug($"Loaded module {GetType().Name}");
 				Loaded = true;
 			}
 		}
@@ -11,7 +11,7 @@ namespace GodSeekerPlus.Modules {
 		~Module() {
 			if (Loaded) {
 				Unload();
-				GodSeekerPlus.Instance.Log($"Unloaded module {GetType().Name}");
+				Logger.LogDebug($"Unloaded module {GetType().Name}");
 				Loaded = false;
 			}
 		}

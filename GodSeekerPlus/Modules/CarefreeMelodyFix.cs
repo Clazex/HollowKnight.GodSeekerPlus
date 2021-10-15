@@ -14,7 +14,7 @@ namespace GodSeekerPlus.Modules {
 			if (controller.carefreeShieldEquipped && !data.GetBool(targetEntry)) {
 				data.SetBool(targetEntry, true);
 
-				GodSeekerPlus.Instance.Log("Carefree Melody fixed");
+				Logger.LogDebug("Carefree Melody fixed");
 			}
 		}
 	}

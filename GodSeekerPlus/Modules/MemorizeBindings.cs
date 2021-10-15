@@ -22,7 +22,7 @@ namespace GodSeekerPlus.Modules {
 			SetButtonState(self.boundCharmsButton, GodSeekerPlus.Instance.LocalSettings.boundCharms);
 			SetButtonState(self.boundSoulButton, GodSeekerPlus.Instance.LocalSettings.boundSoul);
 
-			GodSeekerPlus.Instance.Log("Binding states applied");
+			Logger.LogDebug("Binding states applied");
 		}
 
 		private static IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
@@ -31,7 +31,7 @@ namespace GodSeekerPlus.Modules {
 			GodSeekerPlus.Instance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;
 			GodSeekerPlus.Instance.LocalSettings.boundSoul = self.boundSoulButton.Selected;
 
-			GodSeekerPlus.Instance.Log("Binding states recorded");
+			Logger.LogDebug("Binding states recorded");
 
 			yield return orig(self, sendEvent);
 		}

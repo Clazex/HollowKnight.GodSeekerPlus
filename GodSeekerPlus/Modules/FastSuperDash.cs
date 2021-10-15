@@ -28,7 +28,7 @@ namespace GodSeekerPlus.Modules {
 
 				stateWsSpdBuff.AddTransition(FsmEvent.Finished.Name, "Dash Start");
 
-				GodSeekerPlus.Instance.Log("Superdash FSM modified");
+				Logger.LogDebug("Superdash FSM modified");
 			}
 
 			orig(self);
