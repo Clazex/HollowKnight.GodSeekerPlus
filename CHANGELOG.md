@@ -1,5 +1,7 @@
 # Unreleased
 
+# [v0.5.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.5.0...v0.5.1) (2021-10-19)
+
 # [v0.5.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.4.0...v0.5.0) (2021-10-14)
 
 ### Features
