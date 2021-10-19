@@ -26,4 +26,4 @@ Compatible with `Hollow Knight` 1.5.
 ## Contributing
 
 1. Clone the repository
-2. Set environment variable `HollowKnightRefs` to your `Managed` folder in HK installation
+2. Set environment variable `HKRefs` to your `Managed` folder in HK installation

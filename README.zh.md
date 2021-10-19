@@ -26,4 +26,4 @@
 ## 贡献
 
 1. 克隆存储库
-2. 将环境变量 `HollowKnightRefs` 设置为游戏文件中的 `Managed` 文件夹
+2. 将环境变量 `HKRefs` 设置为游戏文件中的 `Managed` 文件夹
