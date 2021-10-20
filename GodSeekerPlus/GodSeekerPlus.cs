@@ -1,5 +1,4 @@
 using System.Reflection;
-using GodSeekerPlus.Modules;
 using Modding;
 
 namespace GodSeekerPlus {

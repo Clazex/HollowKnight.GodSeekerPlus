@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Module = GodSeekerPlus.Modules.Module;
 
-namespace GodSeekerPlus.Modules {
+namespace GodSeekerPlus {
 	internal static class ModuleManager {
 		private static readonly List<Module> modules = new();
 
