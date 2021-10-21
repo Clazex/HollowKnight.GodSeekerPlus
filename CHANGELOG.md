@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.6.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.5.1...v0.6.0) (2021-10-21)
+
+### Features
+
+* halve damage ([0f5cb32](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/0f5cb32aa27d276d58cffa7f5cc53c1ce98c15fe))
+
 # [v0.5.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.5.0...v0.5.1) (2021-10-19)
 
 # [v0.5.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.4.0...v0.5.0) (2021-10-14)
