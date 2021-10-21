@@ -10,6 +10,8 @@ namespace GodSeekerPlus {
 		public bool frameRateLimit = false;
 		public int frameRateLimitMultiplier = 5;
 
+		public bool halveDamage = false;
+
 		public bool memorizeBindings = true;
 
 		internal void Coerce() {
