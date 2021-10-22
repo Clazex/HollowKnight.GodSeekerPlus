@@ -4,5 +4,7 @@ namespace GodSeekerPlus {
 		public bool boundHeart = false;
 		public bool boundCharms = false;
 		public bool boundSoul = false;
+
+		internal void Coerce() { }
 	}
 }
