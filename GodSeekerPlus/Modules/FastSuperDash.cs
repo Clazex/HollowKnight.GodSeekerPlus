@@ -1,37 +1,30 @@
 using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 using Vasi;
-
+using UnityEngine;
 namespace GodSeekerPlus.Modules {
 	internal sealed class FastSuperDash : Module {
-		private protected override void Load() => On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
+		private protected override void Load() => UnityEngine.SceneManagement.SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
 
-		private protected override void Unload() => On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
+		private void SceneManager_activeSceneChanged(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.Scene arg1) {
+			PlayMakerFSM superdash = GameObject.Find("Knight").LocateMyFSM("Superdash");
+			if(superdash!=null) {
+				if (arg1.name == "GG_Workshop") {
 
-		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.fastSuperDash;
-
-		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
-			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
-				FsmState stateWsSpdBuff = self.CreateState("GSP Workshop Speed Buff");
-
-				stateWsSpdBuff.AddAction(new CheckSceneName() {
-					sceneName = "GG_Workshop",
-					notEqualEvent = FsmEvent.Finished
-				});
-				stateWsSpdBuff.AddAction(new FloatMultiply() {
-					floatVariable = self.FsmVariables.FindFsmFloat("Current SD Speed"),
-					multiplyBy = GodSeekerPlus.Instance.GlobalSettings.fastSuperDashSpeedMultiplier
-				});
-
-				self.GetState("Left").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
-				self.GetState("Right").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
-
-				stateWsSpdBuff.AddTransition(FsmEvent.Finished.Name, "Dash Start");
-
-				Logger.LogDebug("Superdash FSM modified");
+					superdash.Fsm.GetFsmFloat("Superdash Speed").Value = 30 * GodSeekerPlus.Instance.GlobalSetting.fastSuperDashSpeedMultiplier;
+					superdash.Fsm.GetFsmFloat("Superdash Speed neg").Value = -30 * GodSeekerPlus.Instance.GlobalSetting.fastSuperDashSpeedMultiplier;
+				}
+				else {
+					superdash.Fsm.GetFsmFloat("Superdash Speed").Value = 30;
+					superdash.Fsm.GetFsmFloat("Superdash Speed neg").Value = -30;
+				}
 			}
-
-			orig(self);
 		}
+
+		private protected override void Unload() => UnityEngine.SceneManagement.SceneManager.activeSceneChanged -= SceneManager_activeSceneChanged;
+
+		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSetting.fastSuperDash;
+
+		
 	}
 }

@@ -1,14 +1,15 @@
 using System.Reflection;
+using GodSeekerPlus.Modules;
 using Modding;
 
 namespace GodSeekerPlus {
-	public sealed class GodSeekerPlus : Mod, IGlobalSettings<GlobalSettings>, ILocalSettings<LocalSettings> {
+	public sealed class GodSeekerPlus : Mod{
 		public static GodSeekerPlus Instance { get; private set; }
 
-		public override string GetVersion() => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+		public override string GetVersion() => "test";
 
-		public GlobalSettings GlobalSettings { get; internal set; } = new();
-		public LocalSettings LocalSettings { get; internal set; } = new();
+		public GlobalSettings GlobalSetting=new GlobalSettings();
+		public LocalSettings LocalSetting = new LocalSettings();
 
 		public override void Initialize() {
 			if (Instance != null) {
@@ -16,7 +17,7 @@ namespace GodSeekerPlus {
 			}
 
 			Instance = this;
-			GlobalSettings.Coerce();
+			GlobalSetting.Coerce();
 
 			ModuleManager.LoadModules();
 		}
@@ -26,11 +27,7 @@ namespace GodSeekerPlus {
 
 			Instance = null;
 		}
-
-		public void OnLoadGlobal(GlobalSettings s) => GlobalSettings = s;
-		public GlobalSettings OnSaveGlobal() => GlobalSettings;
-
-		public void OnLoadLocal(LocalSettings s) => LocalSettings = s;
-		public LocalSettings OnSaveLocal() => LocalSettings;
+		public override ModSettings GlobalSettings { get => GlobalSetting; set => GlobalSetting = (GlobalSettings)value; }
+		public override ModSettings SaveSettings { get => LocalSetting; set => LocalSetting = (LocalSettings)value; }
 	}
 }

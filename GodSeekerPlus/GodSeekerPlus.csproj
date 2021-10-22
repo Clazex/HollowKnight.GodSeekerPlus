@@ -5,7 +5,7 @@
 		<Description>A Hollow Knight mod to enhance your Godhome experience</Description>
 		<Copyright>Copyright © 2021 Clazex</Copyright>
 
-		<TargetFramework>net472</TargetFramework>
+		<TargetFramework>net35</TargetFramework>
 		<DebugType>portable</DebugType>
 		<LangVersion>latest</LangVersion>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -25,28 +25,22 @@
 
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp">
-			<HintPath>$(HKModdingApi)/Assembly-CSharp.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine">
-			<HintPath>$(HKRefs)/UnityEngine.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>$(HKRefs)/UnityEngine.CoreModule.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine.UI">
-			<HintPath>$(HKRefs)/UnityEngine.UI.dll</HintPath>
+		  <HintPath>E:\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Assembly-CSharp.dll</HintPath>
 		</Reference>
 		<Reference Include="PlayMaker">
-			<HintPath>$(HKRefs)/PlayMaker.dll</HintPath>
+		  <HintPath>E:\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\PlayMaker.dll</HintPath>
 		</Reference>
-		<Reference Include="MMHOOK_Assembly-CSharp">
-			<HintPath>$(HKModdingApi)/MMHOOK_Assembly-CSharp.dll</HintPath>
+		<Reference Include="UnityEngine">
+		  <HintPath>E:\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.dll</HintPath>
 		</Reference>
-		<Reference Include="MMHOOK_Playmaker">
-			<HintPath>$(HKModdingApi)/MMHOOK_Playmaker.dll</HintPath>
+		<Reference Include="UnityEngine.CoreModule">
+		  <HintPath>E:\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+		  <HintPath>E:\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\UnityEngine.UI.dll</HintPath>
 		</Reference>
 		<Reference Include="Vasi">
-			<HintPath>$(HKModRefs)/Vasi/Vasi.dll</HintPath>
+		  <HintPath>E:\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods\Vasi.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 

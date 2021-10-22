@@ -1,5 +1,6 @@
+using Modding;
 namespace GodSeekerPlus {
-	public sealed class GlobalSettings {
+	public sealed class GlobalSettings:ModSettings {
 		public bool carefreeMelodyFix = true;
 
 		public bool fastDreamWarp = true;

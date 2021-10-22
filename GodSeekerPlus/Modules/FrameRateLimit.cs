@@ -6,13 +6,13 @@ namespace GodSeekerPlus.Modules {
 		private static int time = 50;
 
 		private protected override void Load() {
-			time = 10 * GodSeekerPlus.Instance.GlobalSettings.frameRateLimitMultiplier;
-			ModHooks.HeroUpdateHook += ThreadSleep;
+			time = 10 * GodSeekerPlus.Instance.GlobalSetting.frameRateLimitMultiplier;
+			ModHooks.Instance.HeroUpdateHook += ThreadSleep;
 		}
 
-		private protected override void Unload() => ModHooks.HeroUpdateHook -= ThreadSleep;
+		private protected override void Unload() => ModHooks.Instance.HeroUpdateHook -= ThreadSleep;
 
-		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.frameRateLimit;
+		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSetting.frameRateLimit;
 
 		private static void ThreadSleep() => Thread.Sleep(time);
 	}
