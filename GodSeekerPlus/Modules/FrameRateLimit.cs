@@ -13,7 +13,7 @@ namespace GodSeekerPlus.Modules {
 
 		private protected override void Unload() => ModHooks.HeroUpdateHook -= ThreadSleep;
 
-		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.frameRateLimit;
+		private protected override bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.frameRateLimit;
 
 		private static void ThreadSleep() => Thread.Sleep(time);
 	}

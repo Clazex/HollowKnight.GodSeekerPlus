@@ -10,7 +10,7 @@ namespace GodSeekerPlus.Modules {
 
 		private protected override void Unload() => ModHooks.CharmUpdateHook -= WatchAndFixCarefreeMelody;
 
-		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.carefreeMelodyFix;
+		private protected override bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.carefreeMelodyFix;
 
 		private static void WatchAndFixCarefreeMelody(PlayerData data, HeroController controller) {
 			if (controller.carefreeShieldEquipped && !data.GetBool(targetEntry)) {

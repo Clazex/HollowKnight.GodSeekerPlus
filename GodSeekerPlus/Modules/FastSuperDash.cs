@@ -10,7 +10,7 @@ namespace GodSeekerPlus.Modules {
 
 		private protected override void Unload() => On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
 
-		private protected override bool ShouldLoad() => GodSeekerPlus.Instance.GlobalSettings.fastSuperDash;
+		private protected override bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.fastSuperDash;
 
 		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {

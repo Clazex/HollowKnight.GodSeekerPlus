@@ -4,7 +4,7 @@ using GodSeekerPlus.Util;
 namespace GodSeekerPlus.Modules {
 	internal abstract class Module {
 		internal Module() {
-			if (ShouldLoad()) {
+			if (ShouldLoad) {
 				Load();
 				Logger.LogDebug($"Loaded module {GetType().Name}");
 				Loaded = true;
@@ -27,6 +27,6 @@ namespace GodSeekerPlus.Modules {
 
 		private protected abstract void Unload();
 
-		private protected abstract bool ShouldLoad();
+		private protected abstract bool ShouldLoad { get; }
 	}
 }
