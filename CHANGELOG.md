@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.7.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.6.0...v0.7.0) (2021-10-24)
+
+### Features
+
+* module toggle menu ([ebf97fb](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ebf97fb8aa13cd83cb36d1873c88bd4395b4b300))
+
 # [v0.6.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.5.1...v0.6.0) (2021-10-21)
 
 ### Features
