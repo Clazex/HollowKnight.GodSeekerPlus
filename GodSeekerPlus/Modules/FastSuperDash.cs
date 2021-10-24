@@ -4,6 +4,7 @@ using HutongGames.PlayMaker.Actions;
 using Vasi;
 
 namespace GodSeekerPlus.Modules {
+	[Module(toggleable = false, defaultState = true)]
 	internal sealed class FastSuperDash : Module {
 		private protected override void Load() => On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
 

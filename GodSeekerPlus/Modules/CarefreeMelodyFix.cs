@@ -2,6 +2,7 @@ using Modding;
 using Logger = GodSeekerPlus.Util.Logger;
 
 namespace GodSeekerPlus.Modules {
+	[Module(toggleable = true, defaultState = true)]
 	internal sealed class CarefreeMelodyFix : Module {
 		private const string targetEntry = "destroyedNightmareLantern";
 

@@ -2,6 +2,7 @@ using System;
 using Modding;
 
 namespace GodSeekerPlus.Modules {
+	[Module(toggleable = true, defaultState = false)]
 	internal sealed class HalveDamage : Module {
 		private protected override void Load() => ModHooks.TakeHealthHook += MakeDamageHalved;
 

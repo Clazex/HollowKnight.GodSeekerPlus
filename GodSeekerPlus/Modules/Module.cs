@@ -1,3 +1,4 @@
+using System.Reflection;
 using GodSeekerPlus.Util;
 
 namespace GodSeekerPlus.Modules {
@@ -19,6 +20,8 @@ namespace GodSeekerPlus.Modules {
 		}
 
 		private bool Loaded { get; set; } = false;
+
+		internal bool Toggleable => GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
 
 		private protected abstract void Load();
 
