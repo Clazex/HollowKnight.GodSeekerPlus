@@ -1,31 +1,29 @@
+using Newtonsoft.Json;
+
 namespace GodSeekerPlus {
 	public sealed class GlobalSettings {
 		public bool carefreeMelodyFix = true;
-
 		public bool fastDreamWarp = true;
-
 		public bool fastSuperDash = true;
-		public float fastSuperDashSpeedMultiplier = 1.5f;
-
 		public bool frameRateLimit = false;
-		public int frameRateLimitMultiplier = 5;
-
 		public bool halveDamage = false;
-
 		public bool memorizeBindings = true;
 
-		internal void Coerce() {
-			if (fastSuperDashSpeedMultiplier < 1f) {
-				fastSuperDashSpeedMultiplier = 1f;
-			} else if (fastSuperDashSpeedMultiplier > 2f) {
-				fastSuperDashSpeedMultiplier = 2f;
-			}
+		[JsonIgnore]
+		public float fastSuperDashSpeedMultiplier = 1.5f;
+		[JsonIgnore]
+		public int frameRateLimitMultiplier = 5;
 
-			if (frameRateLimitMultiplier < 0) {
-				frameRateLimitMultiplier = 0;
-			} else if (frameRateLimitMultiplier > 10) {
-				frameRateLimitMultiplier = 10;
-			}
+		[JsonProperty(PropertyName = "fastSuperDashSpeedMultiplier")]
+		public float FastSuperDashSpeedMultiplier {
+			get => fastSuperDashSpeedMultiplier;
+			set => fastSuperDashSpeedMultiplier = value < 1f ? 1f : (value > 2f ? 2f : value);
+		}
+
+		[JsonProperty(PropertyName = "frameRateLimitMultiplier")]
+		public int FrameRateLimitMultiplier {
+			get => frameRateLimitMultiplier;
+			set => frameRateLimitMultiplier = value < 0 ? 0 : (value > 10 ? 10 : value);
 		}
 	}
 }

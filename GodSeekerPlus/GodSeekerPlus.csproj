@@ -45,6 +45,9 @@
 		<Reference Include="MMHOOK_Playmaker">
 			<HintPath>$(HKModdingApi)/MMHOOK_Playmaker.dll</HintPath>
 		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>$(HKModdingApi)/Newtonsoft.Json.dll</HintPath>
+		</Reference>
 		<Reference Include="Vasi">
 			<HintPath>$(HKModRefs)/Vasi/Vasi.dll</HintPath>
 		</Reference>
