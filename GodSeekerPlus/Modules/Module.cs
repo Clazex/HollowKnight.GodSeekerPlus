@@ -23,10 +23,11 @@ namespace GodSeekerPlus.Modules {
 
 		internal bool Toggleable => GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
 
+		private bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.modules[GetType().Name];
+
+
 		private protected abstract void Load();
 
 		private protected abstract void Unload();
-
-		private protected abstract bool ShouldLoad { get; }
 	}
 }

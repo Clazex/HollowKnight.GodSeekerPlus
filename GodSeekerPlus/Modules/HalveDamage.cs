@@ -8,8 +8,6 @@ namespace GodSeekerPlus.Modules {
 
 		private protected override void Unload() => ModHooks.TakeHealthHook -= MakeDamageHalved;
 
-		private protected override bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.halveDamage;
-
 		private int MakeDamageHalved(int damage) => (int) Math.Ceiling(damage / 2d);
 	}
 }

@@ -16,6 +16,12 @@ namespace GodSeekerPlus.Util {
 		internal static IEnumerable<string> GetModuleNames() => FindModules()
 			.Map(type => type.Name);
 
+		internal static Dictionary<string, bool> GetDefaultModuleStateDict() => FindModules()
+			.Reduce((dict, type) => {
+				dict[type.Name] = type.GetCustomAttribute<ModuleAttribute>().defaultState;
+				return dict;
+			}, new Dictionary<string, bool>());
+
 		internal static Module ConstructModule(Type type) => (Module) type.GetConstructor(Type.EmptyTypes).Invoke(null);
 
 		private static bool HasModuleAttribute(Type type) {

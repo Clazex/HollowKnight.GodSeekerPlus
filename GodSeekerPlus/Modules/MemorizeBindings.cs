@@ -14,8 +14,6 @@ namespace GodSeekerPlus.Modules {
 			On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
 		}
 
-		private protected override bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.memorizeBindings;
-
 		private static IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
 			yield return orig(self);
 
