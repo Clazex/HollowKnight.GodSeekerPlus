@@ -4,18 +4,18 @@ using GodSeekerPlus.Util;
 namespace GodSeekerPlus.Modules {
 	internal abstract class Module {
 		internal Module() {
-			if (ShouldLoad) {
-				Load();
-				Logger.LogDebug($"Loaded module {GetType().Name}");
-				Loaded = true;
-			}
+			Update();
 		}
 
 		~Module() {
-			if (Loaded) {
-				Unload();
-				Logger.LogDebug($"Unloaded module {GetType().Name}");
-				Loaded = false;
+			DoUnload();
+		}
+
+		internal void Update() {
+			if (ShouldLoad) {
+				DoLoad();
+			} else {
+				DoUnload();
 			}
 		}
 
@@ -24,6 +24,22 @@ namespace GodSeekerPlus.Modules {
 		internal bool Toggleable => GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
 
 		private bool ShouldLoad => GodSeekerPlus.Instance.GlobalSettings.modules[GetType().Name];
+
+		private void DoLoad() {
+			if (!Loaded) {
+				Load();
+				Logger.LogDebug($"Loaded module {GetType().Name}");
+				Loaded = true;
+			}
+		}
+
+		private void DoUnload() {
+			if (Loaded) {
+				Unload();
+				Logger.LogDebug($"Unloaded module {GetType().Name}");
+				Loaded = false;
+			}
+		}
 
 
 		private protected abstract void Load();
