@@ -1,4 +1,5 @@
 using System.Collections;
+using GodSeekerPlus.Util;
 
 namespace GodSeekerPlus.Modules {
 	internal sealed class MemorizeBindings : Module {

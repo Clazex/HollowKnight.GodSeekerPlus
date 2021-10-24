@@ -1,4 +1,4 @@
-namespace GodSeekerPlus {
+namespace GodSeekerPlus.Util {
 	internal static class Logger {
 		private static GodSeekerPlus Instance() => GodSeekerPlus.Instance;
 

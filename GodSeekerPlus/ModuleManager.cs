@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GodSeekerPlus.Util;
 using Module = GodSeekerPlus.Modules.Module;
 
 namespace GodSeekerPlus {

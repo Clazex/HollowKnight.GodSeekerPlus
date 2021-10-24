@@ -1,4 +1,5 @@
 using Modding;
+using Logger = GodSeekerPlus.Util.Logger;
 
 namespace GodSeekerPlus.Modules {
 	internal sealed class CarefreeMelodyFix : Module {

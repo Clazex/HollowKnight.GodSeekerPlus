@@ -1,3 +1,5 @@
+using GodSeekerPlus.Util;
+
 namespace GodSeekerPlus.Modules {
 	internal abstract class Module {
 		internal Module() {
