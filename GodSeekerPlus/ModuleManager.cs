@@ -5,10 +5,10 @@ using System.Reflection;
 using Module = GodSeekerPlus.Modules.Module;
 
 namespace GodSeekerPlus {
-	internal static class ModuleManager {
-		private static readonly List<Module> modules = new();
+	internal sealed class ModuleManager {
+		private readonly List<Module> modules = new();
 
-		internal static void LoadModules() => modules.InsertRange(0, Assembly
+		internal void LoadModules() => modules.InsertRange(0, Assembly
 			.GetExecutingAssembly()
 			.GetTypes()
 			.Where(type => type.IsSubclassOf(typeof(Module)))
@@ -21,6 +21,6 @@ namespace GodSeekerPlus {
 			.Cast<Module>()
 		);
 
-		internal static void UnloadModules() => modules.Clear();
+		internal void UnloadModules() => modules.Clear();
 	}
 }
