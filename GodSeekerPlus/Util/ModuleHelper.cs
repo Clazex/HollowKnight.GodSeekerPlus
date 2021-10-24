@@ -13,7 +13,8 @@ namespace GodSeekerPlus.Util {
 			.Filter(HasModuleAttribute)
 			.Filter(HasDefaultConstructor);
 
-		internal static IEnumerable<string> GetModuleNames() => FindModules()
+		internal static IEnumerable<string> GetToggleableModuleNames() => FindModules()
+			.Filter(type => type.GetCustomAttribute<ModuleAttribute>().toggleable)
 			.Map(type => type.Name);
 
 		internal static Dictionary<string, bool> GetDefaultModuleStateDict() => FindModules()
