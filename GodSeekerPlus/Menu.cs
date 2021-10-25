@@ -14,15 +14,10 @@ namespace GodSeekerPlus {
 			Lang.Get("MOH_ON", "MainMenu")
 		};
 
-		private string GetLocalizedName(string name) {
-			string localizedName = Lang.Get(name, GetName());
-			return localizedName.Any() ? localizedName : name;
-		}
-
 		List<MenuEntry> IMenuMod.GetMenuData(MenuEntry? _) => ModuleHelper
 			.GetToggleableModuleNames()
 			.Map(name => new MenuEntry(
-				GetLocalizedName(name),
+				LocalizationUtil.TryLocalize(name),
 				States,
 				"",
 				(val) => moduleManager.Modules[name].Enabled = val != 0,
