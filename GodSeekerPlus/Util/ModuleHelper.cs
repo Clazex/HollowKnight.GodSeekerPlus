@@ -19,7 +19,7 @@ namespace GodSeekerPlus.Util {
 
 		internal static Dictionary<string, bool> GetDefaultModuleStateDict() => FindModules()
 			.Reduce((dict, type) => {
-				dict[type.Name] = type.GetCustomAttribute<ModuleAttribute>().defaultState;
+				dict[type.Name] = type.GetCustomAttribute<ModuleAttribute>().defaultEnabled;
 				return dict;
 			}, new Dictionary<string, bool>());
 

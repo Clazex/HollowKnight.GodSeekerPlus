@@ -2,7 +2,7 @@ using System.Collections;
 using GodSeekerPlus.Util;
 
 namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultState = true)]
+	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class MemorizeBindings : Module {
 		private protected override void Load() {
 			On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;
