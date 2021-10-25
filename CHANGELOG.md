@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.7.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.1...v0.7.2) (2021-10-25)
+
+### Features
+
+* add lang file support ([ad79a1f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ad79a1f301222124ceb037c7d891ee3f181aefeb))
+
 # [v0.7.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.0...v0.7.1) (2021-10-25)
 
 ### Features
