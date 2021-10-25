@@ -11,16 +11,24 @@ namespace GodSeekerPlus.Modules {
 			Disable();
 		}
 
+		internal string Name => GetType().Name;
+
 		private bool Loaded { get; set; } = false;
 
 		internal bool Toggleable => GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
 
-		internal bool Enabled => GodSeekerPlus.Instance.GlobalSettings.modules[GetType().Name];
+		internal bool Enabled {
+			get => GodSeekerPlus.Instance.GlobalSettings.modules[Name];
+			set {
+				GodSeekerPlus.Instance.GlobalSettings.modules[Name] = value;
+				Update();
+			}
+		}
 
 		private void Enable() {
 			if (!Loaded) {
 				Load();
-				Logger.LogDebug($"Loaded module {GetType().Name}");
+				Logger.LogDebug($"Loaded module {Name}");
 				Loaded = true;
 			}
 		}
@@ -28,7 +36,7 @@ namespace GodSeekerPlus.Modules {
 		private void Disable() {
 			if (Loaded) {
 				Unload();
-				Logger.LogDebug($"Unloaded module {GetType().Name}");
+				Logger.LogDebug($"Unloaded module {Name}");
 				Loaded = false;
 			}
 		}

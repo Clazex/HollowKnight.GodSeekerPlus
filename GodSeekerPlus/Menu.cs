@@ -20,11 +20,8 @@ namespace GodSeekerPlus {
 					name,
 					states,
 					"",
-					(val) => {
-						Instance.GlobalSettings.modules[name] = val != 0;
-						moduleManager.Modules[name].Update();
-					},
-					() => Instance.GlobalSettings.modules[name] ? 1 : 0
+					(val) => moduleManager.Modules[name].Enabled = val != 0,
+					() => moduleManager.Modules[name].Enabled ? 1 : 0
 				))
 				.ToList();
 		}
