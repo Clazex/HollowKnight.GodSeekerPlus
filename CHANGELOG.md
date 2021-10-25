@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.7.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.0...v0.7.1) (2021-10-25)
+
+### Features
+
+* add localization interface ([e9536c2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e9536c2117c0d424ad1fe40042519dc5163fe3b2))
+
 # [v0.7.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.6.0...v0.7.0) (2021-10-24)
 
 ### Features
