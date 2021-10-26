@@ -13,6 +13,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Frame Rate Limit**\*: Create a lag in every in-game frame.
 - **Halve Damage**\*: Halve all the damage taken.
 - **Memorize Bindings**\*: Memorize the Bindings selected last time, like difficulties in the Hall of Gods.
+- **Unlock Eternal Ordeal**\*: Auto unlock the Eternal Ordeal.
 - **Unlock Radiance**\*: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
 
 Features marked with an `*` can be toggled in-game.
@@ -26,6 +27,7 @@ Features marked with an `*` can be toggled in-game.
   + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.
   + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
+  + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
   + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
 - `frameRateLimitMultiplier` (`Integer`): Frame rate limit time span multiplier. Final lag time is 10ms multiplied by this value. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `10`, defaults to `5`.
