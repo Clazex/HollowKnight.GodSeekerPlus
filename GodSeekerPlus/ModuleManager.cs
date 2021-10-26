@@ -10,7 +10,7 @@ namespace GodSeekerPlus {
 		internal void LoadModules() => Modules = ModuleHelper
 			.FindModules()
 			.Map(ModuleHelper.ConstructModule)
-			.ToDictionary(module => module.GetType().Name);
+			.ToDictionary(module => module.Name);
 
 		internal void UnloadModules() => Modules.Clear();
 	}

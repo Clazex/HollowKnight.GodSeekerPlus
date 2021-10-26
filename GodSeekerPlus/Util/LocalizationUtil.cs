@@ -1,39 +1,44 @@
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Reflection;
-using Newtonsoft.Json;
+using Language;
 
 namespace GodSeekerPlus.Util {
 	internal static class LocalizationUtil {
-		private static Dictionary<string, Dictionary<string, string>> ReadLangs() {
-			string path = Assembly.GetExecutingAssembly().Location;
-			path = Path.GetFullPath(path);
-			path = Path.GetDirectoryName(path);
-			path = Path.Combine(path, "lang");
+		private const string resPrefix = "GodSeekerPlus.Lang.";
+		private const string resPostfix = ".json";
+		private static readonly List<string> langs = Language.Language
+			.GetLanguages()
+			.Map(str => str.ToLower())
+			.ToList();
 
-			return Directory.GetFiles(path)
-				.Filter(path => Path.GetExtension(path) == ".json")
-				.Map(path => (Path.GetFileNameWithoutExtension(path), new StreamReader(path).ReadToEnd()))
-				.Map(tuple => (tuple.Item1,
-					(Dictionary<string, string>) JsonConvert.DeserializeObject(tuple.Item2, typeof(Dictionary<string, string>))
-				))
-				.Reduce(
-					(dict, tuple) => {
-						dict[tuple.Item1] = tuple.Item2;
-						return dict;
-					},
-					new Dictionary<string, Dictionary<string, string>>()
-				);
-		}
+		private static string ToIdentifier(this LanguageCode code) =>
+			code.ToString().ToLower().Replace('_', '-');
+
+		private static string CurrentLang =>
+			Language.Language.CurrentLanguage().ToIdentifier();
+
+		private static Dictionary<string, Dictionary<string, string>> ReadLangs() => Assembly
+			.GetExecutingAssembly()
+			.GetManifestResourceNames()
+			.Filter(name => name.EnclosedWith(resPrefix, resPostfix))
+			.Map(name => (lang: name.StripStart(resPrefix).StripEnd(resPostfix), path: name))
+			.Filter(tuple => langs.Contains(tuple.lang))
+			.Map(tuple => (tuple.lang, stream: Assembly.GetExecutingAssembly().GetManifestResourceStream(tuple.path)))
+			.Map(tuple => (tuple.lang, json: tuple.stream.ReadToString()))
+			.Map(tuple => (tuple.lang, table: MiscUtil.DeserializeJson<Dictionary<string, string>>(tuple.json)))
+			.Reduce(
+				(dict, tuple) => {
+					Logger.LogDebug($"Loaded localization for lang: {tuple.lang}");
+					dict[tuple.lang] = tuple.table;
+					return dict;
+				},
+				new Dictionary<string, Dictionary<string, string>>()
+			);
 
 		private static Dictionary<string, Dictionary<string, string>> Dict { get; set; } = ReadLangs();
 
-		internal static string TryLocalize(string key) {
-			try {
-				return Dict[Language.Language.CurrentLanguage().ToString().ToLower().Replace('_', '-')][key];
-			} catch {
-				return key;
-			}
-		}
+		internal static string TryLocalize(string key) =>
+			MiscUtil.Try(() => Dict[CurrentLang][key], key);
 	}
 }
