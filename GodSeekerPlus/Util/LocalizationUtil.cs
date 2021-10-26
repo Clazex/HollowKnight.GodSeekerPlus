@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Newtonsoft.Json;
 using Language;
+using Newtonsoft.Json;
 
 namespace GodSeekerPlus.Util {
 	internal static class LocalizationUtil {

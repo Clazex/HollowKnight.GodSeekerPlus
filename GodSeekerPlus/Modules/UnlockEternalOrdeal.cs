@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using Modding;
 using GodSeekerPlus.Util;
+using Modding;
 using Logger = GodSeekerPlus.Util.Logger;
 
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class UnlockEternalOrdeal : Module {
 		private protected override void Load() => ModHooks.AfterSavegameLoadHook += SetOrdealUnlocked;
-		
+
 		private protected override void Unload() => ModHooks.AfterSavegameLoadHook -= SetOrdealUnlocked;
 
 		private void SetOrdealUnlocked(SaveGameData data) {

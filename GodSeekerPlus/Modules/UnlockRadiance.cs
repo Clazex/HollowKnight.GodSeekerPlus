@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using Modding;
 using GodSeekerPlus.Util;
+using Modding;
 using Logger = GodSeekerPlus.Util.Logger;
 
 namespace GodSeekerPlus.Modules {
@@ -9,7 +8,7 @@ namespace GodSeekerPlus.Modules {
 		private const string scene = "Radiance Boss Scene";
 
 		private protected override void Load() => ModHooks.AfterSavegameLoadHook += SetRadianceUnlocked;
-		
+
 		private protected override void Unload() => ModHooks.AfterSavegameLoadHook -= SetRadianceUnlocked;
 
 		private static void SetRadianceUnlocked(SaveGameData saveData) {
