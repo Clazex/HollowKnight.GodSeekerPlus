@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
 using Language;
 
 namespace GodSeekerPlus.Util {
@@ -26,7 +27,7 @@ namespace GodSeekerPlus.Util {
 			.Filter(tuple => langs.Contains(tuple.lang))
 			.Map(tuple => (tuple.lang, stream: Assembly.GetExecutingAssembly().GetManifestResourceStream(tuple.path)))
 			.Map(tuple => (tuple.lang, json: tuple.stream.ReadToString()))
-			.Map(tuple => (tuple.lang, table: MiscUtil.DeserializeJson<Dictionary<string, string>>(tuple.json)))
+			.Map(tuple => (tuple.lang, table: JsonConvert.DeserializeObject<Dictionary<string, string>>(tuple.json)))
 			.Reduce(
 				(dict, tuple) => {
 					Logger.LogDebug($"Loaded localization for lang: {tuple.lang}");

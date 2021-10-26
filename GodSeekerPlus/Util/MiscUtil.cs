@@ -18,9 +18,6 @@ namespace GodSeekerPlus.Util {
 			new StreamReader(self).ReadToEnd();
 
 
-		internal static T DeserializeJson<T>(string json) =>
-			(T) JsonConvert.DeserializeObject(json, typeof(T));
-
 
 		internal static T Try<T>(Func<T> f, T @default) {
 			try {
