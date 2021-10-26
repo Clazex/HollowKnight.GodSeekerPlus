@@ -1,5 +1,12 @@
 # Unreleased
 
+# [v0.8.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.3...v0.8.0) (2021-10-26)
+
+### Features
+
+* unlock eternal ordeal ([e9f9d24](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e9f9d2480fb6e53b2a547d0ce72ec3ca2e59f833))
+* unlock radiance ([6f67116](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/6f67116e62fe9ebaa1733ecbec4f9c28ecb0c217))
+
 # [v0.7.3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.2...v0.7.3) (2021-10-26)
 
 ### Features
