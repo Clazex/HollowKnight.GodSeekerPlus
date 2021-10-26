@@ -13,6 +13,7 @@
 - **帧率限制**\*：在游戏内的每帧添加卡顿。
 - **伤害减半**\*: 将受到的所有伤害减半。
 - **记住束缚**\*：记住上次选择的束缚，效果与诸神堂中的难度选择一样。
+- **解锁辐光**\*: 在寻神者模式中，自动在诸神堂解锁辐光。
 
 标 `*` 的功能可在游戏中开启或关闭。
 
@@ -25,6 +26,7 @@
   + `FrameRateLimit` (`Boolean`)：是否启用 `帧率限制` 功能。默认为 `false`。
   + `HalveDamage` (`Boolean`)：是否启用 `伤害减半` 功能。默认为 `false`。
   + `MemorizeBindings` (`Boolean`)：是否启用 `记住束缚` 功能。默认为 `true`。
+  + `UnlockRadiance` (`Boolean`)：是否启用 `解锁辐光` 功能。默认为 `true`。
 - `fastSuperDashSpeedMultiplier` (`Float`)：快速超冲速度倍率。范围从 `1` 到 `2`，默认为 `1.5`。
 - `frameRateLimitMultiplier` (`Integer`)：帧率限制卡顿时间倍率。最终卡顿时间是 10ms 乘以这个值。注意将其设置为 `0` 并不意味着零卡顿。范围从 `0` 到 `10`，默认为 `5`。
 

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GodSeekerPlus.Util {
 	internal static class IEnumerableUtil {
+		internal static bool Any<T>(this IEnumerable<T> self) =>
+			System.Linq.Enumerable.Any(self);
+
 		internal static IEnumerable<U> Map<T, U>(this IEnumerable<T> self, Func<T, U> f) {
 			foreach (T i in self) {
 				yield return f(i);
@@ -23,6 +26,12 @@ namespace GodSeekerPlus.Util {
 				acc = f(acc, i);
 			}
 			return acc;
+		}
+
+		internal static void ForEach<T>(this IEnumerable<T> self, Action<T> f) {
+			foreach (T i in self) {
+				f(i);
+			}
 		}
 	}
 }

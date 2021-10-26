@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -24,6 +25,26 @@ namespace GodSeekerPlus.Util {
 				return f();
 			} catch {
 				return @default;
+			}
+		}
+
+
+		internal static void Set(this List<PersistentBoolData> self, string sceneName, string id, bool activated, bool semiPersistent = false) {
+			IEnumerable<PersistentBoolData> items = self
+				.Filter(item => item.sceneName == sceneName && item.id == id);
+
+			if (items.Any()) {
+				items.ForEach(item => {
+					item.activated = true;
+					item.semiPersistent = semiPersistent;
+				});
+			} else {
+				self.Add(new() {
+					sceneName = sceneName,
+					id = id,
+					activated = activated,
+					semiPersistent = semiPersistent
+				});
 			}
 		}
 	}
