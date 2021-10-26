@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.7.3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.2...v0.7.3) (2021-10-26)
+
+### Features
+
+* embed lang into bin ([933c0c8](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/933c0c80f46bd0e8bb0b6c673737f91e23157198))
+
 # [v0.7.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.1...v0.7.2) (2021-10-25)
 
 ### Features
