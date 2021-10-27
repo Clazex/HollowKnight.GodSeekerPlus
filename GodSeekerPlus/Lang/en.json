@@ -1,8 +1,8 @@
 {
-	"CarefreeMelodyFix": "Carefree Melody Fix",
-	"FrameRateLimit": "Frame Rate Limit",
-	"HalveDamage": "Halve Damage",
-	"MemorizeBindings": "Memorize Bindings",
-	"UnlockEternalOrdeal": "Unlock Eternal Ordeal",
-	"UnlockRadiance": "Unlock Radiance"
+	"Modules/CarefreeMelodyFix": "Carefree Melody Fix",
+	"Modules/FrameRateLimit": "Frame Rate Limit",
+	"Modules/HalveDamage": "Halve Damage",
+	"Modules/MemorizeBindings": "Memorize Bindings",
+	"Modules/UnlockEternalOrdeal": "Unlock Eternal Ordeal",
+	"Modules/UnlockRadiance": "Unlock Radiance"
 }

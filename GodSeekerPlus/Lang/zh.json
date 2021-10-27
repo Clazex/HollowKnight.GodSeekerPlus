@@ -1,8 +1,8 @@
 {
-	"CarefreeMelodyFix": "无忧旋律修复",
-	"FrameRateLimit": "帧率限制",
-	"HalveDamage": "伤害减半",
-	"MemorizeBindings": "记住束缚",
-	"UnlockEternalOrdeal": "解锁无尽折磨",
-	"UnlockRadiance": "解锁辐光"
+	"Modules/CarefreeMelodyFix": "无忧旋律修复",
+	"Modules/FrameRateLimit": "帧率限制",
+	"Modules/HalveDamage": "伤害减半",
+	"Modules/MemorizeBindings": "记住束缚",
+	"Modules/UnlockEternalOrdeal": "解锁无尽折磨",
+	"Modules/UnlockRadiance": "解锁辐光"
 }
