@@ -5,7 +5,7 @@ using Language;
 using Newtonsoft.Json;
 
 namespace GodSeekerPlus.Util {
-	internal static class LocalizationUtil {
+	internal static class L11nUtil {
 		private const string resPrefix = "GodSeekerPlus.Lang.";
 		private const string resPostfix = ".json";
 		private static readonly List<string> langs = Language.Language
@@ -39,7 +39,7 @@ namespace GodSeekerPlus.Util {
 
 		private static Dictionary<string, Dictionary<string, string>> Dict { get; set; } = ReadLangs();
 
-		internal static string TryLocalize(string key) =>
+		internal static string Localize(string key) =>
 			MiscUtil.Try(() => Dict[CurrentLang][key], key);
 	}
 }
