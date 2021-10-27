@@ -8,11 +8,12 @@ Compatible with `Hollow Knight` 1.5.
 ## Features
 
 - **Carefree Melody Fix**\*: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
+- **Door Default Begin**\*: Default selecting the Begin button when opening Pantheon Door UI.
 - **Fast Dream Warping**: Remove dream warping charge time when in Godhome boss fight rooms. This decrease the total warping time from 2.25s to 0.25s.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
 - **Frame Rate Limit**\*: Create a lag in every in-game frame.
 - **Halve Damage**\*: Halve all the damage taken.
-- **Memorize Bindings**\*: Memorize the Bindings selected last time, like difficulties in the Hall of Gods.
+- **Memorize Bindings**\*: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
 - **Unlock Eternal Ordeal**\*: Auto unlock the Eternal Ordeal.
 - **Unlock Radiance**\*: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
 
@@ -22,6 +23,7 @@ Features marked with an `*` can be toggled in-game.
 
 - `features` (`Object`): Whether to enable specified features.
   + `CarefreeMelodyFix` (`Boolean`): Whether to enable the Carefree Melody Fix feature. Defaults to `true`.
+  + `DoorDefaultBegin` (`Boolean`): Whether to enable the Door Default Begin feature. Defaults to `true`.
   + `FastDreamWarp` (`Boolean`): Whether to enable the Fast Dream Warping feature. Defaults to `true`.
   + `FastSuperDash` (`Boolean`): Whether to enable the Fast Super Dash feature. Defaults to `true`.
   + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.

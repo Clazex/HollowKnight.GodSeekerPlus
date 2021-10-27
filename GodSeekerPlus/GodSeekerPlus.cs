@@ -1,6 +1,6 @@
 using System.Reflection;
-using Modding;
 using GodSeekerPlus.Util;
+using Modding;
 
 namespace GodSeekerPlus {
 	public sealed partial class GodSeekerPlus : Mod {
