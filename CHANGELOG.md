@@ -1,6 +1,12 @@
 # Unreleased
 
-# [v0.9.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.8.0...v0.9.0) (2021-10-27)
+# [v0.9.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.9.0...v0.9.1) (2021-10-27)
+
+### Bug Fixes
+
+* remove mod name l11n ([bbc7d8c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/bbc7d8c45df44b3dac078badb837d624e56fa984))
+
+# [DEPRECATED] [v0.9.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.8.0...v0.9.0) (2021-10-27)
 
 ### Features
 
