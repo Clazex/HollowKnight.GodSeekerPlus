@@ -1,4 +1,4 @@
-# [GodSeekerPlus](https://github.com/Clazex/HollowKnight.GodSeekerPlus)
+# [God Seeker +](https://github.com/Clazex/HollowKnight.GodSeekerPlus)
 
 A Hollow Knight mod to enhance your Godhome experience
 
