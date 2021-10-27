@@ -1,5 +1,8 @@
 {
+	"RequireRestart": "需重启以生效。",
 	"Modules/CarefreeMelodyFix": "无忧旋律修复",
+	"Modules/FastDreamWarp": "快速梦门传送",
+	"Modules/FastSuperDash": "快速超级冲刺",
 	"Modules/FrameRateLimit": "帧率限制",
 	"Modules/HalveDamage": "伤害减半",
 	"Modules/MemorizeBindings": "记住束缚",

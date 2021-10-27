@@ -21,7 +21,10 @@ namespace GodSeekerPlus.Modules {
 			get => GodSeekerPlus.Instance.GlobalSettings.modules[Name];
 			set {
 				GodSeekerPlus.Instance.GlobalSettings.modules[Name] = value;
-				Update();
+
+				if (Toggleable) {
+					Update();
+				}
 			}
 		}
 

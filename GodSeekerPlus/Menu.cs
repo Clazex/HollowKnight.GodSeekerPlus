@@ -15,11 +15,11 @@ namespace GodSeekerPlus {
 		};
 
 		List<MenuEntry> IMenuMod.GetMenuData(MenuEntry? _) => ModuleHelper
-			.GetToggleableModuleNames()
+			.GetModuleNames()
 			.Map(name => new MenuEntry(
 				L11nUtil.Localize($"Modules/{name}"),
 				States,
-				"",
+				moduleManager.Modules[name].Toggleable ? "" : L11nUtil.Localize("RequireRestart"),
 				(val) => moduleManager.Modules[name].Enabled = val != 0,
 				() => moduleManager.Modules[name].Enabled ? 1 : 0
 			))
