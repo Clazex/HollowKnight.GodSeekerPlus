@@ -58,7 +58,7 @@
 
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
 		<Copy
-			SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE"
+			SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(TargetDir)/Vasi.dll;$(TargetDir)/Vasi.pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE"
 			DestinationFolder="$(HKModRefs)/$(TargetName)"
 			SkipUnchangedFiles="true"
 		/>
@@ -68,7 +68,7 @@
 		<RemoveDir Directories="$(ProjectDir)/dist" />
 		<MakeDir Directories="$(ProjectDir)/dist/tmp" />
 		<Copy
-			SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE"
+			SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(TargetDir)/Vasi.dll;$(TargetDir)/Vasi.pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE"
 			DestinationFolder="$(ProjectDir)/dist/tmp"
 		/>
 		<ZipDirectory SourceDirectory="$(ProjectDir)/dist/tmp" DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip" />
