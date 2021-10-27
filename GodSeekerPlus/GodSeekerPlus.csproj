@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<AssemblyTitle>GodSeekerPlus</AssemblyTitle>
-		<Version>0.8.0</Version>
+		<Version>0.9.0</Version>
 		<Description>A Hollow Knight mod to enhance your Godhome experience</Description>
 		<Authors>Clazex</Authors>
 		<Copyright>Copyright © 2021 Clazex</Copyright>
@@ -29,33 +29,43 @@
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp">
 			<HintPath>$(HKModdingApi)/Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine">
 			<HintPath>$(HKRefs)/UnityEngine.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.AnimationModule">
 			<HintPath>$(HKRefs)/UnityEngine.AnimationModule.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(HKRefs)/UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.UI">
 			<HintPath>$(HKRefs)/UnityEngine.UI.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="UnityEngine.UIModule">
 			<HintPath>$(HKRefs)/UnityEngine.UIModule.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="PlayMaker">
 			<HintPath>$(HKRefs)/PlayMaker.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="MMHOOK_Assembly-CSharp">
 			<HintPath>$(HKModdingApi)/MMHOOK_Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="MMHOOK_Playmaker">
 			<HintPath>$(HKModdingApi)/MMHOOK_Playmaker.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="Newtonsoft.Json">
 			<HintPath>$(HKModdingApi)/Newtonsoft.Json.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 		<Reference Include="Vasi">
 			<HintPath>$(HKModRefs)/Vasi/Vasi.dll</HintPath>
@@ -63,27 +73,17 @@
 	</ItemGroup>
 
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
-		<Copy
-			SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE"
-			DestinationFolder="$(HKModRefs)/$(TargetName)"
-			SkipUnchangedFiles="true"
-		/>
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb" DestinationFolder="$(HKModRefs)/$(TargetName)" SkipUnchangedFiles="true" />
 	</Target>
 
 	<Target Name="CreateReleaseZip" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
 		<RemoveDir Directories="$(ProjectDir)/dist" />
 		<MakeDir Directories="$(ProjectDir)/dist/tmp" />
 		
-		<Copy
-			SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE"
-			DestinationFolder="$(ProjectDir)/dist/tmp"
-		/>
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE" DestinationFolder="$(ProjectDir)/dist/tmp" />
 		<ZipDirectory SourceDirectory="$(ProjectDir)/dist/tmp" DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip" />
 
-		<Copy
-			SourceFiles="$(TargetDir)/Vasi.dll;$(TargetDir)/Vasi.pdb"
-			DestinationFolder="$(ProjectDir)/dist/tmp"
-		/>
+		<Copy SourceFiles="$(TargetDir)/Vasi.dll;$(TargetDir)/Vasi.pdb" DestinationFolder="$(ProjectDir)/dist/tmp" />
 		<ZipDirectory SourceDirectory="$(ProjectDir)/dist/tmp" DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version)-full.zip" />
 
 		<RemoveDir Directories="$(ProjectDir)/dist/tmp" />
