@@ -1,5 +1,13 @@
 # Unreleased
 
+# [v0.9.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.8.0...v0.9.0) (2021-10-27)
+
+### Features
+
+* add localization for mod name ([1762d9f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/1762d9fed54ad307138537d1c2d941792ac26508))
+* add toggle button for untoggleable module ([edd549f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/edd549fe3607611c7eca979148730b97e39758bb))
+* door default begin ([ef9506f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ef9506facfd72fc72071b2cdb02115cfd95afc95))
+
 # [v0.8.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.7.3...v0.8.0) (2021-10-26)
 
 ### Features
