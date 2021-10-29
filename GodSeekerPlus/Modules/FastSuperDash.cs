@@ -6,9 +6,11 @@ using Vasi;
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = false, defaultEnabled = true)]
 	internal sealed class FastSuperDash : Module {
-		private protected override void Load() => On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
+		private protected override void Load() =>
+			On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
 
-		private protected override void Unload() => On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
+		private protected override void Unload() =>
+			On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
 
 		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {

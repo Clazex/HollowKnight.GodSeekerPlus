@@ -23,11 +23,19 @@ namespace GodSeekerPlus.Util {
 			.GetExecutingAssembly()
 			.GetManifestResourceNames()
 			.Filter(name => name.EnclosedWith(resPrefix, resPostfix))
-			.Map(name => (lang: name.StripStart(resPrefix).StripEnd(resPostfix), path: name))
+			.Map(name =>
+				(lang: name.StripStart(resPrefix).StripEnd(resPostfix), path: name)
+			)
 			.Filter(tuple => langs.Contains(tuple.lang))
-			.Map(tuple => (tuple.lang, stream: Assembly.GetExecutingAssembly().GetManifestResourceStream(tuple.path)))
+			.Map(tuple => (
+				tuple.lang,
+				stream: Assembly.GetExecutingAssembly().GetManifestResourceStream(tuple.path)
+			))
 			.Map(tuple => (tuple.lang, json: tuple.stream.ReadToString()))
-			.Map(tuple => (tuple.lang, table: JsonConvert.DeserializeObject<Dictionary<string, string>>(tuple.json)))
+			.Map(tuple => (
+				tuple.lang,
+				table: JsonConvert.DeserializeObject<Dictionary<string, string>>(tuple.json)
+			))
 			.Reduce(
 				(dict, tuple) => {
 					Logger.LogDebug($"Loaded localization for lang: {tuple.lang}");

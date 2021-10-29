@@ -4,17 +4,22 @@ using Modding;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class DoorDefaultBegin : Module {
-		private protected override void Load() => On.BossDoorChallengeUI.ShowSequence += OverrideOrig;
+		private protected override void Load() =>
+			On.BossDoorChallengeUI.ShowSequence += OverrideOrig;
 
-		private protected override void Unload() => On.BossDoorChallengeUI.ShowSequence -= OverrideOrig;
+		private protected override void Unload() =>
+			On.BossDoorChallengeUI.ShowSequence -= OverrideOrig;
 
-		private static IEnumerator OverrideOrig(On.BossDoorChallengeUI.orig_ShowSequence _, BossDoorChallengeUI self) {
-			CanvasGroup group = ReflectionHelper.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group");
-			Animator animator = ReflectionHelper.GetField<BossDoorChallengeUI, Animator>(self, "animator");
+		private static IEnumerator OverrideOrig(orig_ShowSequence _, BossDoorChallengeUI self) {
+			CanvasGroup group = ReflectionHelper
+				.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group");
+			Animator animator = ReflectionHelper
+				.GetField<BossDoorChallengeUI, Animator>(self, "animator");
 
 			group.interactable = false;
 			EventSystem.current.SetSelectedGameObject(null);

@@ -1,5 +1,7 @@
 using System.Collections;
 using GodSeekerPlus.Util;
+using orig_HideSequence = On.BossDoorChallengeUI.orig_HideSequence;
+using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
@@ -14,7 +16,7 @@ namespace GodSeekerPlus.Modules {
 			On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
 		}
 
-		private static IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
+		private static IEnumerator ApplyBindingStates(orig_ShowSequence orig, BossDoorChallengeUI self) {
 			yield return orig(self);
 
 			SetButtonState(self.boundNailButton, GodSeekerPlus.Instance.LocalSettings.boundNail);
@@ -25,7 +27,7 @@ namespace GodSeekerPlus.Modules {
 			Logger.LogDebug("Binding states applied");
 		}
 
-		private static IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
+		private static IEnumerator RecordBindingStates(orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
 			GodSeekerPlus.Instance.LocalSettings.boundNail = self.boundNailButton.Selected;
 			GodSeekerPlus.Instance.LocalSettings.boundHeart = self.boundHeartButton.Selected;
 			GodSeekerPlus.Instance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;

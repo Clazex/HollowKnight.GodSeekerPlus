@@ -11,7 +11,8 @@ namespace GodSeekerPlus.Modules {
 			ModHooks.HeroUpdateHook += ThreadSleep;
 		}
 
-		private protected override void Unload() => ModHooks.HeroUpdateHook -= ThreadSleep;
+		private protected override void Unload() =>
+			ModHooks.HeroUpdateHook -= ThreadSleep;
 
 		private static void ThreadSleep() => Thread.Sleep(time);
 	}

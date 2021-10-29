@@ -5,7 +5,8 @@ using Newtonsoft.Json;
 namespace GodSeekerPlus {
 	public sealed class GlobalSettings {
 		[JsonIgnore]
-		public Dictionary<string, bool> modules = ModuleHelper.GetDefaultModuleStateDict();
+		public Dictionary<string, bool> modules =
+			ModuleHelper.GetDefaultModuleStateDict();
 
 		[JsonIgnore]
 		public float fastSuperDashSpeedMultiplier = 1.5f;

@@ -15,7 +15,8 @@ namespace GodSeekerPlus.Modules {
 
 		private bool Loaded { get; set; } = false;
 
-		internal bool Toggleable => GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
+		internal bool Toggleable =>
+			GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
 
 		internal bool Enabled {
 			get => GodSeekerPlus.Instance.GlobalSettings.modules[Name];
