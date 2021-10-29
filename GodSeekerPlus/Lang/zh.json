@@ -5,6 +5,7 @@
 	"Modules/FastDreamWarp": "快速梦门传送",
 	"Modules/FastSuperDash": "快速超级冲刺",
 	"Modules/FrameRateLimit": "帧率限制",
+	"Modules/ForceOvercharm": "强制护符过载",
 	"Modules/HalveDamage": "伤害减半",
 	"Modules/MemorizeBindings": "记住束缚",
 	"Modules/UnlockEternalOrdeal": "解锁无尽折磨",

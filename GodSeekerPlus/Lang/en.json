@@ -4,6 +4,7 @@
 	"Modules/DoorDefaultBegin": "Door Default Begin",
 	"Modules/FastDreamWarp": "Fast Dream Warp",
 	"Modules/FastSuperDash": "Fast Super Dash",
+	"Modules/ForceOvercharm": "Force Overcharm",
 	"Modules/FrameRateLimit": "Frame Rate Limit",
 	"Modules/HalveDamage": "Halve Damage",
 	"Modules/MemorizeBindings": "Memorize Bindings",

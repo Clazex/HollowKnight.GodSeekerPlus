@@ -12,6 +12,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Fast Dream Warping**: Remove dream warping charge time when in Godhome boss fight rooms. This decrease the total warping time from 2.25s to 0.25s.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
 - **Frame Rate Limit**\*: Create a lag in every in-game frame.
+- **Force Overcharm**\*: Force entering the overcharmed state.
 - **Halve Damage**\*: Halve all the damage taken.
 - **Memorize Bindings**\*: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
 - **Unlock Eternal Ordeal**\*: Auto unlock the Eternal Ordeal.
@@ -27,6 +28,7 @@ Features marked with an `*` can be toggled in-game.
   + `FastDreamWarp` (`Boolean`): Whether to enable the Fast Dream Warping feature. Defaults to `true`.
   + `FastSuperDash` (`Boolean`): Whether to enable the Fast Super Dash feature. Defaults to `true`.
   + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.
+  + `ForceOvercharm` (`Boolean`): Whether to enable the Force Overcharm feature. Defaults to `false`.
   + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
