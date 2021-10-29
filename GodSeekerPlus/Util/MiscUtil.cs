@@ -4,6 +4,13 @@ using System.IO;
 
 namespace GodSeekerPlus.Util {
 	internal static class MiscUtil {
+		internal static int ForceInRange(int val, int min, int max) =>
+			val < min ? min : (val > max ? max : val);
+
+		internal static float ForceInRange(float val, float min, float max) =>
+			val < min ? min : (val > max ? max : val);
+
+
 		internal static bool EnclosedWith(this string self, string start, string end) =>
 			self.StartsWith(start) && self.EndsWith(end);
 

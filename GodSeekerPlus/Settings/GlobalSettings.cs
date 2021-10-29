@@ -30,13 +30,13 @@ namespace GodSeekerPlus {
 		[JsonProperty(PropertyName = "fastSuperDashSpeedMultiplier")]
 		public float FastSuperDashSpeedMultiplier {
 			get => fastSuperDashSpeedMultiplier;
-			set => fastSuperDashSpeedMultiplier = value < 1f ? 1f : (value > 2f ? 2f : value);
+			set => fastSuperDashSpeedMultiplier = MiscUtil.ForceInRange(value, 1f, 2f);
 		}
 
 		[JsonProperty(PropertyName = "frameRateLimitMultiplier")]
 		public int FrameRateLimitMultiplier {
 			get => frameRateLimitMultiplier;
-			set => frameRateLimitMultiplier = value < 0 ? 0 : (value > 10 ? 10 : value);
+			set => frameRateLimitMultiplier = MiscUtil.ForceInRange(value, 0, 10);
 		}
 	}
 }
