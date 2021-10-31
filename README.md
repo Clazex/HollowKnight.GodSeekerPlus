@@ -18,6 +18,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
 - **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
 - **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
+- **Unlock Radiant**: Auto unlock Radiant difficulty for all boss statues.
 
 All features can be toggled in-game.
 
@@ -35,6 +36,7 @@ All features can be toggled in-game.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
   + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
+  + `UnlockRadiant` (`Boolean`): Whether to enable the Unlock Radiant feature. Defaults to `true`.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
 - `frameRateLimitMultiplier` (`Integer`): Frame rate limit time span multiplier. Final lag time is 10ms multiplied by this value. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `10`, defaults to `5`.
 

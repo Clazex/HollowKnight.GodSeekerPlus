@@ -18,6 +18,7 @@
 - **记住束缚**：记住上次选择的束缚，效果与诸神堂中的难度选择一样。建议与门默认开始一起使用。
 - **解锁无尽折磨**：自动解锁无尽折磨。
 - **解锁辐光**：在寻神者模式中，自动在诸神堂解锁辐光。
+- **解锁辐辉**：自动为所有 Boss 雕像解锁辐辉难度。
 
 所有功能均可在游戏中开启或关闭。
 
@@ -35,6 +36,7 @@
   + `MemorizeBindings` (`Boolean`)：是否启用 `记住束缚` 功能。默认为 `true`。
   + `UnlockEternalOrdeal` (`Boolean`)：是否启用 `解锁无尽折磨` 功能。默认为 `true`。
   + `UnlockRadiance` (`Boolean`)：是否启用 `解锁辐光` 功能。默认为 `true`。
+  + `UnlockRadiant` (`Boolean`)：是否启用 `解锁辐辉` 功能。默认为 `true`。
 - `fastSuperDashSpeedMultiplier` (`Float`)：快速超冲速度倍率。范围从 `1` 到 `2`，默认为 `1.5`。
 - `frameRateLimitMultiplier` (`Integer`)：帧率限制卡顿时间倍率。最终卡顿时间是 10ms 乘以这个值。注意将其设置为 `0` 并不意味着零卡顿。范围从 `0` 到 `10`，默认为 `5`。
 
