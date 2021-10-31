@@ -1,5 +1,18 @@
 # Unreleased
 
+# [v0.10.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.9.1...v0.10.0) (2021-10-31)
+
+### Bug Fixes
+
+* string not updated ([a3757f3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a3757f34703df334fa5060484bbf4ce863af1899))
+
+### Features
+
+* complete lower difficulty ([d00573b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/d00573bc1d0b78f864a1b1f1ef1cd0bc67fa99f7))
+* force overcharm ([a0585f3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a0585f3f4441210ad4aab71df0c47aaa02978dbf))
+* make module toggleable ([4a6121c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4a6121cded819aa963c7dd3829a0c9bd37f7b0ba))
+* unlock radiant ([a56e8dd](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a56e8dd0e2423c77f5668c6ff85ba8d3a03198f5))
+
 # [v0.9.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.9.0...v0.9.1) (2021-10-27)
 
 ### Bug Fixes
