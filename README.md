@@ -7,19 +7,19 @@ Compatible with `Hollow Knight` 1.5.
 
 ## Features
 
-- **Carefree Melody Fix**\*: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
-- **Complete Lower Difficulty**\*: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
-- **Door Default Begin**\*: Default selecting the Begin button when opening Pantheon Door UI.
+- **Carefree Melody Fix**: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
+- **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
+- **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
 - **Fast Dream Warping**: Remove dream warping charge time when in Godhome boss fight rooms. This decrease the total warping time from 2.25s to 0.25s.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
-- **Frame Rate Limit**\*: Create a lag in every in-game frame.
-- **Force Overcharm**\*: Force entering the overcharmed state.
-- **Halve Damage**\*: Halve all the damage taken.
-- **Memorize Bindings**\*: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
-- **Unlock Eternal Ordeal**\*: Auto unlock the Eternal Ordeal.
-- **Unlock Radiance**\*: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
+- **Frame Rate Limit**: Create a lag in every in-game frame.
+- **Force Overcharm**: Force entering the overcharmed state.
+- **Halve Damage**: Halve all the damage taken.
+- **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
+- **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
+- **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
 
-Features marked with an `*` can be toggled in-game.
+All features can be toggled in-game.
 
 ## Configuration
 
