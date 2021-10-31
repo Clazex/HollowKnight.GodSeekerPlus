@@ -14,9 +14,9 @@ namespace GodSeekerPlus.Modules {
 			if (!data.overcharmed) {
 				data.canOvercharm = true;
 				data.overcharmed = true;
-			}
 
-			Logger.LogDebug("Force overcharmed");
+				Logger.LogDebug("Force overcharmed");
+			}
 		}
 	}
 }
