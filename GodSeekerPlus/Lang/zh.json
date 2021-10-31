@@ -1,6 +1,7 @@
 {
 	"RequireRestart": "需重启以生效。",
 	"Modules/CarefreeMelodyFix": "无忧旋律修复",
+	"Modules/CompleteLowerDifficulty": "完成较低难度",
 	"Modules/DoorDefaultBegin": "门默认开始",
 	"Modules/FastDreamWarp": "快速梦门传送",
 	"Modules/FastSuperDash": "快速超级冲刺",

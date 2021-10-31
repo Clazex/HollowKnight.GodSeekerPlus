@@ -53,5 +53,16 @@ namespace GodSeekerPlus.Util {
 				});
 			}
 		}
+
+		internal static BossStatue.Completion GetStatueCompletion(BossStatue statue) =>
+			statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
+
+		internal static void SetStatueCompletion(BossStatue statue, BossStatue.Completion completion) {
+			if (statue.UsingDreamVersion) {
+				statue.DreamStatueState = completion;
+			} else {
+				statue.StatueState = completion;
+			}
+		}
 	}
 }

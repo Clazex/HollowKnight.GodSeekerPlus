@@ -1,6 +1,7 @@
 {
 	"RequireRestart": "Requires a restart to take effect.",
 	"Modules/CarefreeMelodyFix": "Carefree Melody Fix",
+	"Modules/CompleteLowerDifficulty": "Complete Lower Difficulty",
 	"Modules/DoorDefaultBegin": "Door Default Begin",
 	"Modules/FastDreamWarp": "Fast Dream Warp",
 	"Modules/FastSuperDash": "Fast Super Dash",
