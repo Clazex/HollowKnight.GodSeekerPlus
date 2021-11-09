@@ -35,7 +35,9 @@ namespace GodSeekerPlus.Modules {
 					completion.completedTier2 = false;
 					MiscUtil.SetStatueCompletion(statue, completion);
 
-					self.tier2Button.SetState(false);
+					self.tier1Button.SetState(completion.completedTier1);
+					self.tier2Button.SetState(completion.completedTier2);
+					self.tier3Button.SetState(completion.completedTier3);
 
 					Logger.LogDebug($"Unlocked Radiant for {statue.name}");
 				}
