@@ -14,6 +14,7 @@
 - **快速超级冲刺**：提升在诸神堂中的超级冲刺速度。
 - **帧率限制**：在游戏内的每帧添加卡顿。
 - **强制护符过载**：强制进入护符过载状态。
+- **灰色王子短入场**：强制灰色王子使用短入场，如同上一次击败之的效果。
 - **伤害减半**: 将受到的所有伤害减半。
 - **记住束缚**：记住上次选择的束缚，效果与诸神堂中的难度选择一样。建议与门默认开始一起使用。
 - **解锁无尽折磨**：自动解锁无尽折磨。
@@ -31,7 +32,8 @@
   + `FastDreamWarp` (`Boolean`)：是否启用 `快速梦门传送` 功能。默认为 `true`。
   + `FastSuperDash` (`Boolean`)：是否启用 `快速超级冲刺` 功能。默认为 `true`。
   + `FrameRateLimit` (`Boolean`)：是否启用 `帧率限制` 功能。默认为 `false`。
-  + `ForceOvercharm` (`Boolean`): 是否启用 `强制护符过载` 功能。默认为 `false`。
+  + `ForceOvercharm` (`Boolean`)：是否启用 `强制护符过载` 功能。默认为 `false`。
+  + `GreyPrinceEnterShort` (`Boolean`)：是否启用 `灰色王子短入场` 功能。默认为 `true`。
   + `HalveDamage` (`Boolean`)：是否启用 `伤害减半` 功能。默认为 `false`。
   + `MemorizeBindings` (`Boolean`)：是否启用 `记住束缚` 功能。默认为 `true`。
   + `UnlockEternalOrdeal` (`Boolean`)：是否启用 `解锁无尽折磨` 功能。默认为 `true`。

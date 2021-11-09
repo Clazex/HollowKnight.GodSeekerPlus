@@ -14,6 +14,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
 - **Frame Rate Limit**: Create a lag in every in-game frame.
 - **Force Overcharm**: Force entering the overcharmed state.
+- **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
 - **Halve Damage**: Halve all the damage taken.
 - **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
 - **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
@@ -32,6 +33,7 @@ All features can be toggled in-game.
   + `FastSuperDash` (`Boolean`): Whether to enable the Fast Super Dash feature. Defaults to `true`.
   + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.
   + `ForceOvercharm` (`Boolean`): Whether to enable the Force Overcharm feature. Defaults to `false`.
+  + `GreyPrinceEnterShort` (`Boolean`): Whether to enable the Grey Prince Enter Short feature. Defaults to `true`.
   + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
