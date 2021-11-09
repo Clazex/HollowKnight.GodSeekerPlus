@@ -18,24 +18,29 @@ namespace GodSeekerPlus.Modules {
 			string descSheet,
 			string descKey
 		) {
-			BossStatue.Completion completion = MiscUtil.GetStatueCompletion(statue);
-
-			if (statue.hasNoTiers || completion.completedTier2) {
+			if (statue.hasNoTiers) {
 				orig(self, statue, nameSheet, nameKey, descSheet, descKey);
 			} else {
-				completion.completedTier2 = true;
-				completion.seenTier3Unlock = true;
-				MiscUtil.SetStatueCompletion(statue, completion);
+				BossStatue.Completion completion = MiscUtil.GetStatueCompletion(statue);
 
-				orig(self, statue, nameSheet, nameKey, descSheet, descKey);
+				if (completion.completedTier2) {
+					orig(self, statue, nameSheet, nameKey, descSheet, descKey);
+				} else {
+					completion.completedTier2 = true;
+					completion.seenTier3Unlock = true;
+					MiscUtil.SetStatueCompletion(statue, completion);
 
-				completion.completedTier2 = false;
-				MiscUtil.SetStatueCompletion(statue, completion);
+					orig(self, statue, nameSheet, nameKey, descSheet, descKey);
 
-				self.tier2Button.SetState(false);
+					completion.completedTier2 = false;
+					MiscUtil.SetStatueCompletion(statue, completion);
 
-				Logger.LogDebug($"Unlocked Radiant for {statue.name}");
+					self.tier2Button.SetState(false);
+
+					Logger.LogDebug($"Unlocked Radiant for {statue.name}");
+				}
 			}
+
 		}
 	}
 }
