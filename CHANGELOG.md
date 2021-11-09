@@ -1,5 +1,17 @@
 # Unreleased
 
+# [v0.11.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.10.0...v0.11.0) (2021-11-09)
+
+### Bug Fixes
+
+* force overcharm log ([2e99c74](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/2e99c74b1fe6ecb27fd8658a109b695d53289cbd))
+* handle statue with no tiers ([66be0ed](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/66be0edc123450e7e81c216601d26683c0ebd684))
+* refresh button state after restoring ([c71badd](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/c71baddbbaf2d99564ac142ce406a66853bcf6d9))
+
+### Features
+
+* grey prince enter short ([aec0e12](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/aec0e12198129048a0806731f3564b2be09f5a6b))
+
 # [v0.10.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.9.1...v0.10.0) (2021-10-31)
 
 ### Bug Fixes
