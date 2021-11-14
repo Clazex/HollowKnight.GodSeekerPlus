@@ -21,7 +21,7 @@ namespace GodSeekerPlus.Modules {
 					bossSceneEvent = stateWarpCharge.GetAction<Wait>().finishEvent,
 				});
 
-				Logger.LogDebug("Dream Nail FSM modified");
+				Logger.LogDebug("Dream Warp FSM modified");
 			}
 
 			orig(self);

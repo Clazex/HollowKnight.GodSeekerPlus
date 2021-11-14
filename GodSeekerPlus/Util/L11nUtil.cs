@@ -8,9 +8,11 @@ namespace GodSeekerPlus.Util {
 	internal static class L11nUtil {
 		private const string resPrefix = "GodSeekerPlus.Lang.";
 		private const string resPostfix = ".json";
+
+
 		private static readonly List<string> langs = Language.Language
 			.GetLanguages()
-			.Map(str => str.ToLower())
+			.Map(str => str.ToLower().Replace('_', '-'))
 			.ToList();
 
 		private static string ToIdentifier(this LanguageCode code) =>
@@ -18,6 +20,7 @@ namespace GodSeekerPlus.Util {
 
 		private static string CurrentLang =>
 			Language.Language.CurrentLanguage().ToIdentifier();
+
 
 		private static Dictionary<string, Dictionary<string, string>> ReadLangs() => Assembly
 			.GetExecutingAssembly()
@@ -45,7 +48,7 @@ namespace GodSeekerPlus.Util {
 				new Dictionary<string, Dictionary<string, string>>()
 			);
 
-		private static Dictionary<string, Dictionary<string, string>> Dict { get; set; } = ReadLangs();
+		private static Dictionary<string, Dictionary<string, string>> Dict { get; } = ReadLangs();
 
 		internal static string Localize(string key) =>
 			MiscUtil.Try(() => Dict[CurrentLang][key], key);

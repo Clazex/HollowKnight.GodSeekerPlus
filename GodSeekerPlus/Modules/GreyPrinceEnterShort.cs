@@ -14,6 +14,8 @@ namespace GodSeekerPlus.Modules {
 		private static void ModifyGPFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 			if (self.gameObject.name == "Grey Prince" && self.FsmName == "Control") {
 				self.ChangeTransition("Enter 1", FsmEvent.Finished.Name, "Enter Short");
+
+				Logger.LogDebug("Grey Prince FSM modified");
 			}
 
 			orig(self);

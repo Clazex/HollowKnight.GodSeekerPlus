@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GodSeekerPlus.Util;
@@ -20,8 +21,8 @@ namespace GodSeekerPlus {
 				L11nUtil.Localize($"Modules/{name}"),
 				States,
 				moduleManager.Modules[name].Toggleable ? "" : L11nUtil.Localize("RequireRestart"),
-				(val) => moduleManager.Modules[name].Enabled = val != 0,
-				() => moduleManager.Modules[name].Enabled ? 1 : 0
+				(val) => moduleManager.Modules[name].Enabled = Convert.ToBoolean(val),
+				() => Convert.ToInt32(moduleManager.Modules[name].Enabled)
 			))
 			.ToList();
 	}

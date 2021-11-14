@@ -10,10 +10,10 @@ namespace GodSeekerPlus.Modules {
 		private protected override void Unload() =>
 			ModHooks.CharmUpdateHook -= DoOvercharm;
 
-		private static void DoOvercharm(PlayerData data, HeroController _) {
-			if (!data.overcharmed) {
-				data.canOvercharm = true;
-				data.overcharmed = true;
+		private static void DoOvercharm(PlayerData pd, HeroController _) {
+			if (!pd.overcharmed) {
+				pd.canOvercharm = true;
+				pd.overcharmed = true;
 
 				Logger.LogDebug("Force overcharmed");
 			}

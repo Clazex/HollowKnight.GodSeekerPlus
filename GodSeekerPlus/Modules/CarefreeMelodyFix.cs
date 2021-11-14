@@ -10,9 +10,9 @@ namespace GodSeekerPlus.Modules {
 		private protected override void Unload() =>
 			ModHooks.CharmUpdateHook -= WatchAndFixCarefreeMelody;
 
-		private static void WatchAndFixCarefreeMelody(PlayerData data, HeroController controller) {
-			if (controller.carefreeShieldEquipped && !data.destroyedNightmareLantern) {
-				data.destroyedNightmareLantern = true;
+		private static void WatchAndFixCarefreeMelody(PlayerData pd, HeroController hc) {
+			if (hc.carefreeShieldEquipped && !pd.destroyedNightmareLantern) {
+				pd.destroyedNightmareLantern = true;
 
 				Logger.LogDebug("Carefree Melody fixed");
 			}
