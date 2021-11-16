@@ -13,6 +13,8 @@ namespace GodSeekerPlus.Modules {
 			On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
 
 		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+			orig(self);
+
 			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
 				FsmState stateWsSpdBuff = self.CreateState("GSP Workshop Speed Buff");
 
@@ -32,8 +34,6 @@ namespace GodSeekerPlus.Modules {
 
 				Logger.LogDebug("Superdash FSM modified");
 			}
-
-			orig(self);
 		}
 	}
 }

@@ -13,6 +13,8 @@ namespace GodSeekerPlus.Modules {
 			On.PlayMakerFSM.OnEnable -= ModifyDreamNailFSM;
 
 		private static void ModifyDreamNailFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+			orig(self);
+
 			if (self.gameObject.name == "Knight" && self.FsmName == "Dream Nail") {
 				FsmState stateWarpCharge = self.GetState("Warp Charge");
 
@@ -23,8 +25,6 @@ namespace GodSeekerPlus.Modules {
 
 				Logger.LogDebug("Dream Warp FSM modified");
 			}
-
-			orig(self);
 		}
 	}
 }
