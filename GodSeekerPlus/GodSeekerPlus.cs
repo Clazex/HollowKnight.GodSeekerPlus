@@ -14,6 +14,7 @@ namespace GodSeekerPlus {
 
 		public override void Initialize() {
 			if (Instance != null) {
+				Logger.LogWarn("Attempting to initialize multiple times, operation rejected");
 				return;
 			}
 
