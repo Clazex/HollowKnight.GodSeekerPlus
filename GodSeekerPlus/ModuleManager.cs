@@ -9,4 +9,7 @@ internal sealed class ModuleManager {
 		.ToDictionary(module => module.Name);
 
 	internal void UnloadModules() => Modules.Clear();
+
+	internal T FindModule<T>() where T : Module
+		=> (T) Modules[typeof(T).Name];
 }

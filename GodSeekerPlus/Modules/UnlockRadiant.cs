@@ -32,15 +32,19 @@ internal sealed class UnlockRadiant : Module {
 				orig(self, statue, nameSheet, nameKey, descSheet, descKey);
 
 				completion.completedTier2 = false;
-				MiscUtil.SetStatueCompletion(statue, completion);
-
-				self.tier1Button.SetState(completion.completedTier1);
-				self.tier2Button.SetState(completion.completedTier2);
-				self.tier3Button.SetState(completion.completedTier3);
 
 				Logger.LogDebug($"Unlocked Radiant for {statue.name}");
 			}
-		}
 
+			var cld = GodSeekerPlus.Instance.FindModule<CompleteLowerDifficulty>();
+			if (cld.Enabled) {
+				cld.CompleteLower(statue.name, ref completion);
+			}
+			MiscUtil.SetStatueCompletion(statue, completion);
+
+			self.tier1Button.SetState(completion.completedTier1);
+			self.tier2Button.SetState(completion.completedTier2);
+			self.tier3Button.SetState(completion.completedTier3);
+		}
 	}
 }

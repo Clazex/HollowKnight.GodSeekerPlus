@@ -26,4 +26,7 @@ public sealed partial class GodSeekerPlus : Mod {
 
 		Instance = null;
 	}
+
+	internal T FindModule<T>() where T : Module
+		=> moduleManager.FindModule<T>();
 }
