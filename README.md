@@ -10,7 +10,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Carefree Melody Fix**: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
 - **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
 - **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
-- **Fast Dream Warping**: Remove dream warping charge time when in Godhome boss fight rooms. This decrease the total warping time from 2.25s to 0.25s.
+- **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
 - **Frame Rate Limit**: Create a lag in every in-game frame.
 - **Force Overcharm**: Force entering the overcharmed state.
