@@ -8,7 +8,8 @@
 
 		<TargetFramework>net472</TargetFramework>
 		<DebugType>portable</DebugType>
-		<LangVersion>latest</LangVersion>
+		<LangVersion>10.0</LangVersion>
+		<RootNamespace>GodSeekerPlus</RootNamespace>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 
