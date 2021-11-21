@@ -1,32 +1,32 @@
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = true)]
-	internal sealed class UnlockEternalOrdeal : Module {
-		private protected override void Load() =>
-			ModHooks.AfterSavegameLoadHook += SetOrdealUnlocked;
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() =>
-			ModHooks.AfterSavegameLoadHook -= SetOrdealUnlocked;
+[Module(toggleable = true, defaultEnabled = true)]
+internal sealed class UnlockEternalOrdeal : Module {
+	private protected override void Load() =>
+		ModHooks.AfterSavegameLoadHook += SetOrdealUnlocked;
 
-		private void SetOrdealUnlocked(SaveGameData data) {
-			IEnumerable<PersistentBoolData> items = data
-				.sceneData
-				.persistentBoolItems
-				.Filter(item =>
-					item.sceneName == "GG_Workshop"
-					&& item.id == "Breakable Wall_Silhouette"
-				);
+	private protected override void Unload() =>
+		ModHooks.AfterSavegameLoadHook -= SetOrdealUnlocked;
 
-			if (!items.Any() || items.Filter(item => !item.activated).Any()) {
-				data.sceneData.persistentBoolItems
-					.Set("GG_Workshop", "Breakable Wall_Silhouette", true);
+	private void SetOrdealUnlocked(SaveGameData data) {
+		IEnumerable<PersistentBoolData> items = data
+			.sceneData
+			.persistentBoolItems
+			.Filter(item =>
+				item.sceneName == "GG_Workshop"
+				&& item.id == "Breakable Wall_Silhouette"
+			);
 
-				data.sceneData.persistentBoolItems
-					.Set("GG_Workshop", "Zote_Break_wall", true);
+		if (!items.Any() || items.Filter(item => !item.activated).Any()) {
+			data.sceneData.persistentBoolItems
+				.Set("GG_Workshop", "Breakable Wall_Silhouette", true);
 
-				data.playerData.zoteStatueWallBroken = true;
+			data.sceneData.persistentBoolItems
+				.Set("GG_Workshop", "Zote_Break_wall", true);
 
-				Logger.LogDebug("Eternal Ordeal unlocked");
-			}
+			data.playerData.zoteStatueWallBroken = true;
+
+			Logger.LogDebug("Eternal Ordeal unlocked");
 		}
 	}
 }

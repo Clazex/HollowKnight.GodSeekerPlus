@@ -1,18 +1,18 @@
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = true)]
-	internal sealed class CarefreeMelodyFix : Module {
-		private protected override void Load() =>
-			ModHooks.CharmUpdateHook += WatchAndFixCarefreeMelody;
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() =>
-			ModHooks.CharmUpdateHook -= WatchAndFixCarefreeMelody;
+[Module(toggleable = true, defaultEnabled = true)]
+internal sealed class CarefreeMelodyFix : Module {
+	private protected override void Load() =>
+		ModHooks.CharmUpdateHook += WatchAndFixCarefreeMelody;
 
-		private static void WatchAndFixCarefreeMelody(PlayerData pd, HeroController hc) {
-			if (hc.carefreeShieldEquipped && !pd.destroyedNightmareLantern) {
-				pd.destroyedNightmareLantern = true;
+	private protected override void Unload() =>
+		ModHooks.CharmUpdateHook -= WatchAndFixCarefreeMelody;
 
-				Logger.LogDebug("Carefree Melody fixed");
-			}
+	private static void WatchAndFixCarefreeMelody(PlayerData pd, HeroController hc) {
+		if (hc.carefreeShieldEquipped && !pd.destroyedNightmareLantern) {
+			pd.destroyedNightmareLantern = true;
+
+			Logger.LogDebug("Carefree Melody fixed");
 		}
 	}
 }

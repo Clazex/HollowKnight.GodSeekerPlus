@@ -2,45 +2,45 @@
 using orig_HideSequence = On.BossDoorChallengeUI.orig_HideSequence;
 using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = true)]
-	internal sealed class MemorizeBindings : Module {
-		private protected override void Load() {
-			On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;
-			On.BossDoorChallengeUI.HideSequence += RecordBindingStates;
-		}
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() {
-			On.BossDoorChallengeUI.ShowSequence -= ApplyBindingStates;
-			On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
-		}
+[Module(toggleable = true, defaultEnabled = true)]
+internal sealed class MemorizeBindings : Module {
+	private protected override void Load() {
+		On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;
+		On.BossDoorChallengeUI.HideSequence += RecordBindingStates;
+	}
 
-		private static IEnumerator ApplyBindingStates(orig_ShowSequence orig, BossDoorChallengeUI self) {
-			yield return orig(self);
+	private protected override void Unload() {
+		On.BossDoorChallengeUI.ShowSequence -= ApplyBindingStates;
+		On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
+	}
 
-			SetButtonState(self.boundNailButton, GodSeekerPlus.Instance.LocalSettings.boundNail);
-			SetButtonState(self.boundHeartButton, GodSeekerPlus.Instance.LocalSettings.boundHeart);
-			SetButtonState(self.boundCharmsButton, GodSeekerPlus.Instance.LocalSettings.boundCharms);
-			SetButtonState(self.boundSoulButton, GodSeekerPlus.Instance.LocalSettings.boundSoul);
+	private static IEnumerator ApplyBindingStates(orig_ShowSequence orig, BossDoorChallengeUI self) {
+		yield return orig(self);
 
-			Logger.LogDebug("Binding states applied");
-		}
+		SetButtonState(self.boundNailButton, GodSeekerPlus.Instance.LocalSettings.boundNail);
+		SetButtonState(self.boundHeartButton, GodSeekerPlus.Instance.LocalSettings.boundHeart);
+		SetButtonState(self.boundCharmsButton, GodSeekerPlus.Instance.LocalSettings.boundCharms);
+		SetButtonState(self.boundSoulButton, GodSeekerPlus.Instance.LocalSettings.boundSoul);
 
-		private static IEnumerator RecordBindingStates(orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
-			GodSeekerPlus.Instance.LocalSettings.boundNail = self.boundNailButton.Selected;
-			GodSeekerPlus.Instance.LocalSettings.boundHeart = self.boundHeartButton.Selected;
-			GodSeekerPlus.Instance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;
-			GodSeekerPlus.Instance.LocalSettings.boundSoul = self.boundSoulButton.Selected;
+		Logger.LogDebug("Binding states applied");
+	}
 
-			Logger.LogDebug("Binding states recorded");
+	private static IEnumerator RecordBindingStates(orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
+		GodSeekerPlus.Instance.LocalSettings.boundNail = self.boundNailButton.Selected;
+		GodSeekerPlus.Instance.LocalSettings.boundHeart = self.boundHeartButton.Selected;
+		GodSeekerPlus.Instance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;
+		GodSeekerPlus.Instance.LocalSettings.boundSoul = self.boundSoulButton.Selected;
 
-			yield return orig(self, sendEvent);
-		}
+		Logger.LogDebug("Binding states recorded");
 
-		private static void SetButtonState(BossDoorChallengeUIBindingButton self, bool state) {
-			if (state) {
-				self.OnSubmit(null);
-			}
+		yield return orig(self, sendEvent);
+	}
+
+	private static void SetButtonState(BossDoorChallengeUIBindingButton self, bool state) {
+		if (state) {
+			self.OnSubmit(null);
 		}
 	}
 }

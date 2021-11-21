@@ -1,20 +1,20 @@
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = true)]
-	internal sealed class GreyPrinceEnterShort : Module {
-		private protected override void Load() =>
-			On.PlayMakerFSM.OnEnable += ModifyGPFSM;
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() =>
-			On.PlayMakerFSM.OnEnable -= ModifyGPFSM;
+[Module(toggleable = true, defaultEnabled = true)]
+internal sealed class GreyPrinceEnterShort : Module {
+	private protected override void Load() =>
+		On.PlayMakerFSM.OnEnable += ModifyGPFSM;
 
-		private static void ModifyGPFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
-			orig(self);
+	private protected override void Unload() =>
+		On.PlayMakerFSM.OnEnable -= ModifyGPFSM;
 
-			if (self.gameObject.name == "Grey Prince" && self.FsmName == "Control") {
-				self.ChangeTransition("Enter 1", FsmEvent.Finished.Name, "Enter Short");
+	private static void ModifyGPFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+		orig(self);
 
-				Logger.LogDebug("Grey Prince FSM modified");
-			}
+		if (self.gameObject.name == "Grey Prince" && self.FsmName == "Control") {
+			self.ChangeTransition("Enter 1", FsmEvent.Finished.Name, "Enter Short");
+
+			Logger.LogDebug("Grey Prince FSM modified");
 		}
 	}
 }

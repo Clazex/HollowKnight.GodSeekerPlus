@@ -1,12 +1,12 @@
-namespace GodSeekerPlus {
-	internal sealed class ModuleManager {
-		internal Dictionary<string, Module> Modules { get; private set; } = new();
+namespace GodSeekerPlus;
 
-		internal void LoadModules() => Modules = ModuleHelper
-			.FindModules()
-			.Map(ModuleHelper.ConstructModule)
-			.ToDictionary(module => module.Name);
+internal sealed class ModuleManager {
+	internal Dictionary<string, Module> Modules { get; private set; } = new();
 
-		internal void UnloadModules() => Modules.Clear();
-	}
+	internal void LoadModules() => Modules = ModuleHelper
+		.FindModules()
+		.Map(ModuleHelper.ConstructModule)
+		.ToDictionary(module => module.Name);
+
+	internal void UnloadModules() => Modules.Clear();
 }

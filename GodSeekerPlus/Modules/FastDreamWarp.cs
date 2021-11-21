@@ -1,25 +1,25 @@
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = true)]
-	internal sealed class FastDreamWarp : Module {
-		private protected override void Load() =>
-			On.PlayMakerFSM.OnEnable += ModifyDreamNailFSM;
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() =>
-			On.PlayMakerFSM.OnEnable -= ModifyDreamNailFSM;
+[Module(toggleable = true, defaultEnabled = true)]
+internal sealed class FastDreamWarp : Module {
+	private protected override void Load() =>
+		On.PlayMakerFSM.OnEnable += ModifyDreamNailFSM;
 
-		private static void ModifyDreamNailFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
-			orig(self);
+	private protected override void Unload() =>
+		On.PlayMakerFSM.OnEnable -= ModifyDreamNailFSM;
 
-			if (self.gameObject.name == "Knight" && self.FsmName == "Dream Nail") {
-				FsmState stateWarpCharge = self.GetState("Warp Charge");
+	private static void ModifyDreamNailFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+		orig(self);
 
-				stateWarpCharge.InsertAction(0, new GGCheckIfBossScene {
-					// If in boss scene, fire CHARGED event immediately
-					bossSceneEvent = stateWarpCharge.GetAction<Wait>().finishEvent,
-				});
+		if (self.gameObject.name == "Knight" && self.FsmName == "Dream Nail") {
+			FsmState stateWarpCharge = self.GetState("Warp Charge");
 
-				Logger.LogDebug("Dream Warp FSM modified");
-			}
+			stateWarpCharge.InsertAction(0, new GGCheckIfBossScene {
+				// If in boss scene, fire CHARGED event immediately
+				bossSceneEvent = stateWarpCharge.GetAction<Wait>().finishEvent,
+			});
+
+			Logger.LogDebug("Dream Warp FSM modified");
 		}
 	}
 }

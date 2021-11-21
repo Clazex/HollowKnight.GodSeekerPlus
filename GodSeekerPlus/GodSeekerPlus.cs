@@ -1,29 +1,29 @@
-namespace GodSeekerPlus {
-	public sealed partial class GodSeekerPlus : Mod {
-		public static GodSeekerPlus Instance { get; private set; }
+namespace GodSeekerPlus;
 
-		public override string GetVersion() => Assembly
-			.GetExecutingAssembly()
-			.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-			.InformationalVersion;
+public sealed partial class GodSeekerPlus : Mod {
+	public static GodSeekerPlus Instance { get; private set; }
 
-		private readonly ModuleManager moduleManager = new();
+	public override string GetVersion() => Assembly
+		.GetExecutingAssembly()
+		.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+		.InformationalVersion;
 
-		public override void Initialize() {
-			if (Instance != null) {
-				Logger.LogWarn("Attempting to initialize multiple times, operation rejected");
-				return;
-			}
+	private readonly ModuleManager moduleManager = new();
 
-			Instance = this;
-
-			moduleManager.LoadModules();
+	public override void Initialize() {
+		if (Instance != null) {
+			Logger.LogWarn("Attempting to initialize multiple times, operation rejected");
+			return;
 		}
 
-		public void Unload() {
-			moduleManager.UnloadModules();
+		Instance = this;
 
-			Instance = null;
-		}
+		moduleManager.LoadModules();
+	}
+
+	public void Unload() {
+		moduleManager.UnloadModules();
+
+		Instance = null;
 	}
 }

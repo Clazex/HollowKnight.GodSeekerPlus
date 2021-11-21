@@ -1,34 +1,34 @@
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = true)]
-	internal sealed class FastSuperDash : Module {
-		private protected override void Load() =>
-			On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() =>
-			On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
+[Module(toggleable = true, defaultEnabled = true)]
+internal sealed class FastSuperDash : Module {
+	private protected override void Load() =>
+		On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
 
-		private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
-			orig(self);
+	private protected override void Unload() =>
+		On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
 
-			if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
-				FsmState stateWsSpdBuff = self.CreateState("GSP Workshop Speed Buff");
+	private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+		orig(self);
 
-				stateWsSpdBuff.AddAction(new CheckSceneName() {
-					sceneName = "GG_Workshop",
-					notEqualEvent = FsmEvent.Finished
-				});
-				stateWsSpdBuff.AddAction(new FloatMultiply() {
-					floatVariable = self.FsmVariables.FindFsmFloat("Current SD Speed"),
-					multiplyBy = GodSeekerPlus.Instance.GlobalSettings.fastSuperDashSpeedMultiplier
-				});
+		if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
+			FsmState stateWsSpdBuff = self.CreateState("GSP Workshop Speed Buff");
 
-				self.GetState("Left").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
-				self.GetState("Right").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
+			stateWsSpdBuff.AddAction(new CheckSceneName() {
+				sceneName = "GG_Workshop",
+				notEqualEvent = FsmEvent.Finished
+			});
+			stateWsSpdBuff.AddAction(new FloatMultiply() {
+				floatVariable = self.FsmVariables.FindFsmFloat("Current SD Speed"),
+				multiplyBy = GodSeekerPlus.Instance.GlobalSettings.fastSuperDashSpeedMultiplier
+			});
 
-				stateWsSpdBuff.AddTransition(FsmEvent.Finished.Name, "Dash Start");
+			self.GetState("Left").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
+			self.GetState("Right").ChangeTransition(FsmEvent.Finished.Name, stateWsSpdBuff.Name);
 
-				Logger.LogDebug("Superdash FSM modified");
-			}
+			stateWsSpdBuff.AddTransition(FsmEvent.Finished.Name, "Dash Start");
+
+			Logger.LogDebug("Superdash FSM modified");
 		}
 	}
 }

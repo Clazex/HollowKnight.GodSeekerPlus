@@ -1,19 +1,19 @@
-namespace GodSeekerPlus.Modules {
-	[Module(toggleable = true, defaultEnabled = false)]
-	internal sealed class ForceOvercharm : Module {
-		private protected override void Load() =>
-			ModHooks.CharmUpdateHook += DoOvercharm;
+namespace GodSeekerPlus.Modules;
 
-		private protected override void Unload() =>
-			ModHooks.CharmUpdateHook -= DoOvercharm;
+[Module(toggleable = true, defaultEnabled = false)]
+internal sealed class ForceOvercharm : Module {
+	private protected override void Load() =>
+		ModHooks.CharmUpdateHook += DoOvercharm;
 
-		private static void DoOvercharm(PlayerData pd, HeroController _) {
-			if (!pd.overcharmed) {
-				pd.canOvercharm = true;
-				pd.overcharmed = true;
+	private protected override void Unload() =>
+		ModHooks.CharmUpdateHook -= DoOvercharm;
 
-				Logger.LogDebug("Force overcharmed");
-			}
+	private static void DoOvercharm(PlayerData pd, HeroController _) {
+		if (!pd.overcharmed) {
+			pd.canOvercharm = true;
+			pd.overcharmed = true;
+
+			Logger.LogDebug("Force overcharmed");
 		}
 	}
 }
