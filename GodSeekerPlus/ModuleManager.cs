@@ -1,8 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using GodSeekerPlus.Modules;
-using GodSeekerPlus.Util;
-
 namespace GodSeekerPlus {
 	internal sealed class ModuleManager {
 		internal Dictionary<string, Module> Modules { get; private set; } = new();

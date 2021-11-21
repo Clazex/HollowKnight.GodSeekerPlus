@@ -1,8 +1,3 @@
-using GodSeekerPlus.Util;
-using HutongGames.PlayMaker;
-using HutongGames.PlayMaker.Actions;
-using Vasi;
-
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class FastSuperDash : Module {

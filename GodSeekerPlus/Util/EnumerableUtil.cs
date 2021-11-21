@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
 using Enumerable = System.Linq.Enumerable;
 
 namespace GodSeekerPlus.Util {
 	internal static class IEnumerableUtil {
-		internal static bool Any<T>(this IEnumerable<T> self) =>
-			Enumerable.Any(self);
-
 		internal static IEnumerable<U> Map<T, U>(this IEnumerable<T> self, Func<T, U> f) =>
 			Enumerable.Select(self, f);
 

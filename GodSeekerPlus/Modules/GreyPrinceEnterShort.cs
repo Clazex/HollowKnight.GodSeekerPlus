@@ -1,7 +1,3 @@
-using HutongGames.PlayMaker;
-using Vasi;
-using GodSeekerPlus.Util;
-
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class GreyPrinceEnterShort : Module {

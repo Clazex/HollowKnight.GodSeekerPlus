@@ -1,5 +1,4 @@
 using System.Threading;
-using Modding;
 
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = false)]

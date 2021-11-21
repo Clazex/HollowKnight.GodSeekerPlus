@@ -1,6 +1,3 @@
-using Modding;
-using Logger = GodSeekerPlus.Util.Logger;
-
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = false)]
 	internal sealed class ForceOvercharm : Module {

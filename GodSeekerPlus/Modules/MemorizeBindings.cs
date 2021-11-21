@@ -1,5 +1,4 @@
-using System.Collections;
-using GodSeekerPlus.Util;
+
 using orig_HideSequence = On.BossDoorChallengeUI.orig_HideSequence;
 using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 

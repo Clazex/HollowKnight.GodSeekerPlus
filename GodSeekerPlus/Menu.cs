@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using GodSeekerPlus.Util;
-using Modding;
+
 using static Modding.IMenuMod;
+
 using Lang = Language.Language;
 
 namespace GodSeekerPlus {

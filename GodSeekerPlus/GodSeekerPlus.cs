@@ -1,6 +1,3 @@
-using System.Reflection;
-using Modding;
-
 namespace GodSeekerPlus {
 	public sealed partial class GodSeekerPlus : Mod {
 		public static GodSeekerPlus Instance { get; private set; }

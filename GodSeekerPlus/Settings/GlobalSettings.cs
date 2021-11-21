@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using GodSeekerPlus.Util;
 using Newtonsoft.Json;
 
 namespace GodSeekerPlus {

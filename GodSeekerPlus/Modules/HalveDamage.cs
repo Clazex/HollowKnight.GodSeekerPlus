@@ -1,6 +1,3 @@
-using System;
-using Modding;
-
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = false)]
 	internal sealed class HalveDamage : Module {

@@ -1,7 +1,3 @@
-using GodSeekerPlus.Util;
-using Modding;
-using Logger = GodSeekerPlus.Util.Logger;
-
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class UnlockRadiance : Module {

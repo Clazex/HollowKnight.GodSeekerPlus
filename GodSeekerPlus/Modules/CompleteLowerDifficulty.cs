@@ -1,5 +1,3 @@
-using GodSeekerPlus.Util;
-
 namespace GodSeekerPlus.Modules {
 	[Module(toggleable = true, defaultEnabled = true)]
 	internal sealed class CompleteLowerDifficulty : Module {

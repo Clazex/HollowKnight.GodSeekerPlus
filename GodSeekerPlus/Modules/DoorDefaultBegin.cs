@@ -1,9 +1,8 @@
-using System.Collections;
-using GodSeekerPlus.Util;
-using Modding;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
 namespace GodSeekerPlus.Modules {
