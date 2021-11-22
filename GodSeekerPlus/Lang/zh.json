@@ -5,6 +5,7 @@
 	"Modules/DoorDefaultBegin": "门默认开始",
 	"Modules/FastDreamWarp": "快速梦门传送",
 	"Modules/FastSuperDash": "快速超级冲刺",
+	"Modules/ForceArriveAnimation": "强制入场动画",
 	"Modules/ForceOvercharm": "强制护符过载",
 	"Modules/FrameRateLimit": "帧率限制",
 	"Modules/GreyPrinceEnterShort": "灰色王子短入场",
