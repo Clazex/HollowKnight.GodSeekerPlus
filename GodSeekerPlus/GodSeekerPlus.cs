@@ -3,10 +3,7 @@ namespace GodSeekerPlus;
 public sealed partial class GodSeekerPlus : Mod {
 	public static GodSeekerPlus Instance { get; private set; }
 
-	public override string GetVersion() => Assembly
-		.GetExecutingAssembly()
-		.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-		.InformationalVersion;
+	public override string GetVersion() => MiscUtil.GetVersion();
 
 	private readonly ModuleManager moduleManager = new();
 

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Security.Cryptography;
 
 namespace GodSeekerPlus.Util;
 
@@ -62,5 +63,26 @@ internal static class MiscUtil {
 		} else {
 			statue.StatueState = completion;
 		}
+	}
+
+
+
+	internal static string GetVersion() {
+		Assembly asm = Assembly.GetExecutingAssembly();
+
+		string version = asm
+			.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+			.InformationalVersion;
+
+#if DEBUG
+		version += '+';
+		using (SHA1 hash = SHA1.Create()) {
+			using FileStream stream = File.OpenRead(asm.Location);
+			version += BitConverter.ToString(hash.ComputeHash(stream), 0, 3)
+				.Replace("-", "").ToLowerInvariant();
+		}
+#endif
+
+		return version;
 	}
 }
