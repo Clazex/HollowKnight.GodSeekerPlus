@@ -1,5 +1,19 @@
 # Unreleased
 
+# [v0.12.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.11.0...v0.12.0) (2021-11-22)
+
+### Bug Fixes
+
+* handle completion correctly ([d87e23c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/d87e23c6f6ea2e4e20d2ccf611dfe57d3844c0d6))
+
+### Features
+
+* force arrive animation ([796a32b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/796a32b5efe5b3922f8f1aa966f5a54f71b6026b))
+
+### Performance Improvements
+
+* use standard lib funcs ([bc20829](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/bc2082943e6eeaeb819959ab581bdb99acb60f6a))
+
 # [v0.11.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.10.0...v0.11.0) (2021-11-09)
 
 ### Bug Fixes
