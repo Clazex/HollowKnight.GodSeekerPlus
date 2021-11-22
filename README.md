@@ -12,8 +12,8 @@ Compatible with `Hollow Knight` 1.5.
 - **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
 - **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
 - **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
-- **Frame Rate Limit**: Create a lag in every in-game frame.
 - **Force Overcharm**: Force entering the overcharmed state.
+- **Frame Rate Limit**: Create a lag in every in-game frame.
 - **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
 - **Halve Damage**: Halve all the damage taken.
 - **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
@@ -31,8 +31,8 @@ All features can be toggled in-game.
   + `DoorDefaultBegin` (`Boolean`): Whether to enable the Door Default Begin feature. Defaults to `true`.
   + `FastDreamWarp` (`Boolean`): Whether to enable the Fast Dream Warping feature. Defaults to `true`.
   + `FastSuperDash` (`Boolean`): Whether to enable the Fast Super Dash feature. Defaults to `true`.
-  + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.
   + `ForceOvercharm` (`Boolean`): Whether to enable the Force Overcharm feature. Defaults to `false`.
+  + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.
   + `GreyPrinceEnterShort` (`Boolean`): Whether to enable the Grey Prince Enter Short feature. Defaults to `true`.
   + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
