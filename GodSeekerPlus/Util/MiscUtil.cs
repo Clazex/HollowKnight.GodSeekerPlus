@@ -68,7 +68,7 @@ internal static class MiscUtil {
 
 
 	internal static string GetVersion() {
-		Assembly asm = Assembly.GetExecutingAssembly();
+		var asm = Assembly.GetExecutingAssembly();
 
 		string version = asm
 			.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
@@ -76,7 +76,7 @@ internal static class MiscUtil {
 
 #if DEBUG
 		version += '+';
-		using (SHA1 hash = SHA1.Create()) {
+		using (var hash = SHA1.Create()) {
 			using FileStream stream = File.OpenRead(asm.Location);
 			version += BitConverter.ToString(hash.ComputeHash(stream), 0, 3)
 				.Replace("-", "").ToLowerInvariant();

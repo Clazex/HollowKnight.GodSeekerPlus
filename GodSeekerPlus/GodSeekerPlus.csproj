@@ -80,7 +80,7 @@
 	<Target Name="CreateReleaseZip" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
 		<RemoveDir Directories="$(ProjectDir)/dist" />
 		<MakeDir Directories="$(ProjectDir)/dist/tmp" />
-		
+
 		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE" DestinationFolder="$(ProjectDir)/dist/tmp" />
 		<ZipDirectory SourceDirectory="$(ProjectDir)/dist/tmp" DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip" />
 

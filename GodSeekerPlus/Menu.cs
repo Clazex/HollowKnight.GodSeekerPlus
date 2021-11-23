@@ -1,4 +1,3 @@
-
 using static Modding.IMenuMod;
 
 using Lang = Language.Language;

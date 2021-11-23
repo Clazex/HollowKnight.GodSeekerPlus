@@ -36,7 +36,8 @@ internal sealed class UnlockRadiant : Module {
 				Logger.LogDebug($"Unlocked Radiant for {statue.name}");
 			}
 
-			var cld = GodSeekerPlus.Instance.FindModule<CompleteLowerDifficulty>();
+			CompleteLowerDifficulty cld = GodSeekerPlus.Instance
+				.FindModule<CompleteLowerDifficulty>();
 			if (cld.Enabled) {
 				cld.CompleteLower(statue.name, ref completion);
 			}

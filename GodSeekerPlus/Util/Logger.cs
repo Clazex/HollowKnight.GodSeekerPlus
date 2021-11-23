@@ -7,8 +7,8 @@ internal static class Logger {
 	internal static void Log(object message) => Instance?.Log(message);
 
 #if DEBUG
-		internal static void LogDebug(string message) => Instance?.Log(message);
-		internal static void LogDebug(object message) => Instance?.Log(message);
+	internal static void LogDebug(string message) => Instance?.Log(message);
+	internal static void LogDebug(object message) => Instance?.Log(message);
 #else
 	internal static void LogDebug(string message) => Instance?.LogDebug(message);
 	internal static void LogDebug(object message) => Instance?.LogDebug(message);
@@ -19,8 +19,8 @@ internal static class Logger {
 
 
 #if DEBUG
-		internal static void LogFine(string message) => Instance?.LogDebug(message);
-		internal static void LogFine(object message) => Instance?.LogDebug(message);
+	internal static void LogFine(string message) => Instance?.LogDebug(message);
+	internal static void LogFine(object message) => Instance?.LogDebug(message);
 #else
 	internal static void LogFine(string message) => Instance?.LogFine(message);
 	internal static void LogFine(object message) => Instance?.LogFine(message);
