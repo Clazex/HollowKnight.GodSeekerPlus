@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.12.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.12.0...v0.12.1) (2021-11-23)
+
+### Features
+
+* toggleable level ([28025e0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/28025e031b4b271d35ffc7c075923b7bea98f77b))
+
 # [v0.12.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.11.0...v0.12.0) (2021-11-22)
 
 ### Bug Fixes
