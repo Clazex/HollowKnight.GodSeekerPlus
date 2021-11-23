@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleable = true, defaultEnabled = false)]
+[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = false)]
 internal sealed class ForceOvercharm : Module {
 	private protected override void Load() =>
 		ModHooks.CharmUpdateHook += DoOvercharm;

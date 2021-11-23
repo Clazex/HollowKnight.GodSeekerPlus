@@ -11,17 +11,14 @@ internal abstract class Module {
 
 	private bool Loaded { get; set; } = false;
 
-	internal bool Toggleable =>
-		GetType().GetCustomAttribute<ModuleAttribute>().toggleable;
+	internal ToggleableLevel ToggleableLevel =>
+		GetType().GetCustomAttribute<ModuleAttribute>().toggleableLevel;
 
 	internal bool Enabled {
 		get => GodSeekerPlus.Instance.GlobalSettings.modules[Name];
 		set {
 			GodSeekerPlus.Instance.GlobalSettings.modules[Name] = value;
-
-			if (Toggleable) {
-				Update();
-			}
+			Update();
 		}
 	}
 

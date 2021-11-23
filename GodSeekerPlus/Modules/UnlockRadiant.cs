@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleable = true, defaultEnabled = true)]
+[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class UnlockRadiant : Module {
 	private protected override void Load() =>
 		On.BossChallengeUI.Setup += UnlockTier3;

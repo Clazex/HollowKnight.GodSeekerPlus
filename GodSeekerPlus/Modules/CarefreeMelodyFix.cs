@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleable = true, defaultEnabled = true)]
+[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class CarefreeMelodyFix : Module {
 	private protected override void Load() =>
 		ModHooks.CharmUpdateHook += WatchAndFixCarefreeMelody;

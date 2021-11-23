@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleable = true, defaultEnabled = true)]
+[Module(toggleableLevel = ToggleableLevel.ReloadSave, defaultEnabled = true)]
 internal sealed class FastDreamWarp : Module {
 	private protected override void Load() =>
 		On.PlayMakerFSM.OnEnable += ModifyDreamNailFSM;

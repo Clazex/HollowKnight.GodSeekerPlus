@@ -1,5 +1,7 @@
 {
-	"RequireRestart": "Requires a restart to take effect.",
+	"ToggleableLevel/AnyTime": "",
+	"ToggleableLevel/ReloadSave": "Reload the save to apply change",
+	"ToggleableLevel/RestartGame": "Restart the game to apply change",
 	"Modules/CarefreeMelodyFix": "Carefree Melody Fix",
 	"Modules/CompleteLowerDifficulty": "Complete Lower Difficulty",
 	"Modules/DoorDefaultBegin": "Door Default Begin",

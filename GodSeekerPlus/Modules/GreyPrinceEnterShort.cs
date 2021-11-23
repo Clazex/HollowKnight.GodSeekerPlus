@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleable = true, defaultEnabled = true)]
+[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class GreyPrinceEnterShort : Module {
 	private protected override void Load() =>
 		On.PlayMakerFSM.OnEnable += ModifyGPFSM;

@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleable = true, defaultEnabled = true)]
+[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class UnlockEternalOrdeal : Module {
 	private protected override void Load() =>
 		ModHooks.AfterSavegameLoadHook += SetOrdealUnlocked;
