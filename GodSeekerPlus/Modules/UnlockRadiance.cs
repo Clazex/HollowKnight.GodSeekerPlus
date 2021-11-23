@@ -10,7 +10,7 @@ internal sealed class UnlockRadiance : Module {
 	private protected override void Unload() =>
 		ModHooks.AfterSavegameLoadHook -= SetRadianceUnlocked;
 
-	private static void SetRadianceUnlocked(SaveGameData saveData) {
+	private void SetRadianceUnlocked(SaveGameData saveData) {
 		if (
 			saveData.playerData.bossRushMode
 			&& !saveData.playerData.unlockedBossScenes.Contains(scene)

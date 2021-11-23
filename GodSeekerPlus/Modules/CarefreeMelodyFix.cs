@@ -8,7 +8,7 @@ internal sealed class CarefreeMelodyFix : Module {
 	private protected override void Unload() =>
 		ModHooks.CharmUpdateHook -= WatchAndFixCarefreeMelody;
 
-	private static void WatchAndFixCarefreeMelody(PlayerData pd, HeroController hc) {
+	private void WatchAndFixCarefreeMelody(PlayerData pd, HeroController hc) {
 		if (hc.carefreeShieldEquipped && !pd.destroyedNightmareLantern) {
 			pd.destroyedNightmareLantern = true;
 

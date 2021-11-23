@@ -8,7 +8,7 @@ internal sealed class FastDreamWarp : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.OnEnable -= ModifyDreamNailFSM;
 
-	private static void ModifyDreamNailFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+	private void ModifyDreamNailFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self.gameObject.name == "Knight" && self.FsmName == "Dream Nail") {

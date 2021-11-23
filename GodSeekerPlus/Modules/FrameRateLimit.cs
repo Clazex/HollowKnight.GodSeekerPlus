@@ -4,7 +4,7 @@ namespace GodSeekerPlus.Modules;
 
 [Module(toggleable = true, defaultEnabled = false)]
 internal sealed class FrameRateLimit : Module {
-	private static int time = 50;
+	private int time = default;
 
 	private protected override void Load() {
 		time = 10 * GodSeekerPlus.Instance.GlobalSettings.frameRateLimitMultiplier;
@@ -14,5 +14,5 @@ internal sealed class FrameRateLimit : Module {
 	private protected override void Unload() =>
 		ModHooks.HeroUpdateHook -= ThreadSleep;
 
-	private static void ThreadSleep() => Thread.Sleep(time);
+	private void ThreadSleep() => Thread.Sleep(time);
 }

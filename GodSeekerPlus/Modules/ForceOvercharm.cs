@@ -8,7 +8,7 @@ internal sealed class ForceOvercharm : Module {
 	private protected override void Unload() =>
 		ModHooks.CharmUpdateHook -= DoOvercharm;
 
-	private static void DoOvercharm(PlayerData pd, HeroController _) {
+	private void DoOvercharm(PlayerData pd, HeroController _) {
 		if (!pd.overcharmed) {
 			pd.canOvercharm = true;
 			pd.overcharmed = true;

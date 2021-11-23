@@ -17,7 +17,7 @@ internal sealed class ForceArriveAnimation : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.OnEnable -= ModifyDreamEntryFSM;
 
-	private static void ModifyDreamEntryFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+	private void ModifyDreamEntryFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (

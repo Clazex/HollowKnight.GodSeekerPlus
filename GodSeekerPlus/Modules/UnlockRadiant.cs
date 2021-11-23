@@ -8,7 +8,7 @@ internal sealed class UnlockRadiant : Module {
 	private protected override void Unload() =>
 		On.BossChallengeUI.Setup -= UnlockTier3;
 
-	private static void UnlockTier3(
+	private void UnlockTier3(
 		On.BossChallengeUI.orig_Setup orig,
 		BossChallengeUI self,
 		BossStatue statue,

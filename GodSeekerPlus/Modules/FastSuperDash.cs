@@ -8,7 +8,7 @@ internal sealed class FastSuperDash : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
 
-	private static void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+	private void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {

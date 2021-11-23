@@ -14,7 +14,7 @@ internal sealed class DoorDefaultBegin : Module {
 	private protected override void Unload() =>
 		On.BossDoorChallengeUI.ShowSequence -= OverrideOrig;
 
-	private static IEnumerator OverrideOrig(orig_ShowSequence _, BossDoorChallengeUI self) {
+	private IEnumerator OverrideOrig(orig_ShowSequence _, BossDoorChallengeUI self) {
 		CanvasGroup group = ReflectionHelper
 			.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group");
 		Animator animator = ReflectionHelper
