@@ -1,5 +1,8 @@
 using System.IO;
+
+#if DEBUG
 using System.Security.Cryptography;
+#endif
 
 namespace GodSeekerPlus.Util;
 
@@ -41,7 +44,7 @@ internal static class MiscUtil {
 
 		if (items.Any()) {
 			items.ForEach(item => {
-				item.activated = true;
+				item.activated = activated;
 				item.semiPersistent = semiPersistent;
 			});
 		} else {

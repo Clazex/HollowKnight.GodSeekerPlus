@@ -1,7 +1,8 @@
-
 using Language;
 
 using Newtonsoft.Json;
+
+using Lang = Language.Language;
 
 namespace GodSeekerPlus.Util;
 
@@ -10,7 +11,7 @@ internal static class L11nUtil {
 	private const string resPostfix = ".json";
 
 
-	private static readonly List<string> langs = Language.Language
+	private static readonly List<string> langs = Lang
 		.GetLanguages()
 		.Map(str => str.ToLower().Replace('_', '-'))
 		.ToList();
@@ -19,7 +20,7 @@ internal static class L11nUtil {
 		code.ToString().ToLower().Replace('_', '-');
 
 	private static string CurrentLang =>
-		Language.Language.CurrentLanguage().ToIdentifier();
+		Lang.CurrentLanguage().ToIdentifier();
 
 
 	private static Dictionary<string, Dictionary<string, string>> ReadLangs() => Assembly
