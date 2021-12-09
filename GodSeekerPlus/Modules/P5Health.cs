@@ -5,7 +5,7 @@ internal sealed class P5Health : Module {
 	private static readonly Type scalerType = typeof(HealthManager)
 		.GetNestedType("HPScaleGG", BindingFlags.NonPublic);
 
-	private static readonly FieldInfo scalerField = typeof(BossSceneController)
+	private static readonly FieldInfo scalerField = typeof(HealthManager)
 		.GetField("hpScale", BindingFlags.Instance | BindingFlags.NonPublic);
 
 	private static readonly FieldInfo lv1Field = scalerType.GetField("level1");
