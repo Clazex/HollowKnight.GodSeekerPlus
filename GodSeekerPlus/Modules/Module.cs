@@ -48,7 +48,7 @@ internal abstract class Module {
 
 
 
-	private protected abstract void Load();
+	private protected virtual void Load() { }
 
-	private protected abstract void Unload();
+	private protected virtual void Unload() { }
 }
