@@ -17,7 +17,7 @@ internal static class ModuleHelper {
 			return dict;
 		}, new Dictionary<string, bool>());
 
-	internal static Module ConstructModule(Type type) => (Module) type.GetConstructor(Type.EmptyTypes).Invoke(null);
+	internal static Module ConstructModule(Type type) => (Module) Activator.CreateInstance(type);
 
 	private static bool HasModuleAttribute(Type type) {
 		if (type.GetCustomAttribute<ModuleAttribute>() == null) {
