@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.13.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.12.1...v0.13.0) (2021-12-09)
+
+### Features
+
+* p5 health ([3dc51a3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/3dc51a3ba8c2dae677112beea06bb56ed7718c22))
+
 # [v0.12.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.12.0...v0.12.1) (2021-11-23)
 
 ### Features
