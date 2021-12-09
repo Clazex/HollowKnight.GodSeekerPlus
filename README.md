@@ -18,6 +18,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
 - **Halve Damage**: Halve all the damage taken.
 - **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
+- **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
 - **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
 - **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
 - **Unlock Radiant**: Auto unlock Radiant difficulty for all boss statues.
@@ -38,6 +39,7 @@ All features can be toggled in-game.
   + `GreyPrinceEnterShort` (`Boolean`): Whether to enable the Grey Prince Enter Short feature. Defaults to `true`.
   + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
+  + `P5Health` (`Boolean`): Whether to enable the P5 Health feature. Defaults to `false`.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
   + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
   + `UnlockRadiant` (`Boolean`): Whether to enable the Unlock Radiant feature. Defaults to `true`.
