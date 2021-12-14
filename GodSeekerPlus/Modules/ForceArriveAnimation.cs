@@ -12,12 +12,12 @@ internal sealed class ForceArriveAnimation : Module {
 	};
 
 	private protected override void Load() =>
-		On.PlayMakerFSM.OnEnable += ModifyDreamEntryFSM;
+		On.PlayMakerFSM.Start += ModifyDreamEntryFSM;
 
 	private protected override void Unload() =>
-		On.PlayMakerFSM.OnEnable -= ModifyDreamEntryFSM;
+		On.PlayMakerFSM.Start -= ModifyDreamEntryFSM;
 
-	private void ModifyDreamEntryFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+	private void ModifyDreamEntryFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (

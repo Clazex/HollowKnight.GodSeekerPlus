@@ -3,12 +3,12 @@ namespace GodSeekerPlus.Modules;
 [Module(toggleableLevel = ToggleableLevel.ReloadSave, defaultEnabled = true)]
 internal sealed class FastSuperDash : Module {
 	private protected override void Load() =>
-		On.PlayMakerFSM.OnEnable += ModifySuperDashFSM;
+		On.PlayMakerFSM.Start += ModifySuperDashFSM;
 
 	private protected override void Unload() =>
-		On.PlayMakerFSM.OnEnable -= ModifySuperDashFSM;
+		On.PlayMakerFSM.Start -= ModifySuperDashFSM;
 
-	private void ModifySuperDashFSM(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
+	private void ModifySuperDashFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self.gameObject.name == "Knight" && self.FsmName == "Superdash") {
