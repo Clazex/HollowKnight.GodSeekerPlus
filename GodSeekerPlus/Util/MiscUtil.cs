@@ -79,11 +79,11 @@ internal static class MiscUtil {
 
 #if DEBUG
 		version += '+';
-		using (var hash = SHA1.Create()) {
-			using FileStream stream = File.OpenRead(asm.Location);
-			version += BitConverter.ToString(hash.ComputeHash(stream), 0, 3)
-				.Replace("-", "").ToLowerInvariant();
-		}
+		using var hash = SHA1.Create();
+		using FileStream stream = File.OpenRead(asm.Location);
+		Math.Ceiling(stream.Length / 2f);
+		version += BitConverter.ToString(hash.ComputeHash(stream), 0, 4)
+			.Replace("-", "").Substring(0, 7).ToLowerInvariant();
 #endif
 
 		return version;
