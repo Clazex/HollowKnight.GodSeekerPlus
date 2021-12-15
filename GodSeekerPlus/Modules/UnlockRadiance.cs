@@ -2,21 +2,23 @@ namespace GodSeekerPlus.Modules;
 
 [Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class UnlockRadiance : Module {
-	private const string scene = "Radiance Boss Scene";
+	private const string sceneName = "Radiance Boss Scene";
 
 	private protected override void Load() =>
-		ModHooks.AfterSavegameLoadHook += SetRadianceUnlocked;
+		On.HeroController.Start += SetRadianceUnlocked;
 
 	private protected override void Unload() =>
-		ModHooks.AfterSavegameLoadHook -= SetRadianceUnlocked;
+		On.HeroController.Start -= SetRadianceUnlocked;
 
-	private void SetRadianceUnlocked(SaveGameData saveData) {
+	private void SetRadianceUnlocked(On.HeroController.orig_Start orig, HeroController self) {
+		orig(self);
+
 		if (
-			saveData.playerData.bossRushMode
-			&& !saveData.playerData.unlockedBossScenes.Contains(scene)
+			self.playerData.bossRushMode
+			&& !self.playerData.unlockedBossScenes.Contains(sceneName)
 		) {
-			saveData.playerData.unlockedBossScenes.Add(scene);
-			saveData.sceneData.persistentBoolItems
+			self.playerData.unlockedBossScenes.Add(sceneName);
+			SceneData.instance.persistentBoolItems
 				.Set("GG_Workshop", "Radiance Statue Cage", true);
 
 			Logger.LogDebug("Radiance Unlocked");

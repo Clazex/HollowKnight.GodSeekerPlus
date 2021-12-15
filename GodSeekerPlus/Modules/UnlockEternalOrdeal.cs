@@ -3,28 +3,30 @@ namespace GodSeekerPlus.Modules;
 [Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class UnlockEternalOrdeal : Module {
 	private protected override void Load() =>
-		ModHooks.AfterSavegameLoadHook += SetOrdealUnlocked;
+		On.HeroController.Start += SetOrdealUnlocked;
 
 	private protected override void Unload() =>
-		ModHooks.AfterSavegameLoadHook -= SetOrdealUnlocked;
+		On.HeroController.Start -= SetOrdealUnlocked;
 
-	private void SetOrdealUnlocked(SaveGameData data) {
-		IEnumerable<PersistentBoolData> items = data
-			.sceneData
+	private void SetOrdealUnlocked(On.HeroController.orig_Start orig, HeroController self) {
+		orig(self);
+
+		IEnumerable<PersistentBoolData> items = SceneData
+			.instance
 			.persistentBoolItems
-			.Filter(item =>
-				item.sceneName == "GG_Workshop"
-				&& item.id == "Breakable Wall_Silhouette"
-			);
+			.Filter(item => item is {
+				sceneName: "GG_Workshop",
+				id: "Breakable Wall_Silhouette"
+			});
 
 		if (!items.Any() || items.Filter(item => !item.activated).Any()) {
-			data.sceneData.persistentBoolItems
+			SceneData.instance.persistentBoolItems
 				.Set("GG_Workshop", "Breakable Wall_Silhouette", true);
 
-			data.sceneData.persistentBoolItems
+			SceneData.instance.persistentBoolItems
 				.Set("GG_Workshop", "Zote_Break_wall", true);
 
-			data.playerData.zoteStatueWallBroken = true;
+			self.playerData.zoteStatueWallBroken = true;
 
 			Logger.LogDebug("Eternal Ordeal unlocked");
 		}
