@@ -17,19 +17,21 @@ internal sealed class UnlockRadiant : Module {
 		string descSheet,
 		string descKey
 	) {
+		void invokeOrig() => orig(self, statue, nameSheet, nameKey, descSheet, descKey);
+
 		if (statue.hasNoTiers) {
-			orig(self, statue, nameSheet, nameKey, descSheet, descKey);
+			invokeOrig();
 		} else {
 			BossStatue.Completion completion = MiscUtil.GetStatueCompletion(statue);
 
 			if (completion.completedTier2) {
-				orig(self, statue, nameSheet, nameKey, descSheet, descKey);
+				invokeOrig();
 			} else {
 				completion.completedTier2 = true;
 				completion.seenTier3Unlock = true;
 				MiscUtil.SetStatueCompletion(statue, completion);
 
-				orig(self, statue, nameSheet, nameKey, descSheet, descKey);
+				invokeOrig();
 
 				completion.completedTier2 = false;
 
