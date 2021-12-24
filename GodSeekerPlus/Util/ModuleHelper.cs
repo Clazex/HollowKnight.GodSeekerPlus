@@ -8,12 +8,14 @@ internal static class ModuleHelper {
 		.Filter(HasModuleAttribute)
 		.Filter(HasDefaultConstructor);
 
-	internal static IEnumerable<string> GetModuleNames() =>
-		FindModules().Map(type => type.Name);
+	internal static IEnumerable<string> GetModuleNames() => FindModules()
+		.Filter(type => !type.GetCustomAttribute<ModuleAttribute>().hidden)
+		.Map(type => type.Name);
 
 	internal static Dictionary<string, bool> GetDefaultModuleStateDict() => FindModules()
 		.Reduce((dict, type) => {
-			dict[type.Name] = type.GetCustomAttribute<ModuleAttribute>().defaultEnabled;
+			ModuleAttribute attr = type.GetCustomAttribute<ModuleAttribute>();
+			dict[type.Name] = attr.defaultEnabled || attr.hidden;
 			return dict;
 		}, new Dictionary<string, bool>());
 
