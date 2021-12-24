@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.13.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.13.1...v0.13.2) (2021-12-24)
+
+### Features
+
+* hidden module ([f3840b9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f3840b9194c769d39f9d84d6db35cf2fe534776b)), closes [#7](https://github.com/Clazex/HollowKnight.GodSeekerPlus/issues/7)
+
 # [v0.13.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.13.0...v0.13.1) (2021-12-09)
 
 ### Bug Fixes
