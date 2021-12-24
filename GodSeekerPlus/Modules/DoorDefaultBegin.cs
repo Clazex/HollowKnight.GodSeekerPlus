@@ -1,48 +1,81 @@
+using Mono.Cecil.Cil;
+
+using MonoMod.Cil;
+using MonoMod.RuntimeDetour;
+using MonoMod.Utils;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
+using ReflectionHelper = Modding.ReflectionHelper;
 
 namespace GodSeekerPlus.Modules;
 
 [Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class DoorDefaultBegin : Module {
-	private protected override void Load() =>
-		On.BossDoorChallengeUI.ShowSequence += OverrideOrig;
+	private ILHook hook = null;
 
-	private protected override void Unload() =>
-		On.BossDoorChallengeUI.ShowSequence -= OverrideOrig;
+	private protected override void Load() {
+		hook = new(
+			typeof(BossDoorChallengeUI)
+				.GetMethod("ShowSequence", BindingFlags.Instance | BindingFlags.NonPublic)
+				.GetStateMachineTarget(),
+			RemoveSelection
+		);
 
-	private IEnumerator OverrideOrig(orig_ShowSequence _, BossDoorChallengeUI self) {
-		CanvasGroup group = ReflectionHelper
-			.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group");
-		Animator animator = ReflectionHelper
-			.GetField<BossDoorChallengeUI, Animator>(self, "animator");
+		On.BossDoorChallengeUI.ShowSequence += AddSelection;
+	}
 
-		group.interactable = false;
-		EventSystem.current.SetSelectedGameObject(null);
-		yield return null;
+	private protected override void Unload() {
+		hook?.Dispose();
 
-		if (animator) {
-			animator.Play("Open");
-			yield return null;
-			yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+		On.BossDoorChallengeUI.ShowSequence -= AddSelection;
+	}
+
+	private void RemoveSelection(ILContext il) {
+		ILCursor cursor = new ILCursor(il).Goto(0);
+
+		//
+		// The following lines are going to be removed:
+		//
+		// if (bossDoorChallengeUI.buttons.Length != 0) {
+		//	EventSystem.current.SetSelectedGameObject(bossDoorChallengeUI.buttons[0].gameObject);
+		// }
+		// InputHandler.Instance.StartUIInput();
+		//
+
+		// The first IL line of the above lines are `LdFld`
+		// for accessing the `buttons` field
+		cursor.GotoNext(i => i.MatchLdfld(
+			typeof(BossDoorChallengeUI)
+				.GetField("buttons", BindingFlags.Instance | BindingFlags.NonPublic)
+		));
+
+		// Move the cursor to before the `LdFld`
+		cursor.GotoPrev();
+		// Move the cursor to one extra IL line before the `LdFld`, that is, `LdLoc.1`
+		cursor.GotoPrev();
+
+		// Remove all IL lines from the `LdLoc.1` to the one before `Ret`
+		while (cursor.TryGotoNext(i => !i.MatchRet())) {
+			cursor.Remove();
 		}
 
-		group.interactable = true;
+		// Fix return
+		cursor.Emit(OpCodes.Ldc_I4_0);
+	}
 
-		//	if (self.buttons.Length != 0) {
-		//		EventSystem.current.SetSelectedGameObject(self.buttons[0].gameObject); // <-- Removed
-		//	}
+	private IEnumerator AddSelection(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
+		yield return orig(self);
 
-		group
+		MenuButton beginBtn = ReflectionHelper
+			.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group")
 			.GetComponentsInChildren<MenuButton>()
 			.Filter(btn => btn.name == "BeginButton")
-			.ForEach(btn => EventSystem.current.SetSelectedGameObject(btn.gameObject));
+			.FirstOrDefault();
+		EventSystem.current.SetSelectedGameObject(beginBtn.gameObject);
 
 		InputHandler.Instance.StartUIInput();
-
-		yield break;
 	}
 }

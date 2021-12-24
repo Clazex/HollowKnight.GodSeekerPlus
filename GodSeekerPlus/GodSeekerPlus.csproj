@@ -36,10 +36,6 @@
 			<HintPath>$(HKRefs)/UnityEngine.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="UnityEngine.AnimationModule">
-			<HintPath>$(HKRefs)/UnityEngine.AnimationModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(HKRefs)/UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
@@ -54,6 +50,18 @@
 		</Reference>
 		<Reference Include="PlayMaker">
 			<HintPath>$(HKRefs)/PlayMaker.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Mono.Cecil">
+			<HintPath>$(HKModdingApi)/Mono.Cecil.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="MonoMod.RuntimeDetour">
+			<HintPath>$(HKModdingApi)/MonoMod.RuntimeDetour.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="MonoMod.Utils">
+			<HintPath>$(HKModdingApi)/MonoMod.Utils.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 		<Reference Include="MMHOOK_Assembly-CSharp">
