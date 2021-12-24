@@ -68,6 +68,38 @@ internal static class MiscUtil {
 		}
 	}
 
+	public static bool isGodHomeBossScene(string currentScene) {
+		string[] exclusions = new string[]
+		{
+			"Waterways",
+			"Atrium",
+			"Lurker",
+			"Pipeway",
+			"Spa",
+			"Unlock",
+			"Workshop",
+			"End_Sequence",
+			"Atrium_Roof",
+			"Blue_Room",
+			"Engine",
+			"Engine_Prime",
+			"Engine_Root",
+			"Entrance_Cutscene",
+			"Land_of_Storms",
+			"Boss_Door_Entrance",
+			"Wyrm",
+			"Unn",
+			"Door_5_Finale",
+			"Unlock_Wastes"
+		};
+
+		string[] sceneNameParts = currentScene.Split(new[] { '_' },2 );
+		string scenePrefix = sceneNameParts[0];
+		string sceneSuffix = sceneNameParts[1];
+
+		return scenePrefix == "GG" && !exclusions.Contains(sceneSuffix);
+	}
+
 
 
 	internal static string GetVersion() {

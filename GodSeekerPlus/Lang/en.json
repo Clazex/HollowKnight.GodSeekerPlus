@@ -16,5 +16,7 @@
 	"Modules/P5Health": "P5 Health",
 	"Modules/UnlockEternalOrdeal": "Unlock Eternal Ordeal",
 	"Modules/UnlockRadiance": "Unlock Radiance",
-	"Modules/UnlockRadiant": "Unlock Radiant"
+	"Modules/UnlockRadiant": "Unlock Radiant",
+	"Modules/AddLifebloodOnEnter": "Add Lifeblood OnEnter",
+	"Modules/ActivateFuryOnEnter": "Activate Fury OnEnter"
 }
