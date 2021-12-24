@@ -1,4 +1,4 @@
-# [寻神者+](https://github.com/Clazex/HollowKnight.GodSeekerPlus)
+# [寻神者 +](https://github.com/Clazex/HollowKnight.GodSeekerPlus)
 
 一个提升神居体验的《空洞骑士》模组
 
