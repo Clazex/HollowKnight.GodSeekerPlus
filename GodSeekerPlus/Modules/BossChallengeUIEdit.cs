@@ -25,9 +25,9 @@ internal sealed class BossChallengeUIEdit : Module {
 			BossStatue.Completion completion =
 				MiscUtil.GetStatueCompletion(statue);
 
-			var ur = GodSeekerPlus.Instance
+			UnlockRadiant ur = GodSeekerPlus.Instance
 				.FindModule<UnlockRadiant>();
-			var cld = GodSeekerPlus.Instance
+			CompleteLowerDifficulty cld = GodSeekerPlus.Instance
 				.FindModule<CompleteLowerDifficulty>();
 
 			if (ur.Enabled) {
