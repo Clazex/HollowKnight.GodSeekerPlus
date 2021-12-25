@@ -1,5 +1,11 @@
 # Unreleased
 
+# [v0.13.3]() (2021-12-25)
+
+### Features
+
+* 3 new modules, add lifeblood, soul and activate fury on boss scene entry
+
 # [v0.13.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.13.1...v0.13.2) (2021-12-24)
 
 ### Features

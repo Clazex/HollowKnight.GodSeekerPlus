@@ -16,5 +16,8 @@
 	"Modules/P5Health": "五门血量",
 	"Modules/UnlockEternalOrdeal": "解锁无尽折磨",
 	"Modules/UnlockRadiance": "解锁辐光",
-	"Modules/UnlockRadiant": "解锁辐辉"
+	"Modules/UnlockRadiant": "解锁辐辉",
+  	"Modules/AddLifebloodOnEnter": "进入时添加生命血",
+  	"Modules/ActivateFuryOnEnter": "进入时激活愤怒",
+  	"Modules/AddSoulOnEnter": "进入时添加灵魂",
 }

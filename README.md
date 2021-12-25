@@ -22,6 +22,9 @@ Compatible with `Hollow Knight` 1.5.
 - **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
 - **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
 - **Unlock Radiant**: Auto unlock Radiant difficulty for all boss statues.
+- **Add Lifeblood OnEnter**: Add lifeblood on entry of boss scene
+- **Activate Fury OnEnter**: Activate fury of the fallen on entry of boss scene (by making health = 1)
+- **Add Soul OnEnter**: Add soul on entry of boss scene
 
 All features can be toggled in-game.
 
@@ -43,8 +46,13 @@ All features can be toggled in-game.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
   + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
   + `UnlockRadiant` (`Boolean`): Whether to enable the Unlock Radiant feature. Defaults to `true`.
+  + `AddLifebloodOnEnter` (`Boolean`): Whether to enable the Add lifeblood OnEnter feature. Defaults to `false`.
+  + `ActivateFuryOnEnter` (`Boolean`): Whether to enable the Activate Fury OnEnter feature. Defaults to `false`.
+  + `AddSoulOnEnter` (`Boolean`): Whether to enable the Add Soul OnEnter feature. Defaults to `false`.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
 - `frameRateLimitMultiplier` (`Integer`): Frame rate limit time span multiplier. Final lag time is 10ms multiplied by this value. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `10`, defaults to `5`.
+- `LifebloodAmount` (`Integer`): The amount of lifeblood to be added by AddLifebloodOnEnter. Ranges from `0` to `10`, defaults to `5`.
+- `SoulAmount` (`Integer`): The amount of soul to be added by AddSoulOnEnter. Ranges from `0` to `198`, defaults to `5`.
 
 ## Contributing
 
