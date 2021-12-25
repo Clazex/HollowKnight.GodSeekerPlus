@@ -9,6 +9,9 @@ Compatible with `Hollow Knight` 1.5.
 
 ## Features
 
+- **Activate Fury**: Activate Fury of the Fallen on entry of boss scenes by setting health to 1.
+- **Add Lifeblood**: Add configured amount of lifeblood on entry of Hall of Gods boss fight.
+- **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
 - **Carefree Melody Fix**: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
 - **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
 - **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
@@ -30,6 +33,9 @@ All features can be toggled in-game.
 ## Configuration
 
 - `features` (`Object`): Whether to enable specified features.
+  + `ActivateFury` (`Boolean`): Whether to enable the Activate Fury feature. Defaults to `false`.
+  + `AddLifeblood` (`Boolean`): Whether to enable the Add Lifeblood feature. Defaults to `false`.
+  + `AddSoul` (`Boolean`): Whether to enable the Add Soul feature. Defaults to `false`.
   + `CarefreeMelodyFix` (`Boolean`): Whether to enable the Carefree Melody Fix feature. Defaults to `true`.
   + `CompleteLowerDifficulty` (`Boolean`): Whether to enable the Complete Lower Difficulty feature. Defaults to `true`.
   + `DoorDefaultBegin` (`Boolean`): Whether to enable the Door Default Begin feature. Defaults to `true`.
@@ -47,6 +53,8 @@ All features can be toggled in-game.
   + `UnlockRadiant` (`Boolean`): Whether to enable the Unlock Radiant feature. Defaults to `true`.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
 - `frameRateLimitMultiplier` (`Integer`): Frame rate limit time span multiplier. Final lag time is 10ms multiplied by this value. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `10`, defaults to `5`.
+- `LifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.
+- `SoulAmount` (`Integer`): The amount of soul to be added. Ranges from `0` to `198`, defaults to `99`.
 
 ## Contributing
 

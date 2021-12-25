@@ -9,6 +9,9 @@
 
 ## 功能
 
+- **激活亡者之怒**：当进入 Boss 场景时，将生命值设置为 1 以激活亡者之怒。
+- **添加生命血**：在诸神堂进行 Boss 战时，添加指定量的生命血。
+- **添加灵魂**：在诸神堂进行 Boss 战时，添加指定量的灵魂。
 - **无忧旋律修复**：移除在装备非正常途径获得的无忧旋律时错误生成的格林之子。效果是永久的。
 - **完成较低难度**：当完成了 Boss 雕像的较高难度时，自动完成较低难度。打开挑战界面时触发。
 - **门默认开始**：打开万神殿门界面时默认选中开始按钮。
@@ -30,6 +33,9 @@
 ## 配置
 
 - `features` (`Object`): 是否启用指定的功能。
+  + `ActivateFury` (`Boolean`)：是否启用 `激活亡者之怒` 功能。默认为 `false`。
+  + `AddLifeblood` (`Boolean`)：是否启用 `添加生命血` 功能。默认为 `false`。
+  + `AddSoul` (`Boolean`)：是否启用 `添加灵魂` 功能。默认为 `false`。
   + `CarefreeMelodyFix` (`Boolean`)：是否启用 `无忧旋律修复` 功能。默认为 `true`。
   + `CompleteLowerDifficulty` (`Boolean`)：是否启用 `完成较低难度` 功能。默认为 `true`。
   + `DoorDefaultBegin` (`Boolean`)：是否启用 `门默认开始` 功能。默认为 `true`。
@@ -47,6 +53,8 @@
   + `UnlockRadiant` (`Boolean`)：是否启用 `解锁辐辉` 功能。默认为 `true`。
 - `fastSuperDashSpeedMultiplier` (`Float`)：快速超冲速度倍率。范围从 `1` 到 `2`，默认为 `1.5`。
 - `frameRateLimitMultiplier` (`Integer`)：帧率限制卡顿时间倍率。最终卡顿时间是 10ms 乘以这个值。注意将其设置为 `0` 并不意味着零卡顿。范围从 `0` 到 `10`，默认为 `5`。
+- `LifebloodAmount` (`Integer`)：要添加的生命血数量。范围从 `0` 到 `35`，默认为 `5`。
+- `SoulAmount` (`Integer`)：要添加的灵魂数量。范围从 `0` 到 `198`，默认为 `99`。
 
 ## 贡献
 

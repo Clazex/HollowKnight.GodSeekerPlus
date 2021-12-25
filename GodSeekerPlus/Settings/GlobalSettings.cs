@@ -13,6 +13,12 @@ public sealed class GlobalSettings {
 	[JsonIgnore]
 	public int frameRateLimitMultiplier = 5;
 
+	[JsonIgnore]
+	public int lifebloodAmount = 5;
+
+	[JsonIgnore]
+	public int soulAmount = 99;
+
 
 	[JsonProperty(PropertyName = "features")]
 	public Dictionary<string, bool> Modules {
@@ -36,5 +42,17 @@ public sealed class GlobalSettings {
 	public int FrameRateLimitMultiplier {
 		get => frameRateLimitMultiplier;
 		set => frameRateLimitMultiplier = MiscUtil.ForceInRange(value, 0, 10);
+	}
+
+	[JsonProperty(PropertyName = "lifebloodAmount")]
+	public int LifebloodAmount {
+		get => lifebloodAmount;
+		set => lifebloodAmount = MiscUtil.ForceInRange(value, 0, 35);
+	}
+
+	[JsonProperty(PropertyName = "soulAmount")]
+	public int SoulAmount {
+		get => soulAmount;
+		set => soulAmount = MiscUtil.ForceInRange(value, 0, 198);
 	}
 }
