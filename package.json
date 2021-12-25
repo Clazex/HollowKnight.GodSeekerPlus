@@ -1,0 +1,16 @@
+{
+	"scripts": {
+		"changelog": "conventional-changelog -up angular",
+		"commit": "cz"
+	},
+	"devDependencies": {
+		"commitizen": "^4.2.4",
+		"conventional-changelog-cli": "^2.1.1",
+		"cz-conventional-changelog": "^3.3.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	}
+}
