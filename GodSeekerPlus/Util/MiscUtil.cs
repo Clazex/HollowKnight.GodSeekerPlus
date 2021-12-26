@@ -81,9 +81,8 @@ internal static class MiscUtil {
 		version += '+';
 		using var hash = SHA1.Create();
 		using FileStream stream = File.OpenRead(asm.Location);
-		Math.Ceiling(stream.Length / 2f);
 		version += BitConverter.ToString(hash.ComputeHash(stream), 0, 4)
-			.Replace("-", "").Substring(0, 7).ToLowerInvariant();
+			.Substring(0, 10).Replace("-", "").ToLowerInvariant();
 #endif
 
 		return version;
