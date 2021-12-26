@@ -12,4 +12,7 @@ internal sealed class ModuleManager {
 
 	internal T FindModule<T>() where T : Module
 		=> (T) Modules[typeof(T).Name];
+
+	internal bool ModuleEnabled<T>() where T : Module
+		=> Modules[typeof(T).Name].Enabled;
 }

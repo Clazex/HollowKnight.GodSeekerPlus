@@ -2,7 +2,7 @@ namespace GodSeekerPlus.Modules;
 
 [Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
 internal sealed class UnlockRadiant : Module {
-	internal void Unlock(Action orig, BossStatue statue, ref BossStatue.Completion completion) {
+	internal static void Unlock(Action orig, BossStatue statue, ref BossStatue.Completion completion) {
 		if (completion.completedTier2) {
 			orig.Invoke();
 		} else {
