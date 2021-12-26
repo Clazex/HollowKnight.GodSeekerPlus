@@ -21,15 +21,15 @@ internal sealed class ForceArriveAnimation : Module {
 		orig(self);
 
 		if (
-			self.gameObject.name == "Dream Entry"
-			&& self.FsmName == "Control"
-			&& scenes.Contains(self.gameObject.scene.name)
+			self is {
+				gameObject: { name: "Dream Entry" },
+				FsmName: "Control"
+			} && scenes.Contains(self.gameObject.scene.name)
 		) {
 			self.ChangeTransition("First Boss? 1", "STATUE", "Hide Player");
 
-			FsmState stateFirstBoss = self.GetState("First Boss?");
-			stateFirstBoss.GetAction<GGCheckIfBossSequence>().falseEvent =
-				stateFirstBoss.GetAction<GGCheckIfFirstBossScene>().trueEvent;
+			self.GetAction<GGCheckIfBossSequence>("First Boss?", 0).falseEvent =
+				self.GetAction<GGCheckIfFirstBossScene>("First Boss?", 1).trueEvent;
 
 			Logger.LogDebug("Dream Entry FSM modified");
 		}

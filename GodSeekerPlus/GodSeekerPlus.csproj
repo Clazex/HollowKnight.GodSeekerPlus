@@ -76,8 +76,9 @@
 			<HintPath>$(HKModdingApi)/Newtonsoft.Json.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="Vasi">
-			<HintPath>$(HKModRefs)/Vasi/Vasi.dll</HintPath>
+		<Reference Include="Satchel">
+			<HintPath>$(HKModRefs)/Satchel/Satchel.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
 
@@ -91,9 +92,6 @@
 
 		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/README.md;$(SolutionDir)/README.zh.md;$(SolutionDir)/LICENSE" DestinationFolder="$(ProjectDir)/dist/tmp" />
 		<ZipDirectory SourceDirectory="$(ProjectDir)/dist/tmp" DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version).zip" />
-
-		<Copy SourceFiles="$(TargetDir)/Vasi.dll;$(TargetDir)/Vasi.pdb" DestinationFolder="$(ProjectDir)/dist/tmp" />
-		<ZipDirectory SourceDirectory="$(ProjectDir)/dist/tmp" DestinationFile="$(ProjectDir)/dist/$(TargetName)-v$(Version)-full.zip" />
 
 		<RemoveDir Directories="$(ProjectDir)/dist/tmp" />
 	</Target>

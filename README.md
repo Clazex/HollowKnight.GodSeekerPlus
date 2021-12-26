@@ -5,7 +5,7 @@
 A Hollow Knight mod to enhance your Godhome experience
 
 Compatible with `Hollow Knight` 1.5.
-**`Vasi` is required.**
+**`Satchel` is required.**
 
 ## Features
 

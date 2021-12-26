@@ -13,7 +13,8 @@ global using HutongGames.PlayMaker.Actions;
 
 global using Modding;
 
-global using Vasi;
+global using Satchel;
+global using Satchel.Futils;
 
 global using Module = GodSeekerPlus.Modules.Module;
 global using Logger = GodSeekerPlus.Util.Logger;
