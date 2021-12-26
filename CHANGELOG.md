@@ -1,5 +1,15 @@
 # Unreleased
 
+# [v0.14.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.13.2...v0.14.0) (2021-12-26)
+
+### Features
+
+* activate fury, add lifeblood, and add soul ([be7e0fe](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/be7e0fe5122edd3febf49fbc62b73dd69765fc49))
+
+### Performance Improvements
+
+* better hash calc ([e7155ff](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e7155ffcf0e92b94e575b864e7612bbad15342a8))
+
 # [v0.13.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.13.1...v0.13.2) (2021-12-24)
 
 ### Features
