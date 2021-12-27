@@ -19,6 +19,8 @@ internal sealed class AddSoul : Module {
 			);
 
 			HeroController.instance.StartCoroutine(UpdateHUD());
+
+			Logger.LogDebug("Soul added");
 		}
 	}
 

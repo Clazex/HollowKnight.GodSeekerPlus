@@ -16,5 +16,7 @@ internal sealed class AddLifeblood : Module {
 				EventRegister.SendEvent("ADD BLUE HEALTH");
 			}
 		}
+
+		Logger.LogDebug("Lifeblood added");
 	}
 }

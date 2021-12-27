@@ -20,6 +20,8 @@ internal sealed class ActivateFury : Module {
 
 			HeroController.instance.proxyFSM.SendEvent("HeroCtrl-HeroDamaged");
 			HeroController.instance.RelinquishControl();
+
+			Logger.LogDebug("Fury activated");
 		}
 	}
 }
