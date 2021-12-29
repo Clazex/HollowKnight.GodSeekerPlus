@@ -16,24 +16,16 @@ namespace GodSeekerPlus.Modules;
 internal sealed class DoorDefaultBegin : Module {
 	private ILHook hook = null;
 
-	private protected override void Load() {
-		hook = new(
-			typeof(BossDoorChallengeUI)
-				.GetMethod("ShowSequence", BindingFlags.Instance | BindingFlags.NonPublic)
-				.GetStateMachineTarget(),
-			RemoveSelection
-		);
+	private protected override void Load() => hook = new(
+		typeof(BossDoorChallengeUI)
+			.GetMethod("ShowSequence", BindingFlags.Instance | BindingFlags.NonPublic)
+			.GetStateMachineTarget(),
+		ChangeSelection
+	);
 
-		On.BossDoorChallengeUI.ShowSequence += AddSelection;
-	}
+	private protected override void Unload() => hook?.Dispose();
 
-	private protected override void Unload() {
-		hook?.Dispose();
-
-		On.BossDoorChallengeUI.ShowSequence -= AddSelection;
-	}
-
-	private void RemoveSelection(ILContext il) {
+	private void ChangeSelection(ILContext il) {
 		ILCursor cursor = new ILCursor(il).Goto(0);
 
 		//
@@ -62,13 +54,15 @@ internal sealed class DoorDefaultBegin : Module {
 			cursor.Remove();
 		}
 
+		// Load `self` (BossDoorChallengeUI)
+		cursor.Emit(OpCodes.Ldloc_1);
+		cursor.EmitDelegate(SelectBegin);
+
 		// Fix return
 		cursor.Emit(OpCodes.Ldc_I4_0);
 	}
 
-	private IEnumerator AddSelection(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
-		yield return orig(self);
-
+	private static void SelectBegin(BossDoorChallengeUI self) {
 		MenuButton beginBtn = ReflectionHelper
 			.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group")
 			.GetComponentsInChildren<MenuButton>()
