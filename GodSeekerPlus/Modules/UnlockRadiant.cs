@@ -1,5 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
+[Category("NewSaveQuickstart")]
 [DefaultEnabled]
 internal sealed class UnlockRadiant : Module {
 	internal static void Unlock(Action orig, BossStatue statue, ref BossStatue.Completion completion) {

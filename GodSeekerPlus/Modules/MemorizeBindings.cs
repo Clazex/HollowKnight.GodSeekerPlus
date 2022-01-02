@@ -3,6 +3,7 @@ using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
 namespace GodSeekerPlus.Modules;
 
+[Category("QoL")]
 [DefaultEnabled]
 internal sealed class MemorizeBindings : Module {
 	private protected override void Load() {

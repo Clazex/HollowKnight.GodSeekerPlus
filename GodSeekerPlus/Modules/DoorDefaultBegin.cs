@@ -12,6 +12,7 @@ using ReflectionHelper = Modding.ReflectionHelper;
 
 namespace GodSeekerPlus.Modules;
 
+[Category("QoL")]
 [DefaultEnabled]
 internal sealed class DoorDefaultBegin : Module {
 	private ILHook? hook = null;

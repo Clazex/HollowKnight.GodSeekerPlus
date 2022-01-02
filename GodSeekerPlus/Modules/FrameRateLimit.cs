@@ -2,6 +2,7 @@ using System.Threading;
 
 namespace GodSeekerPlus.Modules;
 
+[Category("Restrictions")]
 internal sealed class FrameRateLimit : Module {
 	private int time = default;
 

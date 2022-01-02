@@ -1,5 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
+[Category("BossChallenge")]
 internal sealed class AddLifeblood : Module {
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;

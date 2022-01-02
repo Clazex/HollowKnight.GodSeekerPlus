@@ -1,5 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
+[Category("BossChallenge")]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class ForceArriveAnimation : Module {
 	private static readonly string[] scenes = {

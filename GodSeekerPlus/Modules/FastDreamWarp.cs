@@ -1,5 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
+[Category("QoL")]
 [ToggleableLevel(ToggleableLevel.ReloadSave)]
 [DefaultEnabled]
 internal sealed class FastDreamWarp : Module {

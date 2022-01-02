@@ -1,5 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
+[Category("QoL")]
 [DefaultEnabled]
 internal sealed class CompleteLowerDifficulty : Module {
 	internal static void CompleteLower(string name, ref BossStatue.Completion completion) {

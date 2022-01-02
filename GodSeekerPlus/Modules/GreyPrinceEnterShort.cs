@@ -1,5 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
+[Category("QoL")]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class GreyPrinceEnterShort : Module {
