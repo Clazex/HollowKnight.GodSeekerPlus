@@ -1,3 +1,5 @@
+using GlobalEnums;
+
 using UnityEngine;
 
 namespace GodSeekerPlus.Modules;
@@ -24,7 +26,7 @@ internal sealed class AddSoul : Module {
 	}
 
 	private IEnumerator UpdateHUD() {
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitUntil(() => GameManager.instance.gameState == GameState.PLAYING);
 
 		GameCameras.instance.soulOrbFSM.SendEvent("MP GAIN SPA");
 		GameCameras.instance.soulVesselFSM.SendEvent("MP RESERVE UP");
