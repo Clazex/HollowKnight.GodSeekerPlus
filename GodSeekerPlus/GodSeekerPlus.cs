@@ -6,7 +6,7 @@ public sealed partial class GodSeekerPlus : Mod {
 
 	public override string GetVersion() => MiscUtil.GetVersion();
 
-	private readonly ModuleManager moduleManager = new();
+	private static ModuleManager? ModuleManager { get; set; }
 
 	public override void Initialize() {
 		if (Instance != null) {
@@ -16,15 +16,15 @@ public sealed partial class GodSeekerPlus : Mod {
 
 		Instance = this;
 
-		moduleManager.LoadModules();
+		ModuleManager = new();
 	}
 
 	public void Unload() {
-		moduleManager.UnloadModules();
+		ModuleManager?.Dispose();
 
 		Instance = null;
 	}
 
 	internal bool ModuleEnabled<T>() where T : Module
-		=> moduleManager.ModuleEnabled<T>();
+		=> ModuleManager?.ModuleEnabled<T>() ?? false;
 }

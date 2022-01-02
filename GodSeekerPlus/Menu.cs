@@ -17,9 +17,9 @@ public sealed partial class GodSeekerPlus : IMenuMod {
 		.Map(name => new MenuEntry(
 			L11nUtil.Localize($"Modules/{name}"),
 			States,
-			L11nUtil.Localize($"ToggleableLevel/{moduleManager.Modules[name].ToggleableLevel}"),
-			(val) => moduleManager.Modules[name].Enabled = Convert.ToBoolean(val),
-			() => Convert.ToInt32(moduleManager.Modules[name].Enabled)
+			L11nUtil.Localize($"ToggleableLevel/{ModuleManager!.Modules[name].ToggleableLevel}"),
+			(val) => ModuleManager!.Modules[name].Enabled = Convert.ToBoolean(val),
+			() => Convert.ToInt32(ModuleManager!.Modules[name].Enabled)
 		))
 		.ToList();
 }

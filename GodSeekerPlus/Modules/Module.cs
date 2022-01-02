@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-internal abstract class Module {
+internal abstract class Module : IDisposable {
 	#region Attribute Cache
 
 	private Type? type = null;
@@ -13,9 +13,7 @@ internal abstract class Module {
 
 	internal Module() => Update();
 
-	~Module() {
-		Disable();
-	}
+	public void Dispose() => Disable();
 
 	private bool Loaded { get; set; } = false;
 
