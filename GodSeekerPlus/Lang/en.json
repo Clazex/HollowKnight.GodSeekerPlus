@@ -1,4 +1,6 @@
 {
+	"ModName": "God Seeker +",
+	"ToggleButtonDesc": "Toggle all effects of this mod",
 	"ToggleableLevel/AnyTime": "",
 	"ToggleableLevel/ChangeScene": "Change scene to apply change",
 	"ToggleableLevel/ReloadSave": "Reload the save to apply change",
