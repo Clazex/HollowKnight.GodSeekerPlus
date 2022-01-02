@@ -15,16 +15,16 @@ public sealed partial class GodSeekerPlus : IMenuMod {
 	List<MenuEntry> IMenuMod.GetMenuData(MenuEntry? toggleButton) => ModuleHelper
 		.GetModuleNames()
 		.Map(name => new MenuEntry(
-			L11nUtil.Localize($"Modules/{name}"),
+			$"Modules/{name}".Localize(),
 			States,
-			L11nUtil.Localize($"ToggleableLevel/{ModuleManager!.Modules[name].ToggleableLevel}"),
+			$"ToggleableLevel/{ModuleManager!.Modules[name].ToggleableLevel}".Localize(),
 			(val) => ModuleManager!.Modules[name].Enabled = Convert.ToBoolean(val),
 			() => Convert.ToInt32(ModuleManager!.Modules[name].Enabled)
 		))
 		.Prepend((MenuEntry) toggleButton! with {
-			Name = L11nUtil.Localize("ModName"),
+			Name = "ModName".Localize(),
 			Values = States,
-			Description = L11nUtil.Localize("ToggleButtonDesc")
+			Description = "ToggleButtonDesc".Localize()
 		})
 		.ToList();
 }

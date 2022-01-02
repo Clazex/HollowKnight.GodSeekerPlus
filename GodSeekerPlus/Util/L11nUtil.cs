@@ -51,6 +51,6 @@ internal static class L11nUtil {
 
 	private static Dictionary<string, Dictionary<string, string>> Dict { get; } = ReadLangs();
 
-	internal static string Localize(string key) =>
+	internal static string Localize(this string key) =>
 		MiscUtil.Try(() => Dict[CurrentLang][key], key);
 }
