@@ -8,9 +8,9 @@ public sealed partial class GodSeekerPlus : IMenuMod {
 	bool IMenuMod.ToggleButtonInsideMenu => false;
 
 	private static string[] States => new string[] {
-			Lang.Get("MOH_OFF", "MainMenu"),
-			Lang.Get("MOH_ON", "MainMenu")
-		};
+		Lang.Get("MOH_OFF", "MainMenu"),
+		Lang.Get("MOH_ON", "MainMenu")
+	};
 
 	List<MenuEntry> IMenuMod.GetMenuData(MenuEntry? _) => ModuleHelper
 		.GetModuleNames()
