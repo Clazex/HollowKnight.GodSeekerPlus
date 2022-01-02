@@ -25,13 +25,13 @@ internal sealed class BossChallengeUIEdit : Module {
 			BossStatue.Completion completion =
 				MiscUtil.GetStatueCompletion(statue);
 
-			if (GodSeekerPlus.Instance.ModuleEnabled<UnlockRadiant>()) {
+			if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<UnlockRadiant>()) {
 				UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
 			} else {
 				invokeOrig();
 			}
 
-			if (GodSeekerPlus.Instance.ModuleEnabled<CompleteLowerDifficulty>()) {
+			if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<CompleteLowerDifficulty>()) {
 				CompleteLowerDifficulty.CompleteLower(statue.name, ref completion);
 			}
 

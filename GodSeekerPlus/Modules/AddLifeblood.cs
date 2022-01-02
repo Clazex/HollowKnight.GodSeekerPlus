@@ -11,7 +11,7 @@ internal sealed class AddLifeblood : Module {
 		yield return orig(self);
 
 		if (!BossSequenceController.IsInSequence) {
-			for (int i = 0; i < GodSeekerPlus.Instance.GlobalSettings.lifebloodAmount; i++) {
+			for (int i = 0; i < GodSeekerPlus.UnsafeInstance.GlobalSettings.lifebloodAmount; i++) {
 				EventRegister.SendEvent("ADD BLUE HEALTH");
 			}
 		}

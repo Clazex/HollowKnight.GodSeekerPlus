@@ -3,9 +3,9 @@ namespace GodSeekerPlus.Modules;
 internal abstract class Module {
 	#region Attribute Cache
 
-	private Type type = null;
-	private string name = null;
-	private string category = null;
+	private Type? type = null;
+	private string? name = null;
+	private string? category = null;
 	private ToggleableLevel? toggleableLevel = null;
 
 	#endregion
@@ -40,9 +40,9 @@ internal abstract class Module {
 	#region State Transitions
 
 	internal bool Enabled {
-		get => GodSeekerPlus.Instance.GlobalSettings.modules[Name];
+		get => GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name];
 		set {
-			GodSeekerPlus.Instance.GlobalSettings.modules[Name] = value;
+			GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name] = value;
 			Update();
 		}
 	}

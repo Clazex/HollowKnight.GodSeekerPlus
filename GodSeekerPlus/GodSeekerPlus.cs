@@ -1,7 +1,8 @@
 namespace GodSeekerPlus;
 
 public sealed partial class GodSeekerPlus : Mod {
-	public static GodSeekerPlus Instance { get; private set; }
+	public static GodSeekerPlus? Instance { get; private set; }
+	public static GodSeekerPlus UnsafeInstance => Instance!;
 
 	public override string GetVersion() => MiscUtil.GetVersion();
 

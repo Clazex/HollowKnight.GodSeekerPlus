@@ -18,19 +18,19 @@ internal sealed class MemorizeBindings : Module {
 	private IEnumerator ApplyBindingStates(orig_ShowSequence orig, BossDoorChallengeUI self) {
 		yield return orig(self);
 
-		SetButtonState(self.boundNailButton, GodSeekerPlus.Instance.LocalSettings.boundNail);
-		SetButtonState(self.boundHeartButton, GodSeekerPlus.Instance.LocalSettings.boundHeart);
-		SetButtonState(self.boundCharmsButton, GodSeekerPlus.Instance.LocalSettings.boundCharms);
-		SetButtonState(self.boundSoulButton, GodSeekerPlus.Instance.LocalSettings.boundSoul);
+		SetButtonState(self.boundNailButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundNail);
+		SetButtonState(self.boundHeartButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundHeart);
+		SetButtonState(self.boundCharmsButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundCharms);
+		SetButtonState(self.boundSoulButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundSoul);
 
 		Logger.LogDebug("Binding states applied");
 	}
 
 	private IEnumerator RecordBindingStates(orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
-		GodSeekerPlus.Instance.LocalSettings.boundNail = self.boundNailButton.Selected;
-		GodSeekerPlus.Instance.LocalSettings.boundHeart = self.boundHeartButton.Selected;
-		GodSeekerPlus.Instance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;
-		GodSeekerPlus.Instance.LocalSettings.boundSoul = self.boundSoulButton.Selected;
+		GodSeekerPlus.UnsafeInstance.LocalSettings.boundNail = self.boundNailButton.Selected;
+		GodSeekerPlus.UnsafeInstance.LocalSettings.boundHeart = self.boundHeartButton.Selected;
+		GodSeekerPlus.UnsafeInstance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;
+		GodSeekerPlus.UnsafeInstance.LocalSettings.boundSoul = self.boundSoulButton.Selected;
 
 		Logger.LogDebug("Binding states recorded");
 

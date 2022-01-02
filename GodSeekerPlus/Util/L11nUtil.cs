@@ -43,7 +43,7 @@ internal static class L11nUtil {
 		.Reduce(
 			(dict, tuple) => {
 				Logger.LogDebug($"Loaded localization for lang: {tuple.lang}");
-				dict[tuple.lang] = tuple.table;
+				dict[tuple.lang] = tuple.table!;
 				return dict;
 			},
 			new Dictionary<string, Dictionary<string, string>>()

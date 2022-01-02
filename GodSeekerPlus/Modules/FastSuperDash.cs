@@ -26,7 +26,7 @@ internal sealed class FastSuperDash : Module {
 			});
 			self.AddAction(stateName, new FloatMultiply() {
 				floatVariable = self.GetVariable<FsmFloat>("Current SD Speed"),
-				multiplyBy = GodSeekerPlus.Instance.GlobalSettings.fastSuperDashSpeedMultiplier
+				multiplyBy = GodSeekerPlus.UnsafeInstance.GlobalSettings.fastSuperDashSpeedMultiplier
 			});
 
 			self.ChangeTransition("Left", FsmEvent.Finished.Name, stateName);

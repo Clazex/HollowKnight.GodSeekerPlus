@@ -14,7 +14,7 @@ namespace GodSeekerPlus.Modules;
 
 [DefaultEnabled]
 internal sealed class DoorDefaultBegin : Module {
-	private ILHook hook = null;
+	private ILHook? hook = null;
 
 	private protected override void Load() => hook = new(
 		typeof(BossDoorChallengeUI)

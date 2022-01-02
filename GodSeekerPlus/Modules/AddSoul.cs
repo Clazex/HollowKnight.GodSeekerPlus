@@ -16,7 +16,7 @@ internal sealed class AddSoul : Module {
 
 		if (!BossSequenceController.IsInSequence) {
 			HeroController.instance.AddMPCharge(
-				GodSeekerPlus.Instance.GlobalSettings.soulAmount
+				GodSeekerPlus.UnsafeInstance.GlobalSettings.soulAmount
 			);
 
 			HeroController.instance.StartCoroutine(UpdateHUD());
