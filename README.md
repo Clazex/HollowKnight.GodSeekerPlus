@@ -9,24 +9,31 @@ Compatible with `Hollow Knight` 1.5.
 
 ## Features
 
-- **Activate Fury**: Activate Fury of the Fallen on entry of boss scenes by setting health to 1.
-- **Add Lifeblood**: Add configured amount of lifeblood on entry of Hall of Gods boss fight.
-- **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
-- **Carefree Melody Fix**: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
-- **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
-- **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
-- **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
-- **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
-- **Force Arrive Animation**: Force the arrive animation to be played when fighting Vengefly King, Xero, Hive Knight and Enraged Guardian in Hall of Gods.
-- **Force Overcharm**: Force entering the overcharmed state.
-- **Frame Rate Limit**: Create a lag in every in-game frame.
-- **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
-- **Halve Damage**: Halve all the damage taken.
-- **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
-- **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
-- **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
-- **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
-- **Unlock Radiant**: Auto unlock Radiant difficulty for all boss statues.
+- **Boss Challenge**:
+  + **Activate Fury**: Activate Fury of the Fallen on entry of boss scenes by setting health to 1.
+  + **Add Lifeblood**: Add configured amount of lifeblood on entry of Hall of Gods boss fight.
+  + **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
+  + **Force Arrive Animation**: Force the arrive animation to be played when fighting Vengefly King, Xero, Hive Knight and Enraged Guardian in Hall of Gods.
+  + **Halve Damage**: Halve all the damage taken.
+  + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
+
+- **New Save Quickstart**:
+  + **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
+  + **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
+  + **Unlock Radiant**: Auto unlock Radiant difficulty for all boss statues.
+
+- **Quality of Life**:
+  + **Carefree Melody Fix**: Remove the Grimmchild mistakenly spawned when equipping Carefree Melody not acquired in normal means. The effect is permanent.
+  + **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
+  + **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
+  + **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
+  + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
+  + **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
+  + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
+
+- **Restrictions**:
+  + **Force Overcharm**: Force entering the overcharmed state.
+  + **Frame Rate Limit**: Create a lag in every in-game frame.
 
 All features can be toggled in-game.
 
