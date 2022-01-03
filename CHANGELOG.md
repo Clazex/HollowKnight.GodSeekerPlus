@@ -34,7 +34,7 @@
 
 * typo ([4520047](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4520047948b74ac953f81fdc939458272afe64b2))
 
-# [v0.13.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.12.1...v0.13.0) (2021-12-09)
+# [DEPRECATED] [v0.13.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.12.1...v0.13.0) (2021-12-09)
 
 ### Features
 
