@@ -1,5 +1,17 @@
 # Unreleased
 
+# [v0.15.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.14.0...v0.15.0) (2022-01-03)
+
+### Bug Fixes
+
+* disable hidden module toggle ([6c8216f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/6c8216f0ed13f56590f1782e9ed6bca63e5db486))
+
+### Features
+
+* categorized menu ([ae7707e](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ae7707ea234cd8eab288386c74f0e1d387306935))
+* localize menu ([c173deb](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/c173deba046fb645b6147e8833d1cc9e8fc56499))
+* mod toggle ([f29d8e4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f29d8e4d5c85586b31c943b5a6643db19e53ef9b))
+
 # [v0.14.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.13.2...v0.14.0) (2021-12-26)
 
 ### Features
