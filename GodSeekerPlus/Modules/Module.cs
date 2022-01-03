@@ -7,6 +7,7 @@ internal abstract class Module : IDisposable {
 	private string? name = null;
 	private string? category = null;
 	private ToggleableLevel? toggleableLevel = null;
+	private bool? hidden = null;
 
 	#endregion
 
@@ -32,16 +33,20 @@ internal abstract class Module : IDisposable {
 		Type.GetCustomAttribute<ToggleableLevelAttribute>()?.ToggleableLevel
 		?? ToggleableLevel.AnyTime;
 
+	internal bool Hidden => hidden ??= Type.GetCustomAttribute<HiddenAttribute>() != null;
+
 	#endregion
 
 
 	#region State Transitions
 
 	internal bool Enabled {
-		get => GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name];
+		get => Hidden || GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name];
 		set {
-			GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name] = value;
-			Update();
+			if (!Hidden) {
+				GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name] = value;
+				Update();
+			}
 		}
 	}
 
