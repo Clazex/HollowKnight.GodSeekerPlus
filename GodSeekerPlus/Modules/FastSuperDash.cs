@@ -1,6 +1,7 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.ReloadSave, defaultEnabled = true)]
+[ToggleableLevel(ToggleableLevel.ReloadSave)]
+[DefaultEnabled]
 internal sealed class FastSuperDash : Module {
 	private const string stateName = "GSP Workshop Speed Buff";
 

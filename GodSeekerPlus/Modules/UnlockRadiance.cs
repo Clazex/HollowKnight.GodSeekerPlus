@@ -1,6 +1,7 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
+[ToggleableLevel(ToggleableLevel.ReloadSave)]
+[DefaultEnabled]
 internal sealed class UnlockRadiance : Module {
 	private const string sceneName = "Radiance Boss Scene";
 

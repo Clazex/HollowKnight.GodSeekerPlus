@@ -1,5 +1,6 @@
 {
 	"ToggleableLevel/AnyTime": "",
+	"ToggleableLevel/ChangeScene": "Change scene to apply change",
 	"ToggleableLevel/ReloadSave": "Reload the save to apply change",
 	"ToggleableLevel/RestartGame": "Restart the game to apply change",
 	"Modules/ActivateFury": "Activate Fury",

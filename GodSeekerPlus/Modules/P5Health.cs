@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = false)]
+[ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class P5Health : Module {
 	private static readonly Type scalerType = typeof(HealthManager)
 		.GetNestedType("HPScaleGG", BindingFlags.NonPublic);

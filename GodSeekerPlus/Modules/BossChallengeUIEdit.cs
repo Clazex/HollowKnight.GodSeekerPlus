@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, hidden = true)]
+[Hidden]
 internal sealed class BossChallengeUIEdit : Module {
 	private protected override void Load() =>
 		On.BossChallengeUI.Setup += HookSetup;

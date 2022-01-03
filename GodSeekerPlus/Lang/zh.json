@@ -1,5 +1,6 @@
 {
 	"ToggleableLevel/AnyTime": "",
+	"ToggleableLevel/ChangeScene": "切换场景以生效",
 	"ToggleableLevel/ReloadSave": "重新加载存档以生效",
 	"ToggleableLevel/RestartGame": "重启游戏以生效",
   	"Modules/ActivateFury": "激活亡者之怒",

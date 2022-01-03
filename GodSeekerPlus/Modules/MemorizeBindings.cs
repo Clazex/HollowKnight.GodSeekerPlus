@@ -3,7 +3,7 @@ using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
+[DefaultEnabled]
 internal sealed class MemorizeBindings : Module {
 	private protected override void Load() {
 		On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;

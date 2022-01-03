@@ -1,6 +1,7 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
+[ToggleableLevel(ToggleableLevel.ReloadSave)]
+[DefaultEnabled]
 internal sealed class UnlockEternalOrdeal : Module {
 	private protected override void Load() =>
 		On.HeroController.Start += SetOrdealUnlocked;

@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = true)]
+[DefaultEnabled]
 internal sealed class CompleteLowerDifficulty : Module {
 	internal static void CompleteLower(string name, ref BossStatue.Completion completion) {
 		if ((completion.completedTier2 || completion.completedTier3) && !completion.completedTier1) {

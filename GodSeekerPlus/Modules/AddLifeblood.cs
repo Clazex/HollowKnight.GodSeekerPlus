@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = false)]
 internal sealed class AddLifeblood : Module {
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;

@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-[Module(toggleableLevel = ToggleableLevel.AnyTime, defaultEnabled = false)]
+[ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class ForceArriveAnimation : Module {
 	private static readonly string[] scenes = {
 		"GG_Vengefly",
