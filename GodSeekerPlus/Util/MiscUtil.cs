@@ -4,6 +4,8 @@ using System.IO;
 using System.Security.Cryptography;
 #endif
 
+using UnityEngine;
+
 namespace GodSeekerPlus.Util;
 
 internal static class MiscUtil {
@@ -35,6 +37,27 @@ internal static class MiscUtil {
 		} catch {
 			return @default;
 		}
+	}
+
+
+	internal static GameObject Child(this GameObject self, string name) =>
+		self.transform.Find(name).gameObject;
+
+	internal static GameObject Child(this GameObject self, params string[] path) =>
+		path.Reduce((tf, name) => tf.Find(name), self.transform).gameObject;
+
+	internal static GameObject? ChildOrDefault(this GameObject self, params string[] path) {
+		Transform? tf = self.transform;
+
+		foreach (string name in path) {
+			tf = tf.Find(name);
+
+			if (tf == null) {
+				break;
+			}
+		}
+
+		return tf?.gameObject;
 	}
 
 

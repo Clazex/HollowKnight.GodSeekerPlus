@@ -1,5 +1,6 @@
 {
 	"ModName": "寻神者 +",
+	"Settings": "设置",
 	"ToggleButtonDesc": "开关本模组的全部效果",
 	"ToggleableLevel/AnyTime": "",
 	"ToggleableLevel/ChangeScene": "切换场景以生效",
