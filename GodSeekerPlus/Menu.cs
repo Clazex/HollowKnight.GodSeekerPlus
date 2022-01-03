@@ -1,30 +1,60 @@
-using static Modding.IMenuMod;
+using Satchel.BetterMenus;
 
 using Lang = Language.Language;
 
 namespace GodSeekerPlus;
 
-public sealed partial class GodSeekerPlus : IMenuMod {
-	bool IMenuMod.ToggleButtonInsideMenu => true;
+public sealed partial class GodSeekerPlus : ICustomMenuMod {
+	bool ICustomMenuMod.ToggleButtonInsideMenu => true;
 
 	private static string[] States => new string[] {
 		Lang.Get("MOH_OFF", "MainMenu"),
 		Lang.Get("MOH_ON", "MainMenu")
 	};
 
-	List<MenuEntry> IMenuMod.GetMenuData(MenuEntry? toggleButton) => ModuleHelper
-		.GetModuleNames()
-		.Map(name => new MenuEntry(
-			$"Modules/{name}".Localize(),
+	public MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
+		var menu = new Menu("ModName".Localize(), new[] {
+			toggleDelegates!.Value.CreateToggle(
+				"ModName".Localize(),
+				"ToggleButtonDesc".Localize(),
+				States[1],
+				States[0]
+			)
+		});
+
+		ModuleManager!
+			.Modules
+			.Values
+			.Reduce((dict, module) => {
+				if (!module.Hidden) {
+					if (!dict.ContainsKey(module.Category)) {
+						dict[module.Category] = new List<Module>();
+					}
+
+					dict[module.Category].Add(module);
+				}
+
+				return dict;
+			}, new Dictionary<string, List<Module>>())
+			.Map(pair => Blueprints.NavigateToMenu(
+				$"Categories/{pair.Key}".Localize(),
+				"",
+				() => BuildSubMenu(menu.menuScreen, pair.Key, pair.Value)
+			))
+			.ForEach(menu.AddElement);
+
+		return menu.GetMenuScreen(modListMenu);
+	}
+
+	private MenuScreen BuildSubMenu(MenuScreen parent, string name, IEnumerable<Module> modules) => new Menu(
+		$"Categories/{name}".Localize(),
+		modules.Map(module => new HorizontalOption(
+			$"Modules/{module.Name}".Localize(),
+			$"ToggleableLevel/{module.ToggleableLevel}".Localize(),
 			States,
-			$"ToggleableLevel/{ModuleManager!.Modules[name].ToggleableLevel}".Localize(),
-			(val) => ModuleManager!.Modules[name].Enabled = Convert.ToBoolean(val),
-			() => Convert.ToInt32(ModuleManager!.Modules[name].Enabled)
+			(val) => module.Enabled = Convert.ToBoolean(val),
+			() => Convert.ToInt32(module.Enabled)
 		))
-		.Prepend((MenuEntry) toggleButton! with {
-			Name = "ModName".Localize(),
-			Values = States,
-			Description = "ToggleButtonDesc".Localize()
-		})
-		.ToList();
+		.ToArray()
+	).GetMenuScreen(parent);
 }
