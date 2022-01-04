@@ -19,23 +19,27 @@ internal sealed class FastSuperDash : Module {
 			gameObject: { name: "Knight" },
 			FsmName: "Superdash"
 		}) {
-			self.AddState(stateName);
-
-			self.AddAction(stateName, new CheckSceneName() {
-				sceneName = "GG_Workshop",
-				notEqualEvent = FsmEvent.Finished
-			});
-			self.AddAction(stateName, new FloatMultiply() {
-				floatVariable = self.GetVariable<FsmFloat>("Current SD Speed"),
-				multiplyBy = GodSeekerPlus.UnsafeInstance.GlobalSettings.fastSuperDashSpeedMultiplier
-			});
-
-			self.ChangeTransition("Left", FsmEvent.Finished.Name, stateName);
-			self.ChangeTransition("Right", FsmEvent.Finished.Name, stateName);
-
-			self.AddTransition(stateName, FsmEvent.Finished.Name, "Dash Start");
+			ModifySuperDashFSM(self);
 
 			Logger.LogDebug("Superdash FSM modified");
 		}
+	}
+
+	private static void ModifySuperDashFSM(PlayMakerFSM fsm) {
+		fsm.AddState(stateName);
+
+		fsm.AddAction(stateName, new CheckSceneName() {
+			sceneName = "GG_Workshop",
+			notEqualEvent = FsmEvent.Finished
+		});
+		fsm.AddAction(stateName, new FloatMultiply() {
+			floatVariable = fsm.GetVariable<FsmFloat>("Current SD Speed"),
+			multiplyBy = GodSeekerPlus.UnsafeInstance.GlobalSettings.fastSuperDashSpeedMultiplier
+		});
+
+		fsm.ChangeTransition("Left", FsmEvent.Finished.Name, stateName);
+		fsm.ChangeTransition("Right", FsmEvent.Finished.Name, stateName);
+
+		fsm.AddTransition(stateName, FsmEvent.Finished.Name, "Dash Start");
 	}
 }

@@ -27,12 +27,16 @@ internal sealed class ForceArriveAnimation : Module {
 				FsmName: "Control"
 			} && scenes.Contains(self.gameObject.scene.name)
 		) {
-			self.ChangeTransition("First Boss? 1", "STATUE", "Hide Player");
-
-			self.GetAction<GGCheckIfBossSequence>("First Boss?", 0).falseEvent =
-				self.GetAction<GGCheckIfFirstBossScene>("First Boss?", 1).trueEvent;
+			ModifyDreamEntryFSM(self);
 
 			Logger.LogDebug("Dream Entry FSM modified");
 		}
+	}
+
+	private static void ModifyDreamEntryFSM(PlayMakerFSM fsm) {
+		fsm.ChangeTransition("First Boss? 1", "STATUE", "Hide Player");
+
+		fsm.GetAction<GGCheckIfBossSequence>("First Boss?", 0).falseEvent =
+			fsm.GetAction<GGCheckIfFirstBossScene>("First Boss?", 1).trueEvent;
 	}
 }

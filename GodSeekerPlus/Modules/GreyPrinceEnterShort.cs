@@ -17,9 +17,12 @@ internal sealed class GreyPrinceEnterShort : Module {
 			gameObject: { name: "Grey Prince" },
 			FsmName: "Control"
 		}) {
-			self.ChangeTransition("Enter 1", FsmEvent.Finished.Name, "Enter Short");
+			ModifyGPFSM(self);
 
 			Logger.LogDebug("Grey Prince FSM modified");
 		}
 	}
+
+	private static void ModifyGPFSM(PlayMakerFSM fsm) =>
+		fsm.ChangeTransition("Enter 1", FsmEvent.Finished.Name, "Enter Short");
 }

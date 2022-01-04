@@ -17,12 +17,15 @@ internal sealed class FastDreamWarp : Module {
 			gameObject: { name: "Knight" },
 			FsmName: "Dream Nail"
 		}) {
-			self.InsertAction("Warp Charge", new GGCheckIfBossScene {
-				// If in boss scene, fire CHARGED event immediately
-				bossSceneEvent = self.GetAction<Wait>("Warp Charge", 0).finishEvent,
-			}, 0);
+			ModifyDreamNailFSM(self);
 
 			Logger.LogDebug("Dream Warp FSM modified");
 		}
 	}
+
+	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) =>
+		fsm.InsertAction("Warp Charge", new GGCheckIfBossScene {
+			// If in boss scene, fire CHARGED event immediately
+			bossSceneEvent = fsm.GetAction<Wait>("Warp Charge", 0).finishEvent,
+		}, 0);
 }
