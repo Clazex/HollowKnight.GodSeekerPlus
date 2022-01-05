@@ -5,30 +5,41 @@ namespace GodSeekerPlus.Modules;
 
 [Hidden]
 internal sealed class LocalizeMenu : Module {
+	private Coroutine? coroutine = null;
+
 	private protected override void Load() =>
-		GameManager.instance.StartCoroutine(EditText());
+		coroutine = GameManager.instance.StartCoroutine(WaitForTitle());
 
-	private IEnumerator EditText() {
-		GameObject? btn = null;
-		string btnName = $"{GodSeekerPlus.UnsafeInstance.GetName()}_Settings";
+	private protected override void Unload() {
+		GameManager.instance.StopCoroutine(coroutine);
+		UIManager.EditMenus -= EditText;
+	}
 
-		yield return new WaitUntil(() => (btn = UIManager
+	private IEnumerator WaitForTitle() {
+		yield return new WaitUntil(() => GameObject.Find("LogoTitle") != null);
+
+		UIManager.EditMenus += EditText;
+	}
+
+	private static void EditText() {
+		GameObject btn = UIManager
 			.instance
 			.UICanvas
 			.gameObject
-			.ChildOrDefault(
+			.Child(
 				"ModListMenu",
 				"Content",
 				"ScrollMask",
 				"ScrollingPane",
-				btnName
-			)) != null
-		);
+				$"{GodSeekerPlus.UnsafeInstance.GetName()}_Settings"
+			);
 
-		btn!.Child("Label").GetComponent<Text>().text =
+		btn.Child("Label").GetComponent<Text>().text =
 			"ModName".Localize() + ' ' + "Settings".Localize();
 
-		btn!.Child("Description").GetComponent<Text>().text =
+		btn.Child("Description").GetComponent<Text>().text =
 			'v' + GodSeekerPlus.UnsafeInstance.GetVersion();
+
+		Logger.LogDebug("Menu localized");
 	}
 }
