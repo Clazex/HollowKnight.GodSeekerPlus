@@ -1,5 +1,15 @@
 # Unreleased
 
+# [v0.15.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.15.0...v0.15.1) (2022-01-06)
+
+### Bug Fixes
+
+* call localize every time ([a0e828a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a0e828ac792dbd12cc15b3771731d18e6f256565))
+
+### Features
+
+* rewrite halve damage to suppress multi-damage effect ([38d45b4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/38d45b4d43a50e6602cd624a1d80d6e2b587d06b))
+
 # [v0.15.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.14.0...v0.15.0) (2022-01-03)
 
 ### Bug Fixes
