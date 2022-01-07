@@ -25,21 +25,13 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 		ModuleManager!
 			.Modules
 			.Values
-			.Reduce((dict, module) => {
-				if (!module.Hidden) {
-					if (!dict.ContainsKey(module.Category)) {
-						dict[module.Category] = new List<Module>();
-					}
-
-					dict[module.Category].Add(module);
-				}
-
-				return dict;
-			}, new Dictionary<string, List<Module>>())
-			.Map(pair => Blueprints.NavigateToMenu(
-				$"Categories/{pair.Key}".Localize(),
+			.Filter(module => !module.Hidden)
+			.GroupBy(module => module.Category)
+			.OrderBy(group => group.Key)
+			.Map(group => Blueprints.NavigateToMenu(
+				$"Categories/{group.Key}".Localize(),
 				"",
-				() => BuildSubMenu(menu.menuScreen, pair.Key, pair.Value)
+				() => BuildSubMenu(menu.menuScreen, group.Key, group)
 			))
 			.ForEach(menu.AddElement);
 
