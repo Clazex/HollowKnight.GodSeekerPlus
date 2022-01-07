@@ -1,6 +1,6 @@
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.QoL;
 
-[Category("QoL")]
+[Category(nameof(QoL))]
 [DefaultEnabled]
 internal sealed class CarefreeMelodyFix : Module {
 	private protected override void Load() =>

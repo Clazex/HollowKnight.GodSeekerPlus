@@ -2,9 +2,9 @@ using GlobalEnums;
 
 using UnityEngine;
 
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category("BossChallenge")]
+[Category(nameof(BossChallenge))]
 internal sealed class AddSoul : Module {
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;

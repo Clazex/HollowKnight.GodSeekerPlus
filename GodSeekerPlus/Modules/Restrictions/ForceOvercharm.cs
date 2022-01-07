@@ -1,6 +1,6 @@
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.Restrictions;
 
-[Category("Restrictions")]
+[Category(nameof(Restrictions))]
 internal sealed class ForceOvercharm : Module {
 	private protected override void Load() =>
 		ModHooks.CharmUpdateHook += DoOvercharm;

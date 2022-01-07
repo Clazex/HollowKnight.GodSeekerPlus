@@ -1,6 +1,6 @@
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.NewSaveQuickstart;
 
-[Category("NewSaveQuickstart")]
+[Category(nameof(NewSaveQuickstart))]
 [ToggleableLevel(ToggleableLevel.ReloadSave)]
 [DefaultEnabled]
 internal sealed class UnlockEternalOrdeal : Module {

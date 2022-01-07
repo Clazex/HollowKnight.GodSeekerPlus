@@ -1,6 +1,6 @@
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category("BossChallenge")]
+[Category(nameof(BossChallenge))]
 internal sealed class ActivateFury : Module {
 	private protected override void Load() =>
 		On.BossSceneController.Start += Activate;

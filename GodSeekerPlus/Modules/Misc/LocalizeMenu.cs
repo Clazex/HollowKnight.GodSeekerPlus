@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.Misc;
 
 [Hidden]
 internal sealed class LocalizeMenu : Module {

@@ -1,6 +1,6 @@
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.QoL;
 
-[Category("QoL")]
+[Category(nameof(QoL))]
 [ToggleableLevel(ToggleableLevel.ReloadSave)]
 [DefaultEnabled]
 internal sealed class FastSuperDash : Module {

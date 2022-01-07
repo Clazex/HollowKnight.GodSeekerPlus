@@ -1,9 +1,9 @@
 using orig_HideSequence = On.BossDoorChallengeUI.orig_HideSequence;
 using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
 
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.QoL;
 
-[Category("QoL")]
+[Category(nameof(QoL))]
 [DefaultEnabled]
 internal sealed class MemorizeBindings : Module {
 	private protected override void Load() {

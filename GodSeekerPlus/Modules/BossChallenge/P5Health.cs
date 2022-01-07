@@ -1,6 +1,6 @@
-namespace GodSeekerPlus.Modules;
+namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category("BossChallenge")]
+[Category(nameof(BossChallenge))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class P5Health : Module {
 	private static readonly Type scalerType = typeof(HealthManager)
