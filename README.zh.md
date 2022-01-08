@@ -34,6 +34,9 @@
 - **限制**：
   + **强制护符过载**：强制进入护符过载状态。
   + **帧率限制**：在游戏内的每帧添加卡顿。
+  + **禁用骨钉攻击**：禁用普通骨钉攻击。
+  + **取消骨钉伤害**：取消骨钉攻击伤害，包括骨钉技艺。
+  + **取消法术伤害**：取消法术攻击伤害，包括锋利之影。
 
 所有功能均可在游戏中开启或关闭。
 
@@ -54,6 +57,9 @@
   + `GreyPrinceEnterShort` (`Boolean`)：是否启用 `灰色王子短入场` 功能。默认为 `true`。
   + `HalveDamage` (`Boolean`)：是否启用 `伤害减半` 功能。默认为 `false`。
   + `MemorizeBindings` (`Boolean`)：是否启用 `记住束缚` 功能。默认为 `true`。
+  + `NoNailAttack*` (`Boolean`)：是否启用 `禁用骨钉攻击` 功能。默认为 `false`。
+  + `NoNailDamage*` (`Boolean`)：是否启用 `取消骨钉伤害` 功能。默认为 `false`。
+  + `NoSpellDamage*` (`Boolean`)：是否启用 `取消法术伤害` 功能。默认为 `false`。
   + `P5Health` (`Boolean`)：是否启用 `五门血量` 功能。默认为 `false`。
   + `UnlockEternalOrdeal` (`Boolean`)：是否启用 `解锁无尽折磨` 功能。默认为 `true`。
   + `UnlockRadiance` (`Boolean`)：是否启用 `解锁辐光` 功能。默认为 `true`。

@@ -34,6 +34,9 @@ Compatible with `Hollow Knight` 1.5.
 - **Restrictions**:
   + **Force Overcharm**: Force entering the overcharmed state.
   + **Frame Rate Limit**: Create a lag in every in-game frame.
+  + **No Nail Attack**: Disable normal nail attack.
+  + **No Nail Damage**: Remove damage from nail attacks, including nail arts.
+  + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
 
 All features can be toggled in-game.
 
@@ -54,6 +57,9 @@ All features can be toggled in-game.
   + `GreyPrinceEnterShort` (`Boolean`): Whether to enable the Grey Prince Enter Short feature. Defaults to `true`.
   + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
   + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
+  + `NoNailAttack*` (`Boolean`): Whether to enable the No Nail Attack feature. Defaults to `false`.
+  + `NoNailDamage*` (`Boolean`): Whether to enable the No Nail Damage feature. Defaults to `false`.
+  + `NoSpellDamage*` (`Boolean`): Whether to enable the No Spell Damage feature. Defaults to `false`.
   + `P5Health` (`Boolean`): Whether to enable the P5 Health feature. Defaults to `false`.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
   + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
