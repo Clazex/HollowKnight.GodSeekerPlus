@@ -7,6 +7,7 @@
 	"ToggleableLevel/ReloadSave": "重新加载存档以生效",
 	"ToggleableLevel/RestartGame": "重启游戏以生效",
 	"Categories/BossChallenge": "Boss 挑战",
+	"Categories/Misc": "杂项",
 	"Categories/NewSaveQuickstart": "新存档起步",
 	"Categories/QoL": "生活质量",
 	"Categories/Restrictions": "限制",
@@ -28,6 +29,7 @@
 	"Modules/NoNailDamage": "取消骨钉伤害",
 	"Modules/NoSpellDamage": "取消法术伤害",
 	"Modules/P5Health": "五门血量",
+	"Modules/UnlockAllModes": "解锁所有模式",
 	"Modules/UnlockEternalOrdeal": "解锁无尽折磨",
 	"Modules/UnlockRadiance": "解锁辐光",
 	"Modules/UnlockRadiant": "解锁辐辉"

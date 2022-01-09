@@ -38,6 +38,9 @@
   + **取消骨钉伤害**：取消骨钉攻击伤害，包括骨钉技艺。
   + **取消法术伤害**：取消法术攻击伤害，包括锋利之影。
 
+- **杂项**
+  + **解锁所有模式**：自动解锁钢铁之魂模式和寻神者模式。
+
 所有功能均可在游戏中开启或关闭。
 
 ## 配置
@@ -61,6 +64,7 @@
   + `NoNailDamage*` (`Boolean`)：是否启用 `取消骨钉伤害` 功能。默认为 `false`。
   + `NoSpellDamage*` (`Boolean`)：是否启用 `取消法术伤害` 功能。默认为 `false`。
   + `P5Health` (`Boolean`)：是否启用 `五门血量` 功能。默认为 `false`。
+  + `UnlockAllModes` (`Boolean`)：是否启用 `解锁所有模式` 功能。默认为 `true`。
   + `UnlockEternalOrdeal` (`Boolean`)：是否启用 `解锁无尽折磨` 功能。默认为 `true`。
   + `UnlockRadiance` (`Boolean`)：是否启用 `解锁辐光` 功能。默认为 `true`。
   + `UnlockRadiant` (`Boolean`)：是否启用 `解锁辐辉` 功能。默认为 `true`。

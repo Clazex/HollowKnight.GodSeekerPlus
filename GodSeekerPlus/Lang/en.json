@@ -7,6 +7,7 @@
 	"ToggleableLevel/ReloadSave": "Reload the save to apply change",
 	"ToggleableLevel/RestartGame": "Restart the game to apply change",
 	"Categories/BossChallenge": "Boss Challenge",
+	"Categories/Misc": "Miscellaneous",
 	"Categories/NewSaveQuickstart": "New Save Quickstart",
 	"Categories/QoL": "Quality of Life",
 	"Categories/Restrictions": "Restrictions",
@@ -28,6 +29,7 @@
 	"Modules/NoNailDamage": "No Nail Damage",
 	"Modules/NoSpellDamage": "No Spell Damage",
 	"Modules/P5Health": "P5 Health",
+	"Modules/UnlockAllModes": "Unlock All Modes",
 	"Modules/UnlockEternalOrdeal": "Unlock Eternal Ordeal",
 	"Modules/UnlockRadiance": "Unlock Radiance",
 	"Modules/UnlockRadiant": "Unlock Radiant"

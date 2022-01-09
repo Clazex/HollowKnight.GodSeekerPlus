@@ -38,6 +38,9 @@ Compatible with `Hollow Knight` 1.5.
   + **No Nail Damage**: Remove damage from nail attacks, including nail arts.
   + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
 
+- **Miscellaneous**
+  + **Unlock All Modes**: Auto unlock Steel Soul mode and Godseeker mode.
+
 All features can be toggled in-game.
 
 ## Configuration
@@ -61,6 +64,7 @@ All features can be toggled in-game.
   + `NoNailDamage*` (`Boolean`): Whether to enable the No Nail Damage feature. Defaults to `false`.
   + `NoSpellDamage*` (`Boolean`): Whether to enable the No Spell Damage feature. Defaults to `false`.
   + `P5Health` (`Boolean`): Whether to enable the P5 Health feature. Defaults to `false`.
+  + `UnlockAllModes` (`Boolean`): Whether to enable the Unlock All Modes feature. Defaults to `true`.
   + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
   + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
   + `UnlockRadiant` (`Boolean`): Whether to enable the Unlock Radiant feature. Defaults to `true`.
