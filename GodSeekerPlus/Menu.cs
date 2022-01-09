@@ -13,7 +13,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 	};
 
 	public MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
-		var menu = new Menu("ModName".Localize(), new[] {
+		Menu menu = new("ModName".Localize(), new[] {
 			toggleDelegates!.Value.CreateToggle(
 				"ModName".Localize(),
 				"ToggleButtonDesc".Localize(),
