@@ -5,20 +5,12 @@ internal static class ModuleHelper {
 		.GetExecutingAssembly()
 		.GetTypes()
 		.Filter(type => type.IsSubclassOf(typeof(Module)))
-		.Filter(HasDefaultConstructor);
-
-	internal static IEnumerable<string> GetModuleNames() => FindModules()
-		.Filter(type => type.GetCustomAttribute<HiddenAttribute>() == null)
-		.Map(type => type.Name);
+		.Filter(HasDefaultConstructor)
+		.OrderBy(type => type.Name);
 
 	internal static Dictionary<string, bool> GetDefaultModuleStateDict() => FindModules()
-		.Reduce((dict, type) => {
-			if (type.GetCustomAttribute<HiddenAttribute>() == null) {
-				dict[type.Name] = type.GetCustomAttribute<DefaultEnabledAttribute>() != null;
-			}
-
-			return dict;
-		}, new Dictionary<string, bool>());
+		.Filter(type => type.GetCustomAttribute<HiddenAttribute>() == null)
+		.ToDictionary(type => type.Name, type => type.GetCustomAttribute<DefaultEnabledAttribute>() != null);
 
 	internal static Module ConstructModule(Type type) => (Module) Activator.CreateInstance(type);
 
