@@ -1,4 +1,4 @@
-# [God Seeker +](https://github.com/Clazex/HollowKnight.GodSeekerPlus)
+# [Godseeker +](https://github.com/Clazex/HollowKnight.GodSeekerPlus)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
