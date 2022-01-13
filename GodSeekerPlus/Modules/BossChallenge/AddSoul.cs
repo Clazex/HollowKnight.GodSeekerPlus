@@ -13,11 +13,11 @@ internal sealed class AddSoul : Module {
 		yield return orig(self);
 
 		if (!BossSequenceController.IsInSequence) {
-			HeroController.instance.AddMPCharge(
+			Ref.HC.AddMPCharge(
 				GodSeekerPlus.UnsafeInstance.GlobalSettings.soulAmount
 			);
 
-			HeroController.instance.StartCoroutine(UpdateHUD());
+			Ref.HC.StartCoroutine(UpdateHUD());
 
 			Logger.LogDebug("Soul added");
 		}
@@ -26,7 +26,7 @@ internal sealed class AddSoul : Module {
 	private static IEnumerator UpdateHUD() {
 		yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
 
-		GameCameras.instance.soulOrbFSM.SendEvent("MP GAIN SPA");
-		GameCameras.instance.soulVesselFSM.SendEvent("MP RESERVE UP");
+		Ref.GC.soulOrbFSM.SendEvent("MP GAIN SPA");
+		Ref.GC.soulVesselFSM.SendEvent("MP RESERVE UP");
 	}
 }

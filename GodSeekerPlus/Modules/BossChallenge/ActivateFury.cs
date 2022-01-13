@@ -12,15 +12,15 @@ internal sealed class ActivateFury : Module {
 	private IEnumerator Activate(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
-		if (PlayerData.instance.equippedCharm_6) {
-			if (PlayerData.instance.equippedCharm_27) {
-				PlayerData.instance.joniHealthBlue = 1;
+		if (Ref.PD.equippedCharm_6) {
+			if (Ref.PD.equippedCharm_27) {
+				Ref.PD.joniHealthBlue = 1;
 			} else {
-				PlayerData.instance.health = 1;
+				Ref.PD.health = 1;
 			}
 
-			HeroController.instance.proxyFSM.SendEvent("HeroCtrl-HeroDamaged");
-			HeroController.instance.RelinquishControl();
+			Ref.HC.proxyFSM.SendEvent("HeroCtrl-HeroDamaged");
+			Ref.HC.RelinquishControl();
 
 			Logger.LogDebug("Fury activated");
 		}

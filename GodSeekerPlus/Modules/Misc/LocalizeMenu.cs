@@ -7,10 +7,10 @@ internal sealed class LocalizeMenu : Module {
 	private Coroutine? coroutine = null;
 
 	private protected override void Load() =>
-		coroutine = GameManager.instance.StartCoroutine(WaitForTitle());
+		coroutine = Ref.GM.StartCoroutine(WaitForTitle());
 
 	private protected override void Unload() {
-		GameManager.instance.StopCoroutine(coroutine);
+		Ref.GM.StopCoroutine(coroutine);
 		UIManager.EditMenus -= EditText;
 	}
 

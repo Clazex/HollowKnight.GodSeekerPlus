@@ -13,8 +13,8 @@ internal sealed class UnlockEternalOrdeal : Module {
 	private void SetOrdealUnlocked(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
 
-		IEnumerable<PersistentBoolData> items = SceneData
-			.instance
+		IEnumerable<PersistentBoolData> items = Ref
+			.SD
 			.persistentBoolItems
 			.Filter(item => item is {
 				sceneName: "GG_Workshop",
@@ -22,13 +22,13 @@ internal sealed class UnlockEternalOrdeal : Module {
 			});
 
 		if (!items.Any() || items.Filter(item => !item.activated).Any()) {
-			SceneData.instance.persistentBoolItems
+			Ref.SD.persistentBoolItems
 				.Set("GG_Workshop", "Breakable Wall_Silhouette", true);
 
-			SceneData.instance.persistentBoolItems
+			Ref.SD.persistentBoolItems
 				.Set("GG_Workshop", "Zote_Break_wall", true);
 
-			self.playerData.zoteStatueWallBroken = true;
+			Ref.PD.zoteStatueWallBroken = true;
 
 			Logger.LogDebug("Eternal Ordeal unlocked");
 		}
