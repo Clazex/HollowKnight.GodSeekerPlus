@@ -46,28 +46,6 @@ All features can be toggled in-game.
 ## Configuration
 
 - `features` (`Object`): Whether to enable specified features.
-  + `ActivateFury` (`Boolean`): Whether to enable the Activate Fury feature. Defaults to `false`.
-  + `AddLifeblood` (`Boolean`): Whether to enable the Add Lifeblood feature. Defaults to `false`.
-  + `AddSoul` (`Boolean`): Whether to enable the Add Soul feature. Defaults to `false`.
-  + `CarefreeMelodyFix` (`Boolean`): Whether to enable the Carefree Melody Fix feature. Defaults to `true`.
-  + `CompleteLowerDifficulty` (`Boolean`): Whether to enable the Complete Lower Difficulty feature. Defaults to `true`.
-  + `DoorDefaultBegin` (`Boolean`): Whether to enable the Door Default Begin feature. Defaults to `true`.
-  + `FastDreamWarp` (`Boolean`): Whether to enable the Fast Dream Warping feature. Defaults to `true`.
-  + `FastSuperDash` (`Boolean`): Whether to enable the Fast Super Dash feature. Defaults to `true`.
-  + `ForceArriveAnimation` (`Boolean`): Whether to enable the Force Arrive Animation feature. Defaults to `false`.
-  + `ForceOvercharm` (`Boolean`): Whether to enable the Force Overcharm feature. Defaults to `false`.
-  + `FrameRateLimit` (`Boolean`): Whether to enable the Frame Rate Limit feature. Defaults to `false`.
-  + `GreyPrinceEnterShort` (`Boolean`): Whether to enable the Grey Prince Enter Short feature. Defaults to `true`.
-  + `HalveDamage` (`Boolean`): Whether to enable the Halve Damage feature. Defaults to `false`.
-  + `MemorizeBindings` (`Boolean`): Whether to enable the Memorize Bindings feature. Defaults to `true`.
-  + `NoNailAttack*` (`Boolean`): Whether to enable the No Nail Attack feature. Defaults to `false`.
-  + `NoNailDamage*` (`Boolean`): Whether to enable the No Nail Damage feature. Defaults to `false`.
-  + `NoSpellDamage*` (`Boolean`): Whether to enable the No Spell Damage feature. Defaults to `false`.
-  + `P5Health` (`Boolean`): Whether to enable the P5 Health feature. Defaults to `false`.
-  + `UnlockAllModes` (`Boolean`): Whether to enable the Unlock All Modes feature. Defaults to `true`.
-  + `UnlockEternalOrdeal` (`Boolean`): Whether to enable the Unlock Eternal Ordeal feature. Defaults to `true`.
-  + `UnlockRadiance` (`Boolean`): Whether to enable the Unlock Radiance feature. Defaults to `true`.
-  + `UnlockRadiant` (`Boolean`): Whether to enable the Unlock Radiant feature. Defaults to `true`.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
 - `frameRateLimitMultiplier` (`Integer`): Frame rate limit time span multiplier. Final lag time is 10ms multiplied by this value. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `10`, defaults to `5`.
 - `LifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.

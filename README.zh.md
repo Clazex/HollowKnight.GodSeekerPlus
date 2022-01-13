@@ -46,28 +46,6 @@
 ## 配置
 
 - `features` (`Object`): 是否启用指定的功能。
-  + `ActivateFury` (`Boolean`)：是否启用 `激活亡者之怒` 功能。默认为 `false`。
-  + `AddLifeblood` (`Boolean`)：是否启用 `添加生命血` 功能。默认为 `false`。
-  + `AddSoul` (`Boolean`)：是否启用 `添加灵魂` 功能。默认为 `false`。
-  + `CarefreeMelodyFix` (`Boolean`)：是否启用 `无忧旋律修复` 功能。默认为 `true`。
-  + `CompleteLowerDifficulty` (`Boolean`)：是否启用 `完成较低难度` 功能。默认为 `true`。
-  + `DoorDefaultBegin` (`Boolean`)：是否启用 `门默认开始` 功能。默认为 `true`。
-  + `FastDreamWarp` (`Boolean`)：是否启用 `快速梦门传送` 功能。默认为 `true`。
-  + `FastSuperDash` (`Boolean`)：是否启用 `快速超级冲刺` 功能。默认为 `true`。
-  + `ForceArriveAnimation` (`Boolean`)：是否启用 `强制入场动画` 功能。默认为 `false`。
-  + `ForceOvercharm` (`Boolean`)：是否启用 `强制护符过载` 功能。默认为 `false`。
-  + `FrameRateLimit` (`Boolean`)：是否启用 `帧率限制` 功能。默认为 `false`。
-  + `GreyPrinceEnterShort` (`Boolean`)：是否启用 `灰色王子短入场` 功能。默认为 `true`。
-  + `HalveDamage` (`Boolean`)：是否启用 `伤害减半` 功能。默认为 `false`。
-  + `MemorizeBindings` (`Boolean`)：是否启用 `记住束缚` 功能。默认为 `true`。
-  + `NoNailAttack*` (`Boolean`)：是否启用 `禁用骨钉攻击` 功能。默认为 `false`。
-  + `NoNailDamage*` (`Boolean`)：是否启用 `取消骨钉伤害` 功能。默认为 `false`。
-  + `NoSpellDamage*` (`Boolean`)：是否启用 `取消法术伤害` 功能。默认为 `false`。
-  + `P5Health` (`Boolean`)：是否启用 `五门血量` 功能。默认为 `false`。
-  + `UnlockAllModes` (`Boolean`)：是否启用 `解锁所有模式` 功能。默认为 `true`。
-  + `UnlockEternalOrdeal` (`Boolean`)：是否启用 `解锁无尽折磨` 功能。默认为 `true`。
-  + `UnlockRadiance` (`Boolean`)：是否启用 `解锁辐光` 功能。默认为 `true`。
-  + `UnlockRadiant` (`Boolean`)：是否启用 `解锁辐辉` 功能。默认为 `true`。
 - `fastSuperDashSpeedMultiplier` (`Float`)：快速超冲速度倍率。范围从 `1` 到 `2`，默认为 `1.5`。
 - `frameRateLimitMultiplier` (`Integer`)：帧率限制卡顿时间倍率。最终卡顿时间是 10ms 乘以这个值。注意将其设置为 `0` 并不意味着零卡顿。范围从 `0` 到 `10`，默认为 `5`。
 - `LifebloodAmount` (`Integer`)：要添加的生命血数量。范围从 `0` 到 `35`，默认为 `5`。
