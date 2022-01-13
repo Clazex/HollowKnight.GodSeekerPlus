@@ -48,5 +48,5 @@
 - `features` (`Object`): 是否启用指定的功能。
 - `fastSuperDashSpeedMultiplier` (`Float`)：快速超冲速度倍率。范围从 `1` 到 `2`，默认为 `1.5`。
 - `frameRateLimitMultiplier` (`Integer`)：帧率限制卡顿时间倍率。最终卡顿时间是 10ms 乘以这个值。注意将其设置为 `0` 并不意味着零卡顿。范围从 `0` 到 `10`，默认为 `5`。
-- `LifebloodAmount` (`Integer`)：要添加的生命血数量。范围从 `0` 到 `35`，默认为 `5`。
-- `SoulAmount` (`Integer`)：要添加的灵魂数量。范围从 `0` 到 `198`，默认为 `99`。
+- `lifebloodAmount` (`Integer`)：要添加的生命血数量。范围从 `0` 到 `35`，默认为 `5`。
+- `soulAmount` (`Integer`)：要添加的灵魂数量。范围从 `0` 到 `198`，默认为 `99`。
