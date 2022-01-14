@@ -26,6 +26,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			.Filter(module => !module.Hidden)
 			.GroupBy(module => module.Category)
 			.OrderBy(group => group.Key)
+			.OrderBy(group => group.Key == nameof(Modules.Misc))
 			.Map(group => Blueprints.NavigateToMenu(
 				$"Categories/{group.Key}".Localize(),
 				"",
