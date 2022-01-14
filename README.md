@@ -38,6 +38,10 @@ Compatible with `Hollow Knight` 1.5.
   + **No Nail Damage**: Remove damage from nail attacks, including nail arts.
   + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
 
+- **Visual**:
+  + **No Fury Effect**: Remove the red effect around the screen when the Fury of Fallen is activated.
+  + **No Low Health Effect**: Remove the black effect around the screen when you have only one health.
+
 - **Miscellaneous**
   + **Unlock All Modes**: Auto unlock Steel Soul mode and Godseeker mode.
 
