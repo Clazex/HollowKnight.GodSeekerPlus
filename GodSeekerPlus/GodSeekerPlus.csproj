@@ -4,12 +4,22 @@
 		<Version>0.16.0</Version>
 		<Description>A Hollow Knight mod to enhance your Godhome experience</Description>
 		<Authors>Clazex</Authors>
+		
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Copyright © 2021 Clazex</Copyright>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/Clazex/HollowKnight.GodSeekerPlus#readme</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Clazex/HollowKnight.GodSeekerPlus</RepositoryUrl>
 
-		<TargetFramework>net472</TargetFramework>
-		<DebugType>portable</DebugType>
 		<LangVersion>10.0</LangVersion>
+		<TargetFramework>net472</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<DebugType>portable</DebugType>
 		<RootNamespace>GodSeekerPlus</RootNamespace>
+		
+		<Optimize>True</Optimize>
+		<Deterministic>True</Deterministic>
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 		<Nullable>enable</Nullable>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
