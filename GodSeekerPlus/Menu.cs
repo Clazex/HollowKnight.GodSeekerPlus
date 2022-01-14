@@ -1,7 +1,5 @@
 using Satchel.BetterMenus;
 
-using Lang = Language.Language;
-
 namespace GodSeekerPlus;
 
 public sealed partial class GodSeekerPlus : ICustomMenuMod {
@@ -38,6 +36,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 		return menu.GetMenuScreen(modListMenu);
 	}
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private MenuScreen BuildSubMenu(MenuScreen parent, string name, IEnumerable<Module> modules) => new Menu(
 		$"Categories/{name}".Localize(),
 		modules.Map(module => new HorizontalOption(

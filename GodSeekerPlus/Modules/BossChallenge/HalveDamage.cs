@@ -9,5 +9,5 @@ internal sealed class HalveDamage : Module {
 		ModHooks.AfterTakeDamageHook -= MakeDamageHalved;
 
 	private int MakeDamageHalved(int _, int damage) =>
-		(int) Math.Ceiling(damage / 2d);
+		Convert.ToInt32(Math.Ceiling(damage / 2d));
 }

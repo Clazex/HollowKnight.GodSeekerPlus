@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-
 namespace GodSeekerPlus.Settings;
 
 public sealed class GlobalSettings {

@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace GodSeekerPlus.Modules.Misc;
@@ -32,13 +31,13 @@ internal sealed class LocalizeMenu : Module {
 				"ScrollMask",
 				"ScrollingPane",
 				$"{GodSeekerPlus.UnsafeInstance.GetName()}_Settings"
-			);
+			)!;
 
-		btn.Child("Label").GetComponent<Text>().text =
+		btn.Child("Label")!.GetComponent<Text>().text =
 			"ModName".Localize() + ' ' + "Settings".Localize();
 
-		btn.Child("Description").GetComponent<Text>().text =
-			'v' + GodSeekerPlus.UnsafeInstance.GetVersion();
+		btn.Child("Description")!.GetComponent<Text>().text =
+			'v' + MiscUtil.GetVersionWithHash();
 
 		Logger.LogDebug("Menu localized");
 	}

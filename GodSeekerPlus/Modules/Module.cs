@@ -27,7 +27,7 @@ internal abstract class Module : IDisposable {
 
 	internal string Category => category ??=
 		Type.GetCustomAttribute<CategoryAttribute>()?.Name
-		?? "Misc";
+		?? nameof(Misc);
 
 	internal ToggleableLevel ToggleableLevel => toggleableLevel ??=
 		Type.GetCustomAttribute<ToggleableLevelAttribute>()?.ToggleableLevel

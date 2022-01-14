@@ -25,8 +25,7 @@ internal sealed class BossChallengeUIEdit : Module {
 		if (statue.hasNoTiers) {
 			invokeOrig();
 		} else {
-			BossStatue.Completion completion =
-				MiscUtil.GetStatueCompletion(statue);
+			BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
 
 			if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<UnlockRadiant>()) {
 				UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
@@ -38,11 +37,19 @@ internal sealed class BossChallengeUIEdit : Module {
 				CompleteLowerDifficulty.CompleteLower(statue.name, ref completion);
 			}
 
-			MiscUtil.SetStatueCompletion(statue, completion);
+			SetStatueCompletion(statue, completion);
 
 			self.tier1Button.SetState(completion.completedTier1);
 			self.tier2Button.SetState(completion.completedTier2);
 			self.tier3Button.SetState(completion.completedTier3);
+		}
+	}
+
+	internal static void SetStatueCompletion(BossStatue statue, BossStatue.Completion completion) {
+		if (statue.UsingDreamVersion) {
+			statue.DreamStatueState = completion;
+		} else {
+			statue.StatueState = completion;
 		}
 	}
 }

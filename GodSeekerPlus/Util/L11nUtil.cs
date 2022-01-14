@@ -1,9 +1,5 @@
 using Language;
 
-using Newtonsoft.Json;
-
-using Lang = Language.Language;
-
 namespace GodSeekerPlus.Util;
 
 internal static class L11nUtil {
@@ -16,13 +12,14 @@ internal static class L11nUtil {
 		.Map(str => str.ToLower().Replace('_', '-'))
 		.ToList();
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static string ToIdentifier(this LanguageCode code) =>
 		code.ToString().ToLower().Replace('_', '-');
 
 	private static string CurrentLang =>
 		Lang.CurrentLanguage().ToIdentifier();
 
-
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static Dictionary<string, Dictionary<string, string>> ReadLangs() => Assembly
 		.GetExecutingAssembly()
 		.GetManifestResourceNames()
@@ -50,6 +47,7 @@ internal static class L11nUtil {
 		);
 
 	private static Dictionary<string, Dictionary<string, string>> Dict { get; } = ReadLangs();
+
 
 	internal static string Localize(this string key) =>
 		MiscUtil.Try(() => Dict[CurrentLang][key], key);

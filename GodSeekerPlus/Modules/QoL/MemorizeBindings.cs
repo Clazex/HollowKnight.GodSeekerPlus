@@ -1,6 +1,3 @@
-using orig_HideSequence = On.BossDoorChallengeUI.orig_HideSequence;
-using orig_ShowSequence = On.BossDoorChallengeUI.orig_ShowSequence;
-
 namespace GodSeekerPlus.Modules.QoL;
 
 [Category(nameof(QoL))]
@@ -16,22 +13,24 @@ internal sealed class MemorizeBindings : Module {
 		On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
 	}
 
-	private IEnumerator ApplyBindingStates(orig_ShowSequence orig, BossDoorChallengeUI self) {
+	private IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
 		yield return orig(self);
 
-		SetButtonState(self.boundNailButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundNail);
-		SetButtonState(self.boundHeartButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundHeart);
-		SetButtonState(self.boundCharmsButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundCharms);
-		SetButtonState(self.boundSoulButton, GodSeekerPlus.UnsafeInstance.LocalSettings.boundSoul);
+		LocalSettings settings = GodSeekerPlus.UnsafeInstance.LocalSettings;
+		SetButtonState(self.boundNailButton, settings.boundNail);
+		SetButtonState(self.boundHeartButton, settings.boundHeart);
+		SetButtonState(self.boundCharmsButton, settings.boundCharms);
+		SetButtonState(self.boundSoulButton, settings.boundSoul);
 
 		Logger.LogDebug("Binding states applied");
 	}
 
-	private IEnumerator RecordBindingStates(orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
-		GodSeekerPlus.UnsafeInstance.LocalSettings.boundNail = self.boundNailButton.Selected;
-		GodSeekerPlus.UnsafeInstance.LocalSettings.boundHeart = self.boundHeartButton.Selected;
-		GodSeekerPlus.UnsafeInstance.LocalSettings.boundCharms = self.boundCharmsButton.Selected;
-		GodSeekerPlus.UnsafeInstance.LocalSettings.boundSoul = self.boundSoulButton.Selected;
+	private IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
+		LocalSettings settings = GodSeekerPlus.UnsafeInstance.LocalSettings;
+		settings.boundNail = self.boundNailButton.Selected;
+		settings.boundHeart = self.boundHeartButton.Selected;
+		settings.boundCharms = self.boundCharmsButton.Selected;
+		settings.boundSoul = self.boundSoulButton.Selected;
 
 		Logger.LogDebug("Binding states recorded");
 

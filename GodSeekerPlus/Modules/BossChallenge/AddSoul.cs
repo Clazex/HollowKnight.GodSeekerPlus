@@ -1,10 +1,7 @@
-using GlobalEnums;
-
-using UnityEngine;
-
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 [Category(nameof(BossChallenge))]
+[ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class AddSoul : Module {
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;
@@ -26,8 +23,8 @@ internal sealed class AddSoul : Module {
 		}
 	}
 
-	private IEnumerator UpdateHUD() {
-		yield return new WaitUntil(() => GameManager.instance.gameState == GameState.PLAYING);
+	private static IEnumerator UpdateHUD() {
+		yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
 
 		GameCameras.instance.soulOrbFSM.SendEvent("MP GAIN SPA");
 		GameCameras.instance.soulVesselFSM.SendEvent("MP RESERVE UP");

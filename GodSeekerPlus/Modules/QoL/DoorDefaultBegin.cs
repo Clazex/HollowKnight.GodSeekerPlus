@@ -4,7 +4,6 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MonoMod.Utils;
 
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 

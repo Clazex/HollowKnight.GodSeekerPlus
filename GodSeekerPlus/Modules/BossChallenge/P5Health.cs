@@ -22,7 +22,7 @@ internal sealed class P5Health : Module {
 	private void NerfHP(On.HealthManager.orig_Start orig, HealthManager self) {
 		object scaler = scalerField.GetValue(self);
 
-		int hp = (int) lv1Field.GetValue(scaler);
+		object hp = lv1Field.GetValue(scaler);
 		lv2Field.SetValue(scaler, hp);
 		lv3Field.SetValue(scaler, hp);
 

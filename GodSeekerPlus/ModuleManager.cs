@@ -13,6 +13,7 @@ internal sealed class ModuleManager : IDisposable {
 		Modules.Clear();
 	}
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal bool ModuleEnabled<T>() where T : Module
 		=> Modules[typeof(T).Name].Enabled;
 }

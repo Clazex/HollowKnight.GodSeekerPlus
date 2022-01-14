@@ -1,3 +1,5 @@
+using GodSeekerPlus.Modules.Misc;
+
 namespace GodSeekerPlus.Modules.NewSaveQuickstart;
 
 [Category(nameof(NewSaveQuickstart))]
@@ -9,7 +11,7 @@ internal sealed class UnlockRadiant : Module {
 		} else {
 			completion.completedTier2 = true;
 			completion.seenTier3Unlock = true;
-			MiscUtil.SetStatueCompletion(statue, completion);
+			BossChallengeUIEdit.SetStatueCompletion(statue, completion);
 
 			orig.Invoke();
 

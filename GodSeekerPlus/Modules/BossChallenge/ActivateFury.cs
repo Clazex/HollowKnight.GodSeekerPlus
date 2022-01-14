@@ -1,6 +1,7 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 [Category(nameof(BossChallenge))]
+[ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class ActivateFury : Module {
 	private protected override void Load() =>
 		On.BossSceneController.Start += Activate;

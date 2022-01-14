@@ -1,36 +1,38 @@
 using System.IO;
-
-#if DEBUG
 using System.Security.Cryptography;
-#endif
-
-using UnityEngine;
 
 namespace GodSeekerPlus.Util;
 
 internal static class MiscUtil {
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static int ForceInRange(int val, int min, int max) =>
 		val < min ? min : (val > max ? max : val);
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static float ForceInRange(float val, float min, float max) =>
 		val < min ? min : (val > max ? max : val);
 
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static bool EnclosedWith(this string self, string start, string end) =>
 		self.StartsWith(start) && self.EndsWith(end);
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static string StripStart(this string self, string val) =>
 		self.StartsWith(val) ? self.Substring(val.Length) : self;
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static string StripEnd(this string self, string val) =>
 		self.EndsWith(val) ? self.Substring(0, self.Length - val.Length) : self;
 
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static string ReadToString(this Stream self) =>
 		new StreamReader(self).ReadToEnd();
 
 
 
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static T Try<T>(Func<T> f, T @default) {
 		try {
 			return f();
@@ -40,25 +42,10 @@ internal static class MiscUtil {
 	}
 
 
-	internal static GameObject Child(this GameObject self, string name) =>
-		self.transform.Find(name).gameObject;
 
-	internal static GameObject Child(this GameObject self, params string[] path) =>
-		path.Reduce((tf, name) => tf.Find(name), self.transform).gameObject;
+	internal static GameObject? Child(this GameObject self, params string[] path) =>
+		self.transform.Find(path.Aggregate((a, b) => $"{a}/{b}"))?.gameObject;
 
-	internal static GameObject? ChildOrDefault(this GameObject self, params string[] path) {
-		Transform? tf = self.transform;
-
-		foreach (string name in path) {
-			tf = tf.Find(name);
-
-			if (tf == null) {
-				break;
-			}
-		}
-
-		return tf?.gameObject;
-	}
 
 
 	internal static void Set(this List<PersistentBoolData> self, string sceneName, string id, bool activated, bool semiPersistent = false) {
@@ -80,34 +67,25 @@ internal static class MiscUtil {
 		}
 	}
 
-	internal static BossStatue.Completion GetStatueCompletion(BossStatue statue) =>
-		statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
-
-	internal static void SetStatueCompletion(BossStatue statue, BossStatue.Completion completion) {
-		if (statue.UsingDreamVersion) {
-			statue.DreamStatueState = completion;
-		} else {
-			statue.StatueState = completion;
-		}
-	}
 
 
-
-	internal static string GetVersion() {
-		var asm = Assembly.GetExecutingAssembly();
-
-		string version = asm
-			.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-			.InformationalVersion;
-
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	internal static string GetVersion() => Assembly
+		.GetExecutingAssembly()
+		.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
 #if DEBUG
-		version += '+';
-		using var hash = SHA1.Create();
-		using FileStream stream = File.OpenRead(asm.Location);
-		version += BitConverter.ToString(hash.ComputeHash(stream), 0, 4)
-			.Substring(0, 10).Replace("-", "").ToLowerInvariant();
+		.InformationalVersion + "-dev";
+#else
+		.InformationalVersion;
 #endif
 
-		return version;
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	internal static string GetVersionWithHash() {
+		using var hasher = SHA1.Create();
+		using FileStream stream = File.OpenRead(Assembly.GetExecutingAssembly().Location);
+		string hash = BitConverter.ToString(hasher.ComputeHash(stream), 0, 4)
+			.Substring(0, 10).Replace("-", "").ToLowerInvariant();
+
+		return $"{GetVersion()}+{hash}";
 	}
 }
