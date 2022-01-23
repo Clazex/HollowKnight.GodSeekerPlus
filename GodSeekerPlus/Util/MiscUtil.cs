@@ -68,9 +68,7 @@ internal static class MiscUtil {
 	}
 
 
-
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static string GetVersion() => Assembly
+	internal static readonly string Version = Assembly
 		.GetExecutingAssembly()
 		.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
 #if DEBUG
@@ -79,13 +77,10 @@ internal static class MiscUtil {
 		.InformationalVersion;
 #endif
 
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static string GetVersionWithHash() {
+	internal static readonly string VersionWithHash = Version + '+' + ((Func<string>) (() => {
 		using var hasher = SHA1.Create();
 		using FileStream stream = File.OpenRead(Assembly.GetExecutingAssembly().Location);
-		string hash = BitConverter.ToString(hasher.ComputeHash(stream), 0, 4)
+		return BitConverter.ToString(hasher.ComputeHash(stream), 0, 4)
 			.Substring(0, 10).Replace("-", "").ToLowerInvariant();
-
-		return $"{GetVersion()}+{hash}";
-	}
+	})).Invoke();
 }
