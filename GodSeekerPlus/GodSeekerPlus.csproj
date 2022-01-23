@@ -18,6 +18,7 @@
 		<HKRefs Condition="$(HKRefs) == ''">../HKManaged/</HKRefs>
 		<HKModdingApi Condition="$(HKModdingApi) == ''">$(HKRefs)</HKModdingApi>
 		<HKModRefs Condition="$(HKModRefs) == ''">$(HKRefs)/Mods</HKModRefs>
+		<HKModOutputPath Condition="$(HKModOutputPath) == ''">$(HKModRefs)</HKModOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -91,7 +92,7 @@
 	</ItemGroup>
 
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
-		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb" DestinationFolder="$(HKModRefs)/$(TargetName)" SkipUnchangedFiles="true" />
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb" DestinationFolder="$(HKModOutputPath)/$(TargetName)" SkipUnchangedFiles="true" />
 	</Target>
 
 	<Target Name="CreateReleaseZip" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
