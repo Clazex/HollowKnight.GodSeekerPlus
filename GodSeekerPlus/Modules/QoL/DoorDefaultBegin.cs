@@ -5,9 +5,6 @@ using MonoMod.RuntimeDetour;
 using MonoMod.Utils;
 
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
-using ReflectionHelper = Modding.ReflectionHelper;
 
 namespace GodSeekerPlus.Modules.QoL;
 
@@ -37,22 +34,19 @@ internal sealed class DoorDefaultBegin : Module {
 		// InputHandler.Instance.StartUIInput();
 		//
 
-		// The first IL line of the above lines are `LdFld`
-		// for accessing the `buttons` field
-		cursor.GotoNext(i => i.MatchLdfld(
-			typeof(BossDoorChallengeUI)
-				.GetField("buttons", BindingFlags.Instance | BindingFlags.NonPublic)
-		));
-
-		// Move the cursor to before the `LdFld`
-		cursor.GotoPrev();
-		// Move the cursor to one extra IL line before the `LdFld`, that is, `LdLoc.1`
-		cursor.GotoPrev();
+		// Go to the first IL line of the above lines
+		cursor.GotoNext(
+			i => i.MatchLdloc(1),
+			i => i.MatchLdfld(
+				typeof(BossDoorChallengeUI)
+					.GetField("buttons", BindingFlags.Instance | BindingFlags.NonPublic)
+			)
+		);
 
 		// Remove all IL lines from the `LdLoc.1` to the one before `Ret`
-		while (cursor.TryGotoNext(i => !i.MatchRet())) {
+		do {
 			cursor.Remove();
-		}
+		} while (cursor.TryGotoNext(i => !i.MatchRet()));
 
 		// Load `self` (BossDoorChallengeUI)
 		cursor.Emit(OpCodes.Ldloc_1);
@@ -63,12 +57,9 @@ internal sealed class DoorDefaultBegin : Module {
 	}
 
 	private static void SelectBegin(BossDoorChallengeUI self) {
-		MenuButton beginBtn = ReflectionHelper
-			.GetField<BossDoorChallengeUI, CanvasGroup>(self, "group")
-			.GetComponentsInChildren<MenuButton>()
-			.Filter(btn => btn.name == "BeginButton")
-			.FirstOrDefault();
-		EventSystem.current.SetSelectedGameObject(beginBtn.gameObject);
+		EventSystem.current.SetSelectedGameObject(
+			self.gameObject.Child("Panel", "BeginButton")
+		);
 
 		InputHandler.Instance.StartUIInput();
 	}
