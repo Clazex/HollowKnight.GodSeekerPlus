@@ -9,11 +9,13 @@ internal sealed class ForceOvercharm : Module {
 		ModHooks.CharmUpdateHook -= DoOvercharm;
 
 	private void DoOvercharm(PlayerData pd, HeroController _) {
-		if (!pd.overcharmed) {
-			pd.canOvercharm = true;
-			pd.overcharmed = true;
-
-			Logger.LogDebug("Force overcharmed");
+		if (pd.overcharmed) {
+			return;
 		}
+
+		pd.canOvercharm = true;
+		pd.overcharmed = true;
+
+		Logger.LogDebug("Force overcharmed");
 	}
 }

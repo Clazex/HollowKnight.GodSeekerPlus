@@ -13,14 +13,16 @@ internal sealed class AddSoul : Module {
 		yield return orig(self);
 
 		if (!BossSequenceController.IsInSequence) {
-			Ref.HC.AddMPCharge(
-				GodSeekerPlus.UnsafeInstance.GlobalSettings.soulAmount
-			);
-
-			Ref.HC.StartCoroutine(UpdateHUD());
-
-			Logger.LogDebug("Soul added");
+			yield break;
 		}
+
+		Ref.HC.AddMPCharge(
+			GodSeekerPlus.UnsafeInstance.GlobalSettings.soulAmount
+		);
+
+		Ref.HC.StartCoroutine(UpdateHUD());
+
+		Logger.LogDebug("Soul added");
 	}
 
 	private static IEnumerator UpdateHUD() {

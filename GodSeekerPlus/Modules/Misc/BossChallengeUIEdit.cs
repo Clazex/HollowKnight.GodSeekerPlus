@@ -24,25 +24,26 @@ internal sealed class BossChallengeUIEdit : Module {
 
 		if (statue.hasNoTiers) {
 			invokeOrig();
+			return;
+		} 
+
+		BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
+
+		if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<UnlockRadiant>()) {
+			UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
 		} else {
-			BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
-
-			if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<UnlockRadiant>()) {
-				UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
-			} else {
-				invokeOrig();
-			}
-
-			if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<CompleteLowerDifficulty>()) {
-				CompleteLowerDifficulty.CompleteLower(statue.name, ref completion);
-			}
-
-			SetStatueCompletion(statue, completion);
-
-			self.tier1Button.SetState(completion.completedTier1);
-			self.tier2Button.SetState(completion.completedTier2);
-			self.tier3Button.SetState(completion.completedTier3);
+			invokeOrig();
 		}
+
+		if (GodSeekerPlus.UnsafeInstance.ModuleEnabled<CompleteLowerDifficulty>()) {
+			CompleteLowerDifficulty.CompleteLower(statue.name, ref completion);
+		}
+
+		SetStatueCompletion(statue, completion);
+
+		self.tier1Button.SetState(completion.completedTier1);
+		self.tier2Button.SetState(completion.completedTier2);
+		self.tier3Button.SetState(completion.completedTier3);		
 	}
 
 	internal static void SetStatueCompletion(BossStatue statue, BossStatue.Completion completion) {

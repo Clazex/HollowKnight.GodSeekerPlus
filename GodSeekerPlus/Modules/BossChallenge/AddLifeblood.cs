@@ -12,10 +12,12 @@ internal sealed class AddLifeblood : Module {
 	private IEnumerator Add(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
-		if (!BossSequenceController.IsInSequence) {
-			for (int i = 0; i < GodSeekerPlus.UnsafeInstance.GlobalSettings.lifebloodAmount; i++) {
-				EventRegister.SendEvent("ADD BLUE HEALTH");
-			}
+		if (BossSequenceController.IsInSequence) {
+			yield break;
+		}
+
+		for (int i = 0; i < GodSeekerPlus.UnsafeInstance.GlobalSettings.lifebloodAmount; i++) {
+			EventRegister.SendEvent("ADD BLUE HEALTH");
 		}
 
 		Logger.LogDebug("Lifeblood added");

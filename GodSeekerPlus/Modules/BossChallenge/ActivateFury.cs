@@ -17,17 +17,21 @@ internal sealed class ActivateFury : Module {
 	private IEnumerator Activate(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
-		if (!BossSequenceController.IsInSequence || BossSequenceController.BossIndex == 0) {
-			if (Ref.PD.equippedCharm_6) {
-				if (Ref.PD.equippedCharm_27) {
-					Ref.PD.joniHealthBlue = 1;
-				} else {
-					Ref.PD.health = 1;
-				}
-
-				Ref.HC.StartCoroutine(UpdateState());
-			}
+		if (BossSequenceController.IsInSequence && BossSequenceController.BossIndex != 0) {
+			yield break;
 		}
+
+		if (!Ref.PD.equippedCharm_6) {
+			yield break;
+		}
+
+		if (Ref.PD.equippedCharm_27) {
+			Ref.PD.joniHealthBlue = 1;
+		} else {
+			Ref.PD.health = 1;
+		}
+
+		Ref.HC.StartCoroutine(UpdateState());
 	}
 
 	private static IEnumerator UpdateState() {
