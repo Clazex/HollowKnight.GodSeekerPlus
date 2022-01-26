@@ -1,3 +1,5 @@
+using System.IO;
+
 using Language;
 
 namespace GodSeekerPlus.Util;
@@ -6,11 +8,11 @@ internal static class L11nUtil {
 	private const string resPrefix = "GodSeekerPlus.Lang.";
 	private const string resPostfix = ".json";
 
-
-	private static readonly List<string> langs = Lang
+	private static readonly string[] langs = Lang
 		.GetLanguages()
 		.Map(str => str.ToLower().Replace('_', '-'))
-		.ToList();
+		.ToArray();
+
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	private static string ToIdentifier(this LanguageCode code) =>
@@ -19,36 +21,42 @@ internal static class L11nUtil {
 	private static string CurrentLang =>
 		Lang.CurrentLanguage().ToIdentifier();
 
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private static Dictionary<string, Dictionary<string, string>> ReadLangs() => Assembly
+
+	private static readonly Lazy<Dictionary<string, Dictionary<string, string>>> Dict = new(() => Assembly
 		.GetExecutingAssembly()
 		.GetManifestResourceNames()
 		.Filter(name => name.EnclosedWith(resPrefix, resPostfix))
-		.Map(name =>
-			(lang: name.StripStart(resPrefix).StripEnd(resPostfix), path: name)
-		)
+		.Map(name => (
+			lang: name.StripStart(resPrefix).StripEnd(resPostfix),
+			path: name
+		))
 		.Filter(tuple => langs.Contains(tuple.lang))
-		.Map(tuple => (
-			tuple.lang,
-			stream: Assembly.GetExecutingAssembly().GetManifestResourceStream(tuple.path)
-		))
-		.Map(tuple => (tuple.lang, json: tuple.stream.ReadToString()))
-		.Map(tuple => (
-			tuple.lang,
-			table: JsonConvert.DeserializeObject<Dictionary<string, string>>(tuple.json)
-		))
-		.Reduce(
-			(dict, tuple) => {
+		.ToDictionary(
+			tuple => tuple.lang,
+			tuple => {
+				using Stream stream = Assembly
+					.GetExecutingAssembly()
+					.GetManifestResourceStream(tuple.path);
+				using StreamReader reader = new(stream);
+
+				string content = reader.ReadToEnd();
+				Dictionary<string, string> table =
+					JsonConvert.DeserializeObject<Dictionary<string, string>>(content)!;
+
 				Logger.LogDebug($"Loaded localization for lang: {tuple.lang}");
-				dict[tuple.lang] = tuple.table!;
-				return dict;
-			},
-			new Dictionary<string, Dictionary<string, string>>()
-		);
-
-	private static Dictionary<string, Dictionary<string, string>> Dict { get; } = ReadLangs();
+				return table;
+			}
+		)
+	);
 
 
-	internal static string Localize(this string key) =>
-		MiscUtil.Try(() => Dict[CurrentLang][key], key);
+	internal static string Localize(this string key) {
+		if (Dict.Value.TryGetValue(CurrentLang, out Dictionary<string, string> table)) {
+			if (table.TryGetValue(key, out string? value)) {
+				return value;
+			}
+		}
+
+		return key;
+	}
 }
