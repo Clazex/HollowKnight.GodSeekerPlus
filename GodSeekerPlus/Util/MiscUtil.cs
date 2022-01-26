@@ -48,26 +48,6 @@ internal static class MiscUtil {
 
 
 
-	internal static void Set(this List<PersistentBoolData> self, string sceneName, string id, bool activated, bool semiPersistent = false) {
-		IEnumerable<PersistentBoolData> items = self
-			.Filter(item => item.sceneName == sceneName && item.id == id);
-
-		if (items.Any()) {
-			items.ForEach(item => {
-				item.activated = activated;
-				item.semiPersistent = semiPersistent;
-			});
-		} else {
-			self.Add(new() {
-				sceneName = sceneName,
-				id = id,
-				activated = activated,
-				semiPersistent = semiPersistent
-			});
-		}
-	}
-
-
 	internal static readonly string Version = Assembly
 		.GetExecutingAssembly()
 		.GetCustomAttribute<AssemblyInformationalVersionAttribute>()

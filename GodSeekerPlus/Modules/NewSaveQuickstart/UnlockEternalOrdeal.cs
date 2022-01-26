@@ -13,24 +13,18 @@ internal sealed class UnlockEternalOrdeal : Module {
 	private void SetOrdealUnlocked(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
 
-		IEnumerable<PersistentBoolData> items = Ref
-			.SD
-			.persistentBoolItems
-			.Filter(item => item is {
-				sceneName: "GG_Workshop",
-				id: "Breakable Wall_Silhouette"
-			});
-
-		if (!items.Any() || items.Filter(item => !item.activated).Any()) {
-			Ref.SD.persistentBoolItems
-				.Set("GG_Workshop", "Breakable Wall_Silhouette", true);
-
-			Ref.SD.persistentBoolItems
-				.Set("GG_Workshop", "Zote_Break_wall", true);
-
-			Ref.PD.zoteStatueWallBroken = true;
-
-			Logger.LogDebug("Eternal Ordeal unlocked");
+		if (Ref.SD.persistentBoolItems.IsActivated("GG_Workshop", "Zote_Break_wall")) {
+			return;
 		}
+
+		Ref.SD.persistentBoolItems
+			.Set("GG_Workshop", "Breakable Wall_Silhouette", true);
+
+		Ref.SD.persistentBoolItems
+			.Set("GG_Workshop", "Zote_Break_wall", true);
+
+		Ref.PD.zoteStatueWallBroken = true;
+
+		Logger.LogDebug("Eternal Ordeal unlocked");
 	}
 }
