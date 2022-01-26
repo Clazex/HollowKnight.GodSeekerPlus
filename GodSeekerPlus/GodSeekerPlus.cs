@@ -4,7 +4,7 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 	public static GodSeekerPlus? Instance { get; private set; }
 	public static GodSeekerPlus UnsafeInstance => Instance!;
 
-	public override string GetVersion() => MiscUtil.Version;
+	public override string GetVersion() => VersionUtil.Version.Value;
 
 	private static ModuleManager? ModuleManager { get; set; }
 

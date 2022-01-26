@@ -1,5 +1,4 @@
 using System.IO;
-using System.Security.Cryptography;
 
 namespace GodSeekerPlus.Util;
 
@@ -45,22 +44,4 @@ internal static class MiscUtil {
 
 	internal static GameObject? Child(this GameObject self, params string[] path) =>
 		self.transform.Find(path.Aggregate((a, b) => $"{a}/{b}"))?.gameObject;
-
-
-
-	internal static readonly string Version = Assembly
-		.GetExecutingAssembly()
-		.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-#if DEBUG
-		.InformationalVersion + "-dev";
-#else
-		.InformationalVersion;
-#endif
-
-	internal static readonly string VersionWithHash = Version + '+' + ((Func<string>) (() => {
-		using var hasher = SHA1.Create();
-		using FileStream stream = File.OpenRead(Assembly.GetExecutingAssembly().Location);
-		return BitConverter.ToString(hasher.ComputeHash(stream), 0, 4)
-			.Substring(0, 10).Replace("-", "").ToLowerInvariant();
-	})).Invoke();
 }

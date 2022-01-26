@@ -37,7 +37,7 @@ internal sealed class LocalizeMenu : Module {
 			"ModName".Localize() + ' ' + "Settings".Localize();
 
 		btn.Child("Description")!.GetComponent<Text>().text =
-			'v' + MiscUtil.VersionWithHash;
+			'v' + VersionUtil.VersionWithHash.Value;
 
 		Logger.LogDebug("Menu localized");
 	}
