@@ -4,11 +4,11 @@ namespace GodSeekerPlus.Util;
 
 internal static class MiscUtil {
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static int ForceInRange(int val, int min, int max) =>
+	internal static int Clamp(int val, int min, int max) =>
 		val < min ? min : (val > max ? max : val);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static float ForceInRange(float val, float min, float max) =>
+	internal static float Clamp(float val, float min, float max) =>
 		val < min ? min : (val > max ? max : val);
 
 

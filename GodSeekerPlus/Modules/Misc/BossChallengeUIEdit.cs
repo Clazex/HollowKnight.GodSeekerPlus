@@ -25,7 +25,7 @@ internal sealed class BossChallengeUIEdit : Module {
 		if (statue.hasNoTiers) {
 			invokeOrig();
 			return;
-		} 
+		}
 
 		BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
 
@@ -43,7 +43,7 @@ internal sealed class BossChallengeUIEdit : Module {
 
 		self.tier1Button.SetState(completion.completedTier1);
 		self.tier2Button.SetState(completion.completedTier2);
-		self.tier3Button.SetState(completion.completedTier3);		
+		self.tier3Button.SetState(completion.completedTier3);
 	}
 
 	internal static void SetStatueCompletion(BossStatue statue, BossStatue.Completion completion) {

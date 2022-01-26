@@ -19,7 +19,7 @@ Compatible with `Hollow Knight` 1.5.
 
 - **New Save Quickstart**:
   + **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
-  + **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in God Seeker mode.
+  + **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods when in Godseeker mode.
   + **Unlock Radiant**: Auto unlock Radiant difficulty for all boss statues.
 
 - **Quality of Life**:

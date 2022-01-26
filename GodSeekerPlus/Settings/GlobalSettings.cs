@@ -33,24 +33,24 @@ public sealed class GlobalSettings {
 	[JsonProperty(PropertyName = "fastSuperDashSpeedMultiplier")]
 	public float FastSuperDashSpeedMultiplier {
 		get => fastSuperDashSpeedMultiplier;
-		set => fastSuperDashSpeedMultiplier = MiscUtil.ForceInRange(value, 1f, 2f);
+		set => fastSuperDashSpeedMultiplier = MiscUtil.Clamp(value, 1f, 2f);
 	}
 
 	[JsonProperty(PropertyName = "frameRateLimitMultiplier")]
 	public int FrameRateLimitMultiplier {
 		get => frameRateLimitMultiplier;
-		set => frameRateLimitMultiplier = MiscUtil.ForceInRange(value, 0, 10);
+		set => frameRateLimitMultiplier = MiscUtil.Clamp(value, 0, 10);
 	}
 
 	[JsonProperty(PropertyName = "lifebloodAmount")]
 	public int LifebloodAmount {
 		get => lifebloodAmount;
-		set => lifebloodAmount = MiscUtil.ForceInRange(value, 0, 35);
+		set => lifebloodAmount = MiscUtil.Clamp(value, 0, 35);
 	}
 
 	[JsonProperty(PropertyName = "soulAmount")]
 	public int SoulAmount {
 		get => soulAmount;
-		set => soulAmount = MiscUtil.ForceInRange(value, 0, 198);
+		set => soulAmount = MiscUtil.Clamp(value, 0, 198);
 	}
 }
