@@ -31,6 +31,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
   + **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
   + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
+  + **P5 Teleport**: Allow using the Dream Nail towards the lever which is used to unlock Godhome Atrium Roof to teleport to beside the Pantheon of Hallownest.
 
 - **Restrictions**:
   + **Force Overcharm**: Force entering the overcharmed state.

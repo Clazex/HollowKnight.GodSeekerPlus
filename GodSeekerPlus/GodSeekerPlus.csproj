@@ -52,6 +52,10 @@
 			<HintPath>$(HKRefs)/UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="UnityEngine.Physics2DModule">
+			<HintPath>$(HKRefs)/UnityEngine.Physics2DModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 		<Reference Include="UnityEngine.UI">
 			<HintPath>$(HKRefs)/UnityEngine.UI.dll</HintPath>
 			<Private>false</Private>

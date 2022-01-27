@@ -44,7 +44,7 @@ internal sealed class ActivateFury : Module {
 		yield return new WaitUntil(() => fsm.ActiveStateName == "In" || fsm.ActiveStateName == "Idle");
 
 		// Avoid evading roar
-		string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+		string sceneName = USceneManager.GetActiveScene().name;
 		if (extraWaitScenes.ContainsKey(sceneName)) {
 			yield return new WaitForSeconds(extraWaitScenes[sceneName]);
 			yield return new WaitUntil(() => !Ref.HC.controlReqlinquished);
