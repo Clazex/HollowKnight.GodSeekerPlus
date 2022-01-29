@@ -1,5 +1,19 @@
 # Unreleased
 
+# [v0.16.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.15.1...v0.16.0) (2022-01-29)
+
+### Bug Fixes
+
+* activate fury cause no input ([c9ff166](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/c9ff16661cc6747899f9cdb520ba2414d8819fe1))
+
+### Features
+
+* no fury effect and no low health effect ([eb020b9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/eb020b920fb64c27ee868b64657791815f851938))
+* no nail attack, no nail damage and no spell damage ([06fd596](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/06fd59656a5179052c57b6f320f4f2794cadbbe6))
+* p5 teleport ([17f1f3c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/17f1f3cf56861ecb71d21676b793b9ecfdefebbe))
+* unlock all modes ([2e02a6d](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/2e02a6d93887940a5c1cc264bc8e07798c51d3eb))
+* unlock pantheons ([2861056](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/2861056185ca38ffa7f8e310b0257303b5f3faec))
+
 # [v0.15.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.15.0...v0.15.1) (2022-01-06)
 
 ### Bug Fixes
