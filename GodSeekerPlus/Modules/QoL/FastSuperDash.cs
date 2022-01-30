@@ -26,16 +26,16 @@ internal sealed class FastSuperDash : Module {
 	}
 
 	private static void ModifySuperDashFSM(PlayMakerFSM fsm) {
-		fsm.AddState(stateName);
+		FsmState speedBuffState = fsm.AddState(stateName);
 
-		fsm.AddAction(stateName, new CheckSceneName() {
+		speedBuffState.InsertAction(new CheckSceneName() {
 			sceneName = "GG_Workshop",
 			notEqualEvent = FsmEvent.Finished
-		});
-		fsm.AddAction(stateName, new FloatMultiply() {
+		}, 0);
+		speedBuffState.InsertAction(new FloatMultiply() {
 			floatVariable = fsm.GetVariable<FsmFloat>("Current SD Speed"),
 			multiplyBy = GodSeekerPlus.UnsafeInstance.GlobalSettings.fastSuperDashSpeedMultiplier
-		});
+		}, 1);
 
 		fsm.ChangeTransition("Left", FsmEvent.Finished.Name, stateName);
 		fsm.ChangeTransition("Right", FsmEvent.Finished.Name, stateName);
