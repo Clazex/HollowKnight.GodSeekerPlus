@@ -41,10 +41,10 @@ internal abstract class Module : IDisposable {
 	#region State Transitions
 
 	internal bool Enabled {
-		get => Hidden || GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name];
+		get => Hidden || Ref.GSP.GlobalSettings.modules[Name];
 		set {
 			if (!Hidden) {
-				GodSeekerPlus.UnsafeInstance.GlobalSettings.modules[Name] = value;
+				Ref.GSP.GlobalSettings.modules[Name] = value;
 				Update();
 			}
 		}

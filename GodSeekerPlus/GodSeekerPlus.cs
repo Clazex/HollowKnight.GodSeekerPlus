@@ -6,7 +6,7 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 
 	public override string GetVersion() => VersionUtil.Version.Value;
 
-	private static ModuleManager? ModuleManager { get; set; }
+	internal static ModuleManager? ModuleManager { get; set; }
 
 	public override void Initialize() {
 		if (Instance != null) {
@@ -24,7 +24,4 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 
 		Instance = null;
 	}
-
-	internal bool ModuleEnabled<T>() where T : Module
-		=> ModuleManager?.ModuleEnabled<T>() ?? false;
 }

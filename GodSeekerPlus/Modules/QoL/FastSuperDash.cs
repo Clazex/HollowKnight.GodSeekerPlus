@@ -34,7 +34,7 @@ internal sealed class FastSuperDash : Module {
 		}, 0);
 		speedBuffState.InsertAction(new FloatMultiply() {
 			floatVariable = fsm.GetVariable<FsmFloat>("Current SD Speed"),
-			multiplyBy = GodSeekerPlus.UnsafeInstance.GlobalSettings.fastSuperDashSpeedMultiplier
+			multiplyBy = Ref.GSP.GlobalSettings.fastSuperDashSpeedMultiplier
 		}, 1);
 
 		fsm.ChangeTransition("Left", FsmEvent.Finished.Name, stateName);

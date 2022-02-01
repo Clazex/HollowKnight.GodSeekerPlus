@@ -30,7 +30,7 @@ internal sealed class LocalizeMenu : Module {
 				"Content",
 				"ScrollMask",
 				"ScrollingPane",
-				$"{GodSeekerPlus.UnsafeInstance.GetName()}_Settings"
+				$"{Ref.GSP.GetName()}_Settings"
 			)!;
 
 		btn.Child("Label")!.GetComponent<Text>().text =

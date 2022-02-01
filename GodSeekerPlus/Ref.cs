@@ -10,4 +10,8 @@ internal static class Ref {
 	internal static SceneData SD => SceneData.instance;
 
 	internal static GameCameras GC => GameCameras.instance;
+
+	internal static GodSeekerPlus GSP => GodSeekerPlus.UnsafeInstance;
+
+	internal static ModuleManager MM => GodSeekerPlus.ModuleManager!;
 }

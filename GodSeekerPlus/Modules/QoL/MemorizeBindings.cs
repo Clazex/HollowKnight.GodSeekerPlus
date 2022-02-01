@@ -16,7 +16,7 @@ internal sealed class MemorizeBindings : Module {
 	private IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
 		yield return orig(self);
 
-		LocalSettings settings = GodSeekerPlus.UnsafeInstance.LocalSettings;
+		LocalSettings settings = Ref.GSP.LocalSettings;
 		SetButtonState(self.boundNailButton, settings.boundNail);
 		SetButtonState(self.boundHeartButton, settings.boundHeart);
 		SetButtonState(self.boundCharmsButton, settings.boundCharms);
@@ -26,7 +26,7 @@ internal sealed class MemorizeBindings : Module {
 	}
 
 	private IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
-		LocalSettings settings = GodSeekerPlus.UnsafeInstance.LocalSettings;
+		LocalSettings settings = Ref.GSP.LocalSettings;
 		settings.boundNail = self.boundNailButton.Selected;
 		settings.boundHeart = self.boundHeartButton.Selected;
 		settings.boundCharms = self.boundCharmsButton.Selected;
