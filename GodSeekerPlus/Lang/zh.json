@@ -26,6 +26,7 @@
 	"Modules/FrameRateLimit": "帧率限制",
 	"Modules/GreyPrinceEnterShort": "灰色王子短入场",
 	"Modules/HalveDamage": "伤害减半",
+	"Modules/InfiniteRadianceClimbing": "无限辐光爬梯",
 	"Modules/MemorizeBindings": "记住束缚",
 	"Modules/NoFuryEffect": "禁用亡怒效果",
 	"Modules/NoLowHealthEffect": "禁用低生命效果",

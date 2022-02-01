@@ -25,4 +25,10 @@ internal static class MiscUtil {
 
 	internal static GameObject? Child(this GameObject self, params string[] path) =>
 		self.transform.Find(path.Aggregate((a, b) => $"{a}/{b}"))?.gameObject;
+
+	internal static IEnumerable<GameObject> GetAllChildren(this GameObject self) {
+		foreach (Transform child in self.transform) {
+			yield return child.gameObject;
+		}
+	}
 }

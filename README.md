@@ -15,6 +15,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
   + **Force Arrive Animation**: Force the arrive animation to be played when fighting Vengefly King, Xero, Hive Knight and Enraged Guardian in Hall of Gods.
   + **Halve Damage**: Halve all the damage taken.
+  + **Infinite Radiance Climbing**: Start Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
 
 - **New Save Quickstart**:
