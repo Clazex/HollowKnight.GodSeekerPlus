@@ -56,6 +56,10 @@
 			<HintPath>$(HKRefs)/UnityEngine.Physics2DModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>$(HKRefs)/UnityEngine.TextRenderingModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 		<Reference Include="UnityEngine.UI">
 			<HintPath>$(HKRefs)/UnityEngine.UI.dll</HintPath>
 			<Private>false</Private>

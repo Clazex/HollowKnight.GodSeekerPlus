@@ -1,6 +1,7 @@
 {
 	"ModName": "Godseeker +",
 	"Settings": "Options",
+	"SatchelNotFoundPrompt": "Install Satchel >= v0.7.4 for full menu support",
 	"ToggleButtonDesc": "Toggle all effects of this mod",
 	"ToggleableLevel/AnyTime": "",
 	"ToggleableLevel/ChangeScene": "Change scene to apply change",
