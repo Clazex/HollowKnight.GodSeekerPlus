@@ -1,19 +1,19 @@
 namespace GodSeekerPlus;
 
-internal sealed class ModuleManager : IDisposable {
-	internal Dictionary<string, Module> Modules { get; private init; }
+internal static class ModuleManager {
+	internal static Dictionary<string, Module> Modules { get; private set; } = new();
 
-	public ModuleManager() => Modules = ModuleHelper
+	internal static void Load() => Modules = ModuleHelper
 		.FindModules()
 		.Map(ModuleHelper.ConstructModule)
 		.ToDictionary(module => module.Name);
 
-	public void Dispose() {
+	internal static void Unload() {
 		Modules.Values.ForEach(m => m.Dispose());
 		Modules.Clear();
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal bool ModuleEnabled<T>() where T : Module
+	internal static bool ModuleEnabled<T>() where T : Module
 		=> Modules[typeof(T).Name].Enabled;
 }

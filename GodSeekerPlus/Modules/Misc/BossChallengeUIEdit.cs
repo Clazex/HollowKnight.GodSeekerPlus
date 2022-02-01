@@ -29,13 +29,13 @@ internal sealed class BossChallengeUIEdit : Module {
 
 		BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
 
-		if (Ref.MM.ModuleEnabled<UnlockRadiant>()) {
+		if (ModuleManager.ModuleEnabled<UnlockRadiant>()) {
 			UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
 		} else {
 			invokeOrig();
 		}
 
-		if (Ref.MM.ModuleEnabled<CompleteLowerDifficulty>()) {
+		if (ModuleManager.ModuleEnabled<CompleteLowerDifficulty>()) {
 			CompleteLowerDifficulty.CompleteLower(statue.name, ref completion);
 		}
 

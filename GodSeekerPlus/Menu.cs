@@ -20,7 +20,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			)
 		});
 
-		ModuleManager!
+		ModuleManager
 			.Modules
 			.Values
 			.Filter(module => !module.Hidden)
