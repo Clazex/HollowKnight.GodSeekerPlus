@@ -27,4 +27,5 @@ global using UnityEngine.SceneManagement;
 global using Module = GodSeekerPlus.Modules.Module;
 global using Logger = GodSeekerPlus.Util.Logger;
 global using Lang = Language.Language;
+global using UObject = UnityEngine.Object;
 global using USceneManager = UnityEngine.SceneManagement.SceneManager;
