@@ -36,9 +36,13 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 
 	private static void DetectSatchel() {
 		try {
-			Activator.CreateInstance<Satchel.BetterMenus.Menu>();
+			satchelPresent = typeof(Satchel.BetterMenus.Menu)
+				.GetConstructor(new[] {
+					typeof(string),
+					typeof(Satchel.BetterMenus.Element[])
+				}) != null;
+		} catch (TypeLoadException) {
 		} catch (MissingMethodException) {
-			satchelPresent = true;
 		}
 	}
 }
