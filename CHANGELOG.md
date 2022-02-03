@@ -1,4 +1,15 @@
-# Unreleased
+# [v0.17.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.16.0...v0.17.0) (2022-02-03)
+
+### Features
+
+* grey prince toggle ([e7e2eed](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e7e2eed17f1a425d1f6974c1b89c9a5aea3946da))
+* infinite radiance climbing ([42dc023](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/42dc02328f17a341937d1b3547216186aa07facf))
+* make satchel an optional dependency ([6fa0022](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/6fa002246aa5c3de04572eb05bed9101fc9b696d))
+* short death animation ([49dbf05](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/49dbf05f6d240fc24329b99a9d8b958a2fae1098))
+
+### Performance Improvements
+
+* use insert instead of add actions ([dbf3f74](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/dbf3f74160ed442aafa7298e635adec48bbee3b2))
 
 # [v0.16.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.15.1...v0.16.0) (2022-01-29)
 
