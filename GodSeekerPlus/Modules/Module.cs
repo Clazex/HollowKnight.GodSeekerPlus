@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules;
 
-internal abstract class Module : IDisposable {
+internal abstract class Module {
 	#region Attribute Cache
 
 	private Type? type = null;
@@ -10,14 +10,6 @@ internal abstract class Module : IDisposable {
 	private bool? hidden = null;
 
 	#endregion
-
-
-	internal Module() => Update();
-
-	public void Dispose() => Disable();
-
-	private bool Loaded { get; set; } = false;
-
 
 	#region Attribute Getters
 
@@ -38,44 +30,77 @@ internal abstract class Module : IDisposable {
 	#endregion
 
 
-	#region State Transitions
-
-	internal bool Enabled {
-		get => Hidden || Ref.GSP.GlobalSettings.modules[Name];
-		set {
-			if (!Hidden) {
-				Ref.GSP.GlobalSettings.modules[Name] = value;
-				Update();
-			}
+	internal Module() {
+		if (Hidden) {
+			Activate();
 		}
 	}
 
-	private void Enable() {
-		if (!Loaded) {
-			Load();
-			Logger.LogDebug($"Loaded module {Name}");
-			Loaded = true;
+	private bool Loaded { get; set; } = false;
+
+	#region Enabled State
+
+	// Controls whether this module is "silent"
+	internal bool Enabled { get; set; } = false;
+
+	internal void Enable() {
+		if (!Enabled) {
+			Enabled = true;
+			Update();
 		}
 	}
 
-	private void Disable() {
-		if (Loaded) {
-			Unload();
-			Logger.LogDebug($"Unloaded module {Name}");
-			Loaded = false;
-		}
-	}
-
-	internal void Update() {
+	internal void Disable() {
 		if (Enabled) {
-			Enable();
-		} else {
-			Disable();
+			Enabled = false;
+			Deactivate();
 		}
 	}
 
 	#endregion
 
+	#region Activation State
+
+	// Controls whether this module is "online", is a two-way data binding to settings
+	internal bool Active {
+		get => Hidden || GodSeekerPlus.GlobalSettings.modules[Name];
+		set {
+			if (!Hidden) {
+				GodSeekerPlus.GlobalSettings.modules[Name] = value;
+				Update();
+			}
+		}
+	}
+
+	private void Activate() {
+		if (!Loaded) {
+			Load();
+			Logger.LogDebug($"Activated module {Name}");
+			Loaded = true;
+		}
+	}
+
+	private void Deactivate() {
+		if (Loaded) {
+			Unload();
+			Logger.LogDebug($"Deactivated module {Name}");
+			Loaded = false;
+		}
+	}
+
+	internal void Update() {
+		if (!Enabled || Hidden) {
+			return;
+		}
+
+		if (Active) {
+			Activate();
+		} else {
+			Deactivate();
+		}
+	}
+
+	#endregion
 
 	private protected virtual void Load() { }
 

@@ -45,8 +45,8 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 							$"Modules/{module.Name}".Localize(),
 							$"ToggleableLevel/{module.ToggleableLevel}".Localize(),
 							StateStrings,
-							(val) => module.Enabled = Convert.ToBoolean(val),
-							() => Convert.ToInt32(module.Enabled)
+							(val) => module.Active = Convert.ToBoolean(val),
+							() => Convert.ToInt32(module.Active)
 						))
 						.ToArray()
 					).GetMenuScreen(menu.menuScreen)
