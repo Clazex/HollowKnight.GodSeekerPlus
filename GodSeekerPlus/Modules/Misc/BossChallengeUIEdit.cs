@@ -8,9 +8,6 @@ internal sealed class BossChallengeUIEdit : Module {
 	private protected override void Load() =>
 		On.BossChallengeUI.Setup += HookSetup;
 
-	private protected override void Unload() =>
-		On.BossChallengeUI.Setup -= HookSetup;
-
 	private void HookSetup(
 		On.BossChallengeUI.orig_Setup orig,
 		BossChallengeUI self,

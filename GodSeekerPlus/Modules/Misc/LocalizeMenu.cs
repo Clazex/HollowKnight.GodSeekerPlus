@@ -4,15 +4,8 @@ namespace GodSeekerPlus.Modules.Misc;
 
 [Hidden]
 internal sealed class LocalizeMenu : Module {
-	private Coroutine? coroutine = null;
-
 	private protected override void Load() =>
-		coroutine = Ref.GM.StartCoroutine(WaitForTitle());
-
-	private protected override void Unload() {
-		Ref.GM.StopCoroutine(coroutine);
-		UIManager.EditMenus -= EditText;
-	}
+		Ref.GM.StartCoroutine(WaitForTitle());
 
 	private IEnumerator WaitForTitle() {
 		yield return new WaitUntil(() => GameObject.Find("LogoTitle") != null);
@@ -30,7 +23,7 @@ internal sealed class LocalizeMenu : Module {
 				"Content",
 				"ScrollMask",
 				"ScrollingPane",
-				$"{Ref.GSP.GetName()}_Settings"
+				$"{nameof(GodSeekerPlus)}_Settings"
 			)!;
 
 		btn.Child("Label")!.GetComponent<Text>().text =
