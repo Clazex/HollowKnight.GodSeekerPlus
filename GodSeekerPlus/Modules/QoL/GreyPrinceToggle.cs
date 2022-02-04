@@ -28,10 +28,10 @@ internal sealed class GreyPrinceToggle : Module {
 		var gpStatue = GameObject.Find("GG_Statue_GreyPrince");
 		GameObject dreamSwitch = gpStatue.Child("dream_version_switch")!;
 		GameObject litPieces = dreamSwitch.Child("lit_pieces")!;
-		GameObject burstPr = litPieces.Child("Burst Pt")!;
+		GameObject burstPt = litPieces.Child("Burst Pt")!;
 
 		// Prevents bursting particles on entering save
-		burstPr.transform.SetPositionY(burstPr.transform.GetPositionY() + 1000f);
+		burstPt.transform.SetPositionY(burstPt.transform.GetPositionY() + 1000f);
 
 		// Make a dummy dream variant
 		BossStatue statue = gpStatue.GetComponent<BossStatue>();
@@ -76,7 +76,7 @@ internal sealed class GreyPrinceToggle : Module {
 
 		yield return new WaitUntil(() => Ref.HC.isHeroInPosition);
 		yield return new WaitWhile(() => Ref.HC.controlReqlinquished || Ref.PD.atBench);
-		burstPr.transform.SetPositionY(burstPr.transform.GetPositionY() - 1000f); // Restore
+		burstPt.transform.SetPositionY(burstPt.transform.GetPositionY() - 1000f); // Restore
 	}
 
 
