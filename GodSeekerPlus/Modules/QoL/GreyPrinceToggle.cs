@@ -5,19 +5,21 @@ namespace GodSeekerPlus.Modules.QoL;
 [DefaultEnabled]
 internal sealed class GreyPrinceToggle : Module {
 	private protected override void Load() {
-		USceneManager.activeSceneChanged += SetupScene;
+		On.GameManager.BeginScene += StartSetup;
 		ModHooks.GetPlayerVariableHook += GetVarHook;
 		ModHooks.SetPlayerVariableHook += SetVarHook;
 	}
 
 	private protected override void Unload() {
-		USceneManager.activeSceneChanged -= SetupScene;
+		On.GameManager.BeginScene -= StartSetup;
 		ModHooks.GetPlayerVariableHook -= GetVarHook;
 		ModHooks.SetPlayerVariableHook -= SetVarHook;
 	}
 
-	private void SetupScene(Scene prev, Scene next) {
-		if (!Ref.PD.bossRushMode || next.name != "GG_Workshop") {
+	private void StartSetup(On.GameManager.orig_BeginScene orig, GameManager self) {
+		orig(self);
+
+		if (!Ref.PD.bossRushMode || Ref.GM.sceneName != "GG_Workshop") {
 			return;
 		}
 
@@ -38,7 +40,7 @@ internal sealed class GreyPrinceToggle : Module {
 		statue.dreamBossDetails = statue.bossDetails;
 		statue.dreamBossScene = statue.bossScene;
 		statue.dreamStatueStatePD = statue.statueStatePD;
-		statue.DreamStatueState = statue.StatueState;
+		statue.SetDreamVersion(statue.UsingDreamVersion, false, false);
 
 		dreamSwitch.transform.Translate(0.5f, 0, 0);
 		dreamSwitch
@@ -75,6 +77,7 @@ internal sealed class GreyPrinceToggle : Module {
 		statue.SetPlaqueState(statue.StatueState, statue.regularPlaque, statue.statueStatePD);
 
 		yield return new WaitUntil(() => Ref.HC.isHeroInPosition);
+		yield return new WaitForSeconds(0.2f);
 		yield return new WaitWhile(() => Ref.HC.controlReqlinquished || Ref.PD.atBench);
 		burstPt.transform.SetPositionY(burstPt.transform.GetPositionY() - 1000f); // Restore
 	}
