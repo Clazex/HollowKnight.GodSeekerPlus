@@ -37,8 +37,8 @@ Compatible with `Hollow Knight` 1.5.
   + **Short Death Animation**: Skip part of the death animation when in boss scenes.
 
 - **Restrictions**:
+  + **Create Lag**: Create a lag in every in-game frame.
   + **Force Overcharm**: Force entering the overcharmed state.
-  + **Frame Rate Limit**: Create a lag in every in-game frame.
   + **No Nail Attack**: Disable normal nail attack.
   + **No Nail Damage**: Remove damage from nail attacks, including nail arts.
   + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
@@ -56,6 +56,6 @@ All features can be toggled in-game.
 
 - `features` (`Object`): Whether to enable specified features.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
-- `frameRateLimitMultiplier` (`Integer`): Frame rate limit time span multiplier. Final lag time is 10ms multiplied by this value. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `10`, defaults to `5`.
+- `lagTime` (`Integer`): Lag time span in millisecond. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `1000`, defaults to `50`.
 - `lifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.
 - `soulAmount` (`Integer`): The amount of soul to be added. Ranges from `0` to `198`, defaults to `99`.

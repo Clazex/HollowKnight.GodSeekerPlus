@@ -9,7 +9,7 @@ public sealed class GlobalSettings {
 	public float fastSuperDashSpeedMultiplier = 1.5f;
 
 	[JsonIgnore]
-	public int frameRateLimitMultiplier = 5;
+	public int lagTime = 50;
 
 	[JsonIgnore]
 	public int lifebloodAmount = 5;
@@ -36,10 +36,10 @@ public sealed class GlobalSettings {
 		set => fastSuperDashSpeedMultiplier = MiscUtil.Clamp(value, 1f, 2f);
 	}
 
-	[JsonProperty(PropertyName = "frameRateLimitMultiplier")]
-	public int FrameRateLimitMultiplier {
-		get => frameRateLimitMultiplier;
-		set => frameRateLimitMultiplier = MiscUtil.Clamp(value, 0, 10);
+	[JsonProperty(PropertyName = "lagTime")]
+	public int LagTime {
+		get => lagTime;
+		set => lagTime = MiscUtil.Clamp(value, 0, 1000);
 	}
 
 	[JsonProperty(PropertyName = "lifebloodAmount")]
