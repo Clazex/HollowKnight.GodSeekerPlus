@@ -72,7 +72,9 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 							RefreshSetting = (settings, _) =>
 								settings.optionList.SetOptionTo(Convert.ToInt32(toggler.GetModEnabled())),
 							CancelAction = _ => UIManager.instance.GoToDynamicMenu(modListMenu),
-							Description = null,
+							Description = new() {
+								Text = "ToggleButtonDesc".Localize()
+							},
 							Label = "ModName".Localize(),
 							Options = StateStrings,
 							Style = HorizontalOptionStyle.VanillaStyle
