@@ -60,3 +60,7 @@ All features can be toggled in-game.
 - `lagTime` (`Integer`): Lag time span in millisecond. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `1000`, defaults to `50`.
 - `lifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.
 - `soulAmount` (`Integer`): The amount of soul to be added. Ranges from `0` to `198`, defaults to `99`.
+
+## Statistics
+
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/65e526723e20438fd78f8e117dee0a55cca44715.svg)

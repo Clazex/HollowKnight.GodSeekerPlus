@@ -60,3 +60,7 @@
 - `lagTime` (`Integer`)：卡顿时长，以毫秒计。注意将其设置为 `0` 并不意味着零卡顿。范围从 `0` 到 `1000`，默认为 `50`。
 - `lifebloodAmount` (`Integer`)：要添加的生命血数量。范围从 `0` 到 `35`，默认为 `5`。
 - `soulAmount` (`Integer`)：要添加的灵魂数量。范围从 `0` 到 `198`，默认为 `99`。
+
+## 统计
+
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/65e526723e20438fd78f8e117dee0a55cca44715.svg)
