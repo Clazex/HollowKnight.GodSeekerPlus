@@ -84,7 +84,7 @@ internal sealed class GreyPrinceToggle : Module {
 
 
 	private object GetVarHook(Type type, string name, object value) {
-		if (name != "statueStateGreyPrince") {
+		if (!Ref.PD.bossRushMode || name != "statueStateGreyPrince") {
 			return value;
 		}
 
@@ -94,7 +94,7 @@ internal sealed class GreyPrinceToggle : Module {
 	}
 
 	private object SetVarHook(Type type, string name, object value) {
-		if (name != "statueStateGreyPrince") {
+		if (!Ref.PD.bossRushMode || name != "statueStateGreyPrince") {
 			return value;
 		}
 
