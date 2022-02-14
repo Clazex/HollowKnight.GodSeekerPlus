@@ -22,7 +22,7 @@ internal static class L11nUtil {
 		Lang.CurrentLanguage().ToIdentifier();
 
 
-	private static readonly Lazy<Dictionary<string, Dictionary<string, string>>> Dict = new(() => Assembly
+	internal static readonly Lazy<Dictionary<string, Dictionary<string, string>>> Dict = new(() => Assembly
 		.GetExecutingAssembly()
 		.GetManifestResourceNames()
 		.Filter(name => name.EnclosedWith(resPrefix, resPostfix))
