@@ -1,3 +1,16 @@
+# [v0.17.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.17.0...v0.17.1) (2022-02-14)
+
+### Bug Fixes
+
+* affecting non godseeker mode save ([ce1dc87](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ce1dc87f426060e4c684879f40bf6b49450969d8))
+* warping within same scene not triggering setup ([5fe1f6b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/5fe1f6b34d5531f5e11dfd8cce51107d11ef1227))
+
+### Features
+
+* aggressive gc ([2e9e8aa](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/2e9e8aa6435159873074b03ee577b7d036201101))
+* inspect helper ([e1af860](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e1af8609b35d360c3f851fefbda75e47b74de00d))
+* rename grey prince enter short to force grey prince enter type ([e071924](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e071924ad1bcd20d6e5a7569a569f370c9847049))
+
 # [v0.17.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.16.0...v0.17.0) (2022-02-03)
 
 ### Features
