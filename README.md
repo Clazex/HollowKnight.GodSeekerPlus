@@ -14,6 +14,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Add Lifeblood**: Add configured amount of lifeblood on entry of Hall of Gods boss fight.
   + **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
   + **Force Arrive Animation**: Force the arrive animation to be played when fighting Vengefly King, Xero, Hive Knight and Enraged Guardian in Hall of Gods.
+  + **Force Grey Prince Enter Type**: Force select enter type that Grey Prince use.
   + **Halve Damage**: Halve all the damage taken.
   + **Infinite Radiance Climbing**: Start Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
@@ -30,7 +31,6 @@ Compatible with `Hollow Knight` 1.5.
   + **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
   + **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
   + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
-  + **Force Grey Prince Enter Type**: Force select enter type that Grey Prince use.
   + **Grey Prince Toggle**: Add a Dream Nail toggle beside Grey Prince statue to show and control whether Grey Prince will appear in the Pantheons or not when in Godseeker mode.
   + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
   + **P5 Teleport**: Allow using the Dream Nail towards the lever which is used to unlock Godhome Atrium Roof to teleport to beside the Pantheon of Hallownest.
