@@ -17,6 +17,7 @@ public sealed class GlobalSettings {
 	[JsonIgnore]
 	public int soulAmount = 99;
 
+	public bool gpzEnterType = false;
 
 	[JsonProperty(PropertyName = "features")]
 	public Dictionary<string, bool> Modules {

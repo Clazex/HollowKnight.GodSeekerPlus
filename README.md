@@ -30,7 +30,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
   + **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
   + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
-  + **Grey Prince Enter Short**: Force Grey Prince to use short enter, as when defeated last time.
+  + **Force Grey Prince Enter Type**: Force select enter type that Grey Prince use.
   + **Grey Prince Toggle**: Add a Dream Nail toggle beside Grey Prince statue to show and control whether Grey Prince will appear in the Pantheons or not when in Godseeker mode.
   + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
   + **P5 Teleport**: Allow using the Dream Nail towards the lever which is used to unlock Godhome Atrium Roof to teleport to beside the Pantheon of Hallownest.
@@ -57,6 +57,7 @@ All features can be toggled in-game.
 
 - `features` (`Object`): Whether to enable specified features.
 - `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
+- `gpzEnterType` (`Bool`): Name the enter type Grey Prince use. `false` for long enter, `true` for short enter.
 - `lagTime` (`Integer`): Lag time span in millisecond. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `1000`, defaults to `50`.
 - `lifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.
 - `soulAmount` (`Integer`): The amount of soul to be added. Ranges from `0` to `198`, defaults to `99`.

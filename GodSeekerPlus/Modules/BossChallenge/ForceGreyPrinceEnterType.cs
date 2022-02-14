@@ -1,9 +1,9 @@
-namespace GodSeekerPlus.Modules.QoL;
+namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category(nameof(QoL))]
+[Category(nameof(BossChallenge))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
-internal sealed class GreyPrinceEnterShort : Module {
+internal sealed class ForceGreyPrinceEnterType : Module {
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyGPFSM;
 
@@ -24,5 +24,7 @@ internal sealed class GreyPrinceEnterShort : Module {
 	}
 
 	private static void ModifyGPFSM(PlayMakerFSM fsm) =>
-		fsm.ChangeTransition("Enter 1", FsmEvent.Finished.Name, "Enter Short");
+		fsm.AddCustomAction("Enter 1", () => {
+			fsm.FsmVariables.FindFsmBool("Faced Zote").Value = GodSeekerPlus.GlobalSettings.gpzEnterType;
+		});
 }
