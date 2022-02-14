@@ -13,7 +13,7 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 			DetectSatchel();
 		} catch (System.IO.FileNotFoundException) {
 		} catch (Exception e) {
-			Modding.Logger.LogError($"[GodSeekerPlus] - {e}");
+			Logger.LogError(e.ToString());
 		}
 	}
 
