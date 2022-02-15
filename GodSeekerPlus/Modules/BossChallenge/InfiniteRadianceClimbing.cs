@@ -6,6 +6,7 @@ internal sealed class InfiniteRadianceClimbing : Module {
 	private static readonly float heroX = 60.4987f;
 	private static readonly float heroY = 34.6678f;
 
+	private bool running = false;
 	private GameObject? bossCtrl = null;
 	private PlayMakerFSM? radCtrl = null;
 	private PlayMakerFSM? pitCtrl = null;
@@ -14,17 +15,29 @@ internal sealed class InfiniteRadianceClimbing : Module {
 	private protected override void Load() =>
 		USceneManager.activeSceneChanged += SetupScene;
 
-	private protected override void Unload() =>
+	private protected override void Unload() {
 		USceneManager.activeSceneChanged -= SetupScene;
+
+		if (running) {
+			Quit(true);
+		}
+	}
 
 	private void SetupScene(Scene prev, Scene next) {
 		if (prev.name != "GG_Workshop" || next.name != "GG_Radiance") {
-			bossCtrl = null;
-			radCtrl = null;
-			pitCtrl = null;
+			if (running) {
+				Quit();
+			}
+
 			return;
 		}
 
+		if (running) {
+			Quit(true);
+			throw new InvalidOperationException("Running multiple times at the same time");
+		}
+
+		running = true;
 		bossCtrl = next.GetGameObjectByName("Boss Control");
 		radCtrl = bossCtrl.Child("Absolute Radiance")!.LocateMyFSM("Control");
 		pitCtrl = bossCtrl.Child("Abyss Pit")!.LocateMyFSM("Ascend");
@@ -143,5 +156,21 @@ internal sealed class InfiniteRadianceClimbing : Module {
 		beam.SetActive(true);
 
 		rewindCoro = null; // release lock
+	}
+
+	private void Quit(bool killPlayer = false) {
+		running = false;
+		bossCtrl = null;
+		radCtrl = null;
+		pitCtrl = null;
+
+		if (killPlayer) {
+			Ref.HC.StartCoroutine(DelayedKill());
+		}
+	}
+
+	private static IEnumerator DelayedKill() {
+		yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
+		Ref.HC.StartCoroutine("Die");
 	}
 }
