@@ -32,7 +32,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Lang/**" />
+		<EmbeddedResource Include="Resources/**" />
 
 		<Compile Remove="dist/**" />
 		<EmbeddedResource Remove="dist/**" />

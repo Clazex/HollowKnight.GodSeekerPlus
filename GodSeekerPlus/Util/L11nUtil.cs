@@ -5,7 +5,7 @@ using Language;
 namespace GodSeekerPlus.Util;
 
 internal static class L11nUtil {
-	private const string resPrefix = "GodSeekerPlus.Lang.";
+	private const string resPrefix = "GodSeekerPlus.Resources.Lang.";
 	private const string resPostfix = ".json";
 
 	private static readonly string[] langs = Lang
