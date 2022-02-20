@@ -5,6 +5,7 @@ public sealed class GlobalSettings {
 	public Dictionary<string, bool> modules =
 		ModuleHelper.GetDefaultModuleStateDict();
 
+
 	[JsonIgnore]
 	public float fastSuperDashSpeedMultiplier = 1.5f;
 
@@ -18,6 +19,7 @@ public sealed class GlobalSettings {
 	public int soulAmount = 99;
 
 	public bool gpzEnterType = false;
+
 
 	[JsonProperty(PropertyName = "features")]
 	public Dictionary<string, bool> Modules {

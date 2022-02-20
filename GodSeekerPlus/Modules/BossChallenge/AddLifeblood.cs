@@ -16,7 +16,7 @@ internal sealed class AddLifeblood : Module {
 			yield break;
 		}
 
-		for (int i = 0; i < GodSeekerPlus.GlobalSettings.lifebloodAmount; i++) {
+		for (int i = 0; i < Ref.GS.lifebloodAmount; i++) {
 			EventRegister.SendEvent("ADD BLUE HEALTH");
 		}
 

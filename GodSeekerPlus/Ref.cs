@@ -12,4 +12,7 @@ internal static class Ref {
 	internal static GameCameras GC => GameCameras.instance;
 
 	internal static GodSeekerPlus GSP => GodSeekerPlus.UnsafeInstance;
+
+	internal static GlobalSettings GS => GodSeekerPlus.GlobalSettings;
+	internal static LocalSettings LS => GodSeekerPlus.LocalSettings;
 }

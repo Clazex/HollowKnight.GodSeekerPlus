@@ -15,6 +15,6 @@ internal sealed class CreateLag : Module {
 			return;
 		}
 
-		Thread.Sleep(GodSeekerPlus.GlobalSettings.lagTime);
+		Thread.Sleep(Ref.GS.lagTime);
 	}
 }

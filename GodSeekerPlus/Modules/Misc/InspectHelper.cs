@@ -30,8 +30,8 @@ internal sealed class InspectHelper : Module {
 
 		public Dictionary<string, Module> Modules => ModuleManager.Modules;
 
-		public GlobalSettings GlobalSettings => GodSeekerPlus.GlobalSettings;
-		public LocalSettings LocalSettings => GodSeekerPlus.LocalSettings;
+		public GlobalSettings GlobalSettings => Ref.GS;
+		public LocalSettings LocalSettings => Ref.LS;
 
 		public Dictionary<string, Dictionary<string, string>> Dict => L11nUtil.Dict.Value;
 

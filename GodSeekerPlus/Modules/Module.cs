@@ -63,10 +63,10 @@ internal abstract class Module {
 
 	// Controls whether this module is "online", is a two-way data binding to settings
 	internal bool Active {
-		get => Hidden || GodSeekerPlus.GlobalSettings.modules[Name];
+		get => Hidden || Ref.GS.modules[Name];
 		set {
 			if (!Hidden) {
-				GodSeekerPlus.GlobalSettings.modules[Name] = value;
+				Ref.GS.modules[Name] = value;
 				Update();
 			}
 		}

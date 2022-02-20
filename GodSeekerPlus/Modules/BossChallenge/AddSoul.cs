@@ -16,7 +16,7 @@ internal sealed class AddSoul : Module {
 			yield break;
 		}
 
-		Ref.HC.AddMPCharge(GodSeekerPlus.GlobalSettings.soulAmount);
+		Ref.HC.AddMPCharge(Ref.GS.soulAmount);
 
 		Ref.HC.StartCoroutine(UpdateHUD());
 
