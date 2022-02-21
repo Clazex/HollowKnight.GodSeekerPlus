@@ -63,10 +63,10 @@ internal abstract class Module {
 
 	// Controls whether this module is "online", is a two-way data binding to settings
 	internal bool Active {
-		get => Hidden || Ref.GS.modules[Name];
+		get => Hidden || Ref.GS.Modules[Name];
 		set {
 			if (!Hidden) {
-				Ref.GS.modules[Name] = value;
+				Ref.GS.Modules[Name] = value;
 				Update();
 			}
 		}

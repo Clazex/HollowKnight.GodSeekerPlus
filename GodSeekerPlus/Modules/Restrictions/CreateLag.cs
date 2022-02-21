@@ -15,6 +15,6 @@ internal sealed class CreateLag : Module {
 			return;
 		}
 
-		Thread.Sleep(Ref.GS.lagTime);
+		Thread.Sleep(Ref.GS.LagTime);
 	}
 }

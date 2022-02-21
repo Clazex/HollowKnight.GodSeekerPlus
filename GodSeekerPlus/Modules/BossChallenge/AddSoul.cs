@@ -16,7 +16,7 @@ internal sealed class AddSoul : Module {
 			yield break;
 		}
 
-		Ref.HC.AddMPCharge(Ref.GS.soulAmount);
+		Ref.HC.AddMPCharge(Ref.GS.SoulAmount);
 
 		Ref.HC.StartCoroutine(UpdateHUD());
 

@@ -2,21 +2,21 @@ namespace GodSeekerPlus.Settings;
 
 public sealed class GlobalSettings {
 	[JsonIgnore]
-	public Dictionary<string, bool> modules =
+	private readonly Dictionary<string, bool> modules =
 		ModuleHelper.GetDefaultModuleStateDict();
 
 
 	[JsonIgnore]
-	public float fastSuperDashSpeedMultiplier = 1.5f;
+	private float fastSuperDashSpeedMultiplier = 1.5f;
 
 	[JsonIgnore]
-	public int lagTime = 50;
+	private int lagTime = 50;
 
 	[JsonIgnore]
-	public int lifebloodAmount = 5;
+	private int lifebloodAmount = 5;
 
 	[JsonIgnore]
-	public int soulAmount = 99;
+	private int soulAmount = 99;
 
 	public bool gpzEnterType = false;
 
