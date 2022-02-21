@@ -33,25 +33,25 @@ public sealed class GlobalSettings {
 		}
 	}
 
-	[JsonProperty(PropertyName = "fastSuperDashSpeedMultiplier")]
+	[JsonProperty(PropertyName = nameof(fastSuperDashSpeedMultiplier))]
 	public float FastSuperDashSpeedMultiplier {
 		get => fastSuperDashSpeedMultiplier;
 		set => fastSuperDashSpeedMultiplier = MiscUtil.Clamp(value, 1f, 2f);
 	}
 
-	[JsonProperty(PropertyName = "lagTime")]
+	[JsonProperty(PropertyName = nameof(lagTime))]
 	public int LagTime {
 		get => lagTime;
 		set => lagTime = MiscUtil.Clamp(value, 0, 1000);
 	}
 
-	[JsonProperty(PropertyName = "lifebloodAmount")]
+	[JsonProperty(PropertyName = nameof(lifebloodAmount))]
 	public int LifebloodAmount {
 		get => lifebloodAmount;
 		set => lifebloodAmount = MiscUtil.Clamp(value, 0, 35);
 	}
 
-	[JsonProperty(PropertyName = "soulAmount")]
+	[JsonProperty(PropertyName = nameof(soulAmount))]
 	public int SoulAmount {
 		get => soulAmount;
 		set => soulAmount = MiscUtil.Clamp(value, 0, 198);
