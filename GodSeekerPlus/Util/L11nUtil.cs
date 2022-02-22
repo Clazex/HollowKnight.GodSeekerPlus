@@ -52,7 +52,7 @@ internal static class L11nUtil {
 
 	internal static string Localize(this string key) {
 		if (Dict.Value.TryGetValue(CurrentLang, out Dictionary<string, string> table)) {
-			if (table.TryGetValue(key, out string? value)) {
+			if (table.TryGetValue(key, out string value)) {
 				return value;
 			}
 		}

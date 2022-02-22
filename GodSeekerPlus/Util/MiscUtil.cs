@@ -2,11 +2,11 @@ namespace GodSeekerPlus.Util;
 
 internal static class MiscUtil {
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static int Clamp(int val, int min, int max) =>
+	internal static int Clamp(this int val, int min, int max) =>
 		val < min ? min : (val > max ? max : val);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static float Clamp(float val, float min, float max) =>
+	internal static float Clamp(this float val, float min, float max) =>
 		val < min ? min : (val > max ? max : val);
 
 
@@ -21,14 +21,4 @@ internal static class MiscUtil {
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static string StripEnd(this string self, string val) =>
 		self.EndsWith(val) ? self.Substring(0, self.Length - val.Length) : self;
-
-
-	internal static GameObject? Child(this GameObject self, params string[] path) =>
-		self.transform.Find(path.Aggregate((a, b) => $"{a}/{b}"))?.gameObject;
-
-	internal static IEnumerable<GameObject> GetAllChildren(this GameObject self) {
-		foreach (Transform child in self.transform) {
-			yield return child.gameObject;
-		}
-	}
 }

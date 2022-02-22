@@ -135,7 +135,7 @@ internal sealed class InfiniteRadianceClimbing : Module {
 		// Reset hazard respawns and pit raiser
 		bossCtrl!
 			.Child("Ascend Respawns")!
-			.GetAllChildren()
+			.GetChildren()
 			.Filter(go => go.name.StartsWith("Hazard Respawn Trigger v2"))
 			.ForEach(go => {
 				ReflectionHelper.SetField(go.GetComponent<HazardRespawnTrigger>(), "inactive", false);

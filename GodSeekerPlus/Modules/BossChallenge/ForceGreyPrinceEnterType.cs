@@ -24,7 +24,8 @@ internal sealed class ForceGreyPrinceEnterType : Module {
 	}
 
 	private static void ModifyGPFSM(PlayMakerFSM fsm) =>
-		fsm.AddCustomAction("Enter 1", () => {
-			fsm.FsmVariables.FindFsmBool("Faced Zote").Value = Ref.GS.gpzEnterType;
-		});
+		fsm.AddCustomAction(
+			"Enter 1",
+			() => fsm.FsmVariables.FindFsmBool("Faced Zote").Value = Ref.GS.gpzEnterType
+		);
 }
