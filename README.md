@@ -46,7 +46,7 @@ Compatible with `Hollow Knight` 1.5.
   + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
 
 - **Visual**:
-  + **More Pantheon Caps**: Enable the unused no hit cap for Pantheons 1 to 4, and add a new special effect for all pantheons indicating completed once with all bindings and once no hit.
+  + **More Pantheon Caps**: Enable the unused no hit cap for Pantheons 1 to 4, and add a new special effect for all pantheons indicating completed once no hit with all bindings.
   + **No Fury Effect**: Remove the red effect around the screen when the Fury of Fallen is activated.
   + **No Low Health Effect**: Remove the black effect around the screen when you drop to one health.
 
