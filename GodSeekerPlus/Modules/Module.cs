@@ -7,6 +7,7 @@ internal abstract class Module {
 	private string? name = null;
 	private string? category = null;
 	private ToggleableLevel? toggleableLevel = null;
+	private bool? defaultEnabled = null;
 	private bool? hidden = null;
 
 	#endregion
@@ -25,7 +26,9 @@ internal abstract class Module {
 		Type.GetCustomAttribute<ToggleableLevelAttribute>()?.ToggleableLevel
 		?? ToggleableLevel.AnyTime;
 
-	internal bool Hidden => hidden ??= Type.GetCustomAttribute<HiddenAttribute>() != null;
+	internal bool DefaultEnabled => defaultEnabled ??= Attribute.IsDefined(Type, typeof(DefaultEnabledAttribute));
+
+	internal bool Hidden => hidden ??= Attribute.IsDefined(Type, typeof(HiddenAttribute));
 
 	#endregion
 

@@ -2,8 +2,13 @@ namespace GodSeekerPlus.Settings;
 
 public sealed class GlobalSettings {
 	[JsonIgnore]
-	private readonly Dictionary<string, bool> modules =
-		ModuleHelper.GetDefaultModuleStateDict();
+	private readonly Dictionary<string, bool> modules = ModuleManager
+		.FindModules()
+		.Filter(type => !Attribute.IsDefined(type, typeof(HiddenAttribute)))
+		.ToDictionary(
+			type => type.Name,
+			type => Attribute.IsDefined(type, typeof(DefaultEnabledAttribute))
+		);
 
 
 	[JsonIgnore]
