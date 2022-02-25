@@ -4,6 +4,8 @@ namespace GodSeekerPlus.Modules.QoL;
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class GreyPrinceToggle : Module {
+	private bool running = false;
+
 	private protected override void Load() {
 		On.GameManager.BeginScene += StartSetup;
 		ModHooks.GetPlayerVariableHook += GetVarHook;
@@ -14,12 +16,18 @@ internal sealed class GreyPrinceToggle : Module {
 		On.GameManager.BeginScene -= StartSetup;
 		ModHooks.GetPlayerVariableHook -= GetVarHook;
 		ModHooks.SetPlayerVariableHook -= SetVarHook;
+
+		if (running) {
+			running = false;
+			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
+		}
 	}
 
 	private void StartSetup(On.GameManager.orig_BeginScene orig, GameManager self) {
 		orig(self);
 
 		if (!Ref.PD.bossRushMode || Ref.GM.sceneName != "GG_Workshop") {
+			running = false;
 			return;
 		}
 
@@ -27,6 +35,8 @@ internal sealed class GreyPrinceToggle : Module {
 	}
 
 	private IEnumerator SetupScene() {
+		running = true;
+
 		var gpStatue = GameObject.Find("GG_Statue_GreyPrince");
 		GameObject dreamSwitch = gpStatue.Child("dream_version_switch")!;
 		GameObject litPieces = dreamSwitch.Child("lit_pieces")!;
