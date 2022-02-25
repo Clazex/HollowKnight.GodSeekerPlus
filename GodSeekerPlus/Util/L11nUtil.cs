@@ -22,7 +22,7 @@ internal static class L11nUtil {
 		Lang.CurrentLanguage().ToIdentifier();
 
 
-	internal static readonly Lazy<Dictionary<string, Dictionary<string, string>>> Dict = new(() => Assembly
+	internal static readonly Lazy<Dictionary<string, Lazy<Dictionary<string, string>>>> Dict = new(() => Assembly
 		.GetExecutingAssembly()
 		.GetManifestResourceNames()
 		.Filter(name => name.EnclosedWith(resPrefix, resPostfix))
@@ -33,7 +33,7 @@ internal static class L11nUtil {
 		.Filter(tuple => langs.Contains(tuple.lang))
 		.ToDictionary(
 			tuple => tuple.lang,
-			tuple => {
+			tuple => new Lazy<Dictionary<string, string>>(() => {
 				using Stream stream = Assembly
 					.GetExecutingAssembly()
 					.GetManifestResourceStream(tuple.path);
@@ -45,14 +45,14 @@ internal static class L11nUtil {
 
 				Logger.LogDebug($"Loaded localization for lang: {tuple.lang}");
 				return table;
-			}
+			})
 		)
 	);
 
 
 	internal static string Localize(this string key) {
-		if (Dict.Value.TryGetValue(CurrentLang, out Dictionary<string, string> table)) {
-			if (table.TryGetValue(key, out string value)) {
+		if (Dict.Value.TryGetValue(CurrentLang, out Lazy<Dictionary<string, string>> table)) {
+			if (table.Value.TryGetValue(key, out string value)) {
 				return value;
 			}
 		}

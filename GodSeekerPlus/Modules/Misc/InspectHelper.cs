@@ -33,10 +33,10 @@ internal sealed class InspectHelper : Module {
 		public GlobalSettings GlobalSettings => Ref.GS;
 		public LocalSettings LocalSettings => Ref.LS;
 
-		public Dictionary<string, Dictionary<string, string>> Dict => L11nUtil.Dict.Value;
+		public Dictionary<string, Lazy<Dictionary<string, string>>> Dict => L11nUtil.Dict.Value;
 
 		public Dictionary<string, string>? GetL11n(string lang) =>
-			L11nUtil.Dict.Value.TryGetValue(lang, out Dictionary<string, string>? dict) ? dict : null;
+			L11nUtil.Dict.Value.TryGetValue(lang, out Lazy<Dictionary<string, string>> dict) ? dict.Value : null;
 
 		public string Localize(string key) => L11nUtil.Localize(key);
 	}
