@@ -1,3 +1,20 @@
+# [v0.18.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.17.1...v0.18.0) (2022-02-25)
+
+### Bug Fixes
+
+* potential invalid data modification if unloaded in scene ([553638b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/553638b18fb70cbac1a539331182f18f677aec02))
+* unloading when running cause nre ([9e57dd3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/9e57dd3e2b1b5fef240e64a719bc16b0094cd09e))
+
+### Features
+
+* fast dash ([d79a8d9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/d79a8d9532bb1b384cbd899c201c023d1163f029))
+* infinite grimm pufferfish ([7d983ff](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7d983ffad61fc964eedb830a55ef4c8e598aeeb3))
+* more pantheon caps ([871c1aa](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/871c1aac8b37740cdfbd3976374cf63075a1ed5f))
+
+### Performance Improvements
+
+* lazy lang loading ([4b8cf3a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4b8cf3a648e67387c42f49019071966006ea535f))
+
 # [v0.17.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.17.0...v0.17.1) (2022-02-14)
 
 ### Bug Fixes
