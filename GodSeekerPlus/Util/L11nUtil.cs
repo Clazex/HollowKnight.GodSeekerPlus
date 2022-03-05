@@ -51,12 +51,8 @@ internal static class L11nUtil {
 
 
 	internal static string Localize(this string key) {
-		if (Dict.Value.TryGetValue(CurrentLang, out Lazy<Dictionary<string, string>> table)) {
-			if (table.Value.TryGetValue(key, out string value)) {
-				return value;
-			}
-		}
-
-		return key;
+		Dict.Value.TryGetValue(CurrentLang, out Lazy<Dictionary<string, string>>? table);
+		table ??= Dict.Value[LanguageCode.EN.ToIdentifier()];
+		return table.Value.TryGetValue(key, out string value) ? value : key;
 	}
 }
