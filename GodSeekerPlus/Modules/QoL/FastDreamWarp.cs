@@ -14,7 +14,7 @@ internal sealed class FastDreamWarp : Module {
 		orig(self);
 
 		if (self is {
-			gameObject.name: "Knight",
+			name: "Knight",
 			FsmName: "Dream Nail"
 		}) {
 			ModifyDreamNailFSM(self);

@@ -16,7 +16,7 @@ internal sealed class FastSuperDash : Module {
 		orig(self);
 
 		if (self is {
-			gameObject.name: "Knight",
+			name: "Knight",
 			FsmName: "Superdash"
 		}) {
 			ModifySuperDashFSM(self);

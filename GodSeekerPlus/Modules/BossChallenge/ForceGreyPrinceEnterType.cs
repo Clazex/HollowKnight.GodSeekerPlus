@@ -14,7 +14,7 @@ internal sealed class ForceGreyPrinceEnterType : Module {
 		orig(self);
 
 		if (self is {
-			gameObject.name: "Grey Prince",
+			name: "Grey Prince",
 			FsmName: "Control"
 		}) {
 			ModifyGPFSM(self);

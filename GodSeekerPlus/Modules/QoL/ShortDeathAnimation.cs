@@ -14,7 +14,7 @@ internal sealed class ShortDeathAnimation : Module {
 		orig(self);
 
 		if (self is {
-			gameObject.name: "Hero Death",
+			name: "Hero Death",
 			FsmName: "Hero Death Anim"
 		}) {
 			ModifyHeroDeathFSM(self);

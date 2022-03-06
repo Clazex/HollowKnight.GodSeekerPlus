@@ -1,41 +1,53 @@
+using MonoMod.Cil;
+
 namespace GodSeekerPlus.Modules.Visual;
 
 [Category(nameof(Visual))]
+[ToggleableLevel(ToggleableLevel.ReloadSave)]
 internal sealed class NoLowHealthEffect : Module {
-	private Coroutine? coroutine = null;
-
 	private protected override void Load() {
-		On.HeroController.Start += DeactivateForNewLevel;
-
-		if (Ref.HC != null) {
-			GetGO()!.SetActive(false);
-		}
+		On.PlayMakerFSM.Start += ModifyFSM;
+		IL.HeroAnimationController.PlayIdle += RemoveAnimation;
 	}
 
 	private protected override void Unload() {
-		if (coroutine != null) {
-			Ref.HC?.StopCoroutine(coroutine);
-			coroutine = null;
-		}
-
-		On.HeroController.Start -= DeactivateForNewLevel;
-
-		if (Ref.HC != null) {
-			GetGO()!.SetActive(true);
-		}
+		On.PlayMakerFSM.Start -= ModifyFSM;
+		IL.HeroAnimationController.PlayIdle -= RemoveAnimation;
 	}
 
-	private void DeactivateForNewLevel(On.HeroController.orig_Start orig, HeroController self) {
+	private void ModifyFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
-		coroutine = self.StartCoroutine(DeactivateThisLevel());
+
+		if (self is {
+			name: "Health",
+			FsmName: "Low Health FX"
+		}) {
+			ModifyLowHealthFXFSM(self);
+		} else if (self is {
+			name: "Damage Effect",
+			FsmName: "Knight Damage"
+		}) {
+			ModifyDamageEffectFSM(self);
+		}
 	}
 
-	private static GameObject? GetGO() =>
-		Ref.GC.hudCamera.gameObject.Child("Low Health Vignette");
+	private static void ModifyLowHealthFXFSM(PlayMakerFSM fsm) {
+		fsm.ChangeTransition("Init", "LOW", "Idle");
+		fsm.ChangeTransition("HUD In HP Check", "LOW", "Idle");
+		fsm.RemoveTransition("Idle", "HERO DAMAGED");
+	}
 
-	private static IEnumerator DeactivateThisLevel() {
-		GameObject? go = null;
-		yield return new WaitUntil(() => (go = GetGO()) != null);
-		go!.SetActive(false);
+	private static void ModifyDamageEffectFSM(PlayMakerFSM fsm) =>
+		fsm.ChangeTransition("Check Focus Prompt", FsmEvent.Finished.Name, "Leak");
+
+	private void RemoveAnimation(ILContext il) {
+		int index = new ILCursor(il).Goto(0).GotoNext(
+			MoveType.After,
+			inst => inst.MatchLdstr("Idle Hurt"),
+			inst => inst.MatchCallvirt<tk2dSpriteAnimator>("Play"),
+			inst => inst.MatchRet()
+		).Index;
+
+		new ILCursor(il).Goto(0).RemoveRange(index);
 	}
 }

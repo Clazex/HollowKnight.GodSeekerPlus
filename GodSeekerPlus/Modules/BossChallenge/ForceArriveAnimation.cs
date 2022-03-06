@@ -23,7 +23,7 @@ internal sealed class ForceArriveAnimation : Module {
 
 		if (
 			self is {
-				gameObject.name: "Dream Entry",
+				name: "Dream Entry",
 				FsmName: "Control"
 			} && scenes.Contains(self.gameObject.scene.name)
 		) {
