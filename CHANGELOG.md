@@ -1,3 +1,14 @@
+# [v0.18.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.0...v0.18.1) (2022-03-06)
+
+### Bug Fixes
+
+* handle lang fallback ([754d8ee](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/754d8eeb429e3aee87048bf15a815aed3d98302b))
+
+### Features
+
+* completely remove all low health related effect ([28b0d60](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/28b0d60657d80482342222535d08be1a3047e8e7))
+* remove carefree melody fix and force overcharm ([c276f49](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/c276f4984709217e93a431f93e04525ad5eced0b))
+
 # [v0.18.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.17.1...v0.18.0) (2022-02-25)
 
 ### Bug Fixes
