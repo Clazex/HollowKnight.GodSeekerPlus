@@ -1,3 +1,13 @@
+# [v0.18.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.1...v0.18.2) (2022-03-14)
+
+### Bug Fixes
+
+* wrong logic ([2271953](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/22719534e3bdd4595cc6116b8a664241146083fd))
+
+### Features
+
+* carefree melody reset ([8e74af4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/8e74af43a54c2c7db248adbb286d04c2ee06ca28))
+
 # [v0.18.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.0...v0.18.1) (2022-03-06)
 
 ### Bug Fixes
