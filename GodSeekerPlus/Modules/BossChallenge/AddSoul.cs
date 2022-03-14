@@ -20,7 +20,7 @@ internal sealed class AddSoul : Module {
 
 		Ref.HC.StartCoroutine(UpdateHUD());
 
-		Logger.LogDebug("Soul added");
+		Logger.LogDebug("Soul added" );
 	}
 
 	private static IEnumerator UpdateHUD() {
