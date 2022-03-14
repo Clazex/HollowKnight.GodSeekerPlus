@@ -12,7 +12,7 @@ internal sealed class AddSoul : Module {
 	private IEnumerator Add(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
-		if (!BossSequenceController.IsInSequence) {
+		if (BossSequenceController.IsInSequence) {
 			yield break;
 		}
 
@@ -20,7 +20,7 @@ internal sealed class AddSoul : Module {
 
 		Ref.HC.StartCoroutine(UpdateHUD());
 
-		Logger.LogDebug("Soul added");
+		Logger.LogDebug("Soul added" );
 	}
 
 	private static IEnumerator UpdateHUD() {
