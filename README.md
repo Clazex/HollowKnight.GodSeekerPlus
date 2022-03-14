@@ -13,6 +13,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Activate Fury**: Activate Fury of the Fallen on entry of boss scenes by setting health to 1.
   + **Add Lifeblood**: Add configured amount of lifeblood on entry of Hall of Gods boss fight.
   + **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
+  + **Carefree Melody Reset**: Reset Carefree Melody hit counter to maximum when entering Godhome non-boss scenes.
   + **Force Arrive Animation**: Force the arrive animation to be played when fighting Vengefly King, Xero, Hive Knight and Enraged Guardian in Hall of Gods.
   + **Force Grey Prince Enter Type**: Force select enter type that Grey Prince use.
   + **Halve Damage**: Halve all the damage taken.
