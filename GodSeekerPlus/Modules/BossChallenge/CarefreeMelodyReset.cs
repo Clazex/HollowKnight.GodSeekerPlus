@@ -10,6 +10,10 @@ internal sealed class CarefreeMelodyReset : Module {
 		USceneManager.activeSceneChanged -= ResetCount;
 
 	private void ResetCount(Scene prev, Scene next) {
+		if (Ref.HC == null) {
+			return;
+		}
+
 		if (!Ref.HC.carefreeShieldEquipped) {
 			return;
 		}
