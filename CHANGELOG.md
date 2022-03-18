@@ -1,3 +1,13 @@
+# [v0.18.3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.2...v0.18.3) (2022-03-18)
+
+### Bug Fixes
+
+* add null check ([7cec474](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7cec4743cd418dd2938d7a9a33587a44aa411f40))
+
+### Features
+
+* apply to all ([2fb9edf](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/2fb9edf7666075bb9ea6cc0d9578b2497695f828))
+
 # [v0.18.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.1...v0.18.2) (2022-03-14)
 
 ### Bug Fixes
