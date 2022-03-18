@@ -8,5 +8,5 @@ internal sealed class AggressiveGC : Module {
 		On.GameManager.IsUnloadAssetsRequired -= SetUnloadRequired;
 
 	private bool SetUnloadRequired(On.GameManager.orig_IsUnloadAssetsRequired orig, GameManager self, string src, string dest) =>
-		BossSequenceController.IsInSequence || orig(self, src, dest);
+		true;
 }

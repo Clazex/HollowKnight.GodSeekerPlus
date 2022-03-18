@@ -50,7 +50,7 @@ Compatible with `Hollow Knight` 1.5.
   + **No Low Health Effect**: Remove all low health related effects.
 
 - **Miscellaneous**
-  + **Aggressive GC**: Force resource unloading and garbage collecting on every scene trasition in the pantheons, may reduce memory usage but slow down loading.
+  + **Aggressive GC**: Force resource unloading and garbage collecting on every scene trasition, may reduce memory usage but slow down loading.
   + **Unlock All Modes**: Auto unlock Steel Soul mode and Godseeker mode.
 
 All features can be toggled in-game.
