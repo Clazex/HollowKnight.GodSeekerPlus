@@ -6,12 +6,15 @@ internal sealed class P5Health : Module {
 	private static readonly Type scalerType = typeof(HealthManager)
 		.GetNestedType("HPScaleGG", BindingFlags.NonPublic);
 
-	private static readonly FieldInfo scalerField = typeof(HealthManager)
-		.GetField("hpScale", BindingFlags.Instance | BindingFlags.NonPublic);
+	private static readonly FieldInfo scalerField = ReflectionHelper
+		.GetFieldInfo(typeof(HealthManager), "hpScale");
 
-	private static readonly FieldInfo lv1Field = scalerType.GetField("level1");
-	private static readonly FieldInfo lv2Field = scalerType.GetField("level2");
-	private static readonly FieldInfo lv3Field = scalerType.GetField("level3");
+	private static readonly FieldInfo lv1Field = ReflectionHelper
+		.GetFieldInfo(scalerType, "level1");
+	private static readonly FieldInfo lv2Field = ReflectionHelper
+		.GetFieldInfo(scalerType, "level2");
+	private static readonly FieldInfo lv3Field = ReflectionHelper
+		.GetFieldInfo(scalerType, "level3");
 
 	private protected override void Load() =>
 		On.HealthManager.Start += NerfHP;

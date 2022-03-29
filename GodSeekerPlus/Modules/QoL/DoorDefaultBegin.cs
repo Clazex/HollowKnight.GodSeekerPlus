@@ -38,8 +38,7 @@ internal sealed class DoorDefaultBegin : Module {
 		cursor.GotoNext(
 			i => i.MatchLdloc(1),
 			i => i.MatchLdfld(
-				typeof(BossDoorChallengeUI)
-					.GetField("buttons", BindingFlags.Instance | BindingFlags.NonPublic)
+				ReflectionHelper.GetFieldInfo(typeof(BossDoorChallengeUI), "buttons")
 			)
 		);
 

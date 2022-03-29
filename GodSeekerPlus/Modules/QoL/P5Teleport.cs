@@ -4,12 +4,6 @@ namespace GodSeekerPlus.Modules.QoL;
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class P5Teleport : Module {
-	private static readonly MethodInfo activateFsmStateActions = typeof(FsmState)
-		.GetMethod(
-			"ActivateActions",
-			BindingFlags.Instance | BindingFlags.NonPublic
-		);
-
 	private protected override void Load() =>
 		USceneManager.activeSceneChanged += AddComponentToLever;
 
@@ -30,11 +24,9 @@ internal sealed class P5Teleport : Module {
 		Ref.HC.RelinquishControl();
 		Fsm dreamNailFSM = Ref.HC.gameObject.LocateMyFSM("Dream Nail").Fsm;
 
-		(new[] { "Warp Effect", "Warp End" })
-			.ForEach(name => activateFsmStateActions.Invoke(
-				dreamNailFSM.GetState(name),
-				new object[] { 0 }
-			));
+		new[] { "Warp Effect", "Warp End" }
+			.Map(name => dreamNailFSM.GetState(name))
+			.ForEach(state => ReflectionHelper.CallMethod(state, "ActivateActions", 0));
 
 		Ref.HC.gameObject.LocateMyFSM("Roar Lock")
 			.FsmVariables.FindFsmBool("No Roar")
@@ -60,10 +52,7 @@ internal sealed class P5Teleport : Module {
 		#endregion
 
 		// Do teleport
-		activateFsmStateActions.Invoke(
-			dreamNailFSM.GetState("New Scene"),
-			new object[] { 0 }
-		);
+		ReflectionHelper.CallMethod(dreamNailFSM.GetState("New Scene"), "ActivateActions", 0);
 
 		#region Restore DGate Data
 
