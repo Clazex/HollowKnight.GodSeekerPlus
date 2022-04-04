@@ -34,7 +34,8 @@ internal sealed class MorePantheonCaps : Module {
 				Logger.LogDebug($"Radiant cap enabled for {self.bossSequence.name}");
 			}
 
-			if (Ref.LS.GetRABCompletion(doorPDDict[self.playerDataString])
+			if (doorPDDict.TryGetValue(self.playerDataString, out int num)
+				&& Ref.LS.GetRABCompletion(num)
 				&& self.completedNoHitsDisplay?.GetComponent<SpriteRenderer>() is SpriteRenderer sr
 			) {
 				sr.transform.Translate(0, 0, -0.0801f);
