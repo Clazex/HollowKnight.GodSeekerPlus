@@ -1,8 +1,8 @@
 using Bindings = BossSequenceController.ChallengeBindings;
 
-namespace GodSeekerPlus.Modules.Visual;
+namespace GodSeekerPlus.Modules.Cosmetic;
 
-[Category(nameof(Visual))]
+[Category(nameof(Cosmetic))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class MorePantheonCaps : Module {

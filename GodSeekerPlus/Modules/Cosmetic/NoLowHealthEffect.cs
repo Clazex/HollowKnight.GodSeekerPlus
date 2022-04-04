@@ -1,8 +1,8 @@
 using MonoMod.Cil;
 
-namespace GodSeekerPlus.Modules.Visual;
+namespace GodSeekerPlus.Modules.Cosmetic;
 
-[Category(nameof(Visual))]
+[Category(nameof(Cosmetic))]
 [ToggleableLevel(ToggleableLevel.ReloadSave)]
 internal sealed class NoLowHealthEffect : Module {
 	private protected override void Load() {

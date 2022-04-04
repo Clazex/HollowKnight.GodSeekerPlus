@@ -21,6 +21,11 @@ Compatible with `Hollow Knight` 1.5.
   + **Infinite Radiance Climbing**: When fighting in the Hall of Gods, starts Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
 
+- **Cosmetic**:
+  + **More Pantheon Caps**: Enable the unused no hit cap for Pantheons 1 to 4, and add a new special effect for all pantheons indicating completed once no hit with all bindings.
+  + **No Fury Effect**: Remove the red effect around the screen when the Fury of Fallen is activated.
+  + **No Low Health Effect**: Remove all low health related effects.
+
 - **New Save Quickstart**:
   + **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
   + **Unlock Pantheons**: Auto unlock Pantheon of Knight and the Pantheon of Hallownest when in Godseeker mode, also activates some objects in the Godhome Atrium Roof.
@@ -43,11 +48,6 @@ Compatible with `Hollow Knight` 1.5.
   + **No Nail Attack**: Disable normal nail attack.
   + **No Nail Damage**: Remove damage from nail attacks, including nail arts.
   + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
-
-- **Visual**:
-  + **More Pantheon Caps**: Enable the unused no hit cap for Pantheons 1 to 4, and add a new special effect for all pantheons indicating completed once no hit with all bindings.
-  + **No Fury Effect**: Remove the red effect around the screen when the Fury of Fallen is activated.
-  + **No Low Health Effect**: Remove all low health related effects.
 
 - **Miscellaneous**
   + **Aggressive GC**: Force resource unloading and garbage collecting on every scene trasition, may reduce memory usage but slow down loading.
