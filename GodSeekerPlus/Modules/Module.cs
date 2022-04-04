@@ -77,9 +77,14 @@ internal abstract class Module {
 
 	private void Activate() {
 		if (!Loaded) {
-			Load();
-			Logger.LogDebug($"Activated module {Name}");
-			Loaded = true;
+			try {
+				Load();
+				Logger.LogDebug($"Activated module {Name}");
+				Loaded = true;
+			} catch (Exception e) {
+				Logger.LogError($"Failed to activate module {Name}!");
+				Logger.LogError(e.ToString());
+			}
 		}
 	}
 
