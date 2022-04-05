@@ -2,7 +2,6 @@ using System.Threading;
 
 namespace GodSeekerPlus.Modules.Restrictions;
 
-[Category(nameof(Restrictions))]
 internal sealed class CreateLag : Module {
 	private protected override void Load() =>
 		ModHooks.HeroUpdateHook += ThreadSleep;

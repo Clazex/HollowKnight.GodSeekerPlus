@@ -8,7 +8,6 @@ using UnityEngine.EventSystems;
 
 namespace GodSeekerPlus.Modules.QoL;
 
-[Category(nameof(QoL))]
 [DefaultEnabled]
 internal sealed class DoorDefaultBegin : Module {
 	private ILHook? hook = null;

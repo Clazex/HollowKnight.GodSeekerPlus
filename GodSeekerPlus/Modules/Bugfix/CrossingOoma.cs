@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
-[Category(nameof(Bugfix))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class CrossingOoma : Module {

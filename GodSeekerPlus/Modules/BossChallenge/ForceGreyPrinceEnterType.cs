@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category(nameof(BossChallenge))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class ForceGreyPrinceEnterType : Module {

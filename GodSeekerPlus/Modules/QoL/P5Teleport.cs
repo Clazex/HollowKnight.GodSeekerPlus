@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[Category(nameof(QoL))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class P5Teleport : Module {

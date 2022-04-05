@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.NewSaveQuickstart;
 
-[Category(nameof(NewSaveQuickstart))]
 [ToggleableLevel(ToggleableLevel.ReloadSave)]
 [DefaultEnabled]
 internal sealed class UnlockRadiance : Module {

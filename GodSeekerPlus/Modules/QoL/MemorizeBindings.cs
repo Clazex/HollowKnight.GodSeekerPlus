@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[Category(nameof(QoL))]
 [DefaultEnabled]
 internal sealed class MemorizeBindings : Module {
 	private protected override void Load() {

@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category(nameof(BossChallenge))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class P5Health : Module {
 	private protected override void Load() =>

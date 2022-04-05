@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.Restrictions;
 
-[Category(nameof(Restrictions))]
 internal sealed class NoNailAttack : Module {
 	private protected override void Load() =>
 		On.HeroController.CanAttack += SuppressAttack;

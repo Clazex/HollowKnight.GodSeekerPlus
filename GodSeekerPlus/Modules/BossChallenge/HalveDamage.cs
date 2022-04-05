@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category(nameof(BossChallenge))]
 internal sealed class HalveDamage : Module {
 	private protected override void Load() =>
 		ModHooks.AfterTakeDamageHook += MakeDamageHalved;

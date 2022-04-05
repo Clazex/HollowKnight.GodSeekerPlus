@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.Cosmetic;
 
-[Category(nameof(Cosmetic))]
 internal sealed class NoFuryEffect : Module {
 	private const string goName = "fury_effects_v2";
 

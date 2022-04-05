@@ -19,7 +19,9 @@ internal abstract class Module {
 	internal string Name => name ??= Type.Name;
 
 	internal string Category => category ??=
-		Type.GetCustomAttribute<CategoryAttribute>()?.Name
+		Type.FullName
+			.StripStart(nameof(GodSeekerPlus) + '.' + nameof(Modules) + '.')
+			.StripEnd('.' + Name)
 		?? nameof(Misc);
 
 	internal ToggleableLevel ToggleableLevel => toggleableLevel ??=

@@ -1,6 +1,5 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Category(nameof(BossChallenge))]
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class ActivateFury : Module {
 	private static readonly Dictionary<string, float> extraWaitScenes = new() {
