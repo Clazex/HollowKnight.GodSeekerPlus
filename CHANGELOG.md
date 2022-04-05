@@ -1,3 +1,15 @@
+# [v0.18.4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.3...v0.18.4) (2022-04-05)
+
+### Bug Fixes
+
+* ignore extra doors ([214cfb4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/214cfb44674764c4799d3fa87a305a0f53831881))
+
+### Features
+
+* catch error on module loading ([ab041ab](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ab041ab2cc8153ae54e2c9a4410266814c24036a))
+* crossing ooma ([e5449a8](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e5449a8315faba548fc2ce91fefc3e9dafc8b54e))
+* rewrite to support mod bosses ([94ce8ab](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/94ce8abd7f719442630b91e78661408045cc1cb8))
+
 # [v0.18.3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.2...v0.18.3) (2022-03-18)
 
 ### Bug Fixes
