@@ -51,14 +51,15 @@ internal sealed class MorePantheonCaps : Module {
 		BossSequenceController.BossSequenceData currentData = ReflectionHelper
 			.GetField<BossSequenceController.BossSequenceData>(typeof(BossSequenceController), "currentData");
 
-		int num = doorPDDict[currentData.playerData];
-		bool rab = !currentData.knightDamaged
+		if (doorPDDict.TryGetValue(currentData.playerData, out int num)) {
+			bool rab = !currentData.knightDamaged
 			&& currentData.bindings == (Bindings.Nail | Bindings.Shell | Bindings.Charms | Bindings.Soul);
-		bool rabPrev = Ref.LS.GetRABCompletion(num);
+			bool rabPrev = Ref.LS.GetRABCompletion(num);
 
-		if (rab && !rabPrev) {
-			Ref.LS.SetRABCompletion(num, true);
-			Logger.LogDebug($"Radiant AB in Pantheon #{num} recorded");
+			if (rab && !rabPrev) {
+				Ref.LS.SetRABCompletion(num, true);
+				Logger.LogDebug($"Radiant AB in Pantheon #{num} recorded");
+			}
 		}
 
 		orig(self);
