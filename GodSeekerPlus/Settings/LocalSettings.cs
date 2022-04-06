@@ -15,6 +15,14 @@ public sealed class LocalSettings {
 		set => rabCompletion = ((value & 0b11111) == value) ? value : 0;
 	}
 
+	[JsonIgnore]
+	public int selectedP5Segment = 0;
+
+	[JsonProperty(PropertyName = "selectedP5Segment")]
+	public int SelectedP5Segment {
+		get => selectedP5Segment;
+		set => selectedP5Segment = MiscUtil.Clamp(value, 0, Modules.BossChallenge.SegmentedP5.segments.Length - 1);
+	}
 
 	#region RAB Completions Getter/Setter
 
@@ -36,4 +44,12 @@ public sealed class LocalSettings {
 	}
 
 	#endregion
+
+	public void IncreamentP5SegmentSelection() {
+		selectedP5Segment++;
+
+		if (selectedP5Segment >= Modules.BossChallenge.SegmentedP5.segments.Length) {
+			selectedP5Segment = 0;
+		}
+	}
 }
