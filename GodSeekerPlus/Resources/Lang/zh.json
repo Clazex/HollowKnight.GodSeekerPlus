@@ -41,10 +41,20 @@
 	"Modules/NoSpellDamage": "取消法术伤害",
 	"Modules/P5Health": "五门血量",
 	"Modules/P5Teleport": "五门传送",
+	"Modules/SegmentedP5": "分段五门",
 	"Modules/ShortDeathAnimation": "短死亡动画",
 	"Modules/UnlockAllModes": "解锁所有模式",
 	"Modules/UnlockEternalOrdeal": "解锁无尽折磨",
 	"Modules/UnlockPantheons": "解锁万神殿",
 	"Modules/UnlockRadiance": "解锁辐光",
-	"Modules/UnlockRadiant": "解锁辐辉"
+	"Modules/UnlockRadiant": "解锁辐辉",
+	"SegmentedP5/SelectSegment": "选择分段",
+	"SegmentedP5/Segment/0": "反击蝇之王 - 骨钉大师奥罗 & 马托",
+	"SegmentedP5/Segment/1": "泽若 - 战斗姐妹",
+	"SegmentedP5/Segment/2": "马尔穆 - 绘画大师席奥",
+	"SegmentedP5/Segment/3": "蜂巢骑士 - 剧团团长格林",
+	"SegmentedP5/Segment/4": "守望者骑士 - 岗哨大黄蜂",
+	"SegmentedP5/Segment/5": "暴怒守卫 - 白色防御者",
+	"SegmentedP5/Segment/6": "灵魂暴君 - 梦魇之王格林",
+	"SegmentedP5/Segment/7": "纯粹容器 - 无上辐光"
 }

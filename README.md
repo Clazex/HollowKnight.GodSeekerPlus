@@ -20,6 +20,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Infinite Grimm Pufferfish**: When fighting in the Hall of Gods, make Troupe Master Grimm and Nightmare King Grimm only do pufferfish attack.
   + **Infinite Radiance Climbing**: When fighting in the Hall of Gods, starts Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
+  + **Segmented P5**: Add a pantheon entry to the left of the entrance of the Land of Storms, at which you can select a segment of the Pantheon of Hallownest to challenge.
 
 - **Bugfix**:
   + **Crossing Ooma**: Prevent Ooma from spawning explosive jellies across scenes.

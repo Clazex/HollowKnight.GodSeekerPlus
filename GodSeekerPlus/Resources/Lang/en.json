@@ -41,10 +41,20 @@
 	"Modules/NoSpellDamage": "No Spell Damage",
 	"Modules/P5Health": "P5 Health",
 	"Modules/P5Teleport": "P5 Teleport",
+	"Modules/SegmentedP5": "Segmented P5",
 	"Modules/ShortDeathAnimation": "Short Death Animation",
 	"Modules/UnlockAllModes": "Unlock All Modes",
 	"Modules/UnlockEternalOrdeal": "Unlock Eternal Ordeal",
 	"Modules/UnlockPantheons": "Unlock Pantheons",
 	"Modules/UnlockRadiance": "Unlock Radiance",
-	"Modules/UnlockRadiant": "Unlock Radiant"
+	"Modules/UnlockRadiant": "Unlock Radiant",
+	"SegmentedP5/SelectSegment": "Select Segment",
+	"SegmentedP5/Segment/0": "Vengefly King - Nailmasters Oro & Mato",
+	"SegmentedP5/Segment/1": "Xero - Sisters of Battle",
+	"SegmentedP5/Segment/2": "Marmu - Paintmaster Sheo",
+	"SegmentedP5/Segment/3": "Hive Knight - Troupe Master Grimm",
+	"SegmentedP5/Segment/4": "Watcher Knights - Hornet Sentinel",
+	"SegmentedP5/Segment/5": "Enraged Guardian - White Defender",
+	"SegmentedP5/Segment/6": "Soul Tyrant - Nightmare King Grimm",
+	"SegmentedP5/Segment/7": "Pure Vessel - Absolute Radiance"
 }

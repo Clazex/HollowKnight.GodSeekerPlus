@@ -4,8 +4,6 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MonoMod.Utils;
 
-using UnityEngine.EventSystems;
-
 namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
