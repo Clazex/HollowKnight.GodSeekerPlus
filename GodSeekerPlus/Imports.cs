@@ -22,6 +22,8 @@ global using Satchel;
 global using Satchel.Futils;
 
 global using UnityEngine;
+global using UnityEngine.UI;
+global using UnityEngine.EventSystems;
 global using UnityEngine.SceneManagement;
 
 global using Module = GodSeekerPlus.Modules.Module;

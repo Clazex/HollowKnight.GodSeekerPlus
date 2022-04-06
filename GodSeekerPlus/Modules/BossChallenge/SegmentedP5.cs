@@ -16,6 +16,17 @@ internal sealed class SegmentedP5 : Module {
 		(49, 52)
 	};
 
+	internal static readonly (string start, string end)[] segmentsName = new[] {
+		("VENGEFLY_MAIN", "TEMP_NM_SUPER"),
+		("GH_XERO_C_MAIN", "SISTERS_MAIN"),
+		("GH_MUMCAT_C_MAIN", "PAINTMASTER_MAIN"),
+		("HIVE_KNIGHT_MAIN", "GRIMM_SUPER"),
+		("BLACK_KNIGHT_MAIN", "HORNET_MAIN"),
+		("ENRAGED_GUARDIAN_MAIN", "WHITE_DEFENDER_MAIN"),
+		("MAGE_LORD_DREAM_MAIN", "NIGHTMARE_GRIMM_SUPER"),
+		("HK_PRIME_MAIN", "ABSOLUTE_RADIANCE_MAIN")
+	};
+
 	private bool doorOnline = false;
 	private bool running = false;
 	private GameObject? segP5 = null;
@@ -24,6 +35,7 @@ internal sealed class SegmentedP5 : Module {
 		On.GameManager.BeginScene += SetupScene;
 		On.BossSequenceController.SetupNewSequence += RecalculateStartScene;
 		On.BossSequence.CanLoad += SkipNotSelectedScenes;
+		On.BossDoorChallengeUI.Setup += SetupUI;
 		ModHooks.GetPlayerVariableHook += GetVarHook;
 	}
 
@@ -38,7 +50,78 @@ internal sealed class SegmentedP5 : Module {
 		On.GameManager.BeginScene -= SetupScene;
 		On.BossSequenceController.SetupNewSequence -= RecalculateStartScene;
 		On.BossSequence.CanLoad -= SkipNotSelectedScenes;
+		On.BossDoorChallengeUI.Setup -= SetupUI;
 		ModHooks.GetPlayerVariableHook -= GetVarHook;
+	}
+	private GameObject? selectBtn;
+	private Text? selectBtnText;
+	private string GetSegmentName() {
+		var seg = segmentsName[GodSeekerPlus.LocalSettings.selectedP5Segment];
+		return Language.Language.Get(seg.start, "Titles") + "---" + Language.Language.Get(seg.end, "Titles");
+	}
+	private void SetupUI(On.BossDoorChallengeUI.orig_Setup orig, BossDoorChallengeUI self, BossSequenceDoor door) {
+		orig(self, door);
+		if(door.gameObject != segP5) {
+			if(selectBtn == null) UObject.Destroy(selectBtn);
+			return;
+		}
+		self.descriptionText.text = "SegmentedP5/SelectionPhase".Localize();
+		if(selectBtn == null) {
+			var btn = self.gameObject.Child("Panel", "BeginButton");
+			if(btn is null) return;
+			selectBtn = UObject.Instantiate(
+					btn, new Vector3(0, 2, 0), Quaternion.identity,
+					btn.transform.parent
+					);
+			selectBtn.name = "SelectPhase";
+			selectBtn.transform.SetSiblingIndex(6);
+			selectBtn.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
+
+			selectBtnText = selectBtn.Child("Text")?.GetComponent<Text>();
+			if(selectBtnText != null) {
+				UObject.Destroy(selectBtnText.GetComponent<AutoLocalizeTextUI>());
+				selectBtnText.text = GetSegmentName();
+			}
+			var sbtn = selectBtn.GetComponent<MenuButton>();
+
+			var et = selectBtn.GetComponent<EventTrigger>();
+			et.triggers.Clear();
+			var entry = new EventTrigger.Entry();
+			entry.eventID = EventTriggerType.Submit;
+			entry.callback.AddListener((_) => {
+				sbtn.Select();
+				OnSelectSeg();
+			});
+			et.triggers.Add(entry);
+			
+			var mbtn = btn.GetComponent<MenuButton>();
+
+			var nav = mbtn.navigation;
+			var nailBtn = (MenuButton)nav.selectOnDown;
+			nav.selectOnDown = sbtn;
+			mbtn.navigation = nav;
+
+			nav = nailBtn.navigation;
+			nav.selectOnUp = sbtn;
+			nailBtn.navigation = nav;
+
+			nav = sbtn.navigation;
+			nav.selectOnUp = mbtn;
+			nav.selectOnDown = nailBtn;
+			sbtn.navigation = nav;
+		}
+	}
+	private void OnSelectSeg() {
+		if(selectBtn is null) return;
+
+		GodSeekerPlus.LocalSettings.selectedP5Segment++;
+		if(GodSeekerPlus.LocalSettings.selectedP5Segment >= segments.Length) {
+			GodSeekerPlus.LocalSettings.selectedP5Segment = 0;
+		}
+
+		if(selectBtnText != null) {
+			selectBtnText.text = GetSegmentName();
+		}
 	}
 
 	private void SetupScene(On.GameManager.orig_BeginScene orig, GameManager self) {

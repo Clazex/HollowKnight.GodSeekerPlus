@@ -1,6 +1,7 @@
 {
 	"ModName": "寻神者 +",
 	"Settings": "选项",
+	"SegmentedP5/SelectionPhase": "选择阶段",
 	"SatchelNotFoundPrompt": "安装 Satchel >= v0.7.4 以获取完全菜单支持",
 	"ToggleButtonDesc": "开关本模组的全部效果",
 	"ToggleableLevel/AnyTime": "",
@@ -41,6 +42,7 @@
 	"Modules/NoSpellDamage": "取消法术伤害",
 	"Modules/P5Health": "五门血量",
 	"Modules/P5Teleport": "五门传送",
+	"Modules/SegmentedP5": "分段五门",
 	"Modules/ShortDeathAnimation": "短死亡动画",
 	"Modules/UnlockAllModes": "解锁所有模式",
 	"Modules/UnlockEternalOrdeal": "解锁无尽折磨",
