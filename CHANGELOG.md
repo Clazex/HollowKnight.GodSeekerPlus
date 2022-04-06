@@ -1,3 +1,13 @@
+# [v0.19.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.4...v0.19.0) (2022-04-06)
+
+### Bug Fixes
+
+* ignore extra doors on completion ([206265d](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/206265d0ee4876bf9a965f50b7574b3661712510))
+
+### Features
+
+* segmented p5 ([b04d613](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/b04d61301a98311c615cff76f3c7a5318b1a6572))
+
 # [v0.18.4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.3...v0.18.4) (2022-04-05)
 
 ### Bug Fixes
