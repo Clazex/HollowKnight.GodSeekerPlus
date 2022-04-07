@@ -1,3 +1,9 @@
+# [v0.19.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.0...v0.19.1) (2022-04-07)
+
+### Bug Fixes
+
+* falsely awarding achievement ([f696f08](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f696f080508a2c9120a0001f6c405a6cc9d54f7d))
+
 # [v0.19.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.18.4...v0.19.0) (2022-04-06)
 
 ### Bug Fixes
