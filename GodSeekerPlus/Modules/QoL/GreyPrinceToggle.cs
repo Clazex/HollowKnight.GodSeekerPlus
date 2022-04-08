@@ -9,6 +9,10 @@ internal sealed class GreyPrinceToggle : Module {
 		On.GameManager.BeginScene += StartSetup;
 		ModHooks.GetPlayerVariableHook += GetVarHook;
 		ModHooks.SetPlayerVariableHook += SetVarHook;
+
+		if (Ref.GM?.sceneName == "GG_Workshop") {
+			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
+		}
 	}
 
 	private protected override void Unload() {
@@ -36,7 +40,11 @@ internal sealed class GreyPrinceToggle : Module {
 	private IEnumerator SetupScene() {
 		running = true;
 
-		var gpStatue = GameObject.Find("GG_Statue_GreyPrince");
+		var gpStatue = USceneManager.GetActiveScene()
+			.GetRootGameObjects()
+			.First(go => go.name == "GG_Statue_GreyPrince");
+		gpStatue.RemoveComponent<DeactivateIfPlayerdataTrue>();
+		gpStatue.SetActive(true);
 		GameObject dreamSwitch = gpStatue.Child("dream_version_switch")!;
 		GameObject litPieces = dreamSwitch.Child("lit_pieces")!;
 		GameObject burstPt = litPieces.Child("Burst Pt")!;
