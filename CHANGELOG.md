@@ -1,3 +1,10 @@
+# [v0.19.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.1...v0.19.2) (2022-04-08)
+
+### Bug Fixes
+
+* statue missing ([d6cb55f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/d6cb55f42ba5afc6e6552fab58a9f88d9cf33a5e))
+* wrong damage ([4e2292a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4e2292a1554ba1935c8840912bc002a59dea9148))
+
 # [v0.19.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.0...v0.19.1) (2022-04-07)
 
 ### Bug Fixes
