@@ -16,7 +16,7 @@ public sealed class LocalSettings {
 	}
 
 	[JsonIgnore]
-	public int selectedP5Segment = 0;
+	private int selectedP5Segment = 0;
 
 	[JsonProperty(PropertyName = "selectedP5Segment")]
 	public int SelectedP5Segment {

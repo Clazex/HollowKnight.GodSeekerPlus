@@ -278,7 +278,7 @@ internal sealed class SegmentedP5 : Module {
 	}
 
 	private bool SkipNotSelectedScenes(On.BossSequence.orig_CanLoad orig, BossSequence self, int index) {
-		(int start, int end) = segments[GodSeekerPlus.LocalSettings.selectedP5Segment];
+		(int start, int end) = segments[GodSeekerPlus.LocalSettings.SelectedP5Segment];
 		return (!running || (index >= start && index <= end)) && orig(self, index);
 	}
 
