@@ -23,11 +23,13 @@ internal sealed class P5Health : Module {
 
 	private int OverrideLevel() => 0;
 
-	private int FixDamage(ref int hazardType, int damage) => BossSceneController.IsBossScene
-		? ReflectionHelper.GetField<BossSceneController, int>(BossSceneController.Instance, "bossLevel") switch {
-			1 => damage * 2,
+	private int FixDamage(ref int hazardType, int damage) => damage switch {
+		int i when i <= 0 => i,
+		int i when BossSceneController.IsBossScene is false => i,
+		int i => ReflectionHelper.GetField<BossSceneController, int>(BossSceneController.Instance, "bossLevel") switch {
+			1 => i * 2,
 			2 => 9999,
-			_ => damage,
+			_ => i,
 		}
-		: damage;
+	};
 }
