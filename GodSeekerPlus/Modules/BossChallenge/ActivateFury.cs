@@ -20,8 +20,12 @@ internal sealed class ActivateFury : Module {
 			yield break;
 		}
 
+		Activate();
+	}
+
+	internal void Activate() {
 		if (!Ref.PD.equippedCharm_6) {
-			yield break;
+			return;
 		}
 
 		if (Ref.PD.equippedCharm_27) {
@@ -43,9 +47,8 @@ internal sealed class ActivateFury : Module {
 		yield return new WaitUntil(() => fsm.ActiveStateName == "In" || fsm.ActiveStateName == "Idle");
 
 		// Avoid evading roar
-		string sceneName = USceneManager.GetActiveScene().name;
-		if (extraWaitScenes.ContainsKey(sceneName)) {
-			yield return new WaitForSeconds(extraWaitScenes[sceneName]);
+		if (extraWaitScenes.TryGetValue(Ref.GM.sceneName, out float waitTime)) {
+			yield return new WaitForSeconds(waitTime);
 			yield return new WaitUntil(() => !Ref.HC.controlReqlinquished);
 		}
 

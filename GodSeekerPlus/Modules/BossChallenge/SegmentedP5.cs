@@ -271,6 +271,19 @@ internal sealed class SegmentedP5 : Module {
 				oldSetupEvent(self);
 
 				BossSequenceController.ApplyBindings();
+
+				if (ModuleManager.TryGetActiveModule(out ActivateFury? af)) {
+					BossSceneController.SetupEventDelegate oldSetupEvent = BossSceneController.SetupEvent;
+					BossSceneController.SetupEvent = self => {
+						oldSetupEvent(self);
+
+						af.Activate();
+					};
+				}
+
+				if (ModuleManager.TryGetActiveModule(out AddLifeblood? alb)) {
+					alb.Add();
+				}
 			};
 		}
 

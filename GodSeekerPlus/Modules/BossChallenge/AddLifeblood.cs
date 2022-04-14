@@ -15,6 +15,10 @@ internal sealed class AddLifeblood : Module {
 			yield break;
 		}
 
+		Add();
+	}
+
+	internal void Add() {
 		for (int i = 0; i < Ref.GS.LifebloodAmount; i++) {
 			EventRegister.SendEvent("ADD BLUE HEALTH");
 		}
