@@ -1,3 +1,13 @@
+# [v0.19.3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.2...v0.19.3) (2022-04-14)
+
+### Bug Fixes
+
+* zero damage mistakenly overwritten ([84895b9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/84895b9418c00d7d10857f2ab340b7b0b54a1f57))
+
+### Features
+
+* support activate fury and add lifeblood in segmented p5 ([1ceb2ce](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/1ceb2ce3f30697cec3326ecb083b8fbfdb5ece34))
+
 # [v0.19.2](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.1...v0.19.2) (2022-04-08)
 
 ### Bug Fixes
