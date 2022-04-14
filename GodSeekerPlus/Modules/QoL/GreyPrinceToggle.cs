@@ -40,7 +40,7 @@ internal sealed class GreyPrinceToggle : Module {
 	private IEnumerator SetupScene() {
 		running = true;
 
-		var gpStatue = USceneManager.GetActiveScene()
+		GameObject gpStatue = USceneManager.GetActiveScene()
 			.GetRootGameObjects()
 			.First(go => go.name == "GG_Statue_GreyPrince");
 		gpStatue.RemoveComponent<DeactivateIfPlayerdataTrue>();

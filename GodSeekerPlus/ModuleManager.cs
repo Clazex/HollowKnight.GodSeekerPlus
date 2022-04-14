@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace GodSeekerPlus;
 
 internal static class ModuleManager {
@@ -12,8 +14,10 @@ internal static class ModuleManager {
 	internal static void Unload() =>
 		Modules.Values.ForEach(m => m.Disable());
 
-	internal static bool ModuleEnabled<T>() where T : Module
-		=> Modules[typeof(T).Name].Active;
+	internal static bool TryGetActiveModule<T>([NotNullWhen(true)] out T? module) where T : Module {
+		module = Modules.TryGetValue(typeof(T).Name, out Module? m) ? m as T : null;
+		return module != null;
+	}
 
 
 	internal static IEnumerable<Type> FindModules() => Assembly

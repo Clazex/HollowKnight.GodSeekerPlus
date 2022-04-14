@@ -2,7 +2,7 @@ namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
 internal sealed class CompleteLowerDifficulty : Module {
-	internal static void CompleteLower(string name, ref BossStatue.Completion completion) {
+	internal void CompleteLower(string name, ref BossStatue.Completion completion) {
 		if ((completion.completedTier2 || completion.completedTier3) && !completion.completedTier1) {
 			completion.completedTier1 = true;
 			Logger.LogDebug($"Unlocked Tier 1 for {name}");

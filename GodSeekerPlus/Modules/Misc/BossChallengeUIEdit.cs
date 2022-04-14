@@ -26,14 +26,14 @@ internal sealed class BossChallengeUIEdit : Module {
 
 		BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
 
-		if (ModuleManager.ModuleEnabled<UnlockRadiant>()) {
-			UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
+		if (ModuleManager.TryGetActiveModule(out UnlockRadiant? ur)) {
+			ur.Unlock(invokeOrig, statue, ref completion);
 		} else {
 			invokeOrig();
 		}
 
-		if (ModuleManager.ModuleEnabled<CompleteLowerDifficulty>()) {
-			CompleteLowerDifficulty.CompleteLower(statue.name, ref completion);
+		if (ModuleManager.TryGetActiveModule(out CompleteLowerDifficulty? cld)) {
+			cld.CompleteLower(statue.name, ref completion);
 		}
 
 		SetStatueCompletion(statue, completion);
