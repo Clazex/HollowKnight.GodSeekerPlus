@@ -38,6 +38,7 @@ Compatible with `Hollow Knight` 1.5.
 
 - **Quality of Life**:
   + **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
+  + **Correct Radiance HP**: Correct Absolute Radiance's health value to make her die at zero health.
   + **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
   + **Fast Dash**: Remove dash cooldown when in Hall of Gods.
   + **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
