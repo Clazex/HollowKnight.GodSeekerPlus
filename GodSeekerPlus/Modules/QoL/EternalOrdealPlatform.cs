@@ -10,6 +10,10 @@ internal sealed class EternalOrdealPlatform : Module {
 		USceneManager.activeSceneChanged -= AddPlatform;
 
 	private void AddPlatform(Scene _, Scene next) {
+		if (next.name != "GG_Workshop") {
+			return;
+		}
+
 		GameObject origPlat = next.GetRootGameObjects()
 			.First(go => go.name == "gg_plat_float_wide");
 
