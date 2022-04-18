@@ -6,9 +6,7 @@ internal sealed class GreyPrinceToggle : Module {
 	private bool running = false;
 
 	private protected override void Load() {
-		On.GameManager.BeginScene += StartSetup;
-		ModHooks.GetPlayerVariableHook += GetVarHook;
-		ModHooks.SetPlayerVariableHook += SetVarHook;
+		USceneManager.activeSceneChanged += StartSetup;
 
 		if (Ref.GM?.sceneName == "GG_Workshop") {
 			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
@@ -16,9 +14,7 @@ internal sealed class GreyPrinceToggle : Module {
 	}
 
 	private protected override void Unload() {
-		On.GameManager.BeginScene -= StartSetup;
-		ModHooks.GetPlayerVariableHook -= GetVarHook;
-		ModHooks.SetPlayerVariableHook -= SetVarHook;
+		USceneManager.activeSceneChanged -= StartSetup;
 
 		if (running) {
 			running = false;
@@ -26,18 +22,12 @@ internal sealed class GreyPrinceToggle : Module {
 		}
 	}
 
-	private void StartSetup(On.GameManager.orig_BeginScene orig, GameManager self) {
-		orig(self);
-
-		if (!Ref.PD.bossRushMode || Ref.GM.sceneName != "GG_Workshop") {
+	private void StartSetup(Scene _, Scene next) {
+		if (!Ref.PD.bossRushMode || next.name != "GG_Workshop") {
 			running = false;
 			return;
 		}
 
-		Ref.GM.StartCoroutine(SetupScene());
-	}
-
-	private IEnumerator SetupScene() {
 		running = true;
 
 		GameObject gpStatue = USceneManager.GetActiveScene()
@@ -47,17 +37,6 @@ internal sealed class GreyPrinceToggle : Module {
 		gpStatue.SetActive(true);
 		GameObject dreamSwitch = gpStatue.Child("dream_version_switch")!;
 		GameObject litPieces = dreamSwitch.Child("lit_pieces")!;
-		GameObject burstPt = litPieces.Child("Burst Pt")!;
-
-		// Prevents bursting particles on entering save
-		burstPt.transform.SetPositionY(burstPt.transform.GetPositionY() + 1000f);
-
-		// Make a dummy dream variant
-		BossStatue statue = gpStatue.GetComponent<BossStatue>();
-		statue.dreamBossDetails = statue.bossDetails;
-		statue.dreamBossScene = statue.bossScene;
-		statue.dreamStatueStatePD = statue.statueStatePD;
-		statue.SetDreamVersion(statue.UsingDreamVersion, false, false);
 
 		dreamSwitch.transform.Translate(0.5f, 0, 0);
 		dreamSwitch
@@ -76,48 +55,59 @@ internal sealed class GreyPrinceToggle : Module {
 		litPieces.Child("dream_glowy_guy")!.GetComponent<ColorFader>().upColour =
 			new(1f, 0.9102f, 0.9219f);
 
+		Ref.GM.StartCoroutine(SetupScene(dreamSwitch));
+	}
+
+	private IEnumerator SetupScene(GameObject dreamSwitch) {
 		yield return new WaitUntil(() => dreamSwitch
-			.Child("GG_statue_plinth_orb_off")
-			?.GetComponent<BossStatueDreamToggle>() != null
+			.Child("GG_statue_plinth_orb_off") != null
 		);
 
-		BossStatueDreamToggle toggle = dreamSwitch
-			.Child("GG_statue_plinth_orb_off")!
-			.GetComponent<BossStatueDreamToggle>();
-		UObject.DestroyImmediate(toggle.dreamBurstSpawnPoint.gameObject);
-		toggle.SetOwner(statue);
-
-		// Fix dual plaques
-		statue.altPlaqueL.gameObject.SetActive(false);
-		statue.altPlaqueR.gameObject.SetActive(false);
-		statue.regularPlaque.gameObject.SetActive(true);
-		statue.SetPlaqueState(statue.StatueState, statue.regularPlaque, statue.statueStatePD);
-
-		yield return new WaitUntil(() => Ref.HC.isHeroInPosition);
-		yield return new WaitForSeconds(0.2f);
-		yield return new WaitWhile(() => Ref.HC.controlReqlinquished || Ref.PD.atBench);
-		burstPt.transform.SetPositionY(burstPt.transform.GetPositionY() - 1000f); // Restore
+		GameObject orb = dreamSwitch
+			.Child("GG_statue_plinth_orb_off")!;
+		orb.AddComponent<FakeDreamToggle>();
+		orb.SetActive(true);
 	}
 
+#nullable disable
+	private sealed class FakeDreamToggle : MonoBehaviour {
+		private GameObject litPieces;
 
-	private object GetVarHook(Type type, string name, object value) {
-		if (!Ref.PD.bossRushMode || name != "statueStateGreyPrince") {
-			return value;
+		private GameObject dreamImpactPrefab;
+		private Vector3 dreamImpactScale;
+		private Transform dreamImpactPoint;
+
+		private ColorFader[] colorFaders;
+
+		private bool On {
+			get => Ref.PD.greyPrinceDefeated;
+			set => Ref.PD.greyPrinceDefeated = value;
 		}
 
-		var completion = (BossStatue.Completion) value;
-		completion.usingAltVersion = Ref.PD.greyPrinceDefeated;
-		return completion;
-	}
-
-	private object SetVarHook(Type type, string name, object value) {
-		if (!Ref.PD.bossRushMode || name != "statueStateGreyPrince") {
-			return value;
+		public void Awake() {
+			BossStatueDreamToggle toggle = GetComponent<BossStatueDreamToggle>();
+			litPieces = toggle.litPieces;
+			dreamImpactPrefab = toggle.dreamImpactPrefab;
+			dreamImpactScale = toggle.dreamImpactScale;
+			dreamImpactPoint = toggle.dreamImpactPoint;
+			UObject.DestroyImmediate(toggle);
 		}
 
-		var completion = (BossStatue.Completion) value;
-		Ref.PD.greyPrinceDefeated = completion.usingAltVersion;
-		completion.usingAltVersion = false;
-		return completion;
+		public void Start() {
+			litPieces.SetActive(true);
+			colorFaders = litPieces.GetComponentsInChildren<ColorFader>(true);
+			colorFaders.ForEach(fader => fader.Fade(On));
+		}
+
+		public void OnTriggerEnter2D(Collider2D collision) {
+			if (!gameObject.activeInHierarchy || collision.tag != "Dream Attack") {
+				return;
+			}
+
+			On = !On;
+			dreamImpactPrefab.Spawn(dreamImpactPoint.position).transform.localScale = dreamImpactScale;
+			colorFaders.ForEach(fader => fader.Fade(On));
+		}
 	}
+#nullable restore
 }

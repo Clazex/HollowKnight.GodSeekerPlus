@@ -49,10 +49,6 @@
 			<HintPath>$(HKRefs)/UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="UnityEngine.ImageConversionModule">
-			<HintPath>$(HKRefs)/UnityEngine.ImageConversionModule.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
 		<Reference Include="UnityEngine.Physics2DModule">
 			<HintPath>$(HKRefs)/UnityEngine.Physics2DModule.dll</HintPath>
 			<Private>false</Private>
