@@ -1,3 +1,14 @@
+# [v0.19.4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.3...v0.19.4) (2022-04-18)
+
+### Bug Fixes
+
+* various statue issue ([a05ba2a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a05ba2a49bfbcd44a2331848c01411fb063966bc))
+
+### Features
+
+* correct radiance hp ([6221c0c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/6221c0c6c1106f048df68b0b9fe1edb0e38e77d9))
+* eternal ordeal platform ([9c1d9ce](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/9c1d9ce36f3f8307f2e0da29e835057498fa85b2))
+
 # [v0.19.3](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.2...v0.19.3) (2022-04-14)
 
 ### Bug Fixes
