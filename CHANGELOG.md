@@ -1,4 +1,14 @@
-# [v0.19.4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.3...v0.19.4) (2022-04-18)
+# [v0.19.5](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.4...v0.19.5) (2022-04-19)
+
+### Bug Fixes
+
+* check for scene ([83b6710](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/83b67102c748859d972e7022a96eb36ded4455b7))
+
+### Features
+
+* camera keep rumbling ([f717131](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f717131bfbfabbf11835a9d071585b57cc9cc29f))
+
+# [DEPRECATED] [v0.19.4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.3...v0.19.4) (2022-04-18)
 
 ### Bug Fixes
 
