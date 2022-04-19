@@ -23,6 +23,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Segmented P5**: Add a pantheon entry to the left of the entrance of the Land of Storms, at which you can select a segment of the Pantheon of Hallownest to challenge.
 
 - **Bugfix**:
+  + **Camera Keep Rumbling**: Prevent camera from keeping rumbling after scene transitions in Godhome.
   + **Crossing Ooma**: Prevent Ooma from spawning explosive jellies across scenes.
 
 - **Cosmetic**:

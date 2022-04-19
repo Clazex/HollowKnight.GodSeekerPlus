@@ -18,6 +18,7 @@
 	"Modules/AddLifeblood": "Add Lifeblood",
 	"Modules/AddSoul": "Add Soul",
 	"Modules/AggressiveGC": "Aggressive GC",
+	"Modules/CameraKeepRumbling": "Camera Keep Rumbling",
 	"Modules/CarefreeMelodyReset": "Carefree Melody Reset",
 	"Modules/CompleteLowerDifficulty": "Complete Lower Difficulty",
 	"Modules/CorrectRadianceHP": "Correct Radiance HP",
