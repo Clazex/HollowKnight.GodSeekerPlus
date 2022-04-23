@@ -1,3 +1,9 @@
+# [v0.19.6](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.5...v0.19.6) (2022-04-23)
+
+### Features
+
+* use osmi ([29c695c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/29c695c8d2095ca2e85db82967b0d99aa42a89fc))
+
 # [v0.19.5](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.4...v0.19.5) (2022-04-19)
 
 ### Bug Fixes
