@@ -9,7 +9,7 @@ internal sealed class FastDash : Module {
 		USceneManager.activeSceneChanged -= HookDash;
 
 	// Hook only when needed for zero performance impact
-	private void HookDash(Scene prev, Scene next) {
+	private void HookDash(Scene _, Scene next) {
 		On.HeroController.HeroDash -= CancelCooldown;
 
 		if (next.name == "GG_Workshop") {

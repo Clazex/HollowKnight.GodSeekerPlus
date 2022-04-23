@@ -261,8 +261,7 @@ internal sealed class SegmentedP5 : Module {
 
 		int firstSceneIndex = BossSequenceController.BossIndex;
 		segP5!.GetComponent<BossSequenceDoor>()
-			.challengeFSM.FsmVariables
-			.FindFsmString("To Scene")
+			.challengeFSM.GetVariable<FsmString>("To Scene")
 			.Value = sequence.GetSceneAt(firstSceneIndex);
 
 		if (firstSceneIndex != 0) {

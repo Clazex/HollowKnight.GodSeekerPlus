@@ -1,4 +1,4 @@
-namespace GodSeekerPlus;
+namespace GodSeekerPlus.Utils;
 
 internal static class Ref {
 	internal static GameManager GM => GameManager.instance;

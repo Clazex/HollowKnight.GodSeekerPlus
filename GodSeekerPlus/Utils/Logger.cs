@@ -1,6 +1,6 @@
 using L = Modding.Logger;
 
-namespace GodSeekerPlus.Util;
+namespace GodSeekerPlus.Utils;
 
 internal static class Logger {
 	private static readonly string prefix = $"[{nameof(GodSeekerPlus)}] - ";

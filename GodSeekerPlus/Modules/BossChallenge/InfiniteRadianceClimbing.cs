@@ -1,3 +1,5 @@
+using InvokeMethod = Osmi.FsmActions.InvokeMethod;
+
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
@@ -63,25 +65,19 @@ internal sealed class InfiniteRadianceClimbing : Module {
 		// Spawn P2 plats before appearance
 		fsm.ChangeTransition("Set Arena 1", "FINISHED", "Climb Plats1");
 
-		fsm.InsertAction("Set Arena 1", new CustomFsmAction() {
-			method = () => fsm.StartCoroutine(TeleportSetup())
-		}, 0);
+		fsm.InsertAction("Set Arena 1", new InvokeCoroutine(TeleportSetup), 0);
 
 		FsmState spawnPlatsState = fsm.GetState("Climb Plats1");
 		spawnPlatsState.Actions = new[] {
 			spawnPlatsState.Actions[2], // Spawn plats
-			new CustomFsmAction() {
-				method = () => fsm.gameObject.manageHealth(1100)
-			}
+			new InvokeMethod(() => fsm.gameObject.manageHealth(int.MaxValue))
 		};
 		(spawnPlatsState.Actions[0] as SendEventByName)!.delay = 0;
 
 		FsmState screamState = fsm.GetState("Scream");
 		screamState.Actions = new[] {
 			screamState.Actions[0], // Play audio clip
-			new CustomFsmAction() {
-				method = () => rewindCoro ??= radCtrl!.StartCoroutine(Rewind())
-			},
+			new InvokeMethod(() => rewindCoro ??= radCtrl!.StartCoroutine(Rewind())),
 			new Wait() { time = 60f } // Wait for Rewind coroutine
 		};
 	}
@@ -118,8 +114,8 @@ internal sealed class InfiniteRadianceClimbing : Module {
 		beam.SetActive(false); // Remove last beam
 
 		// Reset abyss pit
-		pitCtrl!.FsmVariables.FindFsmFloat("Hero Y").Value = 33f;
-		pitCtrl.SendEvent("ASCEND");
+		pitCtrl!.GetVariable<FsmFloat>("Hero Y").Value = 33f;
+		pitCtrl!.SendEvent("ASCEND");
 
 		// Teleport hero back
 		Ref.PD.isInvincible = true;

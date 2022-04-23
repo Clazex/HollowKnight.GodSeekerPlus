@@ -9,7 +9,7 @@ global using GlobalEnums;
 
 global using GodSeekerPlus.Modules;
 global using GodSeekerPlus.Settings;
-global using GodSeekerPlus.Util;
+global using GodSeekerPlus.Utils;
 
 global using HutongGames.PlayMaker;
 global using HutongGames.PlayMaker.Actions;
@@ -17,6 +17,9 @@ global using HutongGames.PlayMaker.Actions;
 global using Modding;
 
 global using Newtonsoft.Json;
+
+global using Osmi.FsmActions;
+global using Osmi.Utils;
 
 global using Satchel;
 global using Satchel.Futils;
@@ -27,7 +30,7 @@ global using UnityEngine.SceneManagement;
 global using UnityEngine.UI;
 
 global using Module = GodSeekerPlus.Modules.Module;
-global using Logger = GodSeekerPlus.Util.Logger;
+global using Logger = GodSeekerPlus.Utils.Logger;
 global using Lang = Language.Language;
 global using ReflectionHelper = Modding.ReflectionHelper;
 global using UObject = UnityEngine.Object;

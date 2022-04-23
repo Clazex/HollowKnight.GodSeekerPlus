@@ -2,6 +2,9 @@ namespace GodSeekerPlus.Modules.Misc;
 
 [Hidden]
 internal sealed class LocalizeMenu : Module {
+	private static readonly Lazy<string> versionWithHash = AssemblyUtil
+		.GetMyDefaultVersionWithHash();
+
 	private protected override void Load() =>
 		Ref.GM.StartCoroutine(WaitForTitle());
 
@@ -28,7 +31,7 @@ internal sealed class LocalizeMenu : Module {
 			"ModName".Localize() + ' ' + "Settings".Localize();
 
 		btn.Child("Description")!.GetComponent<Text>().text =
-			'v' + VersionUtil.VersionWithHash.Value;
+			'v' + versionWithHash.Value;
 
 		Logger.LogDebug("Menu localized");
 	}

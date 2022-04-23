@@ -21,7 +21,7 @@ public sealed class LocalSettings {
 	[JsonProperty(PropertyName = "selectedP5Segment")]
 	public int SelectedP5Segment {
 		get => selectedP5Segment;
-		set => selectedP5Segment = MiscUtil.Clamp(value, 0, Modules.BossChallenge.SegmentedP5.segments.Length - 1);
+		set => selectedP5Segment = value.Clamp(0, Modules.BossChallenge.SegmentedP5.segments.Length - 1);
 	}
 
 	#region RAB Completions Getter/Setter

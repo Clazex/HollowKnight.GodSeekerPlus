@@ -28,7 +28,7 @@ internal sealed class P5Teleport : Module {
 			.ForEach(state => ReflectionHelper.CallMethod(state, "ActivateActions", 0));
 
 		Ref.HC.gameObject.LocateMyFSM("Roar Lock")
-			.FsmVariables.FindFsmBool("No Roar")
+			.GetVariable<FsmBool>("No Roar")
 			.Value = false;
 		StaticVariableList.SetValue("skipRemoveDreamOrbs", true);
 

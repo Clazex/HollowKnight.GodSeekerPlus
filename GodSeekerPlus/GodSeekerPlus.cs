@@ -4,7 +4,14 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 	public static GodSeekerPlus? Instance { get; private set; }
 	public static GodSeekerPlus UnsafeInstance => Instance!;
 
-	public override string GetVersion() => VersionUtil.Version.Value;
+	private static readonly Lazy<string> version = AssemblyUtil
+#if DEBUG
+		.GetMyDefaultVersionWithHash();
+#else
+		.GetMyDefaultVersion();
+#endif
+
+	public override string GetVersion() => version.Value;
 
 	internal static bool satchelPresent = false;
 
