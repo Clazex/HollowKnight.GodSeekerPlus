@@ -122,5 +122,10 @@
 		<ZipDirectory SourceDirectory="$(SolutionDir)/dist/tmp" DestinationFile="$(SolutionDir)/dist/$(TargetName)-v$(Version).zip" />
 
 		<RemoveDir Directories="$(SolutionDir)/dist/tmp" />
+
+		<GetFileHash Files="$(SolutionDir)/dist/$(TargetName)-v$(Version).zip" Algorithm="SHA256">
+			<Output TaskParameter="Items" ItemName="FilesWithHashes" />
+		</GetFileHash>
+		<WriteLinesToFile File="$(SolutionDir)/dist/SHA.txt" Lines="@(FilesWithHashes->'%(FileHash)')" Encoding="UTF-8" />
 	</Target>
 </Project>
