@@ -1,3 +1,14 @@
+# [v0.19.7](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.6...v0.19.7) (2022-04-30)
+
+### Features
+
+* transition death ([feef6e1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/feef6e164a2f23e668bed11ff10a17954d0b49b3))
+* use new osmi features ([f09544f](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f09544f7d009559f5b5948bfe9e993f770b5797e))
+
+### Performance Improvements
+
+* reuse hooks ([5a92373](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/5a92373dd8540f6c9eab2945d7613c9c1a3df15e))
+
 # [v0.19.6](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.5...v0.19.6) (2022-04-23)
 
 ### Features
