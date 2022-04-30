@@ -44,6 +44,7 @@
 	"Modules/NoSpellDamage": "No Spell Damage",
 	"Modules/P5Health": "P5 Health",
 	"Modules/P5Teleport": "P5 Teleport",
+	"Modules/TransitionDeath": "Transition Death",
 	"Modules/SegmentedP5": "Segmented P5",
 	"Modules/ShortDeathAnimation": "Short Death Animation",
 	"Modules/UnlockAllModes": "Unlock All Modes",

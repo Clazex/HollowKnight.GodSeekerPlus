@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<AssemblyTitle>GodSeekerPlus</AssemblyTitle>
-		<Version>0.19.6</Version>
+		<Version>0.19.7</Version>
 		<Description>A Hollow Knight mod to enhance your Godhome experience</Description>
 		<Authors>Clazex</Authors>
 

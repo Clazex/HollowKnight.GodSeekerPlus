@@ -25,6 +25,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Bugfix**:
   + **Camera Keep Rumbling**: Prevent camera from keeping rumbling after scene transitions in Godhome.
   + **Crossing Ooma**: Prevent Ooma from spawning explosive jellies across scenes.
+  + **Transition Death**: Prevent from continuing pantheon challenges after death upon scene transitions.
 
 - **Cosmetic**:
   + **More Pantheon Caps**: Enable the unused no hit cap for Pantheons 1 to 4, and add a new special effect for all pantheons indicating completed once no hit with all bindings.

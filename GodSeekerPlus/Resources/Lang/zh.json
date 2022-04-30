@@ -44,6 +44,7 @@
 	"Modules/NoSpellDamage": "取消法术伤害",
 	"Modules/P5Health": "五门血量",
 	"Modules/P5Teleport": "五门传送",
+	"Modules/TransitionDeath": "场景转换死亡",
 	"Modules/SegmentedP5": "分段五门",
 	"Modules/ShortDeathAnimation": "短死亡动画",
 	"Modules/UnlockAllModes": "解锁所有模式",
