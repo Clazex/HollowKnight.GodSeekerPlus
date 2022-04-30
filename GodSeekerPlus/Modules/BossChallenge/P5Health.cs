@@ -4,19 +4,20 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class P5Health : Module {
-	private Detour? detour = null;
+	private readonly Detour detour = new(
+		ReflectionHelper.GetPropertyInfo(typeof(BossSceneController), "BossLevel").GetGetMethod(),
+		ReflectionHelper.GetMethodInfo(typeof(P5Health), nameof(OverrideLevel)),
+		new() { ManualApply = true }
+	);
 
 	private protected override void Load() {
-		detour = new(
-			ReflectionHelper.GetPropertyInfo(typeof(BossSceneController), "BossLevel").GetGetMethod(),
-			ReflectionHelper.GetMethodInfo(typeof(P5Health), nameof(OverrideLevel))
-		);
+		detour.Apply();
 
 		ModHooks.TakeDamageHook += FixDamage;
 	}
 
 	private protected override void Unload() {
-		detour?.Dispose();
+		detour.Undo();
 
 		ModHooks.TakeDamageHook -= FixDamage;
 	}

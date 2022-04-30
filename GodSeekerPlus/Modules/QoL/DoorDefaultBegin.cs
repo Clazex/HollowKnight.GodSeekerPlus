@@ -8,18 +8,19 @@ namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
 internal sealed class DoorDefaultBegin : Module {
-	private ILHook? hook = null;
-
-	private protected override void Load() => hook = new(
+	private readonly ILHook hook = new(
 		typeof(BossDoorChallengeUI)
 			.GetMethod("ShowSequence", BindingFlags.Instance | BindingFlags.NonPublic)
 			.GetStateMachineTarget(),
-		ChangeSelection
+		ChangeSelection,
+		new() { ManualApply = true }
 	);
 
-	private protected override void Unload() => hook?.Dispose();
+	private protected override void Load() => hook.Apply();
 
-	private void ChangeSelection(ILContext il) {
+	private protected override void Unload() => hook.Undo();
+
+	private static void ChangeSelection(ILContext il) {
 		ILCursor cursor = new ILCursor(il).Goto(0);
 
 		//
