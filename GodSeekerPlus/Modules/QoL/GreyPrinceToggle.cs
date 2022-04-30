@@ -107,6 +107,8 @@ internal sealed class GreyPrinceToggle : Module {
 			On = !On;
 			dreamImpactPrefab.Spawn(dreamImpactPoint.position).transform.localScale = dreamImpactScale;
 			colorFaders.ForEach(fader => fader.Fade(On));
+
+			Logger.LogDebug("Grey Prince toggle triggered");
 		}
 	}
 #nullable restore

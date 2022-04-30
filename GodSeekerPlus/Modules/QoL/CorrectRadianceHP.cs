@@ -21,6 +21,8 @@ internal sealed class CorrectRadianceHP : Module {
 			name: "Absolute Radiance"
 		}) {
 			self.hp += shift;
+
+			Logger.LogDebug("AbsRad start health modified");
 		}
 
 		orig(self);
@@ -34,18 +36,25 @@ internal sealed class CorrectRadianceHP : Module {
 			scene.name: "GG_Radiance",
 			name: "Absolute Radiance"
 		}) {
-			if (self.FsmName == "Control") {
-				self.GetState("Scream").Actions
-					.OfType<SetHP>().First()
-					.hp.Value += shift;
-				self.GetVariable<FsmInt>("Death HP").Value += shift;
-			} else if (self.FsmName == "Phase Control") {
-				self.GetVariable<FsmInt>("P2 Spike Waves").Value += shift;
-				self.GetVariable<FsmInt>("P3 A1 Rage").Value += shift;
-				self.GetVariable<FsmInt>("P4 Stun1").Value += shift;
-				self.GetVariable<FsmInt>("P5 Acend").Value += shift; // Why TC
-			}
+			ModifyAbsRadPhaseHP(self);
 		}
 	}
 
+	private static void ModifyAbsRadPhaseHP(PlayMakerFSM fsm) {
+		if (fsm.FsmName == "Control") {
+			fsm.GetState("Scream").Actions
+				.OfType<SetHP>().First()
+				.hp.Value += shift;
+			fsm.GetVariable<FsmInt>("Death HP").Value += shift;
+
+			Logger.LogDebug("AbsRad death health modified");
+		} else if (fsm.FsmName == "Phase Control") {
+			fsm.GetVariable<FsmInt>("P2 Spike Waves").Value += shift;
+			fsm.GetVariable<FsmInt>("P3 A1 Rage").Value += shift;
+			fsm.GetVariable<FsmInt>("P4 Stun1").Value += shift;
+			fsm.GetVariable<FsmInt>("P5 Acend").Value += shift; // Why TC
+
+			Logger.LogDebug("AbsRad phase health modified");
+		}
+	}
 }
