@@ -1,5 +1,3 @@
-using InvokeMethod = Osmi.FsmActions.InvokeMethod;
-
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]

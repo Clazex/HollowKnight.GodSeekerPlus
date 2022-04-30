@@ -19,7 +19,7 @@ internal sealed class AddLifeblood : Module {
 	}
 
 	internal void Add() {
-		for (int i = 0; i < Ref.GS.LifebloodAmount; i++) {
+		for (int i = 0; i < Setting.Global.LifebloodAmount; i++) {
 			EventRegister.SendEvent("ADD BLUE HEALTH");
 		}
 

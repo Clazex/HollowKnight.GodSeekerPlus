@@ -33,7 +33,7 @@ internal sealed class FastSuperDash : Module {
 		}, 0);
 		speedBuffState.InsertAction(new FloatMultiply() {
 			floatVariable = fsm.GetVariable<FsmFloat>("Current SD Speed"),
-			multiplyBy = Ref.GS.FastSuperDashSpeedMultiplier
+			multiplyBy = Setting.Global.FastSuperDashSpeedMultiplier
 		}, 1);
 
 		fsm.ChangeTransition("Left", FsmEvent.Finished.Name, stateName);

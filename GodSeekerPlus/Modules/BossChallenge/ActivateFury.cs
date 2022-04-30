@@ -24,11 +24,11 @@ internal sealed class ActivateFury : Module {
 	}
 
 	internal void Activate() {
-		if (!Ref.PD.equippedCharm_6) {
+		if (!CharmUtil.EquippedCharm(Charm.FuryOfTheFallen)) {
 			return;
 		}
 
-		if (Ref.PD.equippedCharm_27) {
+		if (CharmUtil.EquippedCharm(Charm.JonisBlessing)) {
 			Ref.PD.joniHealthBlue = 1;
 		} else {
 			Ref.PD.health = 1;

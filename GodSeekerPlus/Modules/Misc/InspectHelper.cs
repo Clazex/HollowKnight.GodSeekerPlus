@@ -2,8 +2,6 @@ namespace GodSeekerPlus.Modules.Misc;
 
 [Hidden]
 internal sealed class InspectHelper : Module {
-	private static readonly string GO_NAME = $"{nameof(GodSeekerPlus)} Inspect Helper";
-
 	private protected override void Load() =>
 		ModHooks.FinishedLoadingModsHook += CreateGameObject;
 
@@ -12,17 +10,8 @@ internal sealed class InspectHelper : Module {
 			return;
 		}
 
-		if (GameObject.Find(GO_NAME) is not null and {
-			scene.name: "DontDestroyOnLoad"
-		}) {
-			Logger.LogError("Inspect Helper GameObject already existed!");
-
-			return;
-		}
-
+		GameObjectUtil.CreateHolder<Inspector>($"{nameof(GodSeekerPlus)} Inspect Helper");
 		Logger.Log("Creating Inspect Helper GameObject");
-		var go = new GameObject(GO_NAME, typeof(Inspector));
-		UObject.DontDestroyOnLoad(go);
 	}
 
 	private sealed class Inspector : MonoBehaviour {
@@ -30,13 +19,10 @@ internal sealed class InspectHelper : Module {
 
 		public Dictionary<string, Module> Modules => ModuleManager.Modules;
 
-		public GlobalSettings GlobalSettings => Ref.GS;
-		public LocalSettings LocalSettings => Ref.LS;
+		public GlobalSettings GlobalSettings => Setting.Global;
+		public LocalSettings LocalSettings => Setting.Local;
 
-		public Dictionary<string, Lazy<Dictionary<string, string>>> Dict => L11nUtil.Dict.Value;
-
-		public Dictionary<string, string>? GetL11n(string lang) =>
-			L11nUtil.Dict.Value.TryGetValue(lang, out Lazy<Dictionary<string, string>> dict) ? dict.Value : null;
+		public Dict Dict => L11nUtil.dict;
 
 		public string Localize(string key) => L11nUtil.Localize(key);
 	}

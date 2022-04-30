@@ -34,7 +34,7 @@ internal sealed class MorePantheonCaps : Module {
 			}
 
 			if (doorPDDict.TryGetValue(self.playerDataString, out int num)
-				&& Ref.LS.GetRABCompletion(num)
+				&& Setting.Local.GetRABCompletion(num)
 				&& self.completedNoHitsDisplay?.GetComponent<SpriteRenderer>() is SpriteRenderer sr
 			) {
 				sr.transform.Translate(0, 0, -0.0801f);
@@ -54,10 +54,10 @@ internal sealed class MorePantheonCaps : Module {
 		if (doorPDDict.TryGetValue(currentData.playerData, out int num)) {
 			bool rab = !currentData.knightDamaged
 			&& currentData.bindings == (Bindings.Nail | Bindings.Shell | Bindings.Charms | Bindings.Soul);
-			bool rabPrev = Ref.LS.GetRABCompletion(num);
+			bool rabPrev = Setting.Local.GetRABCompletion(num);
 
 			if (rab && !rabPrev) {
-				Ref.LS.SetRABCompletion(num, true);
+				Setting.Local.SetRABCompletion(num, true);
 				Logger.LogDebug($"Radiant AB in Pantheon #{num} recorded");
 			}
 		}

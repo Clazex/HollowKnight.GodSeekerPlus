@@ -18,7 +18,9 @@ global using Modding;
 
 global using Newtonsoft.Json;
 
+global using Osmi;
 global using Osmi.FsmActions;
+global using Osmi.Game;
 global using Osmi.Utils;
 
 global using Satchel;
@@ -33,5 +35,6 @@ global using Module = GodSeekerPlus.Modules.Module;
 global using Logger = GodSeekerPlus.Utils.Logger;
 global using Lang = Language.Language;
 global using ReflectionHelper = Modding.ReflectionHelper;
+global using InvokeMethod = Osmi.FsmActions.InvokeMethod;
 global using UObject = UnityEngine.Object;
 global using USceneManager = UnityEngine.SceneManagement.SceneManager;

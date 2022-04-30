@@ -13,11 +13,18 @@ internal sealed class P5Teleport : Module {
 		if (next.name == "GG_Atrium") {
 			next.GetGameObjectByName("gg_roof_door_pieces")
 				.Child("GG_door_caps", "gg_roof_lever")!
-				.AddComponent<TeleportOnDreamNail>();
+				.AddComponent<CustomDreamnailReaction>()
+				.SetMethod((behaviour, _) => behaviour.StartCoroutine(Teleport()));
 		}
 	}
 
 	private static IEnumerator Teleport() {
+		if (!Ref.PD.finalBossDoorUnlocked) {
+			yield break;
+		}
+
+		Logger.LogDebug("P5 teleport start");
+
 		#region Pre-teleport effects
 
 		Ref.HC.RelinquishControl();
@@ -63,21 +70,5 @@ internal sealed class P5Teleport : Module {
 		Ref.PD.dreamGateY = origDGateY;
 
 		#endregion
-	}
-
-
-	private class TeleportOnDreamNail : MonoBehaviour {
-		public void OnTriggerEnter2D(Collider2D collision) {
-			if (collision.tag != "Dream Attack") {
-				return;
-			}
-
-			if (!Ref.PD.finalBossDoorUnlocked) {
-				return;
-			}
-
-			Logger.LogDebug("P5 teleport start");
-			StartCoroutine(Teleport());
-		}
 	}
 }
