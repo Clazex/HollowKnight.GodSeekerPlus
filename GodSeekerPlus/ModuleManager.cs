@@ -15,7 +15,10 @@ internal static class ModuleManager {
 		Modules.Values.ForEach(m => m.Disable());
 
 	internal static bool TryGetActiveModule<T>([NotNullWhen(true)] out T? module) where T : Module {
-		module = Modules.TryGetValue(typeof(T).Name, out Module? m) ? m as T : null;
+		module = Modules.TryGetValue(typeof(T).Name, out Module? m) switch {
+			true when m.Active => m as T,
+			_ => null
+		};
 		return module != null;
 	}
 
