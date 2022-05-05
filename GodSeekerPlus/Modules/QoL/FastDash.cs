@@ -2,6 +2,12 @@ namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
 internal sealed class FastDash : Module {
+	private static readonly string[] sceneNames = new[] {
+		"GG_Workshop",
+		"GG_Atrium",
+		"GG_Atrium_Roof"
+	};
+
 	private protected override void Load() =>
 		USceneManager.activeSceneChanged += HookDash;
 
@@ -12,7 +18,7 @@ internal sealed class FastDash : Module {
 	private void HookDash(Scene _, Scene next) {
 		On.HeroController.HeroDash -= CancelCooldown;
 
-		if (next.name == "GG_Workshop") {
+		if (sceneNames.Contains(next.name)) {
 			On.HeroController.HeroDash += CancelCooldown;
 		}
 	}
