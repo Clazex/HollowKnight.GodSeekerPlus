@@ -53,6 +53,19 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 				))
 				.ForEach(menu.AddElement);
 
+			menu.AddElement(new Satchel.BetterMenus.MenuButton(
+				"ResetModules".Localize(),
+				"",
+				btn => {
+					ModuleManager.Modules.Values.ForEach(
+						module => module.Active = module.DefaultEnabled
+					);
+
+					GlobalSettings = new();
+				},
+				true
+			));
+
 			return menu.GetMenuScreen(modListMenu);
 		}
 
@@ -79,7 +92,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 							Options = StateStrings,
 							Style = HorizontalOptionStyle.VanillaStyle
 						},
-						out UnityEngine.UI.MenuOptionHorizontal toggle
+						out MenuOptionHorizontal toggle
 					);
 					toggle.menuSetting.RefreshValueFromGameSettings();
 
