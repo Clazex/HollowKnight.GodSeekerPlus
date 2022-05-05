@@ -26,6 +26,6 @@ internal sealed class FastDash : Module {
 	private static void CancelCooldown(On.HeroController.orig_HeroDash orig, HeroController self) {
 		orig(self);
 
-		ReflectionHelper.SetField(self, "dashCooldownTimer", 0f);
+		HeroControllerR.dashCooldownTimer = 0;
 	}
 }

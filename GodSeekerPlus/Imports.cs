@@ -25,6 +25,7 @@ global using Osmi.Utils;
 
 global using Satchel;
 global using Satchel.Futils;
+global using Satchel.Reflected;
 
 global using UnityEngine;
 global using UnityEngine.EventSystems;

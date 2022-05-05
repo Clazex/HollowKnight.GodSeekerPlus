@@ -21,7 +21,7 @@ internal sealed class CarefreeMelodyReset : Module {
 			return;
 		}
 
-		ReflectionHelper.SetField(Ref.HC, "hitsSinceShielded", 7);
+		HeroControllerR.hitsSinceShielded = 7;
 		Logger.LogDebug("Carefree Melody hit count reset to max");
 	}
 }
