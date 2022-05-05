@@ -1,3 +1,16 @@
+# [v0.19.8](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.7...v0.19.8) (2022-05-05)
+
+### Bug Fixes
+
+* filter out respawn ([524b8e4](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/524b8e48ce2aa8a4da38e4b59bee6d7627f10ff7))
+* module state accidentally ignored ([62606ad](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/62606ad2838e32054647a9b871370a9c7128c82e))
+* saving twice ([dda53d9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/dda53d95b46fa7e6458cf86bbc394f8db3baf2f9))
+
+### Features
+
+* allow fast dash in more scenes ([578e9e7](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/578e9e725363c1b3901278fe32ee541515291bbf))
+* reset modules button ([ea2916d](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ea2916d87ac64fd0356160492f40811bd8a5b801))
+
 # [v0.19.7](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.6...v0.19.7) (2022-04-30)
 
 ### Features
