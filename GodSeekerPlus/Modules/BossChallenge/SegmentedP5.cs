@@ -26,7 +26,7 @@ internal sealed class SegmentedP5 : Module {
 	private Text? selectBtnText;
 
 	private static string CurrentSegmentName =>
-		$"SegmentedP5/Segment/{GodSeekerPlus.LocalSettings.SelectedP5Segment}".Localize();
+		$"SegmentedP5/Segment/{Setting.Local.SelectedP5Segment}".Localize();
 
 
 	private protected override void Load() {
@@ -89,6 +89,8 @@ internal sealed class SegmentedP5 : Module {
 		BossSequenceDoor door = segP5.GetComponent<BossSequenceDoor>();
 		door.playerDataString = dummySeqPD;
 		door.dreamReturnGate.name = "door_dreamReturnGG_" + segP5.name;
+		door.dreamReturnGate.LocateMyFSM("Boss Sequence Finish")
+			.RemoveTransition("Reset", FsmEvent.Finished.Name);
 
 		sequence ??= door.bossSequence;
 
