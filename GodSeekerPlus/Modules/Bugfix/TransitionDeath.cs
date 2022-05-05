@@ -26,6 +26,10 @@ internal sealed class TransitionDeath : Module {
 	private void CheckDeath(On.GameManager.orig_EnterHero orig, GameManager self, bool additiveGateSearch) {
 		orig(self, additiveGateSearch);
 
+		if (self.RespawningHero || GameManagerR.hazardRespawningHero) {
+			return;
+		}
+
 		if (deadInSequence && BossSequenceController.IsInSequence) {
 			Logger.LogWarn("Dead in sequence while not finishing it, trying again");
 			Ref.HC.StartCoroutine("Die");
