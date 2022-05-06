@@ -32,6 +32,7 @@ internal sealed class TransitionDeath : Module {
 
 		if (deadInSequence && BossSequenceController.IsInSequence) {
 			Logger.LogWarn("Dead in sequence while not finishing it, trying again");
+			Ref.HC.StopCoroutine("Die");
 			Ref.HC.StartCoroutine("Die");
 		} else {
 			deadInSequence = false;
