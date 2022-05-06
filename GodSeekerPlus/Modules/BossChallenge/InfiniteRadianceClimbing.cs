@@ -76,7 +76,8 @@ internal sealed class InfiniteRadianceClimbing : Module {
 		screamState.Actions = new[] {
 			screamState.Actions[0], // Play audio clip
 			new InvokeMethod(() => rewindCoro ??= radCtrl!.StartCoroutine(Rewind())),
-			new Wait() { time = 60f } // Wait for Rewind coroutine
+			new Wait() { time = 60f }, // Wait for Rewind coroutine
+			screamState.Actions[7] // Reserved for compatibility with CorrectRadianceHP
 		};
 	}
 
