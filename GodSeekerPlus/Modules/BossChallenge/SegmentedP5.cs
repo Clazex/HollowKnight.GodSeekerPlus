@@ -99,12 +99,12 @@ internal sealed class SegmentedP5 : Module {
 		#region Setup child objects
 
 		GameObject orb = segP5.Child("gg_final_door_pieces", "gate orb")!;
-		orb.transform.parent = segP5.transform;
-		orb.transform.SetPositionY(orb.transform.GetPositionY() + 2.5f);
+		orb.SetParent(segP5);
+		orb.GetTransformDelegate().Y += 2.5f;
 
 		GameObject smoke = segP5.Child("gg_final_door_pieces", "shadow gate effects", "abyss particles", "wispy smoke")!;
-		smoke.transform.parent = segP5.transform;
-		smoke.transform.SetPositionY(smoke.transform.GetPositionY() + 2.5f);
+		smoke.SetParent(segP5);
+		smoke.GetTransformDelegate().Y += 2.5f;
 
 		CameraLockArea camLock = segP5.Child("CameraLockArea")!.GetComponent<CameraLockArea>();
 		camLock.cameraXMax += -42.5031f;
