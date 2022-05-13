@@ -2,39 +2,42 @@ namespace GodSeekerPlus.Modules.Bugfix;
 
 [DefaultEnabled]
 internal sealed class TransitionDeath : Module {
-	private bool deadInSequence = false;
+	private protected override void Load() =>
+		On.PlayMakerFSM.Start += ModifyHeroDeathFSM;
 
-	private protected override void Load() {
-		On.HeroController.Die += RecordDeath;
-		On.GameManager.EnterHero += CheckDeath;
-	}
+	private protected override void Unload() =>
+		On.PlayMakerFSM.Start -= ModifyHeroDeathFSM;
 
-	private protected override void Unload() {
-		deadInSequence = false;
-		On.HeroController.Die -= RecordDeath;
-		On.GameManager.EnterHero -= CheckDeath;
-	}
+	private void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+		if (self is {
+			name: "Hero Death",
+			FsmName: "Hero Death Anim"
+		}) {
+			ModifyHeroDeathFSM(self);
 
-	private IEnumerator RecordDeath(On.HeroController.orig_Die orig, HeroController self) {
-		if (BossSequenceController.IsInSequence) {
-			deadInSequence = true;
+			Logger.LogDebug("Transition detection added to Hero Death FSM");
 		}
 
-		yield return orig(self);
+		orig(self);
 	}
 
-	private void CheckDeath(On.GameManager.orig_EnterHero orig, GameManager self, bool additiveGateSearch) {
-		orig(self, additiveGateSearch);
+	private static void ModifyHeroDeathFSM(PlayMakerFSM fsm) =>
+		fsm.AddAction("WP Check", new WaitUntil(() => !Ref.GM.IsInSceneTransition, FsmEvent.Finished));
 
-		if (self.RespawningHero || GameManagerR.hazardRespawningHero) {
-			return;
+	private sealed class WaitUntil : FsmStateAction {
+		private readonly Func<bool> predicate;
+		private readonly FsmEvent @event;
+
+		internal WaitUntil(Func<bool> predicate, FsmEvent @event) {
+			this.predicate = predicate;
+			this.@event = @event;
 		}
 
-		if (deadInSequence && BossSequenceController.IsInSequence) {
-			Logger.LogWarn("Dead in sequence while not finishing it, trying again");
-			Ref.HC.StartCoroutine("Die");
-		} else {
-			deadInSequence = false;
+		public override void OnUpdate() {
+			if (predicate()) {
+				Fsm.Event(@event);
+				Finish();
+			}
 		}
 	}
 }
