@@ -1,3 +1,10 @@
+# [v0.19.9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.8...v0.19.9) (2022-05-13)
+
+### Bug Fixes
+
+* infinite radiance climbing and correct radiance hp compatibility ([7bdd03b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7bdd03bfbae6baa5510983c137c44696f9611c97))
+* rewrite transition death ([7b7467e](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7b7467ecea97ea15e89d6edfa1894176f5b0f958))
+
 # [v0.19.8](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.7...v0.19.8) (2022-05-05)
 
 ### Bug Fixes
