@@ -206,7 +206,7 @@ internal sealed class SegmentedP5 : Module {
 				return;
 			}
 
-			GodSeekerPlus.LocalSettings.IncreamentP5SegmentSelection();
+			Setting.Local.IncreamentP5SegmentSelection();
 
 			if (selectBtnText != null) {
 				selectBtnText.text = CurrentSegmentName;
@@ -292,7 +292,7 @@ internal sealed class SegmentedP5 : Module {
 	}
 
 	private bool SkipNotSelectedScenes(On.BossSequence.orig_CanLoad orig, BossSequence self, int index) {
-		(int start, int end) = segments[GodSeekerPlus.LocalSettings.SelectedP5Segment];
+		(int start, int end) = segments[Setting.Local.SelectedP5Segment];
 		return (!running || (index >= start && index <= end)) && orig(self, index);
 	}
 

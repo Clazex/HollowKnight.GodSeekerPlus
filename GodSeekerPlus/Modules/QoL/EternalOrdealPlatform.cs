@@ -14,10 +14,12 @@ internal sealed class EternalOrdealPlatform : Module {
 			return;
 		}
 
-		GameObject origPlat = next.GetRootGameObjects()
+		GameObject plat = next.GetRootGameObjects()
 			.First(go => go.name == "gg_plat_float_wide");
 
-		GameObject plat = UObject.Instantiate(origPlat);
-		plat.transform.SetPosition2D(204.15f, 42.3f);
+		GameObjectUtil.Instantiate(
+			plat,
+			plat.transform.position with { x = 204.15f, y = 42.3f }
+		);
 	}
 }
