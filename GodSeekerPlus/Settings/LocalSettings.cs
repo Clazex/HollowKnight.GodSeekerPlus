@@ -26,12 +26,12 @@ public sealed class LocalSettings {
 
 	#region RAB Completions Getter/Setter
 
-	public bool GetRABCompletion(int num) => num >= 1 && num <= 5
+	public bool GetRABCompletion(int num) => num is >= 1 and <= 5
 		? (RABCompletion & (1 << (num - 1))) != 0
 		: throw new ArgumentOutOfRangeException(nameof(num));
 
 	internal void SetRABCompletion(int num, bool completed) {
-		if (num < 1 || num > 5) {
+		if (num is < 1 or > 5) {
 			throw new ArgumentOutOfRangeException(nameof(num));
 		}
 

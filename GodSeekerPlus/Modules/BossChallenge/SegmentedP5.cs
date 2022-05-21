@@ -43,7 +43,7 @@ internal sealed class SegmentedP5 : Module {
 			doorOnline = false;
 			UObject.Destroy(segP5);
 		} else if (running) {
-			Ref.HC.StartCoroutine(Quit());
+			_ = Ref.HC.StartCoroutine(Quit());
 		}
 
 		if (sequence != null) {
@@ -322,7 +322,7 @@ internal sealed class SegmentedP5 : Module {
 
 		yield return new WaitWhile(() => Ref.GM.gameState == GameState.PAUSED);
 
-		Ref.HC.StartCoroutine("Die");
+		_ = Ref.HC.StartCoroutine("Die");
 
 		Logger.LogDebug("Force quiting Segmented P5 sequence");
 	}

@@ -17,7 +17,7 @@ internal sealed class AddSoul : Module {
 
 		Ref.HC.AddMPCharge(Setting.Global.SoulAmount);
 
-		Ref.HC.StartCoroutine(UpdateHUD());
+		_ = Ref.HC.StartCoroutine(UpdateHUD());
 
 		Logger.LogDebug("Soul added");
 	}

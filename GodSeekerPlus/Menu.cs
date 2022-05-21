@@ -75,10 +75,10 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			MenuBuilder builder = MenuUtils.CreateMenuBuilderWithBackButton("ModName".Localize(), modListMenu, out _);
 			var toggler = (ModToggleDelegates) toggleDelegates!;
 
-			builder.AddContent(
+			_ = builder.AddContent(
 				RegularGridLayout.CreateVerticalLayout(105f),
 				c => {
-					c.AddHorizontalOption(
+					_ = c.AddHorizontalOption(
 						"ModName".Localize(),
 						new() {
 							ApplySetting = (_, i) => toggler.SetModEnabled(Convert.ToBoolean(i)),
@@ -96,7 +96,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 					);
 					toggle.menuSetting.RefreshValueFromGameSettings();
 
-					c.AddTextPanel(
+					_ = c.AddTextPanel(
 						"SatchelNotFoundPrompt",
 						new RelVector2(new Vector2(1500f, 105f)),
 						new() {

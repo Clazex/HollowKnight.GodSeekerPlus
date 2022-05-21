@@ -17,7 +17,7 @@ internal sealed class EternalOrdealPlatform : Module {
 		GameObject plat = next.GetRootGameObjects()
 			.First(go => go.name == "gg_plat_float_wide");
 
-		GameObjectUtil.Instantiate(
+		_ = GameObjectUtil.Instantiate(
 			plat,
 			plat.transform.position with { x = 204.15f, y = 42.3f }
 		);

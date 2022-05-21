@@ -33,7 +33,7 @@ internal sealed class GreyPrinceToggle : Module {
 		GameObject gpStatue = USceneManager.GetActiveScene()
 			.GetRootGameObjects()
 			.First(go => go.name == "GG_Statue_GreyPrince");
-		gpStatue.RemoveComponent<DeactivateIfPlayerdataTrue>();
+		_ = gpStatue.RemoveComponent<DeactivateIfPlayerdataTrue>();
 		gpStatue.SetActive(true);
 		GameObject dreamSwitch = gpStatue.Child("dream_version_switch")!;
 		GameObject litPieces = dreamSwitch.Child("lit_pieces")!;
@@ -55,7 +55,7 @@ internal sealed class GreyPrinceToggle : Module {
 		litPieces.Child("dream_glowy_guy")!.GetComponent<ColorFader>().upColour =
 			new(1f, 0.9102f, 0.9219f);
 
-		Ref.GM.StartCoroutine(SetupScene(dreamSwitch));
+		_ = Ref.GM.StartCoroutine(SetupScene(dreamSwitch));
 	}
 
 	private IEnumerator SetupScene(GameObject dreamSwitch) {
@@ -65,7 +65,7 @@ internal sealed class GreyPrinceToggle : Module {
 
 		GameObject orb = dreamSwitch
 			.Child("GG_statue_plinth_orb_off")!;
-		orb.AddComponent<FakeDreamToggle>();
+		_ = orb.AddComponent<FakeDreamToggle>();
 		orb.SetActive(true);
 	}
 

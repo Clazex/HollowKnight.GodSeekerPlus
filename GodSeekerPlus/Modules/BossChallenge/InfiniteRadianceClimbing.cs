@@ -159,12 +159,12 @@ internal sealed class InfiniteRadianceClimbing : Module {
 		pitCtrl = null;
 
 		if (killPlayer) {
-			Ref.HC.StartCoroutine(DelayedKill());
+			_ = Ref.HC.StartCoroutine(DelayedKill());
 		}
 	}
 
 	private static IEnumerator DelayedKill() {
 		yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
-		Ref.HC.StartCoroutine("Die");
+		_ = Ref.HC.StartCoroutine("Die");
 	}
 }

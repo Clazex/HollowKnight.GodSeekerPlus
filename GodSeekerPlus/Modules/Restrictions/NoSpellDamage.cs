@@ -9,7 +9,7 @@ internal sealed class NoSpellDamage : Module {
 
 	private void AddHealth(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
 		AttackTypes type = hitInstance.AttackType;
-		if (type == AttackTypes.Spell || type == AttackTypes.SharpShadow) {
+		if (type is AttackTypes.Spell or AttackTypes.SharpShadow) {
 			self.hp += hitInstance.DamageDealt;
 		}
 

@@ -13,7 +13,7 @@ internal sealed class CrossingOoma : Module {
 		USceneManager.activeSceneChanged -= DestroyJelly;
 
 	private void DestroyJelly(Scene prev, Scene _) {
-		if (prev.name == "GG_Uumuu" || prev.name == "GG_Uumuu_V") {
+		if (prev.name is "GG_Uumuu" or "GG_Uumuu_V") {
 			IEnumerable<JellyMarker> markers = UObject.FindObjectsOfType<JellyMarker>();
 
 			if (!markers.Any()) {
@@ -26,7 +26,7 @@ internal sealed class CrossingOoma : Module {
 	}
 
 	private static void ModifyPrefab(Scene _, Scene next) {
-		if (next.name != "GG_Uumuu" && next.name != "GG_Uumuu_V") {
+		if (next.name is not "GG_Uumuu" and not "GG_Uumuu_V") {
 			return;
 		}
 
@@ -42,8 +42,8 @@ internal sealed class CrossingOoma : Module {
 			.GetAction<CreateObject>("Explode", 3)
 			.gameObject.Value;
 
-		corpse.AddComponent<JellyMarker>();
-		jelly.AddComponent<JellyMarker>();
+		_ = corpse.AddComponent<JellyMarker>();
+		_ = jelly.AddComponent<JellyMarker>();
 
 		USceneManager.activeSceneChanged -= ModifyPrefab;
 	}

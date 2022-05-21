@@ -47,6 +47,6 @@ internal sealed class NoLowHealthEffect : Module {
 			inst => inst.MatchRet()
 		).Index;
 
-		new ILCursor(il).Goto(0).RemoveRange(index);
+		_ = new ILCursor(il).Goto(0).RemoveRange(index);
 	}
 }

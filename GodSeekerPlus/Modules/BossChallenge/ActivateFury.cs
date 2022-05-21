@@ -34,7 +34,7 @@ internal sealed class ActivateFury : Module {
 			Ref.PD.health = 1;
 		}
 
-		Ref.HC.StartCoroutine(UpdateState());
+		_ = Ref.HC.StartCoroutine(UpdateState());
 	}
 
 	private static IEnumerator UpdateState() {
@@ -44,7 +44,7 @@ internal sealed class ActivateFury : Module {
 		yield return new WaitUntil(() => Ref.HC.acceptingInput);
 
 		// Avoid mask display issue
-		yield return new WaitUntil(() => fsm.ActiveStateName == "In" || fsm.ActiveStateName == "Idle");
+		yield return new WaitUntil(() => fsm.ActiveStateName is "In" or "Idle");
 
 		// Avoid evading roar
 		if (extraWaitScenes.TryGetValue(Ref.GM.sceneName, out float waitTime)) {
