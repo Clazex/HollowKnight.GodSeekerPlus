@@ -9,13 +9,13 @@ internal sealed class FastDash : Module {
 	};
 
 	private protected override void Load() =>
-		USceneManager.activeSceneChanged += HookDash;
+		OsmiHooks.SceneChangeHook += HookDash;
 
 	private protected override void Unload() =>
-		USceneManager.activeSceneChanged -= HookDash;
+		OsmiHooks.SceneChangeHook -= HookDash;
 
 	// Hook only when needed for zero performance impact
-	private void HookDash(Scene _, Scene next) {
+	private void HookDash(Scene prev, Scene next) {
 		On.HeroController.HeroDash -= CancelCooldown;
 
 		if (sceneNames.Contains(next.name)) {

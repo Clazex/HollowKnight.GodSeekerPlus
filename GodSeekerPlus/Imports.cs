@@ -19,7 +19,6 @@ global using Modding;
 global using Newtonsoft.Json;
 
 global using Osmi;
-global using Osmi.FsmActions;
 global using Osmi.Game;
 global using Osmi.Utils;
 

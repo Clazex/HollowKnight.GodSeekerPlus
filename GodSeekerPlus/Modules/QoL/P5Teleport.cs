@@ -4,10 +4,10 @@ namespace GodSeekerPlus.Modules.QoL;
 [DefaultEnabled]
 internal sealed class P5Teleport : Module {
 	private protected override void Load() =>
-		USceneManager.activeSceneChanged += AddComponentToLever;
+		OsmiHooks.SceneChangeHook += AddComponentToLever;
 
 	private protected override void Unload() =>
-		USceneManager.activeSceneChanged -= AddComponentToLever;
+		OsmiHooks.SceneChangeHook -= AddComponentToLever;
 
 	private void AddComponentToLever(Scene prev, Scene next) {
 		if (next.name == "GG_Atrium") {

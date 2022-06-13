@@ -6,13 +6,7 @@ internal sealed class LocalizeMenu : Module {
 		.GetMyDefaultVersionWithHash();
 
 	private protected override void Load() =>
-		Ref.GM.StartCoroutine(WaitForTitle());
-
-	private IEnumerator WaitForTitle() {
-		yield return new WaitUntil(() => GameObject.Find("LogoTitle") != null);
-
-		UIManager.EditMenus += EditText;
-	}
+		OsmiHooks.MenuBuildHook += EditText;
 
 	private static void EditText() {
 		GameObject btn = UIManager

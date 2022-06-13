@@ -4,15 +4,15 @@ namespace GodSeekerPlus.Modules.Bugfix;
 [DefaultEnabled]
 internal sealed class CrossingOoma : Module {
 	public CrossingOoma() =>
-		USceneManager.activeSceneChanged += ModifyPrefab;
+		OsmiHooks.SceneChangeHook += ModifyPrefab;
 
 	private protected override void Load() =>
-		USceneManager.activeSceneChanged += DestroyJelly;
+		OsmiHooks.SceneChangeHook += DestroyJelly;
 
 	private protected override void Unload() =>
-		USceneManager.activeSceneChanged -= DestroyJelly;
+		OsmiHooks.SceneChangeHook -= DestroyJelly;
 
-	private void DestroyJelly(Scene prev, Scene _) {
+	private void DestroyJelly(Scene prev, Scene next) {
 		if (prev.name is "GG_Uumuu" or "GG_Uumuu_V") {
 			IEnumerable<JellyMarker> markers = UObject.FindObjectsOfType<JellyMarker>();
 
@@ -25,7 +25,7 @@ internal sealed class CrossingOoma : Module {
 		}
 	}
 
-	private static void ModifyPrefab(Scene _, Scene next) {
+	private static void ModifyPrefab(Scene prev, Scene next) {
 		if (next.name is not "GG_Uumuu" and not "GG_Uumuu_V") {
 			return;
 		}
@@ -45,7 +45,7 @@ internal sealed class CrossingOoma : Module {
 		_ = corpse.AddComponent<JellyMarker>();
 		_ = jelly.AddComponent<JellyMarker>();
 
-		USceneManager.activeSceneChanged -= ModifyPrefab;
+		OsmiHooks.SceneChangeHook -= ModifyPrefab;
 	}
 
 	private sealed class JellyMarker : MonoBehaviour {

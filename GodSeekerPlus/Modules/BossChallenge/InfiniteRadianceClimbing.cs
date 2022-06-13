@@ -1,3 +1,7 @@
+using Osmi.FsmActions;
+
+using WaitUntil = UnityEngine.WaitUntil;
+
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
@@ -12,10 +16,10 @@ internal sealed class InfiniteRadianceClimbing : Module {
 	private Coroutine? rewindCoro = null;
 
 	private protected override void Load() =>
-		USceneManager.activeSceneChanged += SetupScene;
+		OsmiHooks.SceneChangeHook += SetupScene;
 
 	private protected override void Unload() {
-		USceneManager.activeSceneChanged -= SetupScene;
+		OsmiHooks.SceneChangeHook -= SetupScene;
 
 		if (running) {
 			Quit(true);

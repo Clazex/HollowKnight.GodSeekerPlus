@@ -4,12 +4,12 @@ namespace GodSeekerPlus.Modules.QoL;
 [DefaultEnabled]
 internal sealed class EternalOrdealPlatform : Module {
 	private protected override void Load() =>
-		USceneManager.activeSceneChanged += AddPlatform;
+		OsmiHooks.SceneChangeHook += AddPlatform;
 
 	private protected override void Unload() =>
-		USceneManager.activeSceneChanged -= AddPlatform;
+		OsmiHooks.SceneChangeHook -= AddPlatform;
 
-	private void AddPlatform(Scene _, Scene next) {
+	private void AddPlatform(Scene prev, Scene next) {
 		if (next.name != "GG_Workshop") {
 			return;
 		}

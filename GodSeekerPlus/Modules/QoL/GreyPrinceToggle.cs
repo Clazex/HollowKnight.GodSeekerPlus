@@ -6,7 +6,7 @@ internal sealed class GreyPrinceToggle : Module {
 	private bool running = false;
 
 	private protected override void Load() {
-		USceneManager.activeSceneChanged += StartSetup;
+		OsmiHooks.SceneChangeHook += StartSetup;
 
 		if (Ref.GM?.sceneName == "GG_Workshop") {
 			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
@@ -14,7 +14,7 @@ internal sealed class GreyPrinceToggle : Module {
 	}
 
 	private protected override void Unload() {
-		USceneManager.activeSceneChanged -= StartSetup;
+		OsmiHooks.SceneChangeHook -= StartSetup;
 
 		if (running) {
 			running = false;
@@ -22,7 +22,7 @@ internal sealed class GreyPrinceToggle : Module {
 		}
 	}
 
-	private void StartSetup(Scene _, Scene next) {
+	private void StartSetup(Scene prev, Scene next) {
 		if (!Ref.PD.bossRushMode || next.name != "GG_Workshop") {
 			running = false;
 			return;
