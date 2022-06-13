@@ -32,6 +32,7 @@
 	"Modules/FastSuperDash": "快速超级冲刺",
 	"Modules/ForceArriveAnimation": "强制入场动画",
 	"Modules/ForceGreyPrinceEnterType": "强制灰色王子入场类型",
+	"Modules/GodTamerBeastRollCollider": "神之驯服者野兽滚动碰撞箱",
 	"Modules/GreyPrinceNailSlamCollider": "灰色王子骨钉猛击碰撞箱",
 	"Modules/GreyPrinceToggle": "灰色王子开关",
 	"Modules/HalveDamage": "伤害减半",
