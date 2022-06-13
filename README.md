@@ -55,6 +55,7 @@ Compatible with `Hollow Knight` 1.5.
 
 - **Restrictions**:
   + **Create Lag**: Create a lag in every in-game frame.
+  + **No Dive Invincibility**: Remove invincibility frames from Desolate Dive and Descending Dark.
   + **No Nail Attack**: Disable normal nail attack.
   + **No Nail Damage**: Remove damage from nail attacks, including nail arts.
   + **No Spell Damage**: Remove damage from spells, including Sharp Shadow.
