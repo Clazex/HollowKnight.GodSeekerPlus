@@ -32,6 +32,7 @@
 	"Modules/FastSuperDash": "Fast Super Dash",
 	"Modules/ForceArriveAnimation": "Force Arrive Animation",
 	"Modules/ForceGreyPrinceEnterType": "Force Grey Prince Enter Type",
+	"Modules/GreyPrinceNailSlamCollider": "Grey Prince Nail Slam Collider",
 	"Modules/GreyPrinceToggle": "Grey Prince Toggle",
 	"Modules/HalveDamage": "Halve Damage",
 	"Modules/InfiniteGrimmPufferfish": "Infinite Grimm Pufferfish",

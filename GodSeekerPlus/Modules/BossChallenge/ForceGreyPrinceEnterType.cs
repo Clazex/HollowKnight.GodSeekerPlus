@@ -18,7 +18,7 @@ internal sealed class ForceGreyPrinceEnterType : Module {
 		}) {
 			ModifyGPFSM(self);
 
-			Logger.LogDebug("Grey Prince FSM modified");
+			Logger.LogDebug("Grey Prince enter type modified");
 		}
 	}
 

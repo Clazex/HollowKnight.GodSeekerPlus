@@ -25,6 +25,7 @@ Compatible with `Hollow Knight` 1.5.
 - **Bugfix**:
   + **Camera Keep Rumbling**: Prevent camera from keeping rumbling after scene transitions in Godhome.
   + **Crossing Ooma**: Prevent Ooma from spawning explosive jellies across scenes.
+  + **Grey Prince Nail Slam Collider**: Prevent Grey Prince's nail slam collider from not disappearing when staggered.
   + **Transition Death**: Prevent from continuing pantheon challenges after death upon scene transitions.
 
 - **Cosmetic**:
