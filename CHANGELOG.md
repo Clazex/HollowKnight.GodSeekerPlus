@@ -1,3 +1,17 @@
+# [v0.20.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.9...v0.20.0) (2022-06-13)
+
+### Bug Fixes
+
+* not unhooking on disabling ([391df18](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/391df1899bea8417629a76729e4b44a5583f3dea))
+
+### Features
+
+* god tamer breast roll collider ([0abb2c8](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/0abb2c8b3b788b444d2b90e5a84a7ef2e1a3fa4e))
+* grey prince nail slam collider ([730895a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/730895a60ecd0d72a5dd26b339c8ea34a77fe486))
+* make fast dream warp and fast super dash toggleable at any time ([a83303a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a83303a12175246ef5db2e399567cf9a3ac4c199))
+* no dive invincibility ([f850452](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f8504528b30eedc5f35b4fd51222fb114d9a866c))
+* use new osmi features ([ab2bd92](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/ab2bd925a5090ceb9c201016bb923e33eadd2c02))
+
 # [v0.19.9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.8...v0.19.9) (2022-05-13)
 
 ### Bug Fixes
