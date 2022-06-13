@@ -1,13 +1,9 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[ToggleableLevel(ToggleableLevel.ReloadSave)]
 [DefaultEnabled]
 internal sealed class FastDreamWarp : Module {
-	private protected override void Load() =>
+	public FastDreamWarp() =>
 		On.PlayMakerFSM.Start += ModifyDreamNailFSM;
-
-	private protected override void Unload() =>
-		On.PlayMakerFSM.Start -= ModifyDreamNailFSM;
 
 	private void ModifyDreamNailFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
@@ -23,8 +19,9 @@ internal sealed class FastDreamWarp : Module {
 	}
 
 	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) =>
-		fsm.InsertAction("Warp Charge", new GGCheckIfBossScene {
-			// If in boss scene, fire CHARGED event immediately
-			bossSceneEvent = fsm.GetAction<Wait>("Warp Charge", 0).finishEvent,
+		fsm.InsertCustomAction("Warp Charge", (fsm) => {
+			if (BossSceneController.IsBossScene && ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)) {
+				fsm.SendEvent("CHARGED");
+			}
 		}, 0);
 }
