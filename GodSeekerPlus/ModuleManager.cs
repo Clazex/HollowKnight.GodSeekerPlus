@@ -24,16 +24,12 @@ internal static class ModuleManager {
 		.GetExecutingAssembly()
 		.GetTypes()
 		.Filter(type => type.IsSubclassOf(typeof(Module)))
+		.Filter(type => !type.IsAbstract)
 		.OrderBy(type => type.Name);
 
 	private static Dictionary<string, Module> InitModules() => FindModules()
 #if DEBUG
 		.Filter(type => {
-			if (type.IsAbstract) {
-				Logger.LogError($"Module type {type.FullName} is abstract");
-				return false;
-			}
-
 			if (type.GetConstructor(Type.EmptyTypes) == null) {
 				Logger.LogError($"Default constructor not found on module type {type.FullName}");
 				return false;
