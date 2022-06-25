@@ -4,8 +4,10 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class HalveDamage : Module {
 	internal static event Func<bool> ShouldFunctionHook = null!;
 
-	private protected override void Load() =>
-		ModHooks.AfterTakeDamageHook += MakeDamageHalved;
+	private protected override void Load() {
+		ModHooks.TakeHealthHook += MakeDamageHalved;
+		On.HeroController.StartRecoil += FixTakeHitEffect;
+	}
 
 	private static bool ShouldActivate() {
 		if (ShouldFunctionHook == null) {
@@ -21,8 +23,11 @@ internal sealed class HalveDamage : Module {
 		return false;
 	}
 
-	private int MakeDamageHalved(int hazardType, int damageAmount) =>
-		ShouldActivate() ? (int) Math.Ceiling(damageAmount / 2d) : damageAmount;
+	private int MakeDamageHalved(int damage) =>
+		ShouldActivate() ? (int) Math.Ceiling(damage / 2f) : damage;
+
+	private IEnumerator FixTakeHitEffect(On.HeroController.orig_StartRecoil orig, HeroController self, CollisionSide impactSide, bool spawnDamageEffect, int damageAmount) =>
+		orig(self, impactSide, spawnDamageEffect, MakeDamageHalved(damageAmount));
 }
 
 internal abstract class HalveDamageConditioned : Module {
