@@ -1,3 +1,14 @@
+# [v0.20.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.20.0...v0.20.1) (2022-06-25)
+
+### Bug Fixes
+
+* multiple instances ([cbaa401](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/cbaa4011f7cabf977258306356d5066a8c5415bc))
+* not applying to overcharm ([4d56cf7](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4d56cf742a82364a2a7739b3bcc79fcd86f2b074))
+
+### Features
+
+* separated halve damage ([faa5c4e](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/faa5c4e4c56dbedff71d259b47a9a37c44c590a4))
+
 # [v0.20.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.19.9...v0.20.0) (2022-06-13)
 
 ### Bug Fixes
