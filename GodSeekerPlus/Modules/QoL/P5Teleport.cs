@@ -3,6 +3,8 @@ namespace GodSeekerPlus.Modules.QoL;
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class P5Teleport : Module {
+	private static bool teleporting = false;
+
 	private protected override void Load() =>
 		OsmiHooks.SceneChangeHook += AddComponentToLever;
 
@@ -14,15 +16,16 @@ internal sealed class P5Teleport : Module {
 			next.GetGameObjectByName("gg_roof_door_pieces")
 				.Child("GG_door_caps", "gg_roof_lever")!
 				.AddComponent<CustomDreamnailReaction>()
-				.SetMethod((behaviour, _) => behaviour.StartCoroutine(Teleport()));
+				.SetMethod((_, _) => GlobalCoroutineExecutor.Start(Teleport()));
 		}
 	}
 
 	private static IEnumerator Teleport() {
-		if (!Ref.PD.finalBossDoorUnlocked) {
+		if (teleporting || !Ref.PD.finalBossDoorUnlocked) {
 			yield break;
 		}
 
+		teleporting = true;
 		Logger.LogDebug("P5 teleport start");
 
 		#region Pre-teleport effects
@@ -70,5 +73,7 @@ internal sealed class P5Teleport : Module {
 		Ref.PD.dreamGateY = origDGateY;
 
 		#endregion
+
+		teleporting = false;
 	}
 }
