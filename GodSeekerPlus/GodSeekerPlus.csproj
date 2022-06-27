@@ -34,6 +34,14 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Resources/**" />
+
+		<None Include="../.editorconfig" />
+		<None Include="../.gitignore" />
+		<None Include="../CHANGELOG.md" />
+		<None Include="../LICENSE" />
+		<None Include="../package.json" />
+		<None Include="../README.md" />
+		<None Include="../README.zh.md" />
 	</ItemGroup>
 
 	<ItemGroup>
