@@ -30,6 +30,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Crossing Ooma**: Prevent Ooma from spawning explosive jellies across scenes.
   + **God Tamer Beast Roll Collider**: Prevent God Tamer's Beast's collider from not restoring after rolling.
   + **Grey Prince Nail Slam Collider**: Prevent Grey Prince's nail slam collider from not disappearing when staggered.
+  + **HUD Display Cheker**: Prevent the HUD from disappearing sometimes.
   + **Transition Death**: Prevent from continuing pantheon challenges after death upon scene transitions.
 
 - **Cosmetic**:

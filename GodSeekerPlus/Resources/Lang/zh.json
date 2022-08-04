@@ -39,6 +39,7 @@
 	"Modules/HalveDamageHoGAttuned": "伤害减半（诸神堂调谐）",
 	"Modules/HalveDamageOtherPlace": "伤害减半（其它位置）",
 	"Modules/HalveDamagePantheons": "伤害减半（万神殿）",
+	"Modules/HUDDisplayChecker": "HUD 显示检查",
 	"Modules/InfiniteGrimmPufferfish": "无限格林河豚",
 	"Modules/InfiniteRadianceClimbing": "无限辐光爬梯",
 	"Modules/MemorizeBindings": "记住束缚",
