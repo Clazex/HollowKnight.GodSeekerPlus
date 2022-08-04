@@ -1,12 +1,12 @@
 namespace GodSeekerPlus.Settings;
 
+[PublicAPI]
 public sealed class LocalSettings {
 	public bool boundNail = false;
 	public bool boundHeart = false;
 	public bool boundCharms = false;
 	public bool boundSoul = false;
 
-	[JsonIgnore]
 	private int rabCompletion = 0;
 
 	[JsonProperty(PropertyName = nameof(rabCompletion))]
@@ -15,10 +15,9 @@ public sealed class LocalSettings {
 		set => rabCompletion = ((value & 0b11111) == value) ? value : 0;
 	}
 
-	[JsonIgnore]
 	private int selectedP5Segment = 0;
 
-	[JsonProperty(PropertyName = "selectedP5Segment")]
+	[JsonProperty(PropertyName = nameof(selectedP5Segment))]
 	public int SelectedP5Segment {
 		get => selectedP5Segment;
 		set => selectedP5Segment = value.Clamp(0, Modules.BossChallenge.SegmentedP5.segments.Length - 1);

@@ -1,5 +1,7 @@
 namespace GodSeekerPlus.Modules;
 
+[MeansImplicitUse]
+[UsedImplicitly]
 internal abstract class Module {
 	#region Attribute Cache
 

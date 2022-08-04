@@ -14,6 +14,8 @@ global using GodSeekerPlus.Utils;
 global using HutongGames.PlayMaker;
 global using HutongGames.PlayMaker.Actions;
 
+global using JetBrains.Annotations;
+
 global using Modding;
 
 global using Newtonsoft.Json;

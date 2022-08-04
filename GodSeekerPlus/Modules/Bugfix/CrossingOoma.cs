@@ -14,9 +14,9 @@ internal sealed class CrossingOoma : Module {
 
 	private void DestroyJelly(Scene prev, Scene next) {
 		if (prev.name is "GG_Uumuu" or "GG_Uumuu_V") {
-			IEnumerable<JellyMarker> markers = UObject.FindObjectsOfType<JellyMarker>();
+			JellyMarker[] markers = UObject.FindObjectsOfType<JellyMarker>();
 
-			if (!markers.Any()) {
+			if (markers.Length == 0) {
 				return;
 			}
 

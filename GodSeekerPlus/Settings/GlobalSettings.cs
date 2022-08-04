@@ -1,7 +1,7 @@
 namespace GodSeekerPlus.Settings;
 
+[PublicAPI]
 public sealed class GlobalSettings {
-	[JsonIgnore]
 	private readonly Dictionary<string, bool> modules = ModuleManager
 		.FindModules()
 		.Filter(type => !Attribute.IsDefined(type, typeof(HiddenAttribute)))
@@ -10,17 +10,12 @@ public sealed class GlobalSettings {
 			type => Attribute.IsDefined(type, typeof(DefaultEnabledAttribute))
 		);
 
-
-	[JsonIgnore]
 	private float fastSuperDashSpeedMultiplier = 1.5f;
 
-	[JsonIgnore]
 	private int lagTime = 50;
 
-	[JsonIgnore]
 	private int lifebloodAmount = 5;
 
-	[JsonIgnore]
 	private int soulAmount = 99;
 
 	public bool gpzEnterType = false;
