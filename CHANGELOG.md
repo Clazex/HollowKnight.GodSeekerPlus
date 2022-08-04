@@ -1,3 +1,10 @@
+# [v0.21.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.20.1...v0.21.0) (2022-08-04)
+
+### Features
+
+* hud display checker ([d402817](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/d4028176fde5777c852203b82cb1031cbe89d62f))
+* infinite challenge ([1f09924](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/1f09924219cedca164dbb315e9a6294922a39a69))
+
 # [v0.20.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.20.0...v0.20.1) (2022-06-25)
 
 ### Bug Fixes
