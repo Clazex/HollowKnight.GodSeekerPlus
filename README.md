@@ -20,6 +20,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Halve Damage (HoG Attuned)**: Halve all the damage taken when challenging at Attuned difficulty in Hall of Gods.
   + **Halve Damage (Other Place)**: Halve all the damage taken when not in Godhome boss scenes.
   + **Halve Damage (Pantheons)**: Halve all the damage taken when in pantheons.
+  + **Infinite Challenge**: Immediately restart Hall of Gods boss fights upon death. Can be configured to restart on success as well. Can use Dream Warp to return.
   + **Infinite Grimm Pufferfish**: When fighting in the Hall of Gods, make Troupe Master Grimm and Nightmare King Grimm only do pufferfish attack.
   + **Infinite Radiance Climbing**: When fighting in the Hall of Gods, starts Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
@@ -77,6 +78,7 @@ All features can be toggled in-game.
 - `gpzEnterType` (`Bool`): Name the enter type Grey Prince use. `false` for long enter, `true` for short enter.
 - `lagTime` (`Integer`): Lag time span in millisecond. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `1000`, defaults to `50`.
 - `lifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.
+- `restartFightOnSuccess` (`Bool`): Whether to restart fight on success.
 - `soulAmount` (`Integer`): The amount of soul to be added. Ranges from `0` to `198`, defaults to `99`.
 
 ## Statistics

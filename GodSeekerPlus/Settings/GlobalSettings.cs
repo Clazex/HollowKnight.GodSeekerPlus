@@ -20,6 +20,8 @@ public sealed class GlobalSettings {
 
 	public bool gpzEnterType = false;
 
+	public bool restartFightOnSuccess = false;
+
 
 	[JsonProperty(PropertyName = "features")]
 	public Dictionary<string, bool> Modules {
