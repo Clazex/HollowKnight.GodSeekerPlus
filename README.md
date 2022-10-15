@@ -54,6 +54,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
   + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
   + **Grey Prince Toggle**: Add a Dream Nail toggle beside Grey Prince statue to show and control whether Grey Prince will appear in the Pantheons or not when in Godseeker mode.
+  + **Keep Cocoon Lifeblood**: Keep lifeblood from cocoon when benching in the Pantheons.
   + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
   + **P5 Teleport**: Allow using the Dream Nail towards the lever which is used to unlock Godhome Atrium Roof to teleport to beside the Pantheon of Hallownest.
   + **Short Death Animation**: Skip part of the death animation when in boss scenes.
