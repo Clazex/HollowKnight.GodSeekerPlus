@@ -44,7 +44,7 @@ internal sealed class InfiniteChallenge : Module {
 			setupEvent = null;
 			StaticVariableList.SetValue("finishedBossReturning", false);
 
-			Ref.HC.EnableRenderer();
+			_ = GlobalCoroutineExecutor.Start(DelayedEnableRenderer());
 			Ref.HC.EnterWithoutInput(true);
 			Ref.HC.AcceptInput();
 			Ref.HC.gameObject.LocateMyFSM("Dream Return").GetVariable<FsmBool>("Dream Returning").Value = false;
@@ -54,6 +54,13 @@ internal sealed class InfiniteChallenge : Module {
 		}
 
 		orig(self, info);
+	}
+
+	private static IEnumerator DelayedEnableRenderer() {
+		yield return new WaitUntil(() => Ref.GM.IsInSceneTransition);
+		yield return new WaitWhile(() => Ref.GM.IsInSceneTransition);
+
+		Ref.HC.EnableRenderer();
 	}
 
 	private void Cleanup(Scene prev, Scene next) {
