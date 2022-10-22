@@ -258,8 +258,8 @@ internal sealed class SegmentedP5 : Module {
 			return;
 		}
 
-		ReflectionHelper.SetField(typeof(BossSequenceController), "bossIndex", -1);
-		ReflectionHelper.CallMethod(typeof(BossSequenceController), "IncrementBossIndex");
+		BossSequenceControllerR.bossIndex = -1;
+		BossSequenceControllerR.IncrementBossIndex();
 
 		int firstSceneIndex = BossSequenceController.BossIndex;
 		segP5!.GetComponent<BossSequenceDoor>()

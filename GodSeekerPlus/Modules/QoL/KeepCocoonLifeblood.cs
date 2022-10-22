@@ -20,13 +20,13 @@ internal sealed class KeepCocoonLifeblood : Module {
 			.Child("Health Cocoon (1)")!
 			.GetComponent<HealthCocoon>();
 
-		if (!ReflectionHelper.GetField<HealthCocoon, bool>(cocoon, "activated")) {
+		if (!cocoon.Reflect().activated) {
 			return 0;
 		}
 
-		return ReflectionHelper.GetField<HealthCocoon.FlingPrefab, List<GameObject>>(
-			cocoon.flingPrefabs.First(fp => fp.prefab.name == "Health Scuttler"),
-			"pool"
-		).Filter(go => !go.activeSelf).Count();
+		return cocoon.flingPrefabs
+			.First(fp => fp.prefab.name == "Health Scuttler")
+			.Reflect().pool
+			.Filter(go => !go.activeSelf).Count();
 	}
 }

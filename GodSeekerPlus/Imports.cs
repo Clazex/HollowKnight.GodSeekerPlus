@@ -11,6 +11,10 @@ global using GodSeekerPlus.Modules;
 global using GodSeekerPlus.Settings;
 global using GodSeekerPlus.Utils;
 
+global using HKMirror.Reflection;
+global using HKMirror.Reflection.SingletonClasses;
+global using HKMirror.Reflection.StaticClasses;
+
 global using HutongGames.PlayMaker;
 global using HutongGames.PlayMaker.Actions;
 
@@ -26,7 +30,6 @@ global using Osmi.Utils;
 
 global using Satchel;
 global using Satchel.Futils;
-global using Satchel.Reflected;
 
 global using UnityEngine;
 global using UnityEngine.EventSystems;

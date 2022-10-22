@@ -44,20 +44,14 @@ internal sealed class HalveDamageHoGAscendedOrAbove : HalveDamageConditioned {
 	protected override bool Predicate() =>
 		!BossSequenceController.IsInSequence
 		&& BossSceneController.IsBossScene
-		&& ReflectionHelper.GetField<BossSceneController, int>(
-			BossSceneController.Instance,
-			"bossLevel"
-		) > 0;
+		&& BossSceneController.Instance.Reflect().bossLevel > 0;
 }
 
 internal sealed class HalveDamageHoGAttuned : HalveDamageConditioned {
 	protected override bool Predicate() =>
 		!BossSequenceController.IsInSequence
 		&& BossSceneController.IsBossScene
-		&& ReflectionHelper.GetField<BossSceneController, int>(
-			BossSceneController.Instance,
-			"bossLevel"
-		) == 0;
+		&& BossSceneController.Instance.Reflect().bossLevel == 0;
 }
 
 internal sealed class HalveDamageOtherPlace : HalveDamageConditioned {

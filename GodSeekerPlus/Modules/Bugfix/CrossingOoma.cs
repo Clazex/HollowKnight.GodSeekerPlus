@@ -35,8 +35,7 @@ internal sealed class CrossingOoma : Module {
 			.GetComponent<PersonalObjectPool>()
 			.startupPool[0].prefab
 			.GetComponent<EnemyDeathEffectsBubble>();
-		GameObject corpse = ReflectionHelper
-			.GetField<EnemyDeathEffects, GameObject>(deathEffect, "corpsePrefab");
+		GameObject corpse = deathEffect.Reflect().corpsePrefab;
 		GameObject jelly = corpse
 			.LocateMyFSM("corpse")
 			.GetAction<CreateObject>("Explode", 3)
