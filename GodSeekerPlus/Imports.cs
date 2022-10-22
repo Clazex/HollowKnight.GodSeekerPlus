@@ -26,7 +26,10 @@ global using Osmi.Utils;
 
 global using Satchel;
 global using Satchel.Futils;
-global using Satchel.Reflected;
+
+global using HKMirror.Reflection;
+global using HKMirror.Reflection.SingletonClasses;
+global using HKMirror.Reflection.StaticClasses;
 
 global using UnityEngine;
 global using UnityEngine.EventSystems;

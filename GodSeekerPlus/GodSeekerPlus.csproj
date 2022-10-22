@@ -110,6 +110,10 @@
 			<HintPath>$(HKModRefs)/Osmi/Osmi.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="HKMirror">
+			<HintPath>$(HKModRefs)/HKMirror/HKMirror.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>

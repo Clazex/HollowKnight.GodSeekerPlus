@@ -4,21 +4,16 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour;
 using MonoMod.Utils;
 
+using HKMirror.Hooks.ILHooks;
+
 namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
 internal sealed class DoorDefaultBegin : Module {
-	private readonly ILHook hook = new(
-		typeof(BossDoorChallengeUI)
-			.GetMethod("ShowSequence", BindingFlags.Instance | BindingFlags.NonPublic)
-			.GetStateMachineTarget(),
-		ChangeSelection,
-		new() { ManualApply = true }
-	);
 
-	private protected override void Load() => hook.Apply();
+	private protected override void Load() => ILBossDoorChallengeUI.ShowSequence += ChangeSelection;
 
-	private protected override void Unload() => hook.Undo();
+	private protected override void Unload() => ILBossDoorChallengeUI.ShowSequence -= ChangeSelection;
 
 	// Remove:
 	//

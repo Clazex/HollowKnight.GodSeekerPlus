@@ -136,7 +136,7 @@ internal sealed class InfiniteRadianceClimbing : Module {
 			.GetChildren()
 			.Filter(go => go.name.StartsWith("Hazard Respawn Trigger v2"))
 			.ForEach(go => {
-				ReflectionHelper.SetField(go.GetComponent<HazardRespawnTrigger>(), "inactive", false);
+				go.GetComponent<HazardRespawnTrigger>().Reflect().inactive = false;
 				go.LocateMyFSM("raise_abyss_pit").Fsm.SetState("Idle");
 			});
 

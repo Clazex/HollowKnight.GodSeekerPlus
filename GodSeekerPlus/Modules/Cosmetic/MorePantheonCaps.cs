@@ -48,8 +48,7 @@ internal sealed class MorePantheonCaps : Module {
 	}
 
 	private void RecordRAB(On.BossDoorChallengeCompleteUI.orig_Start orig, BossDoorChallengeCompleteUI self) {
-		BossSequenceController.BossSequenceData currentData = ReflectionHelper
-			.GetField<BossSequenceController.BossSequenceData>(typeof(BossSequenceController), "currentData");
+		BossSequenceController.BossSequenceData currentData = BossSequenceControllerR.currentData;
 
 		if (doorPDDict.TryGetValue(currentData.playerData, out int num)) {
 			bool rab = !currentData.knightDamaged
