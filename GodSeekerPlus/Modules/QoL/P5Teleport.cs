@@ -68,7 +68,9 @@ internal sealed class P5Teleport : Module {
 		// Restore this before scene loaded to prevent spawning DGate
 		Ref.PD.dreamGateScene = origDGateScene;
 
-		yield return new WaitWhile(() => Ref.PD.disablePause);
+		tk2dSpriteAnimator animator = Ref.HC.gameObject.GetComponent<tk2dSpriteAnimator>();
+		yield return new WaitUntil(() => animator.IsPlaying("Super Hard Land"));
+
 		Ref.PD.dreamGateX = origDGateX;
 		Ref.PD.dreamGateY = origDGateY;
 
