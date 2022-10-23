@@ -6,12 +6,14 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class P5Health : Module {
 	private protected override void Load() {
 		OnBossSceneController.AfterOrig.get_BossLevel += OverrideLevel;
+		OsmiHooks.SceneChangeHook += FixAscendedMarkoth;
 
 		ModHooks.TakeDamageHook += FixDamage;
 	}
 
 	private protected override void Unload() {
 		OnBossSceneController.AfterOrig.get_BossLevel -= OverrideLevel;
+		OsmiHooks.SceneChangeHook -= FixAscendedMarkoth;
 
 		ModHooks.TakeDamageHook -= FixDamage;
 	}
@@ -27,4 +29,15 @@ internal sealed class P5Health : Module {
 			_ => i,
 		}
 	};
+
+	private void FixAscendedMarkoth(Scene prev, Scene next) {
+		if (next.name != "GG_Markoth_V" || BossSequenceController.IsInSequence) {
+			return;
+		}
+
+		_ = next.GetRootGameObjects()
+			.First(go => go.name == "Warrior")
+			.Child("Ghost Warrior Markoth")
+			.manageHealth(650);
+	}
 }
