@@ -1,3 +1,16 @@
+# [v0.22.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.21.0...v0.22.0) (2022-10-29)
+
+### Bug Fixes
+
+* delay enabling renderer to scene transition ([7cf8848](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7cf88480ddbd284f0f24fecb0542d293d505a195))
+* p5 health not functioning for ascended markoth ([152007d](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/152007d1311085889c11df3dcd4bdda5668753fe))
+* p5 teleport not functioning correctly when dreamgate is already set ([bf354ee](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/bf354eeeac60868cfe9967d18145ab92a9c587dd))
+
+### Features
+
+* keep cocoon lifeblood ([a75246c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/a75246c7189f188d651aceca6c5e03c643f1a31f))
+* option localizations ([3d81f42](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/3d81f42611e7307412b470382fe034000260584d))
+
 # [v0.21.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.20.1...v0.21.0) (2022-08-04)
 
 ### Features
