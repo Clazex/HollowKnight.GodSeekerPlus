@@ -2,6 +2,10 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class AddSoul : Module {
+	[GlobalSetting]
+	[IntOption(0, 198, 11)]
+	private static int soulAmount = 99;
+
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;
 
@@ -15,7 +19,7 @@ internal sealed class AddSoul : Module {
 			yield break;
 		}
 
-		Ref.HC.AddMPCharge(Setting.Global.SoulAmount);
+		Ref.HC.AddMPCharge(soulAmount);
 
 		_ = Ref.HC.StartCoroutine(UpdateHUD());
 

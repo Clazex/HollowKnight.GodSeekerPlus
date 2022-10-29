@@ -2,6 +2,10 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 internal sealed class InfiniteChallenge : Module {
+	[GlobalSetting]
+	[BoolOption]
+	public static bool restartFightOnSuccess = false;
+
 	private BossSceneController.SetupEventDelegate? setupEvent;
 
 	private protected override void Load() {
@@ -35,7 +39,7 @@ internal sealed class InfiniteChallenge : Module {
 			&& (
 				Ref.HC.heroDeathPrefab.activeSelf // Death returning
 				|| ( // Success returning
-					Setting.Global.restartFightOnSuccess
+					restartFightOnSuccess
 					&& StaticVariableList.GetValue<bool>("finishedBossReturning")
 				)
 			)

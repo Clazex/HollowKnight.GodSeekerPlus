@@ -39,30 +39,87 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 				.Map(group => Blueprints.NavigateToMenu(
 					$"Categories/{group.Key}".Localize(),
 					"",
-					() => new Menu(
-						$"Categories/{group.Key}".Localize(),
-						group.Map(module => new HorizontalOption(
-							$"Modules/{module.Name}".Localize(),
-							$"ToggleableLevel/{module.ToggleableLevel}".Localize(),
-							StateStrings,
-							(val) => module.Active = Convert.ToBoolean(val),
-							() => Convert.ToInt32(module.Active)
-						))
-						.ToArray()
-					).GetMenuScreen(menu.menuScreen)
+					() => {
+						Menu subMenu = new(
+							$"Categories/{group.Key}".Localize(),
+							group.Map(module => new HorizontalOption(
+								$"Modules/{module.Name}".Localize(),
+								$"ToggleableLevel/{module.ToggleableLevel}".Localize(),
+								StateStrings,
+								(val) => module.Active = Convert.ToBoolean(val),
+								() => Convert.ToInt32(module.Active)
+							))
+							.ToArray()
+						);
+
+						if (Setting.Global.boolFields.TryGetValue(group.Key, out Dictionary<string, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)> boolFields)) {
+							foreach (KeyValuePair<string, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)> pair in boolFields) {
+								(string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)) = pair;
+
+								if (!isOption) {
+									continue;
+								}
+
+								BoolOptionAttribute optionAttr = fi.GetCustomAttribute<BoolOptionAttribute>();
+
+								subMenu.AddElement(Blueprints.HorizontalBoolOption(
+									$"Settings/{name}".Localize(),
+									$"Modules/{fi.DeclaringType.Name}".Localize(),
+									setter,
+									getter,
+									optionAttr.CustomTrueText ? $"Settings/{name}/True".Localize() : StateStrings[1],
+									optionAttr.CustomFalseText ? $"Settings/{name}/False".Localize() : StateStrings[0]
+								));
+							}
+						}
+
+						if (Setting.Global.intFields.TryGetValue(group.Key, out Dictionary<string, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)> intFields)) {
+							foreach (KeyValuePair<string, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)> pair in intFields) {
+								(string name, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)) = pair;
+
+								if (!isOption) {
+									continue;
+								}
+
+								subMenu.AddElement(Blueprints.GenericHorizontalOption(
+									$"Settings/{name}".Localize(),
+									$"Modules/{fi.DeclaringType.Name}".Localize(),
+									fi.GetCustomAttribute<IntOptionAttribute>().Options,
+									setter,
+									getter
+								));
+							}
+						}
+
+						if (Setting.Global.floatFields.TryGetValue(group.Key, out Dictionary<string, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)> floatFields)) {
+							foreach (KeyValuePair<string, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)> pair in floatFields) {
+								(string name, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)) = pair;
+
+								if (!isOption) {
+									continue;
+								}
+
+								subMenu.AddElement(Blueprints.GenericHorizontalOption(
+									$"Settings/{name}".Localize(),
+									$"Modules/{fi.DeclaringType.Name}".Localize(),
+									fi.GetCustomAttribute<FloatOptionAttribute>().Options,
+									setter,
+									getter
+								));
+							}
+						}
+
+						return subMenu.GetMenuScreen(menu.menuScreen);
+					}
 				))
 				.ForEach(menu.AddElement);
 
 			menu.AddElement(new Satchel.BetterMenus.MenuButton(
 				"ResetModules".Localize(),
-				"",
-				btn => {
-					ModuleManager.Modules.Values.ForEach(
-						module => module.Active = module.DefaultEnabled
-					);
-
-					GlobalSettings = new();
-				},
+				string.Empty,
+				btn => ModuleManager.Modules.Values.ForEach(
+					module => module.Active = module.DefaultEnabled
+				),
 				true
 			));
 

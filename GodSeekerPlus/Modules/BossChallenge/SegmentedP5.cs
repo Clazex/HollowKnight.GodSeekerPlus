@@ -5,7 +5,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class SegmentedP5 : Module {
 	private const string dummySeqPD = "bossDoorStateTier5Segmented";
 
-	internal static readonly (int start, int end)[] segments = new[] {
+	private static readonly (int start, int end)[] segments = new[] {
 		(0, 10),
 		(11, 16),
 		(17, 22),
@@ -15,6 +15,11 @@ internal sealed class SegmentedP5 : Module {
 		(42, 48),
 		(49, 52)
 	};
+
+	[LocalSetting]
+	private static int selectedP5Segment = 0;
+
+
 
 	private static BossSequence? sequence = null;
 
@@ -26,7 +31,7 @@ internal sealed class SegmentedP5 : Module {
 	private Text? selectBtnText;
 
 	private static string CurrentSegmentName =>
-		$"SegmentedP5/Segment/{Setting.Local.SelectedP5Segment}".Localize();
+		$"SegmentedP5/Segment/{selectedP5Segment}".Localize();
 
 
 	private protected override void Load() {
@@ -206,7 +211,7 @@ internal sealed class SegmentedP5 : Module {
 				return;
 			}
 
-			Setting.Local.IncreamentP5SegmentSelection();
+			IncreamentP5SegmentSelection();
 
 			if (selectBtnText != null) {
 				selectBtnText.text = CurrentSegmentName;
@@ -292,7 +297,7 @@ internal sealed class SegmentedP5 : Module {
 	}
 
 	private bool SkipNotSelectedScenes(On.BossSequence.orig_CanLoad orig, BossSequence self, int index) {
-		(int start, int end) = segments[Setting.Local.SelectedP5Segment];
+		(int start, int end) = segments[selectedP5Segment];
 		return (!running || (index >= start && index <= end)) && orig(self, index);
 	}
 
@@ -325,5 +330,14 @@ internal sealed class SegmentedP5 : Module {
 		_ = Ref.HC.StartCoroutine("Die");
 
 		Logger.LogDebug("Force quiting Segmented P5 sequence");
+	}
+
+
+	private static void IncreamentP5SegmentSelection() {
+		selectedP5Segment++;
+
+		if (selectedP5Segment >= segments.Length) {
+			selectedP5Segment = 0;
+		}
 	}
 }

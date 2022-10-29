@@ -13,6 +13,9 @@ internal sealed class MorePantheonCaps : Module {
 		{ "bossDoorStateTier5", 5 }
 	};
 
+	[LocalSetting]
+	private static int rabCompletion = 0;
+
 	private protected override void Load() {
 		On.BossSequenceDoor.Start += SetupCaps;
 		On.BossDoorChallengeCompleteUI.Start += RecordRAB;
@@ -34,7 +37,7 @@ internal sealed class MorePantheonCaps : Module {
 			}
 
 			if (doorPDDict.TryGetValue(self.playerDataString, out int num)
-				&& Setting.Local.GetRABCompletion(num)
+				&& GetRABCompletion(num)
 				&& self.completedNoHitsDisplay?.GetComponent<SpriteRenderer>() is SpriteRenderer sr
 			) {
 				sr.transform.Translate(0, 0, -0.0801f);
@@ -52,11 +55,11 @@ internal sealed class MorePantheonCaps : Module {
 
 		if (doorPDDict.TryGetValue(currentData.playerData, out int num)) {
 			bool rab = !currentData.knightDamaged
-			&& currentData.bindings == (Bindings.Nail | Bindings.Shell | Bindings.Charms | Bindings.Soul);
-			bool rabPrev = Setting.Local.GetRABCompletion(num);
+				&& currentData.bindings == (Bindings.Nail | Bindings.Shell | Bindings.Charms | Bindings.Soul);
+			bool rabPrev = GetRABCompletion(num);
 
 			if (rab && !rabPrev) {
-				Setting.Local.SetRABCompletion(num, true);
+				SetRABCompletion(num, true);
 				Logger.LogDebug($"Radiant AB in Pantheon #{num} recorded");
 			}
 		}
@@ -64,4 +67,24 @@ internal sealed class MorePantheonCaps : Module {
 		orig(self);
 	}
 
+	#region RAB Completions Getter/Setter
+
+	public bool GetRABCompletion(int num) => num is >= 1 and <= 5
+		? (rabCompletion & (1 << (num - 1))) != 0
+		: throw new ArgumentOutOfRangeException(nameof(num));
+
+	internal void SetRABCompletion(int num, bool completed) {
+		if (num is < 1 or > 5) {
+			throw new ArgumentOutOfRangeException(nameof(num));
+		}
+
+		int mask = 1 << (num - 1);
+		if (completed) {
+			rabCompletion |= mask;
+		} else {
+			rabCompletion &= ~mask;
+		}
+	}
+
+	#endregion
 }

@@ -3,6 +3,10 @@ using System.Threading;
 namespace GodSeekerPlus.Modules.Restrictions;
 
 internal sealed class CreateLag : Module {
+	[GlobalSetting]
+	[IntOption(0, 1000, 25)]
+	private static int lagTime = 50;
+
 	private protected override void Load() =>
 		ModHooks.HeroUpdateHook += ThreadSleep;
 
@@ -14,6 +18,6 @@ internal sealed class CreateLag : Module {
 			return;
 		}
 
-		Thread.Sleep(Setting.Global.LagTime);
+		Thread.Sleep(lagTime);
 	}
 }

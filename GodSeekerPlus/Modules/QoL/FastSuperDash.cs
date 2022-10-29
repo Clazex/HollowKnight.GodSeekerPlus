@@ -4,6 +4,10 @@ namespace GodSeekerPlus.Modules.QoL;
 internal sealed class FastSuperDash : Module {
 	private const string stateName = "GSP Workshop Speed Buff";
 
+	[GlobalSetting]
+	[FloatOption(1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f)]
+	private static float fastSuperDashSpeedMultiplier = 1.5f;
+
 	public FastSuperDash() =>
 		On.PlayMakerFSM.Start += ModifySuperDashFSM;
 
@@ -29,7 +33,7 @@ internal sealed class FastSuperDash : Module {
 		}, 0);
 		speedBuffState.InsertAction(new FloatMultiply() {
 			floatVariable = fsm.GetVariable<FsmFloat>("Current SD Speed"),
-			multiplyBy = Setting.Global.FastSuperDashSpeedMultiplier
+			multiplyBy = fastSuperDashSpeedMultiplier
 		}, 1);
 
 		fsm.Intercept(new TransitionInterceptor() {

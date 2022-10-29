@@ -70,17 +70,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Aggressive GC**: Force resource unloading and garbage collecting on every scene trasition, may reduce memory usage but slow down loading.
   + **Unlock All Modes**: Auto unlock Steel Soul mode and Godseeker mode.
 
-All features can be toggled in-game.
-
-## Configuration
-
-- `features` (`Object`): Whether to enable specified features.
-- `fastSuperDashSpeedMultiplier` (`Float`): Fast Super Dash speed multiplier. Ranges from `1` to `2`, defaults to `1.5`.
-- `gpzEnterType` (`Bool`): Name the enter type Grey Prince use. `false` for long enter, `true` for short enter.
-- `lagTime` (`Integer`): Lag time span in millisecond. Note that setting this to `0` does not mean zero lag. Ranges from `0` to `1000`, defaults to `50`.
-- `lifebloodAmount` (`Integer`): The amount of lifeblood to be added. Ranges from `0` to `35`, defaults to `5`.
-- `restartFightOnSuccess` (`Bool`): Whether to restart fight on success.
-- `soulAmount` (`Integer`): The amount of soul to be added. Ranges from `0` to `198`, defaults to `99`.
+All options can be tweaked in-game.
 
 ## Statistics
 

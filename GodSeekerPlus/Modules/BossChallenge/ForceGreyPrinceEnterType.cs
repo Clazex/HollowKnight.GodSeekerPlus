@@ -3,6 +3,10 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 [ToggleableLevel(ToggleableLevel.ChangeScene)]
 [DefaultEnabled]
 internal sealed class ForceGreyPrinceEnterType : Module {
+	[GlobalSetting]
+	[BoolOption(true, true)]
+	public static bool gpzEnterType = false;
+
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyGPFSM;
 
@@ -25,6 +29,6 @@ internal sealed class ForceGreyPrinceEnterType : Module {
 	private static void ModifyGPFSM(PlayMakerFSM fsm) =>
 		fsm.AddCustomAction(
 			"Enter 1",
-			() => fsm.GetVariable<FsmBool>("Faced Zote").Value = Setting.Global.gpzEnterType
+			() => fsm.GetVariable<FsmBool>("Faced Zote").Value = gpzEnterType
 		);
 }

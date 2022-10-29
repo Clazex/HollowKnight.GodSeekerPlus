@@ -1,7 +1,7 @@
 namespace GodSeekerPlus.Settings;
 
 [PublicAPI]
-public sealed class GlobalSettings {
+public sealed class GlobalSettings : SettingBase<GlobalSettingAttribute> {
 	private readonly Dictionary<string, bool> modules = ModuleManager
 		.FindModules()
 		.Filter(type => !Attribute.IsDefined(type, typeof(HiddenAttribute)))
@@ -10,20 +10,7 @@ public sealed class GlobalSettings {
 			type => Attribute.IsDefined(type, typeof(DefaultEnabledAttribute))
 		);
 
-	private float fastSuperDashSpeedMultiplier = 1.5f;
-
-	private int lagTime = 50;
-
-	private int lifebloodAmount = 5;
-
-	private int soulAmount = 99;
-
-	public bool gpzEnterType = false;
-
-	public bool restartFightOnSuccess = false;
-
-
-	[JsonProperty(PropertyName = "features")]
+	[JsonProperty(PropertyName = nameof(modules))]
 	public Dictionary<string, bool> Modules {
 		get => modules;
 		set {
@@ -33,29 +20,5 @@ public sealed class GlobalSettings {
 				}
 			}
 		}
-	}
-
-	[JsonProperty(PropertyName = nameof(fastSuperDashSpeedMultiplier))]
-	public float FastSuperDashSpeedMultiplier {
-		get => fastSuperDashSpeedMultiplier;
-		set => fastSuperDashSpeedMultiplier = value.Clamp(1f, 2f);
-	}
-
-	[JsonProperty(PropertyName = nameof(lagTime))]
-	public int LagTime {
-		get => lagTime;
-		set => lagTime = value.Clamp(0, 1000);
-	}
-
-	[JsonProperty(PropertyName = nameof(lifebloodAmount))]
-	public int LifebloodAmount {
-		get => lifebloodAmount;
-		set => lifebloodAmount = value.Clamp(0, 35);
-	}
-
-	[JsonProperty(PropertyName = nameof(soulAmount))]
-	public int SoulAmount {
-		get => soulAmount;
-		set => soulAmount = value.Clamp(0, 198);
 	}
 }
