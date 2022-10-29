@@ -14,13 +14,27 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			: ModMenu.GetFallbackMenuScreen(modListMenu, toggleDelegates);
 
 	private static class ModMenu {
+		internal static bool dirty = true;
+		private static Menu? menu = null;
+
+		static ModMenu() => On.Language.Language.DoSwitch += (orig, self) => {
+			dirty = true;
+			orig(self);
+		};
+
+
+
 		private static string[] StateStrings => new string[] {
 			Lang.Get("MOH_OFF", "MainMenu"),
 			Lang.Get("MOH_ON", "MainMenu")
 		};
 
 		internal static MenuScreen GetSatchelMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
-			Menu menu = new("ModName".Localize(), new[] {
+			if (menu != null && !dirty) {
+				return menu.GetMenuScreen(modListMenu);
+			}
+
+			menu = new("ModName".Localize(), new[] {
 				toggleDelegates!.Value.CreateToggle(
 					"ModName".Localize(),
 					"ToggleButtonDesc".Localize(),
@@ -123,6 +137,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 				true
 			));
 
+			dirty = false;
 			return menu.GetMenuScreen(modListMenu);
 		}
 
