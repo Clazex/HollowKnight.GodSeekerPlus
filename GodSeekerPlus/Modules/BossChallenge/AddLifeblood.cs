@@ -4,7 +4,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class AddLifeblood : Module {
 	[GlobalSetting]
 	[IntOption(0, 35)]
-	private static int lifebloodAmount = 5;
+	private static readonly int lifebloodAmount = 5;
 
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;

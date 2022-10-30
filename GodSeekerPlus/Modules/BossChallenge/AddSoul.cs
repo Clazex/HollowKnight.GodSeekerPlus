@@ -4,7 +4,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class AddSoul : Module {
 	[GlobalSetting]
 	[IntOption(0, 198, 11)]
-	private static int soulAmount = 99;
+	private static readonly int soulAmount = 99;
 
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;

@@ -17,7 +17,7 @@ public sealed class LocalSettingAttribute : Attribute {
 internal abstract class OptionAttribute : Attribute {
 }
 
-	[PublicAPI]
+[PublicAPI]
 [AttributeUsage(AttributeTargets.Field)]
 internal sealed class BoolOptionAttribute : OptionAttribute {
 	internal bool CustomFalseText { get; private init; }

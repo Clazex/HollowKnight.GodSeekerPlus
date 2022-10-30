@@ -4,7 +4,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class InfiniteChallenge : Module {
 	[GlobalSetting]
 	[BoolOption]
-	public static bool restartFightOnSuccess = false;
+	public static readonly bool restartFightOnSuccess = false;
 
 	private BossSceneController.SetupEventDelegate? setupEvent;
 

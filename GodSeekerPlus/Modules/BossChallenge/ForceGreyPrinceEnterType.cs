@@ -5,7 +5,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 internal sealed class ForceGreyPrinceEnterType : Module {
 	[GlobalSetting]
 	[BoolOption(true, true)]
-	public static bool gpzEnterType = false;
+	public static readonly bool gpzEnterType = false;
 
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyGPFSM;

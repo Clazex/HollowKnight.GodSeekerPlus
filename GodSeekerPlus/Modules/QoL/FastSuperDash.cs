@@ -6,7 +6,7 @@ internal sealed class FastSuperDash : Module {
 
 	[GlobalSetting]
 	[FloatOption(1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f)]
-	private static float fastSuperDashSpeedMultiplier = 1.5f;
+	private static readonly float fastSuperDashSpeedMultiplier = 1.5f;
 
 	public FastSuperDash() =>
 		On.PlayMakerFSM.Start += ModifySuperDashFSM;
