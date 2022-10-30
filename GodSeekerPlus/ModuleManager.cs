@@ -3,6 +3,15 @@ using System.Diagnostics.CodeAnalysis;
 namespace GodSeekerPlus;
 
 internal static class ModuleManager {
+	internal static Lazy<Type[]> moduleTypes = new(() => Assembly
+		.GetExecutingAssembly()
+		.GetTypes()
+		.Filter(type => type.IsSubclassOf(typeof(Module)))
+		.Filter(type => !type.IsAbstract)
+		.OrderBy(type => type.Name)
+		.ToArray()
+	);
+
 	internal static Dictionary<string, Module>? modules = null;
 
 	internal static Dictionary<string, Module> Modules =>
@@ -20,14 +29,8 @@ internal static class ModuleManager {
 	}
 
 
-	internal static IEnumerable<Type> FindModules() => Assembly
-		.GetExecutingAssembly()
-		.GetTypes()
-		.Filter(type => type.IsSubclassOf(typeof(Module)))
-		.Filter(type => !type.IsAbstract)
-		.OrderBy(type => type.Name);
-
-	private static Dictionary<string, Module> InitModules() => FindModules()
+	private static Dictionary<string, Module> InitModules() => moduleTypes
+		.Value
 #if DEBUG
 		.Filter(type => {
 			if (type.GetConstructor(Type.EmptyTypes) == null) {

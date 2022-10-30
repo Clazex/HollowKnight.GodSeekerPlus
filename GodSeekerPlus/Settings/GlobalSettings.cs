@@ -3,7 +3,8 @@ namespace GodSeekerPlus.Settings;
 [PublicAPI]
 public sealed class GlobalSettings : SettingBase<GlobalSettingAttribute> {
 	private readonly Dictionary<string, bool> modules = ModuleManager
-		.FindModules()
+		.moduleTypes
+		.Value
 		.Filter(type => !Attribute.IsDefined(type, typeof(HiddenAttribute)))
 		.ToDictionary(
 			type => type.Name,
