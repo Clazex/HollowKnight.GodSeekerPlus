@@ -14,13 +14,13 @@ internal sealed class CrossingOoma : Module {
 
 	private void DestroyJelly(Scene prev, Scene next) {
 		if (prev.name is "GG_Uumuu" or "GG_Uumuu_V") {
-			JellyMarker[] markers = UObject.FindObjectsOfType<JellyMarker>();
+			JellyMarker[] markers = JellyMarker.markers.ToArray();
 
 			if (markers.Length == 0) {
 				return;
 			}
 
-			Logger.Log("Found cross-scene ooma(s), destroying");
+			Logger.Log($"Found {markers.Length} cross-scene ooma(s), destroying...");
 			markers.ForEach(marker => UObject.Destroy(marker.gameObject));
 		}
 	}
@@ -43,10 +43,16 @@ internal sealed class CrossingOoma : Module {
 
 		_ = corpse.AddComponent<JellyMarker>();
 		_ = jelly.AddComponent<JellyMarker>();
+		JellyMarker.markers.Clear();
 
 		OsmiHooks.SceneChangeHook -= ModifyPrefab;
 	}
 
 	private sealed class JellyMarker : MonoBehaviour {
+		internal static HashSet<JellyMarker> markers = new();
+
+		private void Awake() => markers.Add(this);
+
+		private void OnDestroy() => markers.Remove(this);
 	}
 }

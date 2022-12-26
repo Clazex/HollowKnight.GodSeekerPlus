@@ -7,28 +7,22 @@ internal sealed class ForceGreyPrinceEnterType : Module {
 	[BoolOption(true, true)]
 	public static readonly bool gpzEnterType = false;
 
-	private protected override void Load() =>
-		On.PlayMakerFSM.Start += ModifyGPFSM;
-
-	private protected override void Unload() =>
-		On.PlayMakerFSM.Start -= ModifyGPFSM;
-
-	private void ModifyGPFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
-		orig(self);
-
-		if (self is {
-			name: "Grey Prince",
-			FsmName: "Control"
-		}) {
-			ModifyGPFSM(self);
+	private static readonly SceneEdit handle = new(
+		new("GG_Grey_Prince_Zote", "Grey Prince"),
+		go => {
+			PlayMakerFSM fsm = go.LocateMyFSM("Control");
+			fsm.AddCustomAction(
+				"Enter 1",
+				() => fsm.GetVariable<FsmBool>("Faced Zote").Value = gpzEnterType
+			);
 
 			Logger.LogDebug("Grey Prince enter type modified");
 		}
-	}
+	);
 
-	private static void ModifyGPFSM(PlayMakerFSM fsm) =>
-		fsm.AddCustomAction(
-			"Enter 1",
-			() => fsm.GetVariable<FsmBool>("Faced Zote").Value = gpzEnterType
-		);
+	private protected override void Load() =>
+		handle.Enable();
+
+	private protected override void Unload() =>
+		handle.Disable();
 }

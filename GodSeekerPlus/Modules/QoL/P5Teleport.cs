@@ -5,20 +5,17 @@ namespace GodSeekerPlus.Modules.QoL;
 internal sealed class P5Teleport : Module {
 	private static bool teleporting = false;
 
+	private static readonly SceneEdit leverEditHandle = new(
+		new("GG_Atrium", "gg_roof_door_pieces", "GG_door_caps", "gg_roof_lever"),
+		go => go.AddComponent<CustomDreamnailReaction>()
+			.SetMethod(_ => GlobalCoroutineExecutor.Start(Teleport()))
+	);
+
 	private protected override void Load() =>
-		OsmiHooks.SceneChangeHook += AddComponentToLever;
+		leverEditHandle.Enable();
 
 	private protected override void Unload() =>
-		OsmiHooks.SceneChangeHook -= AddComponentToLever;
-
-	private void AddComponentToLever(Scene prev, Scene next) {
-		if (next.name == "GG_Atrium") {
-			next.GetGameObjectByName("gg_roof_door_pieces")
-				.Child("GG_door_caps", "gg_roof_lever")!
-				.AddComponent<CustomDreamnailReaction>()
-				.SetMethod((_, _) => GlobalCoroutineExecutor.Start(Teleport()));
-		}
-	}
+		leverEditHandle.Disable();
 
 	private static IEnumerator Teleport() {
 		if (teleporting || !Ref.PD.finalBossDoorUnlocked) {

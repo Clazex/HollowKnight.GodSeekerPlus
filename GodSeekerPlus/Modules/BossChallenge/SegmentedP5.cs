@@ -20,11 +20,17 @@ internal sealed class SegmentedP5 : Module {
 	private static int selectedP5Segment = 0;
 
 
+	private static readonly SceneEdit radianceHandle = new(
+		new("GG_Radiance", "Boss Control", "Absolute Radiance"),
+		go => go.LocateMyFSM("Control")
+			.GetAction<SetStaticVariable>("Ending Scene", 1)
+			.setValue.boolValue = !running
+	);
 
 	private static BossSequence? sequence = null;
 
-	private bool doorOnline = false;
-	private bool running = false;
+	private static bool doorOnline = false;
+	private static bool running = false;
 	private GameObject? segP5 = null;
 
 	private GameObject? selectBtn;
@@ -39,7 +45,7 @@ internal sealed class SegmentedP5 : Module {
 		On.BossSequenceController.SetupNewSequence += StartSequence;
 		On.BossSequence.CanLoad += SkipNotSelectedScenes;
 		On.BossDoorChallengeUI.Setup += SetupUI;
-		On.PlayMakerFSM.Start += ModifyAbsRadFSM;
+		radianceHandle.Enable();
 		ModHooks.GetPlayerVariableHook += GetVarHook;
 	}
 
@@ -59,7 +65,7 @@ internal sealed class SegmentedP5 : Module {
 		On.BossSequenceController.SetupNewSequence -= StartSequence;
 		On.BossSequence.CanLoad -= SkipNotSelectedScenes;
 		On.BossDoorChallengeUI.Setup -= SetupUI;
-		On.PlayMakerFSM.Start -= ModifyAbsRadFSM;
+		radianceHandle.Disable();
 		ModHooks.GetPlayerVariableHook -= GetVarHook;
 	}
 
@@ -300,20 +306,6 @@ internal sealed class SegmentedP5 : Module {
 		(int start, int end) = segments[selectedP5Segment];
 		return (!running || (index >= start && index <= end)) && orig(self, index);
 	}
-
-	private void ModifyAbsRadFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
-		orig(self);
-
-		if (self is {
-			name: "Absolute Radiance",
-			FsmName: "Control"
-		}) {
-			ModifyAbsRadFSM(self);
-		}
-	}
-
-	private void ModifyAbsRadFSM(PlayMakerFSM fsm) =>
-		fsm.GetAction<SetStaticVariable>("Ending Scene", 1).setValue.boolValue = !running;
 
 	private static object GetVarHook(Type type, string name, object value) => name == dummySeqPD
 		? BossSequenceDoor.Completion.None with {

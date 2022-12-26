@@ -137,19 +137,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 	private static Dictionary<string, Dictionary<string, (FieldInfo fi, Func<TField> getter, Action<TField> setter, bool isOption)>> ProcessFields<TField>(FieldInfo[] fields) => fields
 		.Filter(fi => fi.FieldType == typeof(TField))
 		.Map(fi => {
-			DynamicMethodDefinition gdmd = ILUtil.CreateDMD<Func<TField>>($"<GSPSetting>_get_{fi.Name}");
-			ILProcessor gilp = gdmd.GetILProcessor();
-			gilp.Emit(OpCodes.Ldsfld, fi);
-			gilp.Emit(OpCodes.Ret);
-			Func<TField> getter = gdmd.Generate().CreateDelegate<Func<TField>>();
-
-			DynamicMethodDefinition sdmd = ILUtil.CreateDMD<Action<TField>>($"<GSPSetting>_set_{fi.Name}");
-			ILProcessor silp = sdmd.GetILProcessor();
-			silp.Emit(OpCodes.Ldarg_0);
-			silp.Emit(OpCodes.Stsfld, fi);
-			silp.Emit(OpCodes.Ret);
-			Action<TField> setter = sdmd.Generate().CreateDelegate<Action<TField>>();
-
+			(Func<TField> getter, Action<TField> setter) = fi.GetFastStaticAccessors<TField>();
 			return (fi, getter, setter);
 		})
 		.GroupBy(tuple => tuple.fi.DeclaringType.Namespace
