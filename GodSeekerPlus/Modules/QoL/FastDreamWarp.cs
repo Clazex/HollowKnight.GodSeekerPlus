@@ -27,7 +27,7 @@ internal sealed class FastDreamWarp : Module {
 
 	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) {
 		fsm.Intercept(new TransitionInterceptor() {
-			fromState = "Start",
+			fromState = "Take Control",
 			eventName = FsmEvent.Finished.Name,
 			toStateDefault = "Entry Cancel Check",
 			toStateCustom = "Can Warp?",
