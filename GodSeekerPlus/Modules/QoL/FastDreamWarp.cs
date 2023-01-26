@@ -1,6 +1,8 @@
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class FastDreamWarp : Module {
+	private static readonly GameObjectRef knightRef = new(GameObjectRef.DONT_DESTROY_ON_LOAD, "Knight");
+
 	[GlobalSetting]
 	[BoolOption]
 	public static bool instantWarp = true;
@@ -13,13 +15,7 @@ public sealed class FastDreamWarp : Module {
 	private void ModifyDreamNailFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
-		if (self is {
-			gameObject: {
-				name: "Knight",
-				scene.name: "DontDestroyOnLoad"
-			},
-			FsmName: "Dream Nail"
-		}) {
+		if (self.FsmName == "Dream Nail" && knightRef.MatchGameObject(self.gameObject)) {
 			ModifyDreamNailFSM(self);
 
 			Logger.LogDebug("Dream Warp FSM modified");

@@ -3,6 +3,9 @@ using WaitUntil = Osmi.FsmActions.WaitUntil;
 namespace GodSeekerPlus.Modules.Bugfix;
 
 public sealed class TransitionDeath : Module {
+	private static readonly GameObjectRef deathRef =
+		new(GameObjectRef.DONT_DESTROY_ON_LOAD, "Knight", "Hero Death");
+
 	public override bool DefaultEnabled => true;
 
 	private protected override void Load() =>
@@ -12,10 +15,7 @@ public sealed class TransitionDeath : Module {
 		On.PlayMakerFSM.Start -= ModifyHeroDeathFSM;
 
 	private static void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
-		if (self is {
-			name: "Hero Death",
-			FsmName: "Hero Death Anim"
-		}) {
+		if (self.FsmName == "Hero Death Anim" && deathRef.MatchGameObject(self.gameObject)) {
 			ModifyHeroDeathFSM(self);
 
 			Logger.LogDebug("Transition detection added to Hero Death FSM");

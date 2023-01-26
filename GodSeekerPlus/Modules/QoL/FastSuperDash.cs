@@ -3,6 +3,8 @@ using Osmi.FsmActions;
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class FastSuperDash : Module {
+	private static readonly GameObjectRef knightRef = new(GameObjectRef.DONT_DESTROY_ON_LOAD, "Knight");
+
 	[GlobalSetting]
 	[BoolOption]
 	public static bool instantSuperDash = false;
@@ -19,13 +21,7 @@ public sealed class FastSuperDash : Module {
 	private void ModifySuperDashFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
-		if (self is {
-			gameObject: {
-				name: "Knight",
-				scene.name: "DontDestroyOnLoad"
-			},
-			FsmName: "Superdash"
-		}) {
+		if (self.FsmName == "Superdash" && knightRef.MatchGameObject(self.gameObject)) {
 			ModifySuperDashFSM(self);
 
 			Logger.LogDebug("Superdash FSM modified");

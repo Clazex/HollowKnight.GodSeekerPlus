@@ -1,6 +1,9 @@
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class ShortDeathAnimation : Module {
+	private static readonly GameObjectRef deathRef =
+		new(GameObjectRef.DONT_DESTROY_ON_LOAD, "Knight", "Hero Death");
+
 	public override bool DefaultEnabled => true;
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ReloadSave;
@@ -14,10 +17,7 @@ public sealed class ShortDeathAnimation : Module {
 	private static void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
-		if (self is {
-			name: "Hero Death",
-			FsmName: "Hero Death Anim"
-		}) {
+		if (self.FsmName == "Hero Death Anim" && deathRef.MatchGameObject(self.gameObject)) {
 			ModifyHeroDeathFSM(self);
 
 			Logger.LogDebug("Hero Death FSM modified");
