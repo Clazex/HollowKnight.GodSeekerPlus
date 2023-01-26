@@ -20,13 +20,10 @@ internal abstract class OptionAttribute : Attribute {
 [PublicAPI]
 [AttributeUsage(AttributeTargets.Field)]
 internal sealed class BoolOptionAttribute : OptionAttribute {
-	internal bool CustomFalseText { get; private init; }
-	internal bool CustomTrueText { get; private init; }
+	internal bool CustomText { get; private init; }
 
-	internal BoolOptionAttribute(bool customFalseText = false, bool customTrueText = false) {
-		CustomFalseText = customFalseText;
-		CustomTrueText = customTrueText;
-	}
+	internal BoolOptionAttribute(bool customText = false) =>
+		CustomText = customText;
 }
 
 [PublicAPI]

@@ -4,7 +4,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 [DefaultEnabled]
 internal sealed class ForceGreyPrinceEnterType : Module {
 	[GlobalSetting]
-	[BoolOption(true, true)]
+	[BoolOption(true)]
 	public static readonly bool gpzEnterType = false;
 
 	private static readonly SceneEdit handle = new(

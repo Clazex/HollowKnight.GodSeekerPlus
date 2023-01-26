@@ -83,13 +83,18 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 
 				BoolOptionAttribute optionAttr = fi.GetCustomAttribute<BoolOptionAttribute>();
 
-				options.Add(Blueprints.HorizontalBoolOption(
+				options.Add(optionAttr.CustomText ? Blueprints.HorizontalBoolOption(
 					$"Settings/{name}".Localize(),
 					$"Modules/{fi.DeclaringType.Name}".Localize(),
 					setter,
 					getter,
-					optionAttr.CustomTrueText ? $"Settings/{name}/True".Localize() : Lang.Get("MOH_ON", "MainMenu"),
-					optionAttr.CustomFalseText ? $"Settings/{name}/False".Localize() : Lang.Get("MOH_OFF", "MainMenu")
+					$"Settings/{name}/True".Localize(),
+					$"Settings/{name}/False".Localize()
+				) : Blueprints.HorizontalBoolOption(
+					$"Settings/{name}".Localize(),
+					$"Modules/{fi.DeclaringType.Name}".Localize(),
+					setter,
+					getter
 				));
 			}
 		}
