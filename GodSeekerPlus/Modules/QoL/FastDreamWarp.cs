@@ -1,3 +1,5 @@
+using Osmi.FsmActions;
+
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class FastDreamWarp : Module {
@@ -44,6 +46,10 @@ public sealed class FastDreamWarp : Module {
 			toStateDefault = "Warp Charge",
 			toStateCustom = "Can Warp?",
 			shouldIntercept = () => Loaded && BossSceneController.IsBossScene
+		});
+
+		fsm.AddAction("Warp End", new InvokePredicate(() => Loaded && BossSceneController.IsBossScene) {
+			trueEvent = FsmEvent.Finished
 		});
 	}
 }
