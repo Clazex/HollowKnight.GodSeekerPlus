@@ -5,6 +5,8 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 	public static GodSeekerPlus? Instance { get; private set; }
 	public static GodSeekerPlus UnsafeInstance => Instance!;
 
+	public static bool Active { get; private set; }
+
 	private static readonly Lazy<string> version = AssemblyUtil
 #if DEBUG
 		.GetMyDefaultVersionWithHash();
@@ -25,13 +27,15 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 		}
 	}
 
+	public GodSeekerPlus() => Instance = this;
+
 	public override void Initialize() {
-		if (Instance != null) {
+		if (Active) {
 			Logger.LogWarn("Attempting to initialize multiple times, operation rejected");
 			return;
 		}
 
-		Instance = this;
+		Active = true;
 
 		ModuleManager.Load();
 	}
@@ -39,7 +43,7 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 	public void Unload() {
 		ModuleManager.Unload();
 
-		Instance = null;
+		Active = false;
 	}
 
 	private static void DetectSatchel() {

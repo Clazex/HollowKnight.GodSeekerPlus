@@ -17,6 +17,7 @@ internal sealed class InspectHelper : Module {
 
 	private sealed class Inspector : MonoBehaviour {
 		public GodSeekerPlus Instance => GodSeekerPlus.UnsafeInstance;
+		public bool Active => GodSeekerPlus.Active;
 
 		public Dictionary<string, Module> Modules => ModuleManager.Modules;
 
