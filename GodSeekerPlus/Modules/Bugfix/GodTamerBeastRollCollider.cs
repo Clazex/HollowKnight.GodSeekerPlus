@@ -26,6 +26,6 @@ public sealed class GodTamerBeastRollCollider : Module {
 	}
 
 	private static void ModifyLobsterFSM(PlayMakerFSM fsm) =>
-		fsm.AddAction("Idle", fsm.GetAction("Spit Recover", 2));
+		fsm.AddAction("Idle", CloneUtil.CreateMemberwiseClone(fsm.GetAction<ActivateGameObject>("Spit Recover", 2)));
 }
 

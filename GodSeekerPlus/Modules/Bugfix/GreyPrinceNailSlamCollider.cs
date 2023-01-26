@@ -28,5 +28,5 @@ public sealed class GreyPrinceNailSlamCollider : Module {
 	}
 
 	private static void ModifyGPZFSM(PlayMakerFSM fsm) =>
-		fsm.AddAction("Send Event", fsm.GetAction("Slash End", 1));
+		fsm.AddAction("Send Event", CloneUtil.CreateMemberwiseClone(fsm.GetAction<ActivateGameObject>("Slash End", 1)));
 }
