@@ -29,7 +29,7 @@ internal sealed class FastDreamWarp : Module {
 		fsm.Intercept(new TransitionInterceptor() {
 			fromState = "Take Control",
 			eventName = FsmEvent.Finished.Name,
-			toStateDefault = "Entry Cancel Check",
+			toStateDefault = "Start",
 			toStateCustom = "Can Warp?",
 			shouldIntercept = () => {
 				HeroActions actions = InputHandler.Instance.inputActions;
