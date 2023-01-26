@@ -2,6 +2,10 @@ namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
 internal sealed class FastDreamWarp : Module {
+	[GlobalSetting]
+	[BoolOption]
+	private static readonly bool instantWarp = true;
+
 	public FastDreamWarp() =>
 		On.PlayMakerFSM.Start += ModifyDreamNailFSM;
 
@@ -19,19 +23,27 @@ internal sealed class FastDreamWarp : Module {
 	}
 
 	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) {
-		// In state "Start", send FAST_DREAM_WARP if both "dream nail" and "up" are pressed in a boss fight.
-		fsm.InsertCustomAction("Start", () => {
-			var inputHandler = typeof(HeroController).GetField("inputHandler", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(HeroController.instance) as InputHandler;
-			if (BossSceneController.IsBossScene
-				&& inputHandler != null
-				&& inputHandler.inputActions.dreamNail.IsPressed
-				&& inputHandler.inputActions.up.IsPressed
-				&& ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)) {
-				fsm.SendEvent("FAST_DREAM_WARP");
+		fsm.Intercept(new TransitionInterceptor() {
+			fromState = "Start",
+			eventName = FsmEvent.Finished.Name,
+			toStateDefault = "Entry Cancel Check",
+			toStateCustom = "Can Warp?",
+			shouldIntercept = () => {
+				HeroActions actions = InputHandler.Instance.inputActions;
+				return instantWarp
+					&& BossSceneController.IsBossScene
+					&& ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)
+					&& actions.dreamNail.IsPressed
+					&& actions.up.IsPressed;
 			}
-		}, 0);
+		});
 
-		// Route FAST_DREAM_WARP to the start of dream warp.
-		fsm.AddTransition("Start", "FAST_DREAM_WARP", "Can Warp?");
+		fsm.Intercept(new TransitionInterceptor() {
+			fromState = "Warp Charge Start",
+			eventName = FsmEvent.Finished.Name,
+			toStateDefault = "Warp Charge",
+			toStateCustom = "Can Warp?",
+			shouldIntercept = () => BossSceneController.IsBossScene && ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)
+		});
 	}
 }
