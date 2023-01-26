@@ -1,7 +1,6 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class ForceArriveAnimation : Module {
+public sealed class ForceArriveAnimation : Module {
 	private static readonly string[] scenes = {
 		"GG_Vengefly",
 		"GG_Vengefly_V",
@@ -10,6 +9,8 @@ internal sealed class ForceArriveAnimation : Module {
 		"GG_Hive_Knight",
 		"GG_Crystal_Guardian_2"
 	};
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyDreamEntryFSM;

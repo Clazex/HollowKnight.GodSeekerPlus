@@ -3,12 +3,13 @@ using GodSeekerPlus.Modules.QoL;
 
 namespace GodSeekerPlus.Modules.Misc;
 
-[Hidden]
 internal sealed class BossChallengeUIEdit : Module {
+	public override bool Hidden => true;
+
 	private protected override void Load() =>
 		On.BossChallengeUI.Setup += HookSetup;
 
-	private void HookSetup(
+	private static void HookSetup(
 		On.BossChallengeUI.orig_Setup orig,
 		BossChallengeUI self,
 		BossStatue statue,
@@ -26,14 +27,14 @@ internal sealed class BossChallengeUIEdit : Module {
 
 		BossStatue.Completion completion = statue.UsingDreamVersion ? statue.DreamStatueState : statue.StatueState;
 
-		if (ModuleManager.TryGetActiveModule(out UnlockRadiant? ur)) {
-			ur.Unlock(invokeOrig, statue, ref completion);
+		if (ModuleManager.IsModuleEnabled<UnlockRadiant>()) {
+			UnlockRadiant.Unlock(invokeOrig, statue, ref completion);
 		} else {
 			invokeOrig();
 		}
 
-		if (ModuleManager.TryGetActiveModule(out CompleteLowerDifficulty? cld)) {
-			cld.CompleteLower(statue.name, ref completion);
+		if (ModuleManager.IsModuleEnabled<CompleteLowerDifficulty>()) {
+			CompleteLowerDifficulty.Complete(statue.name, ref completion);
 		}
 
 		SetStatueCompletion(statue, completion);

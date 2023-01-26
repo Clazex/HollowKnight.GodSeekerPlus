@@ -1,7 +1,8 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[DefaultEnabled]
-internal sealed class KeepCocoonLifeblood : Module {
+public sealed class KeepCocoonLifeblood : Module {
+	public override bool DefaultEnabled => true;
+
 	private protected override void Load() =>
 		ModHooks.BlueHealthHook += CocoonCompensate;
 

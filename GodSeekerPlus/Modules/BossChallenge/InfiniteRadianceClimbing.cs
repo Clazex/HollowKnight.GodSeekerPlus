@@ -4,8 +4,7 @@ using WaitUntil = UnityEngine.WaitUntil;
 
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class InfiniteRadianceClimbing : Module {
+public sealed class InfiniteRadianceClimbing : Module {
 	private static readonly float heroX = 60.4987f;
 	private static readonly float heroY = 34.6678f;
 
@@ -14,6 +13,8 @@ internal sealed class InfiniteRadianceClimbing : Module {
 	private PlayMakerFSM? radCtrl = null;
 	private PlayMakerFSM? pitCtrl = null;
 	private Coroutine? rewindCoro = null;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		OsmiHooks.SceneChangeHook += SetupScene;

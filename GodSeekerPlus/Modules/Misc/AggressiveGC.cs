@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules.Misc;
 
-internal sealed class AggressiveGC : Module {
+public sealed class AggressiveGC : Module {
 	private protected override void Load() =>
 		On.GameManager.IsUnloadAssetsRequired += SetUnloadRequired;
 

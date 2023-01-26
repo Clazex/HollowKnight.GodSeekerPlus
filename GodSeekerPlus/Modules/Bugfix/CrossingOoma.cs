@@ -1,8 +1,10 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class CrossingOoma : Module {
+public sealed class CrossingOoma : Module {
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
+
 	public CrossingOoma() =>
 		OsmiHooks.SceneChangeHook += ModifyPrefab;
 

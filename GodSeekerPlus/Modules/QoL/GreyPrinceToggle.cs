@@ -1,8 +1,6 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class GreyPrinceToggle : Module {
+public sealed class GreyPrinceToggle : Module {
 	private static readonly SceneEdit handle = new(
 		new("GG_Workshop", "GG_Statue_GreyPrince"),
 		go => {
@@ -35,6 +33,10 @@ internal sealed class GreyPrinceToggle : Module {
 			_ = Ref.GM.StartCoroutine(SetupScene(dreamSwitch));
 		}
 	);
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() {
 		handle.Enable();

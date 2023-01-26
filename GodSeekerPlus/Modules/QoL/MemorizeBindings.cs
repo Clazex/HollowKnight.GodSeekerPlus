@@ -1,11 +1,12 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[DefaultEnabled]
-internal sealed class MemorizeBindings : Module {
+public sealed class MemorizeBindings : Module {
 	[LocalSetting] public static bool boundNail = false;
 	[LocalSetting] public static bool boundHeart = false;
 	[LocalSetting] public static bool boundCharms = false;
 	[LocalSetting] public static bool boundSoul = false;
+
+	public override bool DefaultEnabled => true;
 
 	private protected override void Load() {
 		On.BossDoorChallengeUI.ShowSequence += ApplyBindingStates;

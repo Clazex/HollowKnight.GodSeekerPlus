@@ -1,7 +1,8 @@
 namespace GodSeekerPlus.Modules.Misc;
 
-[DefaultEnabled]
-internal sealed class UnlockAllModes : Module {
+public sealed class UnlockAllModes : Module {
+	public override bool DefaultEnabled => true;
+
 	private protected override void Load() {
 		Platform.ISharedData data = Platform.Current.EncryptedSharedData;
 		data.SetInt("RecPermadeathMode", 1);

@@ -2,8 +2,9 @@ using WaitUntil = Osmi.FsmActions.WaitUntil;
 
 namespace GodSeekerPlus.Modules.Bugfix;
 
-[DefaultEnabled]
-internal sealed class TransitionDeath : Module {
+public sealed class TransitionDeath : Module {
+	public override bool DefaultEnabled => true;
+
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyHeroDeathFSM;
 

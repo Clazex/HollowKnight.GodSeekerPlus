@@ -1,7 +1,8 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class GodTamerBeastRollCollider : Module {
+public sealed class GodTamerBeastRollCollider : Module {
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
+
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyLobsterFSM;
 

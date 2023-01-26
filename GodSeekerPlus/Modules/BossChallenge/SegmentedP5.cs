@@ -2,9 +2,7 @@ using UnityEngine.UI;
 
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class SegmentedP5 : Module {
+public sealed class SegmentedP5 : Module {
 	private const string dummySeqPD = "bossDoorStateTier5Segmented";
 
 	private static readonly (int start, int end)[] segments = new[] {
@@ -21,6 +19,9 @@ internal sealed class SegmentedP5 : Module {
 	[LocalSetting]
 	private static int selectedP5Segment = 0;
 
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private static readonly SceneEdit radianceHandle = new(
 		new("GG_Radiance", "Boss Control", "Absolute Radiance"),
@@ -286,17 +287,17 @@ internal sealed class SegmentedP5 : Module {
 
 				BossSequenceController.ApplyBindings();
 
-				if (ModuleManager.TryGetActiveModule(out ActivateFury? af)) {
+				if (ModuleManager.IsModuleEnabled<ActivateFury>()) {
 					BossSceneController.SetupEventDelegate oldSetupEvent = BossSceneController.SetupEvent;
 					BossSceneController.SetupEvent = self => {
 						oldSetupEvent(self);
 
-						af.Activate();
+						ActivateFury.Activate();
 					};
 				}
 
-				if (ModuleManager.TryGetActiveModule(out AddLifeblood? alb)) {
-					alb.Add();
+				if (ModuleManager.IsModuleEnabled<AddLifeblood>()) {
+					AddLifeblood.Add();
 				}
 			};
 		}

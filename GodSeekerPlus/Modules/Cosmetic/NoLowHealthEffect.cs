@@ -2,8 +2,9 @@ using MonoMod.Cil;
 
 namespace GodSeekerPlus.Modules.Cosmetic;
 
-[ToggleableLevel(ToggleableLevel.ReloadSave)]
-internal sealed class NoLowHealthEffect : Module {
+public sealed class NoLowHealthEffect : Module {
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ReloadSave;
+
 	private protected override void Load() {
 		On.PlayMakerFSM.Start += ModifyFSM;
 		IL.HeroAnimationController.PlayIdle += RemoveAnimation;

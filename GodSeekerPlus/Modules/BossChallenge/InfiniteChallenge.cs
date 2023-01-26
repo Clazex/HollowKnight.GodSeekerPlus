@@ -1,12 +1,13 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class InfiniteChallenge : Module {
+public sealed class InfiniteChallenge : Module {
 	[GlobalSetting]
 	[BoolOption]
 	public static readonly bool restartFightOnSuccess = false;
 
 	private BossSceneController.SetupEventDelegate? setupEvent;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() {
 		On.BossSceneController.Awake += RecordSetupEvent;

@@ -1,12 +1,14 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class HUDDisplayChecker : Module {
+public sealed class HUDDisplayChecker : Module {
 	private static readonly string[] sceneExclusions = new[] {
 		"GG_Hollow_Knight",
 		"GG_Radiance"
 	};
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		On.BossSceneController.Start += Check;

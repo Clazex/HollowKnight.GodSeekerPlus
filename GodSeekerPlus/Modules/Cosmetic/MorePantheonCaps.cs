@@ -2,9 +2,7 @@ using Bindings = BossSequenceController.ChallengeBindings;
 
 namespace GodSeekerPlus.Modules.Cosmetic;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class MorePantheonCaps : Module {
+public sealed class MorePantheonCaps : Module {
 	private static readonly Dictionary<string, int> doorPDDict = new() {
 		{ "bossDoorStateTier1", 1 },
 		{ "bossDoorStateTier2", 2 },
@@ -15,6 +13,10 @@ internal sealed class MorePantheonCaps : Module {
 
 	[LocalSetting]
 	private static int rabCompletion = 0;
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() {
 		On.BossSequenceDoor.Start += SetupCaps;

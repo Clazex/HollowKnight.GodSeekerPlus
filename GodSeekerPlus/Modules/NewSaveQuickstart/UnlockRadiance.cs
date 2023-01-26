@@ -1,9 +1,11 @@
 namespace GodSeekerPlus.Modules.NewSaveQuickstart;
 
-[ToggleableLevel(ToggleableLevel.ReloadSave)]
-[DefaultEnabled]
-internal sealed class UnlockRadiance : Module {
+public sealed class UnlockRadiance : Module {
 	private const string sceneName = "Radiance Boss Scene";
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ReloadSave;
 
 	private protected override void Load() =>
 		On.HeroController.Start += SetRadianceUnlocked;

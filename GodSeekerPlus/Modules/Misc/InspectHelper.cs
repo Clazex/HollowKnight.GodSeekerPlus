@@ -1,7 +1,8 @@
 namespace GodSeekerPlus.Modules.Misc;
 
-[Hidden]
 internal sealed class InspectHelper : Module {
+	public override bool Hidden => true;
+
 	private protected override void Load() =>
 		ModHooks.FinishedLoadingModsHook += CreateGameObject;
 

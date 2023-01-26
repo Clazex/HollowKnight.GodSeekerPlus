@@ -1,8 +1,6 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class P5Teleport : Module {
+public sealed class P5Teleport : Module {
 	private static bool teleporting = false;
 
 	private static readonly SceneEdit leverEditHandle = new(
@@ -10,6 +8,10 @@ internal sealed class P5Teleport : Module {
 		go => go.AddComponent<CustomDreamnailReaction>()
 			.SetMethod(_ => GlobalCoroutineExecutor.Start(Teleport()))
 	);
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		leverEditHandle.Enable();

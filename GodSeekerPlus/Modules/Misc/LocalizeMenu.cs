@@ -2,10 +2,11 @@ using UnityEngine.UI;
 
 namespace GodSeekerPlus.Modules.Misc;
 
-[Hidden]
 internal sealed class LocalizeMenu : Module {
 	private static readonly Lazy<string> versionWithHash = AssemblyUtil
 		.GetMyDefaultVersionWithHash();
+
+	public override bool Hidden => true;
 
 	private protected override void Load() =>
 		OsmiHooks.MenuBuildHook += EditText;

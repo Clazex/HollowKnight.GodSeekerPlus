@@ -2,7 +2,7 @@ using System.Threading;
 
 namespace GodSeekerPlus.Modules.Restrictions;
 
-internal sealed class CreateLag : Module {
+public sealed class CreateLag : Module {
 	[GlobalSetting]
 	[IntOption(0, 1000, 25)]
 	private static readonly int lagTime = 50;

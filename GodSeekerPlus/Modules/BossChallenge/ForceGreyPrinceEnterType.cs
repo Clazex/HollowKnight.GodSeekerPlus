@@ -1,8 +1,6 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class ForceGreyPrinceEnterType : Module {
+public sealed class ForceGreyPrinceEnterType : Module {
 	[GlobalSetting]
 	[BoolOption(true)]
 	public static readonly bool gpzEnterType = false;
@@ -19,6 +17,10 @@ internal sealed class ForceGreyPrinceEnterType : Module {
 			Logger.LogDebug("Grey Prince enter type modified");
 		}
 	);
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		handle.Enable();

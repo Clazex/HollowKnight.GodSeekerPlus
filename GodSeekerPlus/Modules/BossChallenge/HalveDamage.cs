@@ -1,8 +1,9 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[Hidden]
 internal sealed class HalveDamage : Module {
 	internal static event Func<bool> ShouldFunctionHook = null!;
+
+	public override bool Hidden => true;
 
 	private protected override void Load() {
 		ModHooks.TakeHealthHook += MakeDamageHalved;
@@ -30,34 +31,34 @@ internal sealed class HalveDamage : Module {
 		orig(self, impactSide, spawnDamageEffect, MakeDamageHalved(damageAmount));
 }
 
-internal abstract class HalveDamageConditioned : Module {
-	private protected override void Load() =>
+public abstract class HalveDamageConditioned : Module {
+	private protected sealed override void Load() =>
 		HalveDamage.ShouldFunctionHook += Predicate;
 
-	private protected override void Unload() =>
+	private protected sealed override void Unload() =>
 		HalveDamage.ShouldFunctionHook -= Predicate;
 
-	protected abstract bool Predicate();
+	private protected abstract bool Predicate();
 }
 
-internal sealed class HalveDamageHoGAscendedOrAbove : HalveDamageConditioned {
-	protected override bool Predicate() =>
+public sealed class HalveDamageHoGAscendedOrAbove : HalveDamageConditioned {
+	private protected override bool Predicate() =>
 		!BossSequenceController.IsInSequence
 		&& BossSceneController.IsBossScene
 		&& BossSceneController.Instance.Reflect().bossLevel > 0;
 }
 
-internal sealed class HalveDamageHoGAttuned : HalveDamageConditioned {
-	protected override bool Predicate() =>
+public sealed class HalveDamageHoGAttuned : HalveDamageConditioned {
+	private protected override bool Predicate() =>
 		!BossSequenceController.IsInSequence
 		&& BossSceneController.IsBossScene
 		&& BossSceneController.Instance.Reflect().bossLevel == 0;
 }
 
-internal sealed class HalveDamageOtherPlace : HalveDamageConditioned {
-	protected override bool Predicate() => !BossSceneController.IsBossScene;
+public sealed class HalveDamageOtherPlace : HalveDamageConditioned {
+	private protected override bool Predicate() => !BossSceneController.IsBossScene;
 }
 
-internal sealed class HalveDamagePantheons : HalveDamageConditioned {
-	protected override bool Predicate() => BossSequenceController.IsInSequence;
+public sealed class HalveDamagePantheons : HalveDamageConditioned {
+	private protected override bool Predicate() => BossSequenceController.IsInSequence;
 }

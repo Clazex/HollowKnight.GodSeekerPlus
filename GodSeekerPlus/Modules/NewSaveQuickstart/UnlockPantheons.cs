@@ -1,14 +1,16 @@
 namespace GodSeekerPlus.Modules.NewSaveQuickstart;
 
-[ToggleableLevel(ToggleableLevel.ReloadSave)]
-[DefaultEnabled]
-internal sealed class UnlockPantheons : Module {
+public sealed class UnlockPantheons : Module {
 	private static readonly List<(string goName, string prompt)> atriumRoofObjects = new() {
 		("Breakable Wall_Silhouette", "Land of Storms shortcut"),
 		("GG Fall Platform", "Stepping stone platform"),
 		("gg_roof_lever", "Stepping stone platform lever"),
 		("Secret Mask", "Mask above spa")
 	};
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ReloadSave;
 
 	private protected override void Load() {
 		On.HeroController.Start += SetP4Unlocked;

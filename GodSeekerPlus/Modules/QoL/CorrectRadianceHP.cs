@@ -1,9 +1,11 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class CorrectRadianceHP : Module {
+public sealed class CorrectRadianceHP : Module {
 	private static readonly int shift = -720;
+
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() {
 		On.HealthManager.Start += ModifyAbsRadStartHP;

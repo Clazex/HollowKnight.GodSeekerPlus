@@ -2,8 +2,9 @@ using HKMirror.Hooks.OnHooks;
 
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class P5Health : Module {
+public sealed class P5Health : Module {
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
+
 	private protected override void Load() {
 		OnBossSceneController.AfterOrig.get_BossLevel += OverrideLevel;
 		OsmiHooks.SceneChangeHook += FixAscendedMarkoth;

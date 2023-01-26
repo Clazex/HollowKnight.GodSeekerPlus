@@ -3,12 +3,11 @@ namespace GodSeekerPlus.Settings;
 [PublicAPI]
 public sealed class GlobalSettings : SettingBase<GlobalSettingAttribute> {
 	private readonly Dictionary<string, bool> modules = ModuleManager
-		.moduleTypes
-		.Value
-		.Filter(type => !Attribute.IsDefined(type, typeof(HiddenAttribute)))
+		.Modules
+		.Filter(pair => !pair.Value.Hidden)
 		.ToDictionary(
-			type => type.Name,
-			type => Attribute.IsDefined(type, typeof(DefaultEnabledAttribute))
+			pair => pair.Key,
+			pair => pair.Value.DefaultEnabled
 		);
 
 	[JsonProperty(PropertyName = nameof(modules))]
@@ -17,7 +16,8 @@ public sealed class GlobalSettings : SettingBase<GlobalSettingAttribute> {
 		set {
 			foreach (KeyValuePair<string, bool> pair in value) {
 				if (modules.ContainsKey(pair.Key)) {
-					modules[pair.Key] = pair.Value;
+					_ = ModuleManager.TryGetModule(pair.Key, out Module? module);
+					module!.Enabled = pair.Value;
 				}
 			}
 		}

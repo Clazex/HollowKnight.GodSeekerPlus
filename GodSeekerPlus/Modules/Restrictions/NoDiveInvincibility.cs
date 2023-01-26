@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules.Restrictions;
 
-internal sealed class NoDiveInvincibility : Module {
+public sealed class NoDiveInvincibility : Module {
 	private PlayMakerFSM? spellControl = null;
 
 	public NoDiveInvincibility() =>
@@ -27,7 +27,7 @@ internal sealed class NoDiveInvincibility : Module {
 	private void ModifySpellControlFSM(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
 
-		Apply(ModuleManager.TryGetActiveModule<NoDiveInvincibility>(out _));
+		Apply(Loaded);
 	}
 
 	private void Apply(bool active) {

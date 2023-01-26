@@ -1,10 +1,11 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class AddSoul : Module {
+public sealed class AddSoul : Module {
 	[GlobalSetting]
 	[IntOption(0, 198, 11)]
 	private static readonly int soulAmount = 99;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;

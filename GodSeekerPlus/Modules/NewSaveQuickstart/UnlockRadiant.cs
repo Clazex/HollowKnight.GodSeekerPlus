@@ -2,9 +2,10 @@ using GodSeekerPlus.Modules.Misc;
 
 namespace GodSeekerPlus.Modules.NewSaveQuickstart;
 
-[DefaultEnabled]
-internal sealed class UnlockRadiant : Module {
-	internal void Unlock(Action orig, BossStatue statue, ref BossStatue.Completion completion) {
+public sealed class UnlockRadiant : Module {
+	public override bool DefaultEnabled => true;
+
+	internal static void Unlock(Action orig, BossStatue statue, ref BossStatue.Completion completion) {
 		if (completion.completedTier2) {
 			orig.Invoke();
 			return;

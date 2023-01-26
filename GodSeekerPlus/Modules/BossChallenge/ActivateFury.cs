@@ -1,11 +1,12 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class ActivateFury : Module {
+public sealed class ActivateFury : Module {
 	private static readonly Dictionary<string, float> extraWaitScenes = new() {
 		{ "GG_Nosk", 0.25f },
 		{ "GG_Soul_Tyrant", 0.5f }
 	};
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		On.BossSceneController.Start += Activate;
@@ -13,7 +14,7 @@ internal sealed class ActivateFury : Module {
 	private protected override void Unload() =>
 		On.BossSceneController.Start -= Activate;
 
-	private IEnumerator Activate(On.BossSceneController.orig_Start orig, BossSceneController self) {
+	private static IEnumerator Activate(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
 		if (BossSequenceController.IsInSequence && BossSequenceController.BossIndex != 0) {
@@ -23,7 +24,7 @@ internal sealed class ActivateFury : Module {
 		Activate();
 	}
 
-	internal void Activate() {
+	internal static void Activate() {
 		if (!CharmUtil.EquippedCharm(Charm.FuryOfTheFallen)) {
 			return;
 		}

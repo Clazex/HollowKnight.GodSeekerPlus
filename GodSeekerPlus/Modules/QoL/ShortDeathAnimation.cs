@@ -1,8 +1,10 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[ToggleableLevel(ToggleableLevel.ReloadSave)]
-[DefaultEnabled]
-internal sealed class ShortDeathAnimation : Module {
+public sealed class ShortDeathAnimation : Module {
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ReloadSave;
+
 	private protected override void Load() =>
 		On.PlayMakerFSM.Start += ModifyHeroDeathFSM;
 

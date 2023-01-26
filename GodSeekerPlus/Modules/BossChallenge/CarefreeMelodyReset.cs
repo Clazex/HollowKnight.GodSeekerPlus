@@ -1,7 +1,8 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class CarefreeMelodyReset : Module {
+public sealed class CarefreeMelodyReset : Module {
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
+
 	private protected override void Load() =>
 		OsmiHooks.SceneChangeHook += ResetCount;
 

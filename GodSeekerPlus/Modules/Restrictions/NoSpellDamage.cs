@@ -1,6 +1,6 @@
 namespace GodSeekerPlus.Modules.Restrictions;
 
-internal sealed class NoSpellDamage : Module {
+public sealed class NoSpellDamage : Module {
 	private protected override void Load() =>
 		On.HealthManager.TakeDamage += AddHealth;
 

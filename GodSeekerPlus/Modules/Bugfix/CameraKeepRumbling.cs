@@ -1,8 +1,10 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-[DefaultEnabled]
-internal sealed class CameraKeepRumbling : Module {
+public sealed class CameraKeepRumbling : Module {
+	public override bool DefaultEnabled => true;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
+
 	private protected override void Load() =>
 		On.CameraController.DoPositionToHero += ResetRumbling;
 

@@ -1,12 +1,13 @@
 namespace GodSeekerPlus.Modules.QoL;
 
-[DefaultEnabled]
-internal sealed class FastDash : Module {
+public sealed class FastDash : Module {
 	private static readonly string[] sceneNames = new[] {
 		"GG_Workshop",
 		"GG_Atrium",
 		"GG_Atrium_Roof"
 	};
+
+	public override bool DefaultEnabled => true;
 
 	private protected override void Load() =>
 		OsmiHooks.SceneChangeHook += HookDash;

@@ -1,10 +1,11 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class AddLifeblood : Module {
+public sealed class AddLifeblood : Module {
 	[GlobalSetting]
 	[IntOption(0, 35)]
 	private static readonly int lifebloodAmount = 5;
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
 		On.BossSceneController.Start += Add;
@@ -12,7 +13,7 @@ internal sealed class AddLifeblood : Module {
 	private protected override void Unload() =>
 		On.BossSceneController.Start -= Add;
 
-	private IEnumerator Add(On.BossSceneController.orig_Start orig, BossSceneController self) {
+	private static IEnumerator Add(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
 		if (BossSequenceController.IsInSequence) {
@@ -22,7 +23,7 @@ internal sealed class AddLifeblood : Module {
 		Add();
 	}
 
-	internal void Add() {
+	internal static void Add() {
 		for (int i = 0; i < lifebloodAmount; i++) {
 			EventRegister.SendEvent("ADD BLUE HEALTH");
 		}

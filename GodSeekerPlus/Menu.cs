@@ -53,8 +53,8 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 						group.Map(module => Blueprints.HorizontalBoolOption(
 							$"Modules/{module.Name}".Localize(),
 							$"ToggleableLevel/{module.ToggleableLevel}".Localize(),
-							(val) => module.Active = val,
-							() => module.Active
+							(val) => module.Enabled = val,
+							() => module.Enabled
 						))
 						.Concat(Setting.Global.GetMenuOptions(group.Key))
 						.ToArray()
@@ -66,7 +66,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 				"ResetModules".Localize(),
 				string.Empty,
 				btn => ModuleManager.Modules.Values.ForEach(
-					module => module.Active = module.DefaultEnabled
+					module => module.Enabled = module.DefaultEnabled
 				),
 				true
 			));

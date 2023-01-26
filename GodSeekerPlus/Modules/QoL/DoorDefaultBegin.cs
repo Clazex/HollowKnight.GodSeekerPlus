@@ -6,8 +6,8 @@ using MonoMod.Cil;
 
 namespace GodSeekerPlus.Modules.QoL;
 
-[DefaultEnabled]
-internal sealed class DoorDefaultBegin : Module {
+public sealed class DoorDefaultBegin : Module {
+	public override bool DefaultEnabled => true;
 
 	private protected override void Load() => ILBossDoorChallengeUI.ShowSequence += ChangeSelection;
 

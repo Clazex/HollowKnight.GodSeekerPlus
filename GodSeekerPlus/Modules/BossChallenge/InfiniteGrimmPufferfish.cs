@@ -1,7 +1,6 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
-[ToggleableLevel(ToggleableLevel.ChangeScene)]
-internal sealed class InfiniteGrimmPufferfish : Module {
+public sealed class InfiniteGrimmPufferfish : Module {
 	private static readonly SceneEdit grimmHandle = new(
 		new("GG_Grimm", "Grimm Scene", "Grimm Boss"),
 		ModifyGrimmFSM
@@ -11,6 +10,8 @@ internal sealed class InfiniteGrimmPufferfish : Module {
 		new("GG_Grimm_Nightmare", "Grimm Control", "Nightmare Grimm Boss"),
 		ModifyGrimmFSM
 	);
+
+	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() {
 		grimmHandle.Enable();
