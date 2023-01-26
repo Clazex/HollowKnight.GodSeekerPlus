@@ -3,7 +3,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 public sealed class ForceGreyPrinceEnterType : Module {
 	[GlobalSetting]
 	[BoolOption(true)]
-	public static readonly bool gpzEnterType = false;
+	public static bool gpzEnterType = false;
 
 	private static readonly SceneEdit handle = new(
 		new("GG_Grey_Prince_Zote", "Grey Prince"),

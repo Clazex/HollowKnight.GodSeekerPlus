@@ -5,11 +5,11 @@ namespace GodSeekerPlus.Modules.QoL;
 public sealed class FastSuperDash : Module {
 	[GlobalSetting]
 	[BoolOption]
-	private static readonly bool instantSuperDash = false;
+	public static bool instantSuperDash = false;
 
 	[GlobalSetting]
 	[FloatOption(1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f)]
-	private static readonly float fastSuperDashSpeedMultiplier = 1.5f;
+	public static float fastSuperDashSpeedMultiplier = 1.5f;
 
 	public override bool DefaultEnabled => true;
 

@@ -1,8 +1,6 @@
 using System.Runtime.Serialization;
 
-using Mono.Cecil.Cil;
-
-using MonoMod.Utils;
+using Modding.Utils;
 
 using Satchel.BetterMenus;
 
@@ -58,7 +56,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 	public SettingBase() {
 		FieldInfo[] fields = Assembly
 			.GetExecutingAssembly()
-			.GetTypes()
+			.GetTypesSafely()
 			.FlatMap(t => t.GetFields(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
 			.Filter(fi => Attribute.IsDefined(fi, typeof(TAttr)))
 			.ToArray();
@@ -74,9 +72,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 		List<HorizontalOption> options = new();
 
 		if (this.boolFields.TryGetValue(category, out Dictionary<string, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)> boolFields)) {
-			foreach (KeyValuePair<string, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)> pair in boolFields) {
-				(string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)) = pair;
-
+			foreach ((string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)) in boolFields) {
 				if (!isOption) {
 					continue;
 				}
@@ -100,9 +96,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 		}
 
 		if (this.intFields.TryGetValue(category, out Dictionary<string, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)> intFields)) {
-			foreach (KeyValuePair<string, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)> pair in intFields) {
-				(string name, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)) = pair;
-
+			foreach ((string name, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)) in intFields) {
 				if (!isOption) {
 					continue;
 				}
@@ -118,9 +112,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 		}
 
 		if (this.floatFields.TryGetValue(category, out Dictionary<string, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)> floatFields)) {
-			foreach (KeyValuePair<string, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)> pair in floatFields) {
-				(string name, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)) = pair;
-
+			foreach ((string name, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)) in floatFields) {
 				if (!isOption) {
 					continue;
 				}
@@ -145,10 +137,10 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 			(Func<TField> getter, Action<TField> setter) = fi.GetFastStaticAccessors<TField>();
 			return (fi, getter, setter);
 		})
-		.GroupBy(tuple => tuple.fi.DeclaringType.Namespace
-			.StripStart(nameof(GodSeekerPlus) + '.' + nameof(Modules) + '.')
-			?? nameof(Modules.Misc)
-		)
+		.GroupBy(tuple => {
+			_ = ModuleManager.TryGetModule(tuple.fi.DeclaringType, out Module? module);
+			return module!.Category;
+		})
 		.ToDictionary(
 			group => group.Key,
 			group => group.ToDictionary(

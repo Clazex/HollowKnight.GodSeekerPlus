@@ -16,10 +16,10 @@ public sealed class HUDDisplayChecker : Module {
 	private protected override void Unload() =>
 		On.BossSceneController.Start -= Check;
 
-	private IEnumerator Check(On.BossSceneController.orig_Start orig, BossSceneController self) {
+	private static IEnumerator Check(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
-		if (!sceneExclusions.Contains(Ref.GM.sceneName)) { // USceneManager.GetActiveScene().name
+		if (!sceneExclusions.Contains(Ref.GM.sceneName)) {
 			yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
 			Ref.GC.hudCanvas.LocateMyFSM("Slide Out").SendEvent("IN");
 		}

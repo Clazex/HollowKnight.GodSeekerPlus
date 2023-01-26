@@ -7,7 +7,7 @@ public sealed class NoNailDamage : Module {
 	private protected override void Unload() =>
 		On.HealthManager.TakeDamage -= AddHealth;
 
-	private void AddHealth(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
+	private static void AddHealth(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
 		if (hitInstance.AttackType == AttackTypes.Nail) {
 			self.hp += hitInstance.DamageDealt;
 		}

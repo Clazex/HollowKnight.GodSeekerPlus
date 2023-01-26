@@ -21,13 +21,13 @@ public sealed class KeepCocoonLifeblood : Module {
 			.Child("Health Cocoon (1)")!
 			.GetComponent<HealthCocoon>();
 
-		if (!cocoon.Reflect().activated) {
-			return 0;
-		}
-
-		return cocoon.flingPrefabs
-			.First(fp => fp.prefab.name == "Health Scuttler")
-			.Reflect().pool
-			.Filter(go => !go.activeSelf).Count();
+		return !cocoon.Reflect().activated
+			? 0
+			: cocoon.flingPrefabs
+				.First(fp => fp.prefab.name == "Health Scuttler")
+				.Reflect()
+				.pool
+				.Filter(go => !go.activeSelf)
+				.Count();
 	}
 }

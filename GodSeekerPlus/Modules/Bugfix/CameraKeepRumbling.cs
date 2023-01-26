@@ -11,7 +11,7 @@ public sealed class CameraKeepRumbling : Module {
 	private protected override void Unload() =>
 		On.CameraController.DoPositionToHero -= ResetRumbling;
 
-	private IEnumerator ResetRumbling(
+	private static IEnumerator ResetRumbling(
 		On.CameraController.orig_DoPositionToHero orig,
 		CameraController self,
 		bool forceDirect

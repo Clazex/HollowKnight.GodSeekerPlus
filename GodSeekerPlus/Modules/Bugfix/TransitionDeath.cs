@@ -11,7 +11,7 @@ public sealed class TransitionDeath : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.Start -= ModifyHeroDeathFSM;
 
-	private void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+	private static void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		if (self is {
 			name: "Hero Death",
 			FsmName: "Hero Death Anim"

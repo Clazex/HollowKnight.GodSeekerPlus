@@ -7,7 +7,6 @@ global using System.Runtime.CompilerServices;
 
 global using GlobalEnums;
 
-global using GodSeekerPlus.Modules;
 global using GodSeekerPlus.Settings;
 global using GodSeekerPlus.Utils;
 

@@ -8,11 +8,11 @@ public sealed class InfiniteRadianceClimbing : Module {
 	private static readonly float heroX = 60.4987f;
 	private static readonly float heroY = 34.6678f;
 
-	private bool running = false;
-	private GameObject? bossCtrl = null;
-	private PlayMakerFSM? radCtrl = null;
-	private PlayMakerFSM? pitCtrl = null;
-	private Coroutine? rewindCoro = null;
+	private static bool running = false;
+	private static GameObject? bossCtrl = null;
+	private static PlayMakerFSM? radCtrl = null;
+	private static PlayMakerFSM? pitCtrl = null;
+	private static Coroutine? rewindCoro = null;
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
@@ -27,7 +27,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		}
 	}
 
-	private void SetupScene(Scene prev, Scene next) {
+	private static void SetupScene(Scene prev, Scene next) {
 		if (prev.name != "GG_Workshop" || next.name != "GG_Radiance") {
 			if (running) {
 				Quit();
@@ -62,7 +62,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void ModifyAbsRadFSM(PlayMakerFSM fsm) {
+	private static void ModifyAbsRadFSM(PlayMakerFSM fsm) {
 		fsm.RemoveAction("Set Arena 1", 3); // Don't activate P1 cam lock
 
 		// Spawn P2 plats before appearance
@@ -86,7 +86,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		};
 	}
 
-	private IEnumerator TeleportSetup() {
+	private static IEnumerator TeleportSetup() {
 		SpriteFlash flasher = Ref.HC.GetComponent<SpriteFlash>();
 
 		Ref.HC.RelinquishControl();
@@ -108,7 +108,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		Logger.LogDebug("Hero teleported");
 	}
 
-	private IEnumerator Rewind() {
+	private static IEnumerator Rewind() {
 		Logger.LogDebug("AbsRad final phase started, rewinding...");
 
 		SpriteFlash flasher = Ref.HC.GetComponent<SpriteFlash>();
@@ -157,7 +157,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		rewindCoro = null; // release lock
 	}
 
-	private void Quit(bool killPlayer = false) {
+	private static void Quit(bool killPlayer = false) {
 		running = false;
 		bossCtrl = null;
 		radCtrl = null;

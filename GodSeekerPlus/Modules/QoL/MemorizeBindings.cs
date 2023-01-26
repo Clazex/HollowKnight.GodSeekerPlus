@@ -18,7 +18,7 @@ public sealed class MemorizeBindings : Module {
 		On.BossDoorChallengeUI.HideSequence -= RecordBindingStates;
 	}
 
-	private IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
+	private static IEnumerator ApplyBindingStates(On.BossDoorChallengeUI.orig_ShowSequence orig, BossDoorChallengeUI self) {
 		yield return orig(self);
 
 		SetButtonState(self.boundNailButton, boundNail);
@@ -29,7 +29,7 @@ public sealed class MemorizeBindings : Module {
 		Logger.LogDebug("Binding states applied");
 	}
 
-	private IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
+	private static IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
 		boundNail = self.boundNailButton.Selected;
 		boundHeart = self.boundHeartButton.Selected;
 		boundCharms = self.boundCharmsButton.Selected;

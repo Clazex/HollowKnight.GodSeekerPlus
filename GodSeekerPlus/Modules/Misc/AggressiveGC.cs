@@ -7,6 +7,6 @@ public sealed class AggressiveGC : Module {
 	private protected override void Unload() =>
 		On.GameManager.IsUnloadAssetsRequired -= SetUnloadRequired;
 
-	private bool SetUnloadRequired(On.GameManager.orig_IsUnloadAssetsRequired orig, GameManager self, string src, string dest) =>
+	private static bool SetUnloadRequired(On.GameManager.orig_IsUnloadAssetsRequired orig, GameManager self, string src, string dest) =>
 		true;
 }

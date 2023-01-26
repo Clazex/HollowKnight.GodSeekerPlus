@@ -11,7 +11,7 @@ public sealed class UnlockEternalOrdeal : Module {
 	private protected override void Unload() =>
 		On.HeroController.Start -= SetOrdealUnlocked;
 
-	private void SetOrdealUnlocked(On.HeroController.orig_Start orig, HeroController self) {
+	private static void SetOrdealUnlocked(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
 
 		if (Ref.SD.persistentBoolItems.IsActivated("GG_Workshop", "Zote_Break_wall")) {

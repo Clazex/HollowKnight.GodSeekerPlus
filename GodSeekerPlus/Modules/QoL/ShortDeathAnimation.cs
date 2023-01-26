@@ -11,7 +11,7 @@ public sealed class ShortDeathAnimation : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.Start -= ModifyHeroDeathFSM;
 
-	private void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+	private static void ModifyHeroDeathFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self is {

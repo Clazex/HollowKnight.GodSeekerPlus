@@ -14,7 +14,7 @@ public sealed class CrossingOoma : Module {
 	private protected override void Unload() =>
 		OsmiHooks.SceneChangeHook -= DestroyJelly;
 
-	private void DestroyJelly(Scene prev, Scene next) {
+	private static void DestroyJelly(Scene prev, Scene next) {
 		if (prev.name is "GG_Uumuu" or "GG_Uumuu_V") {
 			JellyMarker[] markers = JellyMarker.markers.ToArray();
 

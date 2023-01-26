@@ -40,7 +40,7 @@ public sealed class NoLowHealthEffect : Module {
 	private static void ModifyDamageEffectFSM(PlayMakerFSM fsm) =>
 		fsm.ChangeTransition("Check Focus Prompt", FsmEvent.Finished.Name, "Leak");
 
-	private void RemoveAnimation(ILContext il) {
+	private static void RemoveAnimation(ILContext il) {
 		int index = new ILCursor(il).Goto(0).GotoNext(
 			MoveType.After,
 			inst => inst.MatchLdstr("Idle Hurt"),

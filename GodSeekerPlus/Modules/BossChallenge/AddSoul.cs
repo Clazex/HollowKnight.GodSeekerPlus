@@ -3,7 +3,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 public sealed class AddSoul : Module {
 	[GlobalSetting]
 	[IntOption(0, 198, 11)]
-	private static readonly int soulAmount = 99;
+	public static int soulAmount = 99;
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
@@ -13,7 +13,7 @@ public sealed class AddSoul : Module {
 	private protected override void Unload() =>
 		On.BossSceneController.Start -= Add;
 
-	private IEnumerator Add(On.BossSceneController.orig_Start orig, BossSceneController self) {
+	private static IEnumerator Add(On.BossSceneController.orig_Start orig, BossSceneController self) {
 		yield return orig(self);
 
 		if (BossSequenceController.IsInSequence) {

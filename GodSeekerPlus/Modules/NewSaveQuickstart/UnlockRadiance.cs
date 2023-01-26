@@ -13,7 +13,7 @@ public sealed class UnlockRadiance : Module {
 	private protected override void Unload() =>
 		On.HeroController.Start -= SetRadianceUnlocked;
 
-	private void SetRadianceUnlocked(On.HeroController.orig_Start orig, HeroController self) {
+	private static void SetRadianceUnlocked(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
 
 		if (

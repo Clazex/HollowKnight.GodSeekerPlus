@@ -18,7 +18,7 @@ public sealed class FastDash : Module {
 	}
 
 	// Hook only when needed for zero performance impact
-	private void HookDash(Scene prev, Scene next) {
+	private static void HookDash(Scene prev, Scene next) {
 		On.HeroController.HeroDash -= CancelCooldown;
 
 		if (sceneNames.Contains(next.name)) {

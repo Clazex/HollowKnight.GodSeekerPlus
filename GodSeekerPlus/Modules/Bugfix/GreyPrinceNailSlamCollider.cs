@@ -11,7 +11,7 @@ public sealed class GreyPrinceNailSlamCollider : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.Start -= ModifyGPZFSM;
 
-	private void ModifyGPZFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+	private static void ModifyGPZFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self is {

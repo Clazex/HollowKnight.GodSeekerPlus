@@ -1,30 +1,28 @@
-using L = Modding.Logger;
-
 namespace GodSeekerPlus.Utils;
 
 internal static class Logger {
-	private static readonly string prefix = $"[{nameof(GodSeekerPlus)}] - ";
+	private static readonly SimpleLogger logger = new(nameof(GodSeekerPlus));
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static void Log(string message) => L.Log(prefix + message);
-
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-#if DEBUG
-	internal static void LogDebug(string message) => L.Log(prefix + message);
-#else
-	internal static void LogDebug(string message) => L.LogDebug(prefix + message);
-#endif
-
-	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static void LogError(string message) => L.LogError(prefix + message);
+	internal static void Log(string message) => logger.Log(message);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 #if DEBUG
-	internal static void LogFine(string message) => L.LogDebug(prefix + message);
+	internal static void LogDebug(string message) => logger.Log(message);
 #else
-	internal static void LogFine(string message) => L.LogFine(prefix + message);
+	internal static void LogDebug(string message) => logger.LogDebug(message);
 #endif
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static void LogWarn(string message) => L.LogWarn(prefix + message);
+	internal static void LogError(string message) => logger.LogError(message);
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+#if DEBUG
+	internal static void LogFine(string message) => logger.LogDebug(message);
+#else
+	internal static void LogFine(string message) => logger.LogFine(message);
+#endif
+
+	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	internal static void LogWarn(string message) => logger.LogWarn(message);
 }

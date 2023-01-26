@@ -3,9 +3,9 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 public sealed class InfiniteChallenge : Module {
 	[GlobalSetting]
 	[BoolOption]
-	public static readonly bool restartFightOnSuccess = false;
+	public static bool restartFightOnSuccess = false;
 
-	private BossSceneController.SetupEventDelegate? setupEvent;
+	private static BossSceneController.SetupEventDelegate? setupEvent;
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
@@ -24,7 +24,7 @@ public sealed class InfiniteChallenge : Module {
 		OsmiHooks.SceneChangeHook -= Cleanup;
 	}
 
-	private void RecordSetupEvent(On.BossSceneController.orig_Awake orig, BossSceneController self) {
+	private static void RecordSetupEvent(On.BossSceneController.orig_Awake orig, BossSceneController self) {
 		if (!BossSequenceController.IsInSequence) {
 			setupEvent = BossSceneController.SetupEvent;
 		}
@@ -32,7 +32,7 @@ public sealed class InfiniteChallenge : Module {
 		orig(self);
 	}
 
-	private void RestartFight(On.GameManager.orig_BeginSceneTransition orig, GameManager self, GameManager.SceneLoadInfo info) {
+	private static void RestartFight(On.GameManager.orig_BeginSceneTransition orig, GameManager self, GameManager.SceneLoadInfo info) {
 		string currentSceneName = self.sceneName;
 		if (
 			info.SceneName == "GG_Workshop"
@@ -68,7 +68,7 @@ public sealed class InfiniteChallenge : Module {
 		Ref.HC.EnableRenderer();
 	}
 
-	private void Cleanup(Scene prev, Scene next) {
+	private static void Cleanup(Scene prev, Scene next) {
 		if (next.name == "GG_Workshop" || BossSequenceController.IsInSequence) {
 			setupEvent = null;
 		}

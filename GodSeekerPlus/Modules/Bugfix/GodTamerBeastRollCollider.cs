@@ -9,7 +9,7 @@ public sealed class GodTamerBeastRollCollider : Module {
 	private protected override void Unload() =>
 		On.PlayMakerFSM.Start -= ModifyLobsterFSM;
 
-	private void ModifyLobsterFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+	private static void ModifyLobsterFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self is {

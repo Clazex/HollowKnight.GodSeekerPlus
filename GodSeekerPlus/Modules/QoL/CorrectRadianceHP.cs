@@ -17,7 +17,7 @@ public sealed class CorrectRadianceHP : Module {
 		On.PlayMakerFSM.Start -= ModifyAbsRadPhaseHP;
 	}
 
-	private void ModifyAbsRadStartHP(On.HealthManager.orig_Start orig, HealthManager self) {
+	private static void ModifyAbsRadStartHP(On.HealthManager.orig_Start orig, HealthManager self) {
 		if (self.gameObject is {
 			scene.name: "GG_Radiance",
 			name: "Absolute Radiance"
@@ -31,7 +31,7 @@ public sealed class CorrectRadianceHP : Module {
 	}
 
 
-	private void ModifyAbsRadPhaseHP(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+	private static void ModifyAbsRadPhaseHP(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
 
 		if (self.gameObject is {

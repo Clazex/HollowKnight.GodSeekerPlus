@@ -12,7 +12,7 @@ public sealed class MorePantheonCaps : Module {
 	};
 
 	[LocalSetting]
-	private static int rabCompletion = 0;
+	public static int rabCompletion = 0;
 
 	public override bool DefaultEnabled => true;
 
@@ -28,7 +28,7 @@ public sealed class MorePantheonCaps : Module {
 		On.BossDoorChallengeCompleteUI.Start -= RecordRAB;
 	}
 
-	private void SetupCaps(On.BossSequenceDoor.orig_Start orig, BossSequenceDoor self) {
+	private static void SetupCaps(On.BossSequenceDoor.orig_Start orig, BossSequenceDoor self) {
 		if (self.bossSequence != null) {
 			if (
 				self.completedNoHitsDisplay == null
@@ -52,7 +52,7 @@ public sealed class MorePantheonCaps : Module {
 		orig(self);
 	}
 
-	private void RecordRAB(On.BossDoorChallengeCompleteUI.orig_Start orig, BossDoorChallengeCompleteUI self) {
+	private static void RecordRAB(On.BossDoorChallengeCompleteUI.orig_Start orig, BossDoorChallengeCompleteUI self) {
 		BossSequenceController.BossSequenceData currentData = BossSequenceControllerR.currentData;
 
 		if (doorPDDict.TryGetValue(currentData.playerData, out int num)) {
@@ -71,11 +71,11 @@ public sealed class MorePantheonCaps : Module {
 
 	#region RAB Completions Getter/Setter
 
-	public bool GetRABCompletion(int num) => num is >= 1 and <= 5
+	public static bool GetRABCompletion(int num) => num is >= 1 and <= 5
 		? (rabCompletion & (1 << (num - 1))) != 0
 		: throw new ArgumentOutOfRangeException(nameof(num));
 
-	internal void SetRABCompletion(int num, bool completed) {
+	internal static void SetRABCompletion(int num, bool completed) {
 		if (num is < 1 or > 5) {
 			throw new ArgumentOutOfRangeException(nameof(num));
 		}

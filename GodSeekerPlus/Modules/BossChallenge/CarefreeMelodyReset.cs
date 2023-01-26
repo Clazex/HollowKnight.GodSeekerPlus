@@ -9,7 +9,7 @@ public sealed class CarefreeMelodyReset : Module {
 	private protected override void Unload() =>
 		OsmiHooks.SceneChangeHook -= ResetCount;
 
-	private void ResetCount(Scene prev, Scene next) {
+	private static void ResetCount(Scene prev, Scene next) {
 		if (Ref.HC == null) {
 			return;
 		}

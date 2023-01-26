@@ -5,7 +5,7 @@ namespace GodSeekerPlus.Modules.Restrictions;
 public sealed class CreateLag : Module {
 	[GlobalSetting]
 	[IntOption(0, 1000, 25)]
-	private static readonly int lagTime = 50;
+	public static int lagTime = 50;
 
 	private protected override void Load() =>
 		ModHooks.HeroUpdateHook += ThreadSleep;
@@ -13,7 +13,7 @@ public sealed class CreateLag : Module {
 	private protected override void Unload() =>
 		ModHooks.HeroUpdateHook -= ThreadSleep;
 
-	private void ThreadSleep() {
+	private static void ThreadSleep() {
 		if (Ref.GM.IsGamePaused()) {
 			return;
 		}

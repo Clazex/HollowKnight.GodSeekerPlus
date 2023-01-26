@@ -1,7 +1,7 @@
 namespace GodSeekerPlus.Modules.Restrictions;
 
 public sealed class NoDiveInvincibility : Module {
-	private PlayMakerFSM? spellControl = null;
+	private static PlayMakerFSM? spellControl = null;
 
 	public NoDiveInvincibility() =>
 		On.HeroController.Awake += GetSpellControl;
@@ -18,7 +18,7 @@ public sealed class NoDiveInvincibility : Module {
 		Apply(false);
 	}
 
-	private void GetSpellControl(On.HeroController.orig_Awake orig, HeroController self) {
+	private static void GetSpellControl(On.HeroController.orig_Awake orig, HeroController self) {
 		spellControl = self.gameObject.LocateMyFSM("Spell Control");
 
 		orig(self);

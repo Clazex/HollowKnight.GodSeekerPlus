@@ -17,7 +17,7 @@ public sealed class SegmentedP5 : Module {
 	};
 
 	[LocalSetting]
-	private static int selectedP5Segment = 0;
+	public static int selectedP5Segment = 0;
 
 	public override bool DefaultEnabled => true;
 
@@ -34,10 +34,10 @@ public sealed class SegmentedP5 : Module {
 
 	private static bool doorOnline = false;
 	private static bool running = false;
-	private GameObject? segP5 = null;
+	private static GameObject? segP5 = null;
 
-	private GameObject? selectBtn;
-	private Text? selectBtnText;
+	private static GameObject? selectBtn;
+	private static Text? selectBtnText;
 
 	private static string CurrentSegmentName =>
 		$"SegmentedP5/Segment/{selectedP5Segment}".Localize();
@@ -72,7 +72,7 @@ public sealed class SegmentedP5 : Module {
 		ModHooks.GetPlayerVariableHook -= GetVarHook;
 	}
 
-	private void SetupScene(On.GameManager.orig_BeginScene orig, GameManager self) {
+	private static void SetupScene(On.GameManager.orig_BeginScene orig, GameManager self) {
 		orig(self);
 
 		if (running && !BossSceneController.IsBossScene) {
@@ -91,7 +91,7 @@ public sealed class SegmentedP5 : Module {
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	private void SetupDoor() {
+	private static void SetupDoor() {
 		#region Setup door
 
 		var origP5 = GameObject.Find("GG_Final_Challenge_Door");
@@ -150,7 +150,7 @@ public sealed class SegmentedP5 : Module {
 	}
 
 
-	private void SetupUI(On.BossDoorChallengeUI.orig_Setup orig, BossDoorChallengeUI self, BossSequenceDoor door) {
+	private static void SetupUI(On.BossDoorChallengeUI.orig_Setup orig, BossDoorChallengeUI self, BossSequenceDoor door) {
 		orig(self, door);
 
 		if (door.gameObject != segP5) {
@@ -253,7 +253,7 @@ public sealed class SegmentedP5 : Module {
 	}
 
 
-	private void StartSequence(
+	private static void StartSequence(
 		On.BossSequenceController.orig_SetupNewSequence orig,
 		BossSequence sequence,
 		BossSequenceController.ChallengeBindings bindings,
@@ -305,7 +305,7 @@ public sealed class SegmentedP5 : Module {
 		Logger.LogDebug("Starting segmented P5 sequence");
 	}
 
-	private bool SkipNotSelectedScenes(On.BossSequence.orig_CanLoad orig, BossSequence self, int index) {
+	private static bool SkipNotSelectedScenes(On.BossSequence.orig_CanLoad orig, BossSequence self, int index) {
 		(int start, int end) = segments[selectedP5Segment];
 		return (!running || (index >= start && index <= end)) && orig(self, index);
 	}
@@ -317,7 +317,7 @@ public sealed class SegmentedP5 : Module {
 		}
 		: value;
 
-	private IEnumerator Quit() {
+	private static IEnumerator Quit() {
 		running = false;
 
 		yield return new WaitWhile(() => Ref.GM.gameState == GameState.PAUSED);

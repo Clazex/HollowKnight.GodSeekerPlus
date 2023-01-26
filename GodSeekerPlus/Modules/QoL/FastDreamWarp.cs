@@ -3,7 +3,7 @@ namespace GodSeekerPlus.Modules.QoL;
 public sealed class FastDreamWarp : Module {
 	[GlobalSetting]
 	[BoolOption]
-	private static readonly bool instantWarp = true;
+	public static bool instantWarp = true;
 
 	public override bool DefaultEnabled => true;
 
