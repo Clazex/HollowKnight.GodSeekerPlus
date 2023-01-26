@@ -3,6 +3,8 @@ using Modding.Menu.Config;
 
 using Satchel.BetterMenus;
 
+using UnityEngine.UI;
+
 using MenuButton = Satchel.BetterMenus.MenuButton;
 
 namespace GodSeekerPlus;
@@ -24,13 +26,6 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			orig(self);
 		};
 
-
-
-		private static string[] StateStrings => new string[] {
-			Lang.Get("MOH_OFF", "MainMenu"),
-			Lang.Get("MOH_ON", "MainMenu")
-		};
-
 		internal static MenuScreen GetSatchelMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
 			if (menu != null && !dirty) {
 				return menu.GetMenuScreen(modListMenu);
@@ -39,9 +34,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			menu = new("ModName".Localize(), new[] {
 				toggleDelegates!.Value.CreateToggle(
 					"ModName".Localize(),
-					"ToggleButtonDesc".Localize(),
-					StateStrings[1],
-					StateStrings[0]
+					"ToggleButtonDesc".Localize()
 				)
 			});
 
@@ -102,7 +95,10 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 								Text = "ToggleButtonDesc".Localize()
 							},
 							Label = "ModName".Localize(),
-							Options = StateStrings,
+							Options = new string[] {
+								Lang.Get("MOH_OFF", "MainMenu"),
+								Lang.Get("MOH_ON", "MainMenu")
+							},
 							Style = HorizontalOptionStyle.VanillaStyle
 						},
 						out MenuOptionHorizontal toggle

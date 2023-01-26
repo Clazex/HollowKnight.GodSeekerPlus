@@ -1,3 +1,5 @@
+using UnityEngine.UI;
+
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 [ToggleableLevel(ToggleableLevel.ChangeScene)]

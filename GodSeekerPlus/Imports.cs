@@ -34,7 +34,6 @@ global using Satchel.Futils;
 global using UnityEngine;
 global using UnityEngine.EventSystems;
 global using UnityEngine.SceneManagement;
-global using UnityEngine.UI;
 
 global using Module = GodSeekerPlus.Modules.Module;
 global using Logger = GodSeekerPlus.Utils.Logger;
