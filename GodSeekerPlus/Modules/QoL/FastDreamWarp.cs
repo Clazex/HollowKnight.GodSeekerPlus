@@ -21,10 +21,13 @@ internal sealed class FastDreamWarp : Module {
 	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) {
 		// Add new state. Send FAST_DREAM_WARP if both "dream nail" and "up" are pressed in a boss fight. Otherwise, send CANCEL.
 		var state = fsm.AddState("Fast Dream Warp");
-		state.AddAction(new ListenForDreamNail { isNotPressed = new FsmEvent("CANCEL"), eventTarget = FsmEventTarget.Self });
-		state.AddAction(new ListenForUp { isNotPressed = new FsmEvent("CANCEL"), eventTarget = FsmEventTarget.Self, isPressedBool = new FsmBool() });
 		state.AddCustomAction(() => {
-			if (BossSceneController.IsBossScene && ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)) {
+			var inputHandler = typeof(HeroController).GetField("inputHandler", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(HeroController.instance) as InputHandler;
+			if (BossSceneController.IsBossScene
+				&& inputHandler != null
+				&& inputHandler.inputActions.dreamNail.IsPressed
+				&& inputHandler.inputActions.up.IsPressed
+				&& ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)) {
 				fsm.SendEvent("FAST_DREAM_WARP");
 			} else {
 				fsm.SendEvent("CANCEL");
