@@ -19,9 +19,8 @@ internal sealed class FastDreamWarp : Module {
 	}
 
 	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) {
-		// Add new state. Send FAST_DREAM_WARP if both "dream nail" and "up" are pressed in a boss fight. Otherwise, send CANCEL.
-		var state = fsm.AddState("Fast Dream Warp");
-		state.AddCustomAction(() => {
+		// In state "Start", send FAST_DREAM_WARP if both "dream nail" and "up" are pressed in a boss fight.
+		fsm.InsertCustomAction("Start", () => {
 			var inputHandler = typeof(HeroController).GetField("inputHandler", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(HeroController.instance) as InputHandler;
 			if (BossSceneController.IsBossScene
 				&& inputHandler != null
@@ -29,14 +28,10 @@ internal sealed class FastDreamWarp : Module {
 				&& inputHandler.inputActions.up.IsPressed
 				&& ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)) {
 				fsm.SendEvent("FAST_DREAM_WARP");
-			} else {
-				fsm.SendEvent("CANCEL");
 			}
-		});
+		}, 0);
 
-		// Connect the new state into the graph.
-		fsm.ChangeTransition("Take Control", "FINISHED", "Fast Dream Warp");
-		fsm.AddTransition("Fast Dream Warp", "FAST_DREAM_WARP", "Can Warp?");
-		fsm.AddTransition("Fast Dream Warp", "CANCEL", "Start");
+		// Route FAST_DREAM_WARP to the start of dream warp.
+		fsm.AddTransition("Start", "FAST_DREAM_WARP", "Can Warp?");
 	}
 }
