@@ -66,6 +66,7 @@
 	"Settings/gpzEnterType": "灰色王子入场类型",
 	"Settings/gpzEnterType/False": "长",
 	"Settings/gpzEnterType/True": "短",
+	"Settings/instantSuperDash": "立即超冲",
 	"Settings/instantWarp": "立即传送",
 	"Settings/lagTime": "卡顿时长",
 	"Settings/lifebloodAmount": "生命血数量",

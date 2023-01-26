@@ -66,6 +66,7 @@
 	"Settings/gpzEnterType": "GPZ Enter Type",
 	"Settings/gpzEnterType/False": "Long",
 	"Settings/gpzEnterType/True": "Short",
+	"Settings/instantSuperDash": "Instant Super Dash",
 	"Settings/instantWarp": "Instant Warp",
 	"Settings/lagTime": "Lag Time",
 	"Settings/lifebloodAmount": "Lifeblood Amount",

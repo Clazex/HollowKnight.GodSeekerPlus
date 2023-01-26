@@ -1,8 +1,12 @@
+using Osmi.FsmActions;
+
 namespace GodSeekerPlus.Modules.QoL;
 
 [DefaultEnabled]
 internal sealed class FastSuperDash : Module {
-	private const string stateName = "GSP Workshop Speed Buff";
+	[GlobalSetting]
+	[BoolOption]
+	private static readonly bool instantSuperDash = false;
 
 	[GlobalSetting]
 	[FloatOption(1.0f, 1.1f, 1.2f, 1.3f, 1.4f, 1.5f, 1.6f, 1.7f, 1.8f, 1.9f, 2.0f)]
@@ -15,7 +19,10 @@ internal sealed class FastSuperDash : Module {
 		orig(self);
 
 		if (self is {
-			name: "Knight",
+			gameObject: {
+				name: "Knight",
+				scene.name: "DontDestroyOnLoad"
+			},
 			FsmName: "Superdash"
 		}) {
 			ModifySuperDashFSM(self);
@@ -25,31 +32,44 @@ internal sealed class FastSuperDash : Module {
 	}
 
 	private static void ModifySuperDashFSM(PlayMakerFSM fsm) {
-		FsmState speedBuffState = fsm.AddState(stateName);
+		static bool shouldActivate() => ModuleManager.TryGetActiveModule<FastSuperDash>(out _) && Ref.GM.sceneName == "GG_Workshop";
+		static bool shouldRemoveWinding() => shouldActivate() && instantSuperDash;
 
-		speedBuffState.AddAction(new CheckSceneName() {
-			sceneName = "GG_Workshop",
-			notEqualEvent = FsmEvent.Finished
+		var waitEvent = FsmEvent.GetFsmEvent("WAIT");
+
+		fsm.AddAction("Wall Charge", new InvokePredicate(shouldRemoveWinding) {
+			trueEvent = waitEvent
 		});
-		speedBuffState.AddCustomAction(state =>
-			state.Fsm.FsmComponent.GetVariable<FsmFloat>("Current SD Speed").Value *= fastSuperDashSpeedMultiplier
-		);
+		fsm.AddAction("Ground Charge", new InvokePredicate(shouldRemoveWinding) {
+			trueEvent = waitEvent
+		});
 
+		FsmFloat speed = fsm.GetVariable<FsmFloat>("Current SD Speed");
 		fsm.Intercept(new TransitionInterceptor() {
 			fromState = "Left",
 			eventName = FsmEvent.Finished.Name,
 			toStateDefault = "Dash Start",
-			toStateCustom = stateName,
-			shouldIntercept = () => ModuleManager.TryGetActiveModule<FastSuperDash>(out _)
+			toStateCustom = "Dash Start",
+			shouldIntercept = shouldActivate,
+			onIntercept = (_, _) => speed.Value *= fastSuperDashSpeedMultiplier
 		});
 		fsm.Intercept(new TransitionInterceptor() {
 			fromState = "Right",
 			eventName = FsmEvent.Finished.Name,
 			toStateDefault = "Dash Start",
-			toStateCustom = stateName,
-			shouldIntercept = () => ModuleManager.TryGetActiveModule<FastSuperDash>(out _)
+			toStateCustom = "Dash Start",
+			shouldIntercept = shouldActivate,
+			onIntercept = (_, _) => speed.Value *= fastSuperDashSpeedMultiplier
 		});
 
-		fsm.AddTransition(stateName, FsmEvent.Finished.Name, "Dash Start");
+		fsm.AddAction("Dashing", new InvokePredicate(shouldRemoveWinding) {
+			trueEvent = waitEvent
+		});
+		fsm.AddAction("Air Cancel", new InvokePredicate(shouldRemoveWinding) {
+			trueEvent = FsmEvent.Finished
+		});
+		fsm.AddAction("Hit Wall", new InvokePredicate(shouldRemoveWinding) {
+			trueEvent = FsmEvent.Finished
+		});
 	}
 }
