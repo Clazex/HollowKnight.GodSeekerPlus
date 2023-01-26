@@ -19,33 +19,21 @@ internal sealed class FastDreamWarp : Module {
 	}
 
 	private static void ModifyDreamNailFSM(PlayMakerFSM fsm) {
-		fsm.InsertCustomAction("Warp Charge", (fsm) => {
+		// Add new state. Send FAST_DREAM_WARP if both "dream nail" and "up" are pressed in a boss fight. Otherwise, send CANCEL.
+		var state = fsm.AddState("Fast Dream Warp");
+		state.AddAction(new ListenForDreamNail { isNotPressed = new FsmEvent("CANCEL"), eventTarget = FsmEventTarget.Self });
+		state.AddAction(new ListenForUp { isNotPressed = new FsmEvent("CANCEL"), eventTarget = FsmEventTarget.Self, isPressedBool = new FsmBool() });
+		state.AddCustomAction(() => {
 			if (BossSceneController.IsBossScene && ModuleManager.TryGetActiveModule<FastDreamWarp>(out _)) {
-				fsm.SendEvent("CHARGED");
+				fsm.SendEvent("FAST_DREAM_WARP");
+			} else {
+				fsm.SendEvent("CANCEL");
 			}
-		}, 0);
+		});
 
-		bool? origInvincibility = null;
-		fsm.InsertCustomAction("Start", (fsm) => {
-			if (BossSceneController.IsBossScene && PlayerData.instance != null) {
-				origInvincibility = PlayerData.instance.isInvincible;
-				PlayerData.instance.isInvincible = true;
-			}
-		}, 0);
-		fsm.InsertCustomAction("Warp End", (fsm) => {
-			if (BossSceneController.IsBossScene && PlayerData.instance != null && origInvincibility != null) {
-				PlayerData.instance.isInvincible = origInvincibility.Value;
-			}
-		}, 0);
-		fsm.InsertCustomAction("Warp Cancel", (fsm) => {
-			if (BossSceneController.IsBossScene && PlayerData.instance != null && origInvincibility != null) {
-				PlayerData.instance.isInvincible = origInvincibility.Value;
-			}
-		}, 0);
-		fsm.InsertCustomAction("Inactive", (fsm) => {
-			if (BossSceneController.IsBossScene && PlayerData.instance != null && origInvincibility != null) {
-				PlayerData.instance.isInvincible = origInvincibility.Value;
-			}
-		}, 0);
+		// Connect the new state into the graph.
+		fsm.ChangeTransition("Take Control", "FINISHED", "Fast Dream Warp");
+		fsm.AddTransition("Fast Dream Warp", "FAST_DREAM_WARP", "Can Warp?");
+		fsm.AddTransition("Fast Dream Warp", "CANCEL", "Start");
 	}
 }
