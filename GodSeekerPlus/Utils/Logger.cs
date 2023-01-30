@@ -7,22 +7,29 @@ internal static class Logger {
 	internal static void Log(string message) => logger.Log(message);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	internal static void LogDebug(string message) =>
 #if DEBUG
-	internal static void LogDebug(string message) => logger.Log(message);
+		logger.Log(message);
 #else
-	internal static void LogDebug(string message) => logger.LogDebug(message);
+		logger.LogDebug(message);
 #endif
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
 	internal static void LogError(string message) => logger.LogError(message);
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
+	internal static void LogFine(string message) =>
 #if DEBUG
-	internal static void LogFine(string message) => logger.LogDebug(message);
+		logger.Log(message);
 #else
-	internal static void LogFine(string message) => logger.LogFine(message);
+		logger.LogFine(message);
 #endif
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
-	internal static void LogWarn(string message) => logger.LogWarn(message);
+	internal static void LogWarn(string message) =>
+#if DEBUG
+		logger.LogError(message);
+#else
+		logger.LogWarn(message);
+#endif
 }
