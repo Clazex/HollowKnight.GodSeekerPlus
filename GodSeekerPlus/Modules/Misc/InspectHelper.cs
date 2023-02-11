@@ -16,16 +16,41 @@ internal sealed class InspectHelper : Module {
 	}
 
 	private sealed class Inspector : MonoBehaviour {
-		public GodSeekerPlus Instance => GodSeekerPlus.UnsafeInstance;
-		public bool Active => GodSeekerPlus.Active;
+		public static GodSeekerPlus Instance => GodSeekerPlus.UnsafeInstance;
+		public static bool Active => GodSeekerPlus.Active;
 
-		public Dictionary<string, Module> Modules => ModuleManager.Modules;
+		public static Dictionary<string, Module> Modules => ModuleManager.Modules;
 
-		public GlobalSettings GlobalSettings => Setting.Global;
-		public LocalSettings LocalSettings => Setting.Local;
+		public static GlobalSettings GlobalSettings => Setting.Global;
+		public static LocalSettings LocalSettings => Setting.Local;
 
-		public Dict Dict => L11nUtil.dict;
+		public static Dict Dict => L11nUtil.dict;
 
-		public string Localize(string key) => L11nUtil.Localize(key);
+		public static string Localize(string key) => L11nUtil.Localize(key);
+
+		public static void KillAllSafe() => UObject.FindObjectsOfType<HealthManager>()
+			.Filter(EnemyDetector.IsValidEnemy)
+			.Reject(hm => hm.IsInvincible)
+			.ForEach(hm => hm.Die(null, AttackTypes.RuinsWater, true));
+
+		public static void SkipBoss(int count = 1) =>
+			GlobalCoroutineExecutor.Start(SkipBossCoroutine(count));
+
+		private static IEnumerator SkipBossCoroutine(int count) {
+			if (BossSceneController.Instance is not BossSceneController controller) {
+				yield break;
+			}
+
+			controller.bossesDeadWaitTime = 0f;
+			controller.EndBossScene();
+
+			if (count > 1) {
+				bool flag = false;
+				Ref.GM.OnFinishedEnteringScene += () => flag = true;
+				yield return new WaitUntil(() => flag);
+
+				_ = GlobalCoroutineExecutor.Start(SkipBossCoroutine(count - 1));
+			}
+		}
 	}
 }
