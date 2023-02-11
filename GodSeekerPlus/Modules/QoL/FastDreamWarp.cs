@@ -48,6 +48,8 @@ public sealed class FastDreamWarp : Module {
 			shouldIntercept = () => Loaded && BossSceneController.IsBossScene
 		});
 
+		fsm.GetAction("Warp End", 8).Enabled = false;
+
 		fsm.AddAction("Warp End", new InvokePredicate(() => Loaded && BossSceneController.IsBossScene) {
 			trueEvent = FsmEvent.Finished
 		});
