@@ -54,6 +54,10 @@
 			<HintPath>$(HKRefs)/UnityEngine.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>$(HKRefs)/UnityEngine.AudioModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(HKRefs)/UnityEngine.CoreModule.dll</HintPath>
 			<Private>false</Private>
