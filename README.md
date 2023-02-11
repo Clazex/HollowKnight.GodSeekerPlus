@@ -51,8 +51,8 @@ Compatible with `Hollow Knight` 1.5.
   + **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
   + **Eternal Ordeal Platform**: Add a platform at the entrance of the Eternal Ordeal.
   + **Fast Dash**: Remove dash cooldown when in Hall of Gods.
-  + **Fast Dream Warping**: Remove dream warping charge time when in boss scenes. This decrease the total warping time from 2.25s to 0.25s.
-  + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods.
+  + **Fast Dream Warp**: Remove dream warping charging time and particles when in boss scenes. Optionally allows skipping preparation time for immediate warping when up key is pressed not later than dream nail key.
+  + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods. Optionally removes charging, cancellation cooldown and inertia.
   + **Grey Prince Toggle**: Add a Dream Nail toggle beside Grey Prince statue to show and control whether Grey Prince will appear in the Pantheons or not when in Godseeker mode.
   + **Keep Cocoon Lifeblood**: Keep lifeblood from cocoon when benching in the Pantheons.
   + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
