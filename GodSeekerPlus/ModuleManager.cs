@@ -9,6 +9,7 @@ internal static class ModuleManager {
 		.GetExecutingAssembly()
 		.GetTypesSafely()
 		.Filter(type => type.IsSubclassOf(typeof(Module)) && !type.IsAbstract)
+		.OrderBy(type => type.FullName)
 #if DEBUG
 		.Filter(type => {
 			if (type.GetConstructor(Type.EmptyTypes) == null) {
