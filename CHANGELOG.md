@@ -1,3 +1,26 @@
+# [v0.23.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.22.0...v0.23.0) (2023-02-12)
+
+### Bug Fixes
+
+* don't reuse fsm state action ([b5e0f8b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/b5e0f8bbaa21f2ae110a46ebc811864050ec150c))
+* skip start state for instant dream warp ([f03960d](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f03960d11609668143c567d267e2bdfd094fa545))
+* use realtime multiplier ([bb61e97](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/bb61e97d68e66712df79c5242b599eb8ea91beb1))
+* wrong default target state ([def9069](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/def9069498b9a4601cf6110913050f88b4bbf14c))
+
+### Features
+
+* disable dream warp particles ([f4f11fd](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/f4f11fd553ef574863148148a9bfda0439a93338))
+* instant dream warp ([83bbb20](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/83bbb20f1efe28f3c2b5f398de8e9f0aa891b506))
+* instant super dash ([4879ec9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4879ec9065fc1d6a01a5da6f029f79ac3385cc03))
+* make no low health effect toggleable any time ([229fb4b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/229fb4bc9185d8b575c56d4da2071c3495e3cb85))
+* make short death animation toggleable any time ([4a20942](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4a2094291a597ee21179923d0a3c40f712429b38))
+* skip dream warp end ([7a072e1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7a072e1af8c8c6ff1e95ac9eebe82db7c9fc68a1))
+* use own music p1 part ([7316b79](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/7316b79b1884e981a6600a49a3644286ca21cbab))
+
+### Performance Improvements
+
+* fetch modules only once ([961ca54](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/961ca54a95f9e6df0a9d6bf92af223c69683eacc))
+
 # [v0.22.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.21.0...v0.22.0) (2022-10-29)
 
 ### Bug Fixes
