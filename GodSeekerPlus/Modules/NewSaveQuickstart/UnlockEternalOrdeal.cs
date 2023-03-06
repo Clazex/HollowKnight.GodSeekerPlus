@@ -24,7 +24,7 @@ public sealed class UnlockEternalOrdeal : Module {
 		Ref.SD.persistentBoolItems
 			.Set("GG_Workshop", "Zote_Break_wall", true);
 
-		Ref.PD.zoteStatueWallBroken = true;
+		PlayerDataR.zoteStatueWallBroken = true;
 
 		LogDebug("Eternal Ordeal unlocked");
 	}

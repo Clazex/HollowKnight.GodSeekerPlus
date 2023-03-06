@@ -10,10 +10,6 @@ global using GlobalEnums;
 global using GodSeekerPlus.Settings;
 global using GodSeekerPlus.Utils;
 
-global using HKMirror.Reflection;
-global using HKMirror.Reflection.SingletonClasses;
-global using HKMirror.Reflection.StaticClasses;
-
 global using HutongGames.PlayMaker;
 global using HutongGames.PlayMaker.Actions;
 
@@ -26,6 +22,9 @@ global using Newtonsoft.Json;
 global using Osmi;
 global using Osmi.Game;
 global using Osmi.Utils;
+
+global using HKReflect;
+global using HKReflect.Static;
 
 global using Satchel;
 global using Satchel.Futils;
@@ -43,3 +42,4 @@ global using UObject = UnityEngine.Object;
 global using USceneManager = UnityEngine.SceneManagement.SceneManager;
 
 global using static GodSeekerPlus.Utils.Logger;
+global using static HKReflect.Singletons;

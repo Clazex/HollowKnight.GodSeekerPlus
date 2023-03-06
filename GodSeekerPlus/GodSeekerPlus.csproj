@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<AssemblyTitle>GodSeekerPlus</AssemblyTitle>
-		<Version>0.23.0</Version>
+		<Version>0.23.1</Version>
 		<Description>A Hollow Knight mod to enhance your Godhome experience</Description>
 		<Authors>Clazex</Authors>
 
@@ -13,7 +13,6 @@
 
 		<LangVersion>10.0</LangVersion>
 		<TargetFramework>net472</TargetFramework>
-		<PlatformTarget>x64</PlatformTarget>
 		<DebugType>portable</DebugType>
 		<RootNamespace>GodSeekerPlus</RootNamespace>
 
@@ -114,17 +113,14 @@
 			<HintPath>$(HKModRefs)/Osmi/Osmi.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
-		<Reference Include="HKMirror">
-			<HintPath>$(HKModRefs)/HKMirror/HKMirror.dll</HintPath>
-			<Private>false</Private>
-		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Nullable" Version="1.3.0">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
+
+		<PackageReference Include="Fody" Version="6.6.4" PrivateAssets="all" />
+		<PackageReference Include="InfoOf.Fody" Version="2.1.1" PrivateAssets="all" />
+		<PackageReference Include="HKReflect.Fody" Version="0.2.0" PrivateAssets="all" />
 	</ItemGroup>
 
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent">

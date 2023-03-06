@@ -17,10 +17,10 @@ public sealed class UnlockRadiance : Module {
 		orig(self);
 
 		if (
-			Ref.PD.bossRushMode
-			&& !Ref.PD.unlockedBossScenes.Contains(sceneName)
+			PlayerDataR.bossRushMode
+			&& !PlayerDataR.unlockedBossScenes.Contains(sceneName)
 		) {
-			Ref.PD.unlockedBossScenes.Add(sceneName);
+			PlayerDataR.unlockedBossScenes.Add(sceneName);
 			Ref.SD.persistentBoolItems
 				.Set("GG_Workshop", "Radiance Statue Cage", true);
 

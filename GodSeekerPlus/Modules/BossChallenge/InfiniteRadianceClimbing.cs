@@ -122,7 +122,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		pitCtrl!.SendEvent("ASCEND");
 
 		// Teleport hero back
-		Ref.PD.isInvincible = true;
+		PlayerDataR.isInvincible = true;
 		Ref.HC.RelinquishControl();
 		Ref.HC.transform.SetPosition2D(heroX, heroY);
 		Ref.HC.FaceRight();
@@ -144,7 +144,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		// Give back hero control
 		flasher.CancelFlash();
 		Ref.HC.RegainControl();
-		Ref.PD.isInvincible = false;
+		PlayerDataR.isInvincible = false;
 
 		yield return new WaitForSeconds(1.5f);
 

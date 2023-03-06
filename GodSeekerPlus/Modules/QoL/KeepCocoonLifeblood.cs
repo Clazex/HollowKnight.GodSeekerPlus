@@ -10,7 +10,7 @@ public sealed class KeepCocoonLifeblood : Module {
 		ModHooks.BlueHealthHook -= CocoonCompensate;
 
 	private static int CocoonCompensate() {
-		if (Ref.GM.sceneName != "GG_Spa" || !Ref.PD.blueRoomActivated) {
+		if (Ref.GM.sceneName != "GG_Spa" || !PlayerDataR.blueRoomActivated) {
 			return 0;
 		}
 

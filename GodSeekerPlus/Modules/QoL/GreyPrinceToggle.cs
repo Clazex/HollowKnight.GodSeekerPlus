@@ -4,7 +4,7 @@ public sealed class GreyPrinceToggle : Module {
 	private static readonly SceneEdit handle = new(
 		new("GG_Workshop", "GG_Statue_GreyPrince"),
 		go => {
-			if (!Ref.PD.bossRushMode) {
+			if (!PlayerDataR.bossRushMode) {
 				return;
 			}
 
@@ -49,7 +49,7 @@ public sealed class GreyPrinceToggle : Module {
 	private protected override void Unload() {
 		handle.Disable();
 
-		if (Ref.GM?.sceneName == "GG_Workshop" && Ref.PD?.bossRushMode == true) {
+		if (Ref.GM?.sceneName == "GG_Workshop" && PlayerDataR?.bossRushMode == true) {
 			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
 		}
 	}
@@ -76,8 +76,8 @@ public sealed class GreyPrinceToggle : Module {
 		private ColorFader[] colorFaders;
 
 		private bool On {
-			get => Ref.PD.greyPrinceDefeated;
-			set => Ref.PD.greyPrinceDefeated = value;
+			get => PlayerDataR.greyPrinceDefeated;
+			set => PlayerDataR.greyPrinceDefeated = value;
 		}
 
 		public void Awake() {

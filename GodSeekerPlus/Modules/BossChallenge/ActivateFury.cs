@@ -30,9 +30,9 @@ public sealed class ActivateFury : Module {
 		}
 
 		if (CharmUtil.EquippedCharm(Charm.JonisBlessing)) {
-			Ref.PD.joniHealthBlue = 1;
+			PlayerDataR.joniHealthBlue = 1;
 		} else {
-			Ref.PD.health = 1;
+			PlayerDataR.health = 1;
 		}
 
 		_ = Ref.HC.StartCoroutine(UpdateState());

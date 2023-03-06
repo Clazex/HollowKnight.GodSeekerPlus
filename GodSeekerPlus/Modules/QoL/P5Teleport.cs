@@ -20,7 +20,7 @@ public sealed class P5Teleport : Module {
 		leverEditHandle.Disable();
 
 	private static IEnumerator Teleport() {
-		if (teleporting || !Ref.PD.finalBossDoorUnlocked) {
+		if (teleporting || !PlayerDataR.finalBossDoorUnlocked) {
 			yield break;
 		}
 
@@ -49,6 +49,10 @@ public sealed class P5Teleport : Module {
 
 		#region Substitute DGate data
 
+		// Here we need to bypass every hook on dgate fields such that the
+		// actual value is identical to what we need. This prevents
+		// compatibility issue with mods like SmolKnight where dgate
+		// position getting/setting is hooked for adding an offset
 		string origDGateScene = Ref.PD.dreamGateScene;
 		float origDGateX = Ref.PD.dreamGateX;
 		float origDGateY = Ref.PD.dreamGateY;

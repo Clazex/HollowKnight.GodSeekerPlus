@@ -21,17 +21,17 @@ public sealed class UnlockPantheons : Module {
 	private static void Unlock(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
 
-		if (!Ref.PD.bossRushMode) {
+		if (!PlayerDataR.bossRushMode) {
 			return;
 		}
 
-		if (!Ref.PD.bossDoorCageUnlocked) {
-			Ref.PD.bossDoorCageUnlocked = true;
+		if (!PlayerDataR.bossDoorCageUnlocked) {
+			PlayerDataR.bossDoorCageUnlocked = true;
 			LogDebug("P4 Unlocked");
 		}
 
-		if (!Ref.PD.finalBossDoorUnlocked) {
-			Ref.PD.finalBossDoorUnlocked = true;
+		if (!PlayerDataR.finalBossDoorUnlocked) {
+			PlayerDataR.finalBossDoorUnlocked = true;
 			Ref.SD.persistentBoolItems.Set("GG_Atrium", "gg_roof_lever", true);
 
 			LogDebug("P5 Unlocked");
