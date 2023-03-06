@@ -25,7 +25,7 @@ public sealed class P5Teleport : Module {
 		}
 
 		teleporting = true;
-		Logger.LogDebug("P5 teleport start");
+		LogDebug("P5 teleport start");
 
 		#region Pre-teleport effects
 

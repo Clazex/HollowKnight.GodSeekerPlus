@@ -12,7 +12,7 @@ internal sealed class InspectHelper : Module {
 		}
 
 		_ = GameObjectUtil.CreateHolder<Inspector>($"{nameof(GodSeekerPlus)} Inspect Helper");
-		Logger.Log("Creating Inspect Helper GameObject");
+		Log("Creating Inspect Helper GameObject");
 	}
 
 	private sealed class Inspector : MonoBehaviour {

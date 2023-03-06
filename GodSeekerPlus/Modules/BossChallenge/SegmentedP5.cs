@@ -77,7 +77,7 @@ public sealed class SegmentedP5 : Module {
 
 		if (running && !BossSceneController.IsBossScene) {
 			running = false;
-			Logger.LogDebug("Segmented P5 sequence finished");
+			LogDebug("Segmented P5 sequence finished");
 		}
 
 		if (self.sceneName != "GG_Atrium_Roof") {
@@ -146,7 +146,7 @@ public sealed class SegmentedP5 : Module {
 
 		segP5.SetActive(true);
 
-		Logger.LogDebug("Segmented P5 door setup finished");
+		LogDebug("Segmented P5 door setup finished");
 	}
 
 
@@ -249,7 +249,7 @@ public sealed class SegmentedP5 : Module {
 
 		#endregion
 
-		Logger.LogDebug("Segmented P5 UI setup finished");
+		LogDebug("Segmented P5 UI setup finished");
 	}
 
 
@@ -302,7 +302,7 @@ public sealed class SegmentedP5 : Module {
 			};
 		}
 
-		Logger.LogDebug("Starting segmented P5 sequence");
+		LogDebug("Starting segmented P5 sequence");
 	}
 
 	private static bool SkipNotSelectedScenes(On.BossSequence.orig_CanLoad orig, BossSequence self, int index) {
@@ -324,7 +324,7 @@ public sealed class SegmentedP5 : Module {
 
 		_ = Ref.HC.StartCoroutine("Die");
 
-		Logger.LogDebug("Force quiting Segmented P5 sequence");
+		LogDebug("Force quiting Segmented P5 sequence");
 	}
 
 

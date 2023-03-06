@@ -26,6 +26,6 @@ public sealed class UnlockEternalOrdeal : Module {
 
 		Ref.PD.zoteStatueWallBroken = true;
 
-		Logger.LogDebug("Eternal Ordeal unlocked");
+		LogDebug("Eternal Ordeal unlocked");
 	}
 }

@@ -24,7 +24,7 @@ public sealed class FastSuperDash : Module {
 		if (self.FsmName == "Superdash" && knightRef.MatchGameObject(self.gameObject)) {
 			ModifySuperDashFSM(self);
 
-			Logger.LogDebug("Superdash FSM modified");
+			LogDebug("Superdash FSM modified");
 		}
 	}
 

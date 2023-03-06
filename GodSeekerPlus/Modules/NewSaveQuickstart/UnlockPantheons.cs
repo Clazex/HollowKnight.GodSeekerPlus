@@ -27,21 +27,21 @@ public sealed class UnlockPantheons : Module {
 
 		if (!Ref.PD.bossDoorCageUnlocked) {
 			Ref.PD.bossDoorCageUnlocked = true;
-			Logger.LogDebug("P4 Unlocked");
+			LogDebug("P4 Unlocked");
 		}
 
 		if (!Ref.PD.finalBossDoorUnlocked) {
 			Ref.PD.finalBossDoorUnlocked = true;
 			Ref.SD.persistentBoolItems.Set("GG_Atrium", "gg_roof_lever", true);
 
-			Logger.LogDebug("P5 Unlocked");
+			LogDebug("P5 Unlocked");
 		}
 
 		List<PersistentBoolData>? items = Ref.SD.persistentBoolItems;
 		atriumRoofObjects.ForEach(tuple => {
 			if (!items.IsActivated("GG_Atrium_Roof", tuple.goName)) {
 				items.Set("GG_Atrium_Roof", tuple.goName, true);
-				Logger.LogDebug(tuple.prompt + " activated");
+				LogDebug(tuple.prompt + " activated");
 			}
 		});
 	}

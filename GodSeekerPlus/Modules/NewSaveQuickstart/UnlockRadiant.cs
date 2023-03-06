@@ -19,6 +19,6 @@ public sealed class UnlockRadiant : Module {
 
 		completion.completedTier2 = false;
 
-		Logger.LogDebug($"Unlocked Radiant for {statue.name}");
+		LogDebug($"Unlocked Radiant for {statue.name}");
 	}
 }

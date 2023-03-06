@@ -24,7 +24,7 @@ public sealed class CorrectRadianceHP : Module {
 		}) {
 			self.hp += shift;
 
-			Logger.LogDebug("AbsRad start health modified");
+			LogDebug("AbsRad start health modified");
 		}
 
 		orig(self);
@@ -49,14 +49,14 @@ public sealed class CorrectRadianceHP : Module {
 				.hp.Value += shift;
 			fsm.GetVariable<FsmInt>("Death HP").Value += shift;
 
-			Logger.LogDebug("AbsRad death health modified");
+			LogDebug("AbsRad death health modified");
 		} else if (fsm.FsmName == "Phase Control") {
 			fsm.GetVariable<FsmInt>("P2 Spike Waves").Value += shift;
 			fsm.GetVariable<FsmInt>("P3 A1 Rage").Value += shift;
 			fsm.GetVariable<FsmInt>("P4 Stun1").Value += shift;
 			fsm.GetVariable<FsmInt>("P5 Acend").Value += shift; // Why TC
 
-			Logger.LogDebug("AbsRad phase health modified");
+			LogDebug("AbsRad phase health modified");
 		}
 	}
 }

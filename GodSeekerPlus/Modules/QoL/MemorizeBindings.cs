@@ -26,7 +26,7 @@ public sealed class MemorizeBindings : Module {
 		SetButtonState(self.boundCharmsButton, boundCharms);
 		SetButtonState(self.boundSoulButton, boundSoul);
 
-		Logger.LogDebug("Binding states applied");
+		LogDebug("Binding states applied");
 	}
 
 	private static IEnumerator RecordBindingStates(On.BossDoorChallengeUI.orig_HideSequence orig, BossDoorChallengeUI self, bool sendEvent) {
@@ -35,7 +35,7 @@ public sealed class MemorizeBindings : Module {
 		boundCharms = self.boundCharmsButton.Selected;
 		boundSoul = self.boundSoulButton.Selected;
 
-		Logger.LogDebug("Binding states recorded");
+		LogDebug("Binding states recorded");
 
 		yield return orig(self, sendEvent);
 	}

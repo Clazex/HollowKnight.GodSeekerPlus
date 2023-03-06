@@ -22,7 +22,7 @@ public sealed class CrossingOoma : Module {
 				return;
 			}
 
-			Logger.Log($"Found {markers.Length} cross-scene ooma(s), destroying...");
+			Log($"Found {markers.Length} cross-scene ooma(s), destroying...");
 			markers.ForEach(marker => UObject.Destroy(marker.gameObject));
 		}
 	}

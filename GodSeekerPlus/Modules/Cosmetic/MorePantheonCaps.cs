@@ -35,7 +35,7 @@ public sealed class MorePantheonCaps : Module {
 				&& self.gameObject.Child("Main Caps", "GG_door_cap_complete_nohits") is GameObject go
 			) {
 				self.completedNoHitsDisplay = go;
-				Logger.LogDebug($"Radiant cap enabled for {self.bossSequence.name}");
+				LogDebug($"Radiant cap enabled for {self.bossSequence.name}");
 			}
 
 			if (doorPDDict.TryGetValue(self.playerDataString, out int num)
@@ -45,7 +45,7 @@ public sealed class MorePantheonCaps : Module {
 				sr.transform.Translate(0, 0, -0.0801f);
 				sr.color = Color.black;
 
-				Logger.LogDebug($"Radiant AB effect enabled for {self.bossSequence.name}");
+				LogDebug($"Radiant AB effect enabled for {self.bossSequence.name}");
 			}
 		}
 
@@ -62,7 +62,7 @@ public sealed class MorePantheonCaps : Module {
 
 			if (rab && !rabPrev) {
 				SetRABCompletion(num, true);
-				Logger.LogDebug($"Radiant AB in Pantheon #{num} recorded");
+				LogDebug($"Radiant AB in Pantheon #{num} recorded");
 			}
 		}
 

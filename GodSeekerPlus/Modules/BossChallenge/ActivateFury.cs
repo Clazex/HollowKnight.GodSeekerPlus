@@ -55,6 +55,6 @@ public sealed class ActivateFury : Module {
 
 		Ref.HC.proxyFSM.SendEvent("HeroCtrl-HeroDamaged");
 
-		Logger.LogDebug("Fury activated");
+		LogDebug("Fury activated");
 	}
 }

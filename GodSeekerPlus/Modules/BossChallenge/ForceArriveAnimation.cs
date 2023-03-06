@@ -29,7 +29,7 @@ public sealed class ForceArriveAnimation : Module {
 		) {
 			ModifyDreamEntryFSM(self);
 
-			Logger.LogDebug("Dream Entry FSM modified");
+			LogDebug("Dream Entry FSM modified");
 		}
 	}
 

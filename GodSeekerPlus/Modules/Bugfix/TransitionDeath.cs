@@ -18,7 +18,7 @@ public sealed class TransitionDeath : Module {
 		if (self.FsmName == "Hero Death Anim" && deathRef.MatchGameObject(self.gameObject)) {
 			ModifyHeroDeathFSM(self);
 
-			Logger.LogDebug("Transition detection added to Hero Death FSM");
+			LogDebug("Transition detection added to Hero Death FSM");
 		}
 
 		orig(self);

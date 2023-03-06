@@ -41,3 +41,5 @@ global using ReflectionHelper = Modding.ReflectionHelper;
 global using InvokeMethod = Osmi.FsmActions.InvokeMethod;
 global using UObject = UnityEngine.Object;
 global using USceneManager = UnityEngine.SceneManagement.SceneManager;
+
+global using static GodSeekerPlus.Utils.Logger;

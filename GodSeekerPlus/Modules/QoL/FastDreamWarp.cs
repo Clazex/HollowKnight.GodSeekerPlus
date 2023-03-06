@@ -20,7 +20,7 @@ public sealed class FastDreamWarp : Module {
 		if (self.FsmName == "Dream Nail" && knightRef.MatchGameObject(self.gameObject)) {
 			ModifyDreamNailFSM(self);
 
-			Logger.LogDebug("Dream Warp FSM modified");
+			LogDebug("Dream Warp FSM modified");
 		}
 	}
 

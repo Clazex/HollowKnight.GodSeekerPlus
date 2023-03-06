@@ -31,7 +31,7 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 
 	public override void Initialize() {
 		if (Active) {
-			Logger.LogWarn("Attempting to initialize multiple times, operation rejected");
+			LogWarn("Attempting to initialize multiple times, operation rejected");
 			return;
 		}
 

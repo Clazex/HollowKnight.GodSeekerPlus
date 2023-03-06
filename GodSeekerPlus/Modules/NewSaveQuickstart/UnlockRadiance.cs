@@ -24,7 +24,7 @@ public sealed class UnlockRadiance : Module {
 			Ref.SD.persistentBoolItems
 				.Set("GG_Workshop", "Radiance Statue Cage", true);
 
-			Logger.LogDebug("Radiance Unlocked");
+			LogDebug("Radiance Unlocked");
 		}
 	}
 }

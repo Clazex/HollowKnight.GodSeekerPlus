@@ -58,7 +58,7 @@ public sealed class InfiniteRadianceClimbing : Module {
 		radCtrl!.gameObject.LocateMyFSM("Phase Control")
 			.Fsm.SetState("Set Ascend"); // Skip Phase 1-2
 
-		Logger.LogDebug("Scene setup finished");
+		LogDebug("Scene setup finished");
 	}
 
 	[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -105,11 +105,11 @@ public sealed class InfiniteRadianceClimbing : Module {
 		flasher.CancelFlash();
 		Ref.HC.RegainControl();
 
-		Logger.LogDebug("Hero teleported");
+		LogDebug("Hero teleported");
 	}
 
 	private static IEnumerator Rewind() {
-		Logger.LogDebug("AbsRad final phase started, rewinding...");
+		LogDebug("AbsRad final phase started, rewinding...");
 
 		SpriteFlash flasher = Ref.HC.GetComponent<SpriteFlash>();
 		GameObject beam = radCtrl!.gameObject.Child("Eye Beam Glow", "Ascend Beam")!;

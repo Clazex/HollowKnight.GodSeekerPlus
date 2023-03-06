@@ -23,7 +23,7 @@ public sealed class GreyPrinceNailSlamCollider : Module {
 		}) {
 			ModifyGPZFSM(self);
 
-			Logger.LogDebug("Grey Prince nail slam collider fixed");
+			LogDebug("Grey Prince nail slam collider fixed");
 		}
 	}
 

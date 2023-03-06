@@ -14,7 +14,7 @@ public sealed class ForceGreyPrinceEnterType : Module {
 				() => fsm.GetVariable<FsmBool>("Faced Zote").Value = gpzEnterType
 			);
 
-			Logger.LogDebug("Grey Prince enter type modified");
+			LogDebug("Grey Prince enter type modified");
 		}
 	);
 

@@ -23,6 +23,6 @@ public sealed class CarefreeMelodyReset : Module {
 		}
 
 		HeroControllerR.hitsSinceShielded = 7;
-		Logger.LogDebug("Carefree Melody hit count reset to max");
+		LogDebug("Carefree Melody hit count reset to max");
 	}
 }

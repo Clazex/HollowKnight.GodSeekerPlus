@@ -31,6 +31,6 @@ public sealed class InfiniteGrimmPufferfish : Module {
 		go.LocateMyFSM("Control")
 			.ChangeTransition("Out Pause", FsmEvent.Finished.Name, "Balloon Pos");
 
-		Logger.LogDebug("Grimm FSM modified");
+		LogDebug("Grimm FSM modified");
 	}
 }

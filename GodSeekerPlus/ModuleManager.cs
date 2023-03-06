@@ -13,12 +13,12 @@ internal static class ModuleManager {
 #if DEBUG
 		.Filter(type => {
 			if (type.GetConstructor(Type.EmptyTypes) == null) {
-				Logger.LogError($"Default constructor not found on module type {type.FullName}");
+				LogError($"Default constructor not found on module type {type.FullName}");
 				return false;
 			}
 
 			if (!type.IsSealed) {
-				Logger.LogWarn($"Module type {type.FullName} is not sealed");
+				LogWarn($"Module type {type.FullName} is not sealed");
 			}
 
 			return true;
@@ -27,7 +27,7 @@ internal static class ModuleManager {
 			try {
 				return (Activator.CreateInstance(type) as Module)!;
 			} catch {
-				Logger.LogError($"Failed to initialize module {type.FullName}");
+				LogError($"Failed to initialize module {type.FullName}");
 				return null!;
 			}
 		})

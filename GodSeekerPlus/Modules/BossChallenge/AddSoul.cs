@@ -24,7 +24,7 @@ public sealed class AddSoul : Module {
 
 		_ = Ref.HC.StartCoroutine(UpdateHUD());
 
-		Logger.LogDebug("Soul added");
+		LogDebug("Soul added");
 	}
 
 	private static IEnumerator UpdateHUD() {

@@ -21,7 +21,7 @@ public sealed class GodTamerBeastRollCollider : Module {
 		}) {
 			ModifyLobsterFSM(self);
 
-			Logger.LogDebug("God Tamer Beast roll collider fixed");
+			LogDebug("God Tamer Beast roll collider fixed");
 		}
 	}
 

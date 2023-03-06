@@ -53,16 +53,16 @@ public abstract class Module {
 			if (!Loaded) {
 				try {
 					Load();
-					Logger.LogDebug($"Activated module {Name}");
+					LogDebug($"Activated module {Name}");
 					Loaded = true;
 				} catch (Exception e) {
-					Logger.LogError($"Failed to activate module {Name} - {e}");
+					LogError($"Failed to activate module {Name} - {e}");
 				}
 			}
 		} else {
 			if (Loaded) {
 				Unload();
-				Logger.LogDebug($"Deactivated module {Name}");
+				LogDebug($"Deactivated module {Name}");
 				Loaded = false;
 			}
 		}

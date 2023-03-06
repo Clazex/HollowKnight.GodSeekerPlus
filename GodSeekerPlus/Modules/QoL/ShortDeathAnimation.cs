@@ -13,7 +13,7 @@ public sealed class ShortDeathAnimation : Module {
 
 		ModifyHeroDeathFSM(self.heroDeathPrefab.LocateMyFSM("Hero Death Anim"));
 
-		Logger.LogDebug("Hero Death FSM modified");
+		LogDebug("Hero Death FSM modified");
 	}
 
 	private void ModifyHeroDeathFSM(PlayMakerFSM fsm) => fsm.AddAction("Bursting",
