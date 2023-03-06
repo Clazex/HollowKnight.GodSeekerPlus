@@ -16,6 +16,9 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 
 	public override string GetVersion() => version.Value;
 
+	public override string GetMenuButtonText() =>
+		"ModName".Localize() + ' ' + Lang.Get("MAIN_OPTIONS", "MainMenu");
+
 	internal static bool satchelPresent = false;
 
 	static GodSeekerPlus() {
