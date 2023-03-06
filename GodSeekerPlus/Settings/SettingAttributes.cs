@@ -54,8 +54,9 @@ internal sealed class FloatOptionAttribute : OptionAttribute {
 	internal FloatOptionAttribute(float start, float stop, float step) {
 		List<float> options = new();
 
-		for (float i = start; i < stop; i += step) {
-			options.Add(i);
+		decimal decimalStop = (decimal) stop, decimalStep = (decimal) step;
+		for (decimal i = (decimal) start; i < decimalStop; i += decimalStep) {
+			options.Add(decimal.ToSingle(i));
 		}
 
 		options.Add(stop);
