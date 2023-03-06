@@ -5,6 +5,10 @@ public sealed class InfiniteChallenge : Module {
 	[BoolOption]
 	public static bool restartFightOnSuccess = false;
 
+	public static readonly List<string> returnScenes = new() {
+		"GG_Workshop"
+	};
+
 	private static BossSceneController.SetupEventDelegate? setupEvent;
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
@@ -35,7 +39,7 @@ public sealed class InfiniteChallenge : Module {
 	private static void RestartFight(On.GameManager.orig_BeginSceneTransition orig, GameManager self, GameManager.SceneLoadInfo info) {
 		string currentSceneName = self.sceneName;
 		if (
-			info.SceneName == "GG_Workshop"
+			returnScenes.Contains(info.SceneName)
 			&& setupEvent != null
 			&& (
 				Ref.HC.heroDeathPrefab.activeSelf // Death returning
@@ -69,7 +73,7 @@ public sealed class InfiniteChallenge : Module {
 	}
 
 	private static void Cleanup(Scene prev, Scene next) {
-		if (next.name == "GG_Workshop" || BossSequenceController.IsInSequence) {
+		if (BossSequenceController.IsInSequence || returnScenes.Contains(next.name)) {
 			setupEvent = null;
 		}
 	}

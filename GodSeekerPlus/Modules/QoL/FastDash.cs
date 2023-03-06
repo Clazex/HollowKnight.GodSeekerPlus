@@ -1,7 +1,7 @@
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class FastDash : Module {
-	private static readonly string[] sceneNames = new[] {
+	public static readonly List<string> sceneNames = new() {
 		"GG_Workshop",
 		"GG_Atrium",
 		"GG_Atrium_Roof"
