@@ -6,13 +6,11 @@ using Satchel.BetterMenus;
 
 namespace GodSeekerPlus.Settings;
 
-public abstract class SettingBase {
-	internal Dictionary<string, Dictionary<string, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)>> boolFields = null!;
-	internal Dictionary<string, Dictionary<string, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)>> intFields = null!;
-	internal Dictionary<string, Dictionary<string, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)>> floatFields = null!;
-}
+public abstract class SettingBase<TAttr> where TAttr : Attribute {
+	internal Dictionary<string, Dictionary<string, SettingInfo<bool>>> boolFields = null!;
+	internal Dictionary<string, Dictionary<string, SettingInfo<int>>> intFields = null!;
+	internal Dictionary<string, Dictionary<string, SettingInfo<float>>> floatFields = null!;
 
-public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 	public Dictionary<string, bool> booleans = null!;
 	public Dictionary<string, int> integers = null!;
 	public Dictionary<string, float> floats = null!;
@@ -71,7 +69,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 	internal IEnumerable<HorizontalOption> GetMenuOptions(string category) {
 		List<HorizontalOption> options = new();
 
-		if (this.boolFields.TryGetValue(category, out Dictionary<string, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)> boolFields)) {
+		if (this.boolFields.TryGetValue(category, out Dictionary<string, SettingInfo<bool>> boolFields)) {
 			foreach ((string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)) in boolFields) {
 				if (!isOption) {
 					continue;
@@ -95,7 +93,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 			}
 		}
 
-		if (this.intFields.TryGetValue(category, out Dictionary<string, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)> intFields)) {
+		if (this.intFields.TryGetValue(category, out Dictionary<string, SettingInfo<int>> intFields)) {
 			foreach ((string name, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)) in intFields) {
 				if (!isOption) {
 					continue;
@@ -111,7 +109,7 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 			}
 		}
 
-		if (this.floatFields.TryGetValue(category, out Dictionary<string, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)> floatFields)) {
+		if (this.floatFields.TryGetValue(category, out Dictionary<string, SettingInfo<float>> floatFields)) {
 			foreach ((string name, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)) in floatFields) {
 				if (!isOption) {
 					continue;
@@ -131,21 +129,40 @@ public abstract class SettingBase<TAttr> : SettingBase where TAttr : Attribute {
 	}
 
 
-	private static Dictionary<string, Dictionary<string, (FieldInfo fi, Func<TField> getter, Action<TField> setter, bool isOption)>> ProcessFields<TField>(FieldInfo[] fields) => fields
+	private static Dictionary<string, Dictionary<string, SettingInfo<TField>>> ProcessFields<TField>(FieldInfo[] fields) => fields
 		.Filter(fi => fi.FieldType == typeof(TField))
 		.Map(fi => {
 			(Func<TField> getter, Action<TField> setter) = fi.GetFastStaticAccessors<TField>();
-			return (fi, getter, setter);
+			return new SettingInfo<TField>() {
+				fi = fi,
+				setter = setter,
+				getter = getter,
+				isOption = Attribute.IsDefined(fi, typeof(OptionAttribute))
+			};
 		})
-		.GroupBy(tuple => {
-			_ = ModuleManager.TryGetModule(tuple.fi.DeclaringType, out Module? module);
+		.GroupBy(info => {
+			_ = ModuleManager.TryGetModule(info.fi.DeclaringType, out Module? module);
 			return module!.Category;
 		})
 		.ToDictionary(
 			group => group.Key,
 			group => group.ToDictionary(
-				tuple => tuple.fi.Name,
-				tuple => (tuple.fi, tuple.getter, tuple.setter, Attribute.IsDefined(tuple.fi, typeof(OptionAttribute)))
+				info => info.fi.Name,
+				info => info
 			)
 		);
+
+	public struct SettingInfo<T> {
+		public FieldInfo fi;
+		public Func<T> getter;
+		public Action<T> setter;
+		public bool isOption;
+
+		public void Deconstruct(out FieldInfo fi, out Func<T> getter, out Action<T> setter, out bool isOption) {
+			fi = this.fi;
+			getter = this.getter;
+			setter = this.setter;
+			isOption = this.isOption;
+		}
+	}
 }
