@@ -11,9 +11,9 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 	internal Dictionary<string, Dictionary<string, SettingInfo<int>>> intFields = null!;
 	internal Dictionary<string, Dictionary<string, SettingInfo<float>>> floatFields = null!;
 
-	public Dictionary<string, bool> booleans = null!;
-	public Dictionary<string, int> integers = null!;
-	public Dictionary<string, float> floats = null!;
+	public Dictionary<string, bool>? booleans;
+	public Dictionary<string, int>? integers;
+	public Dictionary<string, float>? floats;
 
 
 	[OnSerializing]
@@ -41,13 +41,13 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 	}
 
 	private void WriteFields() {
-		boolFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(booleans[pair.Key]));
-		intFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(integers[pair.Key]));
-		floatFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(floats[pair.Key]));
+		boolFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(booleans![pair.Key]));
+		intFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(integers![pair.Key]));
+		floatFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(floats![pair.Key]));
 
-		booleans.Clear();
-		integers.Clear();
-		floats.Clear();
+		booleans = null;
+		integers = null;
+		floats = null;
 	}
 
 

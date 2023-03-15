@@ -10,6 +10,9 @@ global using GlobalEnums;
 global using GodSeekerPlus.Settings;
 global using GodSeekerPlus.Utils;
 
+global using HKReflect;
+global using HKReflect.Static;
+
 global using HutongGames.PlayMaker;
 global using HutongGames.PlayMaker.Actions;
 
@@ -23,15 +26,15 @@ global using Osmi;
 global using Osmi.Game;
 global using Osmi.Utils;
 
-global using HKReflect;
-global using HKReflect.Static;
-
 global using Satchel;
 global using Satchel.Futils;
 
 global using UnityEngine;
 global using UnityEngine.EventSystems;
 global using UnityEngine.SceneManagement;
+
+global using static GodSeekerPlus.Utils.Logger;
+global using static HKReflect.Singletons;
 
 global using Module = GodSeekerPlus.Modules.Module;
 global using Logger = GodSeekerPlus.Utils.Logger;
@@ -40,6 +43,3 @@ global using ReflectionHelper = Modding.ReflectionHelper;
 global using InvokeMethod = Osmi.FsmActions.InvokeMethod;
 global using UObject = UnityEngine.Object;
 global using USceneManager = UnityEngine.SceneManagement.SceneManager;
-
-global using static GodSeekerPlus.Utils.Logger;
-global using static HKReflect.Singletons;
