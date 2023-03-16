@@ -1,3 +1,15 @@
+# [v0.23.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.23.0...v0.23.1) (2023-03-16)
+
+### Bug Fixes
+
+* modules enable settings not loaded  ([b54ca22](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/b54ca2205413c1d93e79ff7df2bf14bda82e9ab9))
+
+### Features
+
+* publicize some field ([731dcc5](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/731dcc54f1d09c3a988e28c718e74f0b78f2e06e))
+* use fody and hkreflect and drop hkmirror ([e3267ed](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e3267ed6576046372ddcdc5372c6c2ad200cc7ec))
+* use new menu button text api ([c465373](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/c465373480e378e56bd2ae3f6306421912d45d56))
+
 # [v0.23.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.22.0...v0.23.0) (2023-02-12)
 
 ### Bug Fixes
