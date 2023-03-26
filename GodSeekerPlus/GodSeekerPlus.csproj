@@ -124,14 +124,26 @@
 	</ItemGroup>
 
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
-		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb" DestinationFolder="$(HKModOutputPath)/$(TargetName)" SkipUnchangedFiles="true" />
+		<ItemGroup>
+			<OutputFiles Include="$(TargetDir)/*.*" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(HKModOutputPath)/$(TargetName)" />
 	</Target>
 
 	<Target Name="CreateReleaseZip" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
+		<ItemGroup>
+			<OutputFiles Include="$(TargetDir)/*.*" />
+			<OutputFiles Remove="$(TargetDir)/*.dll" />
+			<OutputFiles Include="$(TargetPath)" />
+			<OutputFiles Include="$(ProjectRoot)/README.md" />
+			<OutputFiles Include="$(ProjectRoot)/LICENSE" />
+		</ItemGroup>
+
 		<RemoveDir Directories="$(ProjectRoot)/dist" />
 		<MakeDir Directories="$(ProjectRoot)/dist/tmp" />
 
-		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(ProjectRoot)/README.md;$(ProjectRoot)/README.zh.md;$(ProjectRoot)/LICENSE" DestinationFolder="$(ProjectRoot)/dist/tmp" />
+		<Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(ProjectRoot)/dist/tmp" />
 		<ZipDirectory SourceDirectory="$(ProjectRoot)/dist/tmp" DestinationFile="$(ProjectRoot)/dist/$(TargetName)-v$(Version).zip" />
 
 		<RemoveDir Directories="$(ProjectRoot)/dist/tmp" />
