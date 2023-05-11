@@ -4,7 +4,7 @@ using Modding.Utils;
 
 namespace GodSeekerPlus;
 
-internal static class ModuleManager {
+public static class ModuleManager {
 	private static readonly Lazy<Dictionary<string, Module>> modules = new(() => Assembly
 		.GetExecutingAssembly()
 		.GetTypesSafely()
@@ -43,10 +43,9 @@ internal static class ModuleManager {
 
 	internal static void Unload() => Modules.Values.ForEach(module => module.Active = false);
 
-	public static bool TryGetModule<T>([NotNullWhen(true)] out T? module) where T : Module {
-		bool ret = TryGetModule(typeof(T).Name, out Module? m);
-		module = m as T;
-		return ret;
+	public static Module GetModule<T>() where T : Module {
+		_ = TryGetModule(typeof(T).Name, out Module? m);
+		return m!;
 	}
 
 	public static bool TryGetModule(Type type, [NotNullWhen(true)] out Module? module) =>
@@ -57,23 +56,23 @@ internal static class ModuleManager {
 		return module != null;
 	}
 
-	public static bool TryGetEnabledModule<T>([NotNullWhen(true)] out T? module) where T : Module {
-		bool ret = TryGetEnabledModule(typeof(T).Name, out Module? m);
+	public static bool TryGetLoadedModule<T>([NotNullWhen(true)] out T? module) where T : Module {
+		bool ret = TryGetLoadedModule(typeof(T).Name, out Module? m);
 		module = m as T;
 		return ret;
 	}
 
-	public static bool TryGetEnabledModule(Type type, [NotNullWhen(true)] out Module? module) =>
-		TryGetEnabledModule(type.Name, out module);
+	public static bool TryGetLoadedModule(Type type, [NotNullWhen(true)] out Module? module) =>
+		TryGetLoadedModule(type.Name, out module);
 
-	public static bool TryGetEnabledModule(string name, [NotNullWhen(true)] out Module? module) {
-		module = Modules.TryGetValue(name, out Module? m) && m.Enabled ? m : null;
+	public static bool TryGetLoadedModule(string name, [NotNullWhen(true)] out Module? module) {
+		module = Modules.TryGetValue(name, out Module? m) && m.Loaded ? m : null;
 		return module != null;
 	}
 
-	public static bool IsModuleEnabled<T>() => IsModuleEnabled(typeof(T).Name);
+	public static bool IsModuleLoaded<T>() where T : Module => TryGetLoadedModule<T>(out _);
 
-	public static bool IsModuleEnabled(Type type) => IsModuleEnabled(type.Name);
+	public static bool IsModuleLoaded(Type type) => TryGetLoadedModule(type, out _);
 
-	public static bool IsModuleEnabled(string name) => Modules.TryGetValue(name, out Module? m) && m.Enabled;
+	public static bool IsModuleLoaded(string name) => TryGetLoadedModule(name, out _);
 }

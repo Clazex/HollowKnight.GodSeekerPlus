@@ -287,7 +287,7 @@ public sealed class SegmentedP5 : Module {
 
 				BossSequenceController.ApplyBindings();
 
-				if (ModuleManager.IsModuleEnabled<ActivateFury>()) {
+				if (ModuleManager.IsModuleLoaded<ActivateFury>()) {
 					BossSceneController.SetupEventDelegate oldSetupEvent = BossSceneController.SetupEvent;
 					BossSceneController.SetupEvent = self => {
 						oldSetupEvent(self);
@@ -296,7 +296,7 @@ public sealed class SegmentedP5 : Module {
 					};
 				}
 
-				if (ModuleManager.IsModuleEnabled<AddLifeblood>()) {
+				if (ModuleManager.IsModuleLoaded<AddLifeblood>()) {
 					AddLifeblood.Add();
 				}
 			};
