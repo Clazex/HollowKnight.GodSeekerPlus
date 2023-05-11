@@ -52,7 +52,12 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 						$"Categories/{group.Key}".Localize(),
 						group.Map(module => Blueprints.HorizontalBoolOption(
 							$"Modules/{module.Name}".Localize(),
-							$"ToggleableLevel/{module.ToggleableLevel}".Localize(),
+							module.Suppressed
+								? string.Format(
+									"Suppression".Localize(),
+									module.suppressorMap.Values.Distinct().Join(", ")
+								)
+								: $"ToggleableLevel/{module.ToggleableLevel}".Localize(),
 							(val) => module.Enabled = val,
 							() => module.Enabled
 						))

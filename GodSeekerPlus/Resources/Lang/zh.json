@@ -4,6 +4,7 @@
 	"SatchelNotFoundPrompt": "安装 Satchel >= v0.7.4 以获取完全菜单支持",
 	"ToggleButtonDesc": "开关本模组的全部效果",
 	"ResetModules": "将所有模块重置为默认状态",
+	"Suppression": "被 {0} 禁用。",
 	"ToggleableLevel/AnyTime": "",
 	"ToggleableLevel/ChangeScene": "切换场景以生效",
 	"ToggleableLevel/ReloadSave": "重新加载存档以生效",

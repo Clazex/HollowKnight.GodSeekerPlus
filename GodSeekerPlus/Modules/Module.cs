@@ -17,6 +17,10 @@ public abstract class Module {
 
 	public bool Loaded { get; private set; }
 
+	internal Dictionary<int, string> suppressorMap = new();
+
+	internal bool Suppressed => suppressorMap.Count > 0;
+
 	private bool enabled;
 
 	private bool active;
@@ -41,14 +45,14 @@ public abstract class Module {
 	}
 
 	internal bool Active {
-		get => active;
+		get => active && !Suppressed;
 		set {
 			active = value;
 			UpdateStatus();
 		}
 	}
 
-	private void UpdateStatus() {
+	internal void UpdateStatus() {
 		if (Active && Enabled) {
 			if (!Loaded) {
 				try {

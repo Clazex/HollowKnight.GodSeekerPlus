@@ -39,6 +39,9 @@ public static class ModuleManager {
 
 	internal static Dictionary<string, Module> Modules => modules.Value;
 
+	internal static readonly Dictionary<int, (string suppressor, Module[] modules)> suppressions = new();
+	private static int lastSuppressionHandle = 0;
+
 	internal static void Load() => Modules.Values.ForEach(module => module.Active = true);
 
 	internal static void Unload() => Modules.Values.ForEach(module => module.Active = false);
@@ -75,4 +78,46 @@ public static class ModuleManager {
 	public static bool IsModuleLoaded(Type type) => TryGetLoadedModule(type, out _);
 
 	public static bool IsModuleLoaded(string name) => TryGetLoadedModule(name, out _);
+
+
+	public static int SuppressModules(string suppressor, params Module[] modules) {
+		int handle = ++lastSuppressionHandle;
+
+		suppressions.Add(handle, (suppressor, modules));
+
+		foreach (Module module in modules) {
+			module.suppressorMap.Add(handle, suppressor);
+			module.UpdateStatus();
+		}
+
+		Log(suppressor + " starts to suppress modules " + modules.Map(m => m.Name).Join(", ") + " with handle " + handle);
+
+		return handle;
+	}
+
+	public static int SuppressModule<T>(string suppressor) where T : Module =>
+		SuppressModules(suppressor, GetModule<T>());
+
+	public static int SuppressModules(string suppressor, params string[] modules) =>
+		SuppressModules(suppressor, modules.Map(name => TryGetModule(name, out Module? m)
+			? m
+			: throw new InvalidOperationException("Unknown module " + name)
+		).ToArray());
+
+	public static void CancelSuppression(int handle) {
+		if (!suppressions.TryGetValue(handle, out (string suppressor, Module[] modules) suppression)) {
+			LogError("Failed attempt to end unknown suppresion with handle " + handle);
+			return;
+		}
+
+		_ = suppressions.Remove(handle);
+		(string suppressor, Module[] modules) = suppression;
+
+		foreach (Module module in modules) {
+			_ = module.suppressorMap.Remove(handle);
+			module.UpdateStatus();
+		}
+
+		Log(suppressor + " end to suppress modules " + modules.Map(m => m.Name).Join(", ") + " with handle " + handle);
+	}
 }

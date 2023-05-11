@@ -4,6 +4,7 @@
 	"SatchelNotFoundPrompt": "Install Satchel >= v0.7.4 for full menu support",
 	"ToggleButtonDesc": "Toggle all effects of this mod",
 	"ResetModules": "Reset all modules to default state",
+	"Suppression": "Suppressed by {0}.",
 	"ToggleableLevel/AnyTime": "",
 	"ToggleableLevel/ChangeScene": "Change scene to apply change",
 	"ToggleableLevel/ReloadSave": "Reload the save to apply change",
