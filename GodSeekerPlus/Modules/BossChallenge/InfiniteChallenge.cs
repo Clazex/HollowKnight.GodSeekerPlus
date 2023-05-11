@@ -5,8 +5,8 @@ public sealed class InfiniteChallenge : Module {
 	[BoolOption]
 	public static bool restartFightOnSuccess = false;
 
-	public static readonly List<string> returnScenes = new() {
-		"GG_Workshop"
+	public static readonly List<Func<GameManager.SceneLoadInfo, bool>> returnScenePredicates = new() {
+		(info) => info.SceneName is "GG_Workshop"
 	};
 
 	private static BossSceneController.SetupEventDelegate? setupEvent;
@@ -17,7 +17,6 @@ public sealed class InfiniteChallenge : Module {
 		On.BossSceneController.Awake += RecordSetupEvent;
 		// ModHooks.BeforeSceneLoadHook doesn't support editing entry gate
 		On.GameManager.BeginSceneTransition += RestartFight;
-		OsmiHooks.SceneChangeHook += Cleanup;
 	}
 
 	private protected override void Unload() {
@@ -25,7 +24,6 @@ public sealed class InfiniteChallenge : Module {
 
 		On.BossSceneController.Awake -= RecordSetupEvent;
 		On.GameManager.BeginSceneTransition -= RestartFight;
-		OsmiHooks.SceneChangeHook -= Cleanup;
 	}
 
 	private static void RecordSetupEvent(On.BossSceneController.orig_Awake orig, BossSceneController self) {
@@ -39,8 +37,9 @@ public sealed class InfiniteChallenge : Module {
 	private static void RestartFight(On.GameManager.orig_BeginSceneTransition orig, GameManager self, GameManager.SceneLoadInfo info) {
 		string currentSceneName = self.sceneName;
 		if (
-			returnScenes.Contains(info.SceneName)
+			BossSceneController.IsBossScene
 			&& setupEvent != null
+			&& returnScenePredicates.Any((predicate) => predicate.Invoke(info))
 			&& (
 				Ref.HC.heroDeathPrefab.activeSelf // Death returning
 				|| ( // Success returning
@@ -50,7 +49,6 @@ public sealed class InfiniteChallenge : Module {
 			)
 		) {
 			BossSceneController.SetupEvent = setupEvent;
-			setupEvent = null;
 			StaticVariableList.SetValue("finishedBossReturning", false);
 
 			_ = GlobalCoroutineExecutor.Start(DelayedEnableRenderer());
@@ -62,6 +60,7 @@ public sealed class InfiniteChallenge : Module {
 			info.EntryGateName = "door_dreamEnter";
 		}
 
+		setupEvent = null;
 		orig(self, info);
 	}
 
@@ -70,11 +69,5 @@ public sealed class InfiniteChallenge : Module {
 		yield return new WaitWhile(() => Ref.GM.IsInSceneTransition);
 
 		Ref.HC.EnableRenderer();
-	}
-
-	private static void Cleanup(Scene prev, Scene next) {
-		if (BossSequenceController.IsInSequence || returnScenes.Contains(next.name)) {
-			setupEvent = null;
-		}
 	}
 }
