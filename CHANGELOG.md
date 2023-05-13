@@ -1,3 +1,11 @@
+# [v0.24.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.23.1...v0.24.0) (2023-05-13)
+
+### Features
+
+* mod interop export ([bd8420b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/bd8420b806ddc50dd57541aa2fc7e5e8de6d7021))
+* module suppression ([9a761e5](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/9a761e5bcdc7bb234f40605236e4e958161025e7))
+* publicize module manager ([b4234cc](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/b4234ccc68840016205dd721b034384055bb5a95))
+
 # [v0.23.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.23.0...v0.23.1) (2023-03-16)
 
 ### Bug Fixes
