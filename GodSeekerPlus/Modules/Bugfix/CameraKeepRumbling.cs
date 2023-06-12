@@ -18,7 +18,7 @@ public sealed class CameraKeepRumbling : Module {
 	) {
 		yield return orig(self, forceDirect);
 
-		if (Ref.GM.sm.mapZone == MapZone.GODS_GLORY) {
+		if (Ref.GM.GetCurrentMapZone() == MapZone.GODS_GLORY.ToString()) {
 			Ref.GC.cameraShakeFSM.SendEvent("LEVEL LOADED");
 			LogDebug("Try resetting camera shake");
 		}
