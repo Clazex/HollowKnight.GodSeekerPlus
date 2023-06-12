@@ -1,8 +1,8 @@
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class FastDash : Module {
-	public static readonly List<Func<Scene, bool>> predicates = new() {
-		(scene) => scene.name is "GG_Workshop" or "GG_Atrium" or "GG_Atrium_Roof"
+	public static readonly List<Func<Scene, Scene, bool>> predicates = new() {
+		(prev, next) => next.name is "GG_Workshop" or "GG_Atrium" or "GG_Atrium_Roof"
 	};
 
 	public override bool DefaultEnabled => true;
@@ -19,7 +19,7 @@ public sealed class FastDash : Module {
 	private static void HookDash(Scene prev, Scene next) {
 		On.HeroController.HeroDash -= CancelCooldown;
 
-		if (predicates.Any(predicate => predicate.Invoke(next))) {
+		if (predicates.Any(predicate => predicate.Invoke(prev, next))) {
 			On.HeroController.HeroDash += CancelCooldown;
 		}
 	}

@@ -13,7 +13,7 @@ public static class Exports {
 	public static void CancelSuppression(int handle) =>
 		ModuleManager.CancelSuppression(handle);
 
-	public static void AddFastDashPredicate(Func<Scene, bool> predicate) =>
+	public static void AddFastDashPredicate(Func<Scene, Scene, bool> predicate) =>
 		FastDash.predicates.Add(predicate);
 
 	public static void AddInfiniteChallengeReturnScenePredicate(Func<GameManager.SceneLoadInfo, bool> predicate) =>
