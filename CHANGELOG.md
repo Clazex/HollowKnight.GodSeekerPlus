@@ -1,3 +1,10 @@
+# [v0.24.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.24.0...v0.24.1) (2023-06-12)
+
+### Bug Fixes
+
+* include prev scene ([10407f6](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/10407f6dbe28eab31200cf2cc8883bad81aad59f))
+* register interop earlier ([894598b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/894598ba42e39489e72972f6d63662429ba583c1))
+
 # [v0.24.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.23.1...v0.24.0) (2023-05-13)
 
 ### Features
