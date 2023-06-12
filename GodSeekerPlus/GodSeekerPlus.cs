@@ -26,6 +26,8 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 	internal static bool satchelPresent = false;
 
 	static GodSeekerPlus() {
+		typeof(Exports).ModInterop();
+
 		try {
 			DetectSatchel();
 		} catch (System.IO.FileNotFoundException) {
@@ -41,8 +43,6 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 			LogWarn("Attempting to initialize multiple times, operation rejected");
 			return;
 		}
-
-		typeof(Exports).ModInterop();
 
 		Active = true;
 
