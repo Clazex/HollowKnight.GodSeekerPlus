@@ -1,7 +1,7 @@
 namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class FastDash : Module {
-	public static readonly List<Func<Scene, Scene, bool>> predicates = new() {
+	public static readonly HashSet<Func<Scene, Scene, bool>> predicates = new() {
 		(prev, next) => next.name is "GG_Workshop" or "GG_Atrium" or "GG_Atrium_Roof"
 	};
 
