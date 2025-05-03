@@ -32,7 +32,7 @@ public abstract class Module {
 		Category = Type.FullName
 			.StripStart($"{nameof(GodSeekerPlus)}.{nameof(Modules)}.")
 			.StripEnd($".{Name}")
-		?? nameof(Misc);
+			?? nameof(Misc);
 		enabled = DefaultEnabled;
 	}
 

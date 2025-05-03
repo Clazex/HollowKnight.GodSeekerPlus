@@ -1,6 +1,5 @@
 {
 	"ModName": "Godseeker +",
-	"Settings": "Options",
 	"SatchelNotFoundPrompt": "Install Satchel >= v0.7.4 for full menu support",
 	"ToggleButtonDesc": "Toggle all effects of this mod",
 	"ResetModules": "Reset all modules to default state",
@@ -64,6 +63,7 @@
 	"Modules/UnlockRadiance": "Unlock Radiance",
 	"Modules/UnlockRadiant": "Unlock Radiant",
 	"Modules/UseOwnMusic": "Use Own Music (WIP)",
+	"BelongsToModule": "Module: ",
 	"Settings/fastSuperDashSpeedMultiplier": "Fast Super Dash Speed Multiplier",
 	"Settings/gpzEnterType": "GPZ Enter Type",
 	"Settings/gpzEnterType/Long": "Long",

@@ -1,6 +1,5 @@
 {
 	"ModName": "寻神者 +",
-	"Settings": "选项",
 	"SatchelNotFoundPrompt": "安装 Satchel >= v0.7.4 以获取完全菜单支持",
 	"ToggleButtonDesc": "开关本模组的全部效果",
 	"ResetModules": "将所有模块重置为默认状态",
@@ -64,6 +63,7 @@
 	"Modules/UnlockRadiance": "解锁辐光",
 	"Modules/UnlockRadiant": "解锁辐辉",
 	"Modules/UseOwnMusic": "使用自身音乐（WIP）",
+	"BelongsToModule": "模块：",
 	"Settings/fastSuperDashSpeedMultiplier": "快速超级冲刺速度倍率",
 	"Settings/gpzEnterType": "灰色王子入场类型",
 	"Settings/gpzEnterType/Long": "长",

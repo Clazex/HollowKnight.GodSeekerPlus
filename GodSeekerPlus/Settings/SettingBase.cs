@@ -77,6 +77,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 	internal IEnumerable<HorizontalOption> GetMenuOptions(string category) {
 		List<HorizontalOption> options = new();
+		string descPrefix = "BelongsToModule".Localize();
 
 		if (this.boolFields.TryGetValue(category, out Dictionary<string, SettingInfo<bool>> boolFields)) {
 			foreach ((string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)) in boolFields) {
@@ -86,7 +87,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 				options.Add(Blueprints.HorizontalBoolOption(
 					$"Settings/{name}".Localize(),
-					$"Modules/{fi.DeclaringType.Name}".Localize(),
+					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
 					setter,
 					getter
 				));
@@ -101,7 +102,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
-					$"Modules/{fi.DeclaringType.Name}".Localize(),
+					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
 					fi.GetCustomAttribute<IntOptionAttribute>().Options,
 					setter,
 					getter
@@ -117,7 +118,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
-					$"Modules/{fi.DeclaringType.Name}".Localize(),
+					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
 					fi.GetCustomAttribute<FloatOptionAttribute>().Options,
 					setter,
 					getter
@@ -133,7 +134,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
-					$"Modules/{fi.DeclaringType.Name}".Localize(),
+					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
 					Enum.GetValues(fi.FieldType).Cast<object>().Map((val) => new EnumWrapper(name, fi.FieldType, val)).ToArray(),
 					(val) => setter(val.Value),
 					() => new EnumWrapper(name, fi.FieldType, getter())
