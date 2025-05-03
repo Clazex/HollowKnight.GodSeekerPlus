@@ -70,14 +70,14 @@ public sealed class InfiniteRadianceClimbing : Module {
 
 		fsm.InsertAction("Set Arena 1", new InvokeCoroutine(TeleportSetup), 0);
 
-		FsmState spawnPlatsState = fsm.GetState("Climb Plats1");
+		FsmState spawnPlatsState = fsm.GetValidState("Climb Plats1");
 		spawnPlatsState.Actions = new[] {
 			spawnPlatsState.Actions[2], // Spawn plats
 			new InvokeMethod(() => fsm.gameObject.manageHealth(int.MaxValue))
 		};
 		(spawnPlatsState.Actions[0] as SendEventByName)!.delay = 0;
 
-		FsmState screamState = fsm.GetState("Scream");
+		FsmState screamState = fsm.GetValidState("Scream");
 		screamState.Actions = new[] {
 			screamState.Actions[0], // Play audio clip
 			new InvokeMethod(() => rewindCoro ??= radCtrl!.StartCoroutine(Rewind())),

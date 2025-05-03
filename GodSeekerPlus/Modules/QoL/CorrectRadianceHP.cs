@@ -44,7 +44,7 @@ public sealed class CorrectRadianceHP : Module {
 
 	private static void ModifyAbsRadPhaseHP(PlayMakerFSM fsm) {
 		if (fsm.FsmName == "Control") {
-			fsm.GetState("Scream").Actions
+			fsm.GetValidState("Scream").Actions
 				.OfType<SetHP>().First()
 				.hp.Value += shift;
 			fsm.GetVariable<FsmInt>("Death HP").Value += shift;
