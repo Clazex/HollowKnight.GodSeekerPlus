@@ -11,7 +11,7 @@
 		<PackageProjectUrl>https://github.com/Clazex/HollowKnight.GodSeekerPlus#readme</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Clazex/HollowKnight.GodSeekerPlus</RepositoryUrl>
 
-		<LangVersion>10.0</LangVersion>
+		<LangVersion>12.0</LangVersion>
 		<TargetFramework>net472</TargetFramework>
 		<DebugType>portable</DebugType>
 		<RootNamespace>GodSeekerPlus</RootNamespace>
