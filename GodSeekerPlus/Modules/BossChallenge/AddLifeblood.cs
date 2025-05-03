@@ -24,10 +24,20 @@ public sealed class AddLifeblood : Module {
 	}
 
 	internal static void Add() {
+		FixBlueHealthFSM();
+
 		for (int i = 0; i < lifebloodAmount; i++) {
 			EventRegister.SendEvent("ADD BLUE HEALTH");
 		}
 
 		LogDebug("Lifeblood added");
+	}
+
+	// Fix for Toggleable Bindings Shell Binding bug.
+	private static void FixBlueHealthFSM() {
+		PlayMakerFSM fsm = Ref.GC.hudCanvas.Child("Health")!.LocateMyFSM("Blue Health Control");
+		if (fsm.ActiveStateName == "Wait") {
+			fsm.SendEvent("LAST HP ADDED");
+		}
 	}
 }
