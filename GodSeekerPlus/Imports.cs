@@ -36,10 +36,10 @@ global using UnityEngine.SceneManagement;
 global using static GodSeekerPlus.Utils.Logger;
 global using static HKReflect.Singletons;
 
-global using Module = GodSeekerPlus.Modules.Module;
-global using Logger = GodSeekerPlus.Utils.Logger;
-global using Lang = Language.Language;
-global using ReflectionHelper = Modding.ReflectionHelper;
 global using InvokeMethod = Osmi.FsmActions.InvokeMethod;
+global using Lang = Language.Language;
+global using Logger = GodSeekerPlus.Utils.Logger;
+global using Module = GodSeekerPlus.Modules.Module;
+global using ReflectionHelper = Modding.ReflectionHelper;
 global using UObject = UnityEngine.Object;
 global using USceneManager = UnityEngine.SceneManagement.SceneManager;

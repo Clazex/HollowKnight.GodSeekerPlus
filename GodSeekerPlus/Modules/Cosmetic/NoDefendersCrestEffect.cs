@@ -41,7 +41,7 @@ public sealed class NoDefendersCrestEffect : Module {
 
 	private void ModifyNew(On.HeroController.orig_Start orig, HeroController self) {
 		orig(self);
-		ModifyParticle(self, ModuleManager.IsModuleLoaded<NoDefendersCrestEffect>());
+		ModifyParticle(self, true);
 	}
 
 	private GameObject ModifyCloud(On.ObjectPool.orig_Spawn_GameObject_Transform_Vector3_Quaternion orig, GameObject prefab, Transform parent, Vector3 position, Quaternion rotation) {
@@ -61,7 +61,7 @@ public sealed class NoDefendersCrestEffect : Module {
 	}
 
 	private class CloudMarker : MonoBehaviour {
-		public static HashSet<CloudMarker> list = new();
+		public static HashSet<CloudMarker> list = [];
 
 		public void Awake() => list.Add(this);
 

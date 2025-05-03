@@ -39,7 +39,7 @@ public static class ModuleManager {
 
 	internal static Dictionary<string, Module> Modules => modules.Value;
 
-	internal static readonly Dictionary<int, (string suppressor, Module[] modules)> suppressions = new();
+	internal static readonly Dictionary<int, (string suppressor, Module[] modules)> suppressions = [];
 	private static int lastSuppressionHandle = 0;
 
 	internal static void Load() => Modules.Values.ForEach(module => module.Active = true);

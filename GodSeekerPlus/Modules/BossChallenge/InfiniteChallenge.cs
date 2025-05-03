@@ -5,9 +5,9 @@ public sealed class InfiniteChallenge : Module {
 	[BoolOption]
 	public static bool restartFightOnSuccess = false;
 
-	public static readonly HashSet<Func<GameManager.SceneLoadInfo, bool>> returnScenePredicates = new() {
+	public static readonly HashSet<Func<GameManager.SceneLoadInfo, bool>> returnScenePredicates = [
 		(info) => info.SceneName is "GG_Workshop"
-	};
+	];
 
 	private static BossSceneController.SetupEventDelegate? setupEvent;
 

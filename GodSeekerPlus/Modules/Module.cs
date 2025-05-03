@@ -17,7 +17,7 @@ public abstract class Module {
 
 	public bool Loaded { get; private set; }
 
-	internal Dictionary<int, string> suppressorMap = new();
+	internal Dictionary<int, string> suppressorMap = [];
 
 	internal bool Suppressed => suppressorMap.Count > 0;
 

@@ -51,7 +51,7 @@ public sealed class CrossingOoma : Module {
 	}
 
 	private sealed class JellyMarker : MonoBehaviour {
-		internal static HashSet<JellyMarker> markers = new();
+		internal static HashSet<JellyMarker> markers = [];
 
 		private void Awake() => markers.Add(this);
 

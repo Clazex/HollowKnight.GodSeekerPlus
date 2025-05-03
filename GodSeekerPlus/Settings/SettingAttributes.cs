@@ -35,7 +35,7 @@ internal sealed class IntOptionAttribute : OptionAttribute {
 	internal OptionType Type { get; private init; } = OptionType.Option;
 
 	internal IntOptionAttribute(int start, int stop, int step = 1) {
-		List<int> options = new();
+		List<int> options = [];
 
 		for (int i = start; i < stop; i += step) {
 			options.Add(i);
@@ -61,7 +61,7 @@ internal sealed class FloatOptionAttribute : OptionAttribute {
 	internal OptionType Type { get; private init; } = OptionType.Option;
 
 	internal FloatOptionAttribute(float start, float stop, float step) {
-		List<float> options = new();
+		List<float> options = [];
 
 		decimal decimalStop = (decimal) stop, decimalStep = (decimal) step;
 		for (decimal i = (decimal) start; i < decimalStop; i += decimalStep) {

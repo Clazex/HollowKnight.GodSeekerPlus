@@ -208,9 +208,9 @@ public sealed class SegmentedP5 : Module {
 		#region Setup UI event
 
 		EventTrigger eventTrigger = selectBtn.GetComponent<EventTrigger>();
-		eventTrigger.triggers = new() {
+		eventTrigger.triggers = [
 			eventTrigger.triggers[1]
-		};
+		];
 
 		MenuButton selectMenuBtn = selectBtn.GetComponent<MenuButton>();
 		selectMenuBtn.buttonType = MenuButton.MenuButtonType.CustomSubmit;

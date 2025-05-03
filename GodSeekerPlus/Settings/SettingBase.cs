@@ -76,7 +76,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 	}
 
 	internal IEnumerable<Element> GetMenuElements(string category) {
-		List<Element> options = new();
+		List<Element> options = [];
 		string descPrefix = "BelongsToModule".Localize();
 
 		if (this.boolFields.TryGetValue(category, out Dictionary<string, SettingInfo<bool>> boolFields)) {
