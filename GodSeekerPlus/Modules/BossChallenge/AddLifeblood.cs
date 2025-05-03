@@ -2,7 +2,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 
 public sealed class AddLifeblood : Module {
 	[GlobalSetting]
-	[IntOption(0, 35)]
+	[IntOption(0, 35, OptionType.Slider)]
 	public static int lifebloodAmount = 5;
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;

@@ -61,7 +61,7 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 							(val) => module.Enabled = val,
 							() => module.Enabled
 						))
-						.Concat(Setting.Global.GetMenuOptions(group.Key))
+						.Concat(Setting.Global.GetMenuElements(group.Key))
 						.ToArray()
 					).GetMenuScreen(menu.menuScreen)
 				))

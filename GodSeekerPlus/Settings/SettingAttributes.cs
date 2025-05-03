@@ -13,6 +13,12 @@ public sealed class LocalSettingAttribute : Attribute {
 }
 
 [PublicAPI]
+public enum OptionType {
+	Option,
+	Slider,
+}
+
+[PublicAPI]
 [AttributeUsage(AttributeTargets.Field)]
 internal abstract class OptionAttribute : Attribute {
 }
@@ -26,6 +32,7 @@ internal sealed class BoolOptionAttribute : OptionAttribute {
 [AttributeUsage(AttributeTargets.Field)]
 internal sealed class IntOptionAttribute : OptionAttribute {
 	internal int[] Options { get; private init; }
+	internal OptionType Type { get; private init; } = OptionType.Option;
 
 	internal IntOptionAttribute(int start, int stop, int step = 1) {
 		List<int> options = new();
@@ -39,6 +46,11 @@ internal sealed class IntOptionAttribute : OptionAttribute {
 		Options = options.ToArray();
 	}
 
+	internal IntOptionAttribute(int start, int stop, OptionType type) {
+		Options = new[] { start, stop };
+		Type = type;
+	}
+
 	internal IntOptionAttribute(params int[] options) => Options = options;
 }
 
@@ -46,6 +58,7 @@ internal sealed class IntOptionAttribute : OptionAttribute {
 [AttributeUsage(AttributeTargets.Field)]
 internal sealed class FloatOptionAttribute : OptionAttribute {
 	internal float[] Options { get; private init; }
+	internal OptionType Type { get; private init; } = OptionType.Option;
 
 	internal FloatOptionAttribute(float start, float stop, float step) {
 		List<float> options = new();
@@ -58,6 +71,11 @@ internal sealed class FloatOptionAttribute : OptionAttribute {
 		options.Add(stop);
 
 		Options = options.ToArray();
+	}
+
+	internal FloatOptionAttribute(float start, float stop, OptionType type) {
+		Options = new[] { start, stop };
+		Type = type;
 	}
 
 	internal FloatOptionAttribute(params float[] options) => Options = options;

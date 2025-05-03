@@ -75,8 +75,8 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		ReadFields();
 	}
 
-	internal IEnumerable<HorizontalOption> GetMenuOptions(string category) {
-		List<HorizontalOption> options = new();
+	internal IEnumerable<Element> GetMenuElements(string category) {
+		List<Element> options = new();
 		string descPrefix = "BelongsToModule".Localize();
 
 		if (this.boolFields.TryGetValue(category, out Dictionary<string, SettingInfo<bool>> boolFields)) {
@@ -100,13 +100,24 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 					continue;
 				}
 
-				options.Add(Blueprints.GenericHorizontalOption(
-					$"Settings/{name}".Localize(),
-					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
-					attr.Options,
-					setter,
-					getter
-				));
+				options.Add(attr.Type switch {
+					OptionType.Option => Blueprints.GenericHorizontalOption(
+						$"Settings/{name}".Localize(),
+						descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
+						attr.Options,
+						setter,
+						getter
+					),
+					OptionType.Slider => new CustomSlider(
+						$"Settings/{name}".Localize(),
+						(val) => setter((int) val),
+						() => getter(),
+						attr.Options.First(),
+						attr.Options.Last(),
+						true
+					),
+					_ => throw new NotImplementedException()
+				});
 			}
 		}
 
@@ -116,13 +127,24 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 					continue;
 				}
 
-				options.Add(Blueprints.GenericHorizontalOption(
-					$"Settings/{name}".Localize(),
-					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
-					attr.Options,
-					setter,
-					getter
-				));
+				options.Add(attr.Type switch {
+					OptionType.Option => Blueprints.GenericHorizontalOption(
+						$"Settings/{name}".Localize(),
+						descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
+						attr.Options,
+						setter,
+						getter
+					),
+					OptionType.Slider => new CustomSlider(
+						$"Settings/{name}".Localize(),
+						(val) => setter((int) val),
+						() => getter(),
+						attr.Options.First(),
+						attr.Options.Last(),
+						false
+					),
+					_ => throw new NotImplementedException()
+				});
 			}
 		}
 
