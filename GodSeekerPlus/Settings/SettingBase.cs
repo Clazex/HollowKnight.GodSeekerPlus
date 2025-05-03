@@ -70,7 +70,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		boolFields = ProcessFields<bool>(fields);
 		intFields = ProcessFields<int>(fields);
 		floatFields = ProcessFields<float>(fields);
-		enumFields = ProcessFields<Enum, object>(fields);
+		enumFields = ProcessFields<object, Enum>(fields);
 
 		ReadFields();
 	}
@@ -80,8 +80,8 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		string descPrefix = "BelongsToModule".Localize();
 
 		if (this.boolFields.TryGetValue(category, out Dictionary<string, SettingInfo<bool>> boolFields)) {
-			foreach ((string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter, bool isOption)) in boolFields) {
-				if (!isOption) {
+			foreach ((string name, (FieldInfo fi, Func<bool> getter, Action<bool> setter)) in boolFields) {
+				if (!Attribute.IsDefined(fi, typeof(BoolOptionAttribute))) {
 					continue;
 				}
 
@@ -95,15 +95,15 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		}
 
 		if (this.intFields.TryGetValue(category, out Dictionary<string, SettingInfo<int>> intFields)) {
-			foreach ((string name, (FieldInfo fi, Func<int> getter, Action<int> setter, bool isOption)) in intFields) {
-				if (!isOption) {
+			foreach ((string name, (FieldInfo fi, Func<int> getter, Action<int> setter)) in intFields) {
+				if (fi.GetCustomAttribute<IntOptionAttribute>() is not IntOptionAttribute attr) {
 					continue;
 				}
 
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
 					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
-					fi.GetCustomAttribute<IntOptionAttribute>().Options,
+					attr.Options,
 					setter,
 					getter
 				));
@@ -111,15 +111,15 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		}
 
 		if (this.floatFields.TryGetValue(category, out Dictionary<string, SettingInfo<float>> floatFields)) {
-			foreach ((string name, (FieldInfo fi, Func<float> getter, Action<float> setter, bool isOption)) in floatFields) {
-				if (!isOption) {
+			foreach ((string name, (FieldInfo fi, Func<float> getter, Action<float> setter)) in floatFields) {
+				if (fi.GetCustomAttribute<FloatOptionAttribute>() is not FloatOptionAttribute attr) {
 					continue;
 				}
 
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
 					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
-					fi.GetCustomAttribute<FloatOptionAttribute>().Options,
+					attr.Options,
 					setter,
 					getter
 				));
@@ -127,15 +127,17 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		}
 
 		if (this.enumFields.TryGetValue(category, out Dictionary<string, SettingInfo<object>> enumFields)) {
-			foreach ((string name, (FieldInfo fi, Func<object> getter, Action<object> setter, bool isOption)) in enumFields) {
-				if (!isOption) {
+			foreach ((string name, (FieldInfo fi, Func<object> getter, Action<object> setter)) in enumFields) {
+				if (!Attribute.IsDefined(fi, typeof(EnumOptionAttribute))) {
 					continue;
 				}
 
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
 					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
-					Enum.GetValues(fi.FieldType).Cast<object>().Map((val) => new EnumWrapper(name, fi.FieldType, val)).ToArray(),
+					Enum.GetValues(fi.FieldType).Cast<object>()
+						.Map((val) => new EnumWrapper(name, fi.FieldType, val))
+						.ToArray(),
 					(val) => setter(val.Value),
 					() => new EnumWrapper(name, fi.FieldType, getter())
 				));
@@ -148,18 +150,18 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 	private static Dictionary<string, Dictionary<string, SettingInfo<TField>>> ProcessFields<TField>(FieldInfo[] fields) =>
 		ProcessFields<TField, TField>(fields);
 
-	private static Dictionary<string, Dictionary<string, SettingInfo<TAs>>> ProcessFields<TField, TAs>(FieldInfo[] fields) => fields
-		.Filter(fi => fi.FieldType.IsSubclassOf(typeof(TField)))
+	private static Dictionary<string, Dictionary<string, SettingInfo<TField>>> ProcessFields<TField, TAs>(FieldInfo[] fields) => fields
+		.Filter(fi => typeof(TAs).IsAssignableFrom(fi.FieldType))
 		.Map(fi => {
 			_ = ModuleManager.TryGetModule(fi.DeclaringType, out Module? module);
 			return (module!, fi);
 		})
 		.Map((tuple) => {
 			(Module module, FieldInfo fi) = tuple;
-			(Func<TAs> getter, Action<TAs> setter) = fi.GetFastStaticAccessors<TAs>();
+			(Func<TField> getter, Action<TField> setter) = fi.GetFastStaticAccessors<TField>();
 			bool reloadOnUpdate = Attribute.IsDefined(fi, typeof(ReloadOnUpdateAttribute));
 
-			SettingInfo<TAs> info = new() {
+			SettingInfo<TField> info = new() {
 				fi = fi,
 				setter = reloadOnUpdate
 					? (val) => {
@@ -170,8 +172,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 						}
 					}
 				: setter,
-				getter = getter,
-				isOption = Attribute.IsDefined(fi, typeof(OptionAttribute))
+				getter = getter
 			};
 
 			return (module, info);
@@ -189,13 +190,11 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		public FieldInfo fi;
 		public Func<T> getter;
 		public Action<T> setter;
-		public bool isOption;
 
-		public void Deconstruct(out FieldInfo fi, out Func<T> getter, out Action<T> setter, out bool isOption) {
+		public void Deconstruct(out FieldInfo fi, out Func<T> getter, out Action<T> setter) {
 			fi = this.fi;
 			getter = this.getter;
 			setter = this.setter;
-			isOption = this.isOption;
 		}
 	}
 
