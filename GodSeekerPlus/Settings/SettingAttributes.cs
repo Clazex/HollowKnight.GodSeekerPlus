@@ -20,10 +20,6 @@ internal abstract class OptionAttribute : Attribute {
 [PublicAPI]
 [AttributeUsage(AttributeTargets.Field)]
 internal sealed class BoolOptionAttribute : OptionAttribute {
-	internal bool CustomText { get; private init; }
-
-	internal BoolOptionAttribute(bool customText = false) =>
-		CustomText = customText;
 }
 
 [PublicAPI]
@@ -65,4 +61,14 @@ internal sealed class FloatOptionAttribute : OptionAttribute {
 	}
 
 	internal FloatOptionAttribute(params float[] options) => Options = options;
+}
+
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Field)]
+internal sealed class EnumOptionAttribute : OptionAttribute {
+}
+
+[PublicAPI]
+[AttributeUsage(AttributeTargets.Field)]
+internal sealed class ReloadOnUpdateAttribute : Attribute {
 }

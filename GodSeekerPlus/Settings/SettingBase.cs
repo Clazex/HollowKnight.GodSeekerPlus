@@ -10,11 +10,12 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 	internal Dictionary<string, Dictionary<string, SettingInfo<bool>>> boolFields = null!;
 	internal Dictionary<string, Dictionary<string, SettingInfo<int>>> intFields = null!;
 	internal Dictionary<string, Dictionary<string, SettingInfo<float>>> floatFields = null!;
+	internal Dictionary<string, Dictionary<string, SettingInfo<object>>> enumFields = null!;
 
 	public Dictionary<string, bool>? booleans;
 	public Dictionary<string, int>? integers;
 	public Dictionary<string, float>? floats;
-
+	public Dictionary<string, object>? enums;
 
 	[OnSerializing]
 	public void OnBeforeSerialize(StreamingContext context) => ReadFields();
@@ -38,16 +39,23 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 			pair => pair.Key,
 			pair => pair.Value.getter.Invoke()
 		);
+
+		enums = enumFields.Values.Flatten().ToDictionary(
+			pair => pair.Key,
+			pair => pair.Value.getter.Invoke()
+		);
 	}
 
 	private void WriteFields() {
 		boolFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(booleans![pair.Key]));
 		intFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(integers![pair.Key]));
 		floatFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(floats![pair.Key]));
+		enumFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(enums![pair.Key]));
 
 		booleans = null;
 		integers = null;
 		floats = null;
+		enums = null;
 	}
 
 
@@ -62,6 +70,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		boolFields = ProcessFields<bool>(fields);
 		intFields = ProcessFields<int>(fields);
 		floatFields = ProcessFields<float>(fields);
+		enumFields = ProcessFields<Enum, object>(fields);
 
 		ReadFields();
 	}
@@ -75,16 +84,7 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 					continue;
 				}
 
-				BoolOptionAttribute optionAttr = fi.GetCustomAttribute<BoolOptionAttribute>();
-
-				options.Add(optionAttr.CustomText ? Blueprints.HorizontalBoolOption(
-					$"Settings/{name}".Localize(),
-					$"Modules/{fi.DeclaringType.Name}".Localize(),
-					setter,
-					getter,
-					$"Settings/{name}/True".Localize(),
-					$"Settings/{name}/False".Localize()
-				) : Blueprints.HorizontalBoolOption(
+				options.Add(Blueprints.HorizontalBoolOption(
 					$"Settings/{name}".Localize(),
 					$"Modules/{fi.DeclaringType.Name}".Localize(),
 					setter,
@@ -125,30 +125,62 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 			}
 		}
 
+		if (this.enumFields.TryGetValue(category, out Dictionary<string, SettingInfo<object>> enumFields)) {
+			foreach ((string name, (FieldInfo fi, Func<object> getter, Action<object> setter, bool isOption)) in enumFields) {
+				if (!isOption) {
+					continue;
+				}
+
+				options.Add(Blueprints.GenericHorizontalOption(
+					$"Settings/{name}".Localize(),
+					$"Modules/{fi.DeclaringType.Name}".Localize(),
+					Enum.GetValues(fi.FieldType).Cast<object>().Map((val) => new EnumWrapper(name, fi.FieldType, val)).ToArray(),
+					(val) => setter(val.Value),
+					() => new EnumWrapper(name, fi.FieldType, getter())
+				));
+			}
+		}
+
 		return options;
 	}
 
+	private static Dictionary<string, Dictionary<string, SettingInfo<TField>>> ProcessFields<TField>(FieldInfo[] fields) =>
+		ProcessFields<TField, TField>(fields);
 
-	private static Dictionary<string, Dictionary<string, SettingInfo<TField>>> ProcessFields<TField>(FieldInfo[] fields) => fields
-		.Filter(fi => fi.FieldType == typeof(TField))
+	private static Dictionary<string, Dictionary<string, SettingInfo<TAs>>> ProcessFields<TField, TAs>(FieldInfo[] fields) => fields
+		.Filter(fi => fi.FieldType.IsSubclassOf(typeof(TField)))
 		.Map(fi => {
-			(Func<TField> getter, Action<TField> setter) = fi.GetFastStaticAccessors<TField>();
-			return new SettingInfo<TField>() {
+			_ = ModuleManager.TryGetModule(fi.DeclaringType, out Module? module);
+			return (module!, fi);
+		})
+		.Map((tuple) => {
+			(Module module, FieldInfo fi) = tuple;
+			(Func<TAs> getter, Action<TAs> setter) = fi.GetFastStaticAccessors<TAs>();
+			bool reloadOnUpdate = Attribute.IsDefined(fi, typeof(ReloadOnUpdateAttribute));
+
+			SettingInfo<TAs> info = new() {
 				fi = fi,
-				setter = setter,
+				setter = reloadOnUpdate
+					? (val) => {
+						setter(val);
+						if (module.Active) {
+							module.Active = false;
+							module.Active = true;
+						}
+					}
+				: setter,
 				getter = getter,
 				isOption = Attribute.IsDefined(fi, typeof(OptionAttribute))
 			};
+
+			return (module, info);
 		})
-		.GroupBy(info => {
-			_ = ModuleManager.TryGetModule(info.fi.DeclaringType, out Module? module);
-			return module!.Category;
-		})
+		.GroupBy((tuple) => tuple.module.Category)
 		.ToDictionary(
 			group => group.Key,
 			group => group.ToDictionary(
-				info => info.fi.Name,
-				info => info
+				tuple => tuple.info.fi.Name,
+				tuple => tuple.info
 			)
 		);
 
@@ -164,5 +196,27 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 			setter = this.setter;
 			isOption = this.isOption;
 		}
+	}
+
+	public class EnumWrapper : IFormattable {
+		public string Name { get; private init; }
+		public string Variant { get; private init; }
+		public object Value { get; private init; }
+
+		public EnumWrapper(string name, Type enumType, object value) {
+			Name = name;
+			Variant = Enum.GetName(enumType, value);
+			Value = value;
+		}
+
+		public override bool Equals(object obj) =>
+			obj is EnumWrapper other && other.Value.Equals(Value);
+
+		// This is unused, just for suppressing the warning.
+		public override int GetHashCode() => Value.GetHashCode();
+
+		public override string ToString() => $"Settings/{Name}/{Variant}".Localize();
+
+		string IFormattable.ToString(string format, IFormatProvider formatProvider) => ToString();
 	}
 }
