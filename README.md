@@ -36,6 +36,7 @@ Compatible with `Hollow Knight` 1.5.
 
 - **Cosmetic**:
   + **More Pantheon Caps**: Enable the unused no hit cap for Pantheons 1 to 4, and add a new special effect for all pantheons indicating completed once no hit with all bindings.
+  + **No Defender's Crest Effect**: Remove Defender's Crest's trail effect, optionally including clouds.
   + **No Fury Effect**: Remove the red effect around the screen when the Fury of Fallen is activated.
   + **No Low Health Effect**: Remove all low health related effects.
   + **Use Own Music (WIP)**: Let bosses in pantheons use their own music as in Hall of Gods. (WIP, P1 only)
