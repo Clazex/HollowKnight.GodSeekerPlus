@@ -18,15 +18,14 @@ public sealed class MorePantheonCaps : Module {
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
-	private protected override void Load() {
-		On.BossSequenceDoor.Start += SetupCaps;
+	public MorePantheonCaps() =>
 		On.BossDoorChallengeCompleteUI.Start += RecordRAB;
-	}
 
-	private protected override void Unload() {
+	private protected override void Load() =>
+		On.BossSequenceDoor.Start += SetupCaps;
+
+	private protected override void Unload() =>
 		On.BossSequenceDoor.Start -= SetupCaps;
-		On.BossDoorChallengeCompleteUI.Start -= RecordRAB;
-	}
 
 	private static void SetupCaps(On.BossSequenceDoor.orig_Start orig, BossSequenceDoor self) {
 		if (self.bossSequence != null) {
