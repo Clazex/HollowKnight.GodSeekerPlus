@@ -127,6 +127,8 @@
 	<Target Name="CopyMod" AfterTargets="PostBuildEvent">
 		<ItemGroup>
 			<OutputFiles Include="$(TargetDir)/*.*" />
+			<OutputFiles Remove="$(TargetDir)/*.dll" />
+			<OutputFiles Include="$(TargetPath)" />
 		</ItemGroup>
 
 		<Copy SourceFiles="@(OutputFiles)" DestinationFolder="$(HKModOutputPath)/$(TargetName)" />
