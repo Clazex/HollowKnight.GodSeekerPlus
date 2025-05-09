@@ -1,4 +1,4 @@
-namespace GodSeekerPlus.Modules.NewSaveQuickstart;
+namespace GodSeekerPlus.Modules.GodseekerMode;
 
 public sealed class UnlockPantheons : Module {
 	private static readonly (string goName, string prompt)[] atriumRoofObjects = new[] {

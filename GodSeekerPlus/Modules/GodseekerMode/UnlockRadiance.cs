@@ -1,4 +1,4 @@
-namespace GodSeekerPlus.Modules.NewSaveQuickstart;
+namespace GodSeekerPlus.Modules.GodseekerMode;
 
 public sealed class UnlockRadiance : Module {
 	private const string sceneName = "Radiance Boss Scene";

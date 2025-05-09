@@ -1,4 +1,4 @@
-namespace GodSeekerPlus.Modules.QoL;
+namespace GodSeekerPlus.Modules.GodseekerMode;
 
 public sealed class GreyPrinceToggle : Module {
 	private static readonly SceneEdit handle = new(

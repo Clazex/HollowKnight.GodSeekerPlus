@@ -1,6 +1,6 @@
 using GodSeekerPlus.Modules.Misc;
 
-namespace GodSeekerPlus.Modules.NewSaveQuickstart;
+namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class UnlockRadiant : Module {
 	public override bool DefaultEnabled => true;

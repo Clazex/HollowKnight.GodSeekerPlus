@@ -1,4 +1,4 @@
-namespace GodSeekerPlus.Modules.NewSaveQuickstart;
+namespace GodSeekerPlus.Modules.QoL;
 
 public sealed class UnlockEternalOrdeal : Module {
 	public override bool DefaultEnabled => true;
