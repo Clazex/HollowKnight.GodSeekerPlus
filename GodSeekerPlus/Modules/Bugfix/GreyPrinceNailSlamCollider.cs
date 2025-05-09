@@ -1,8 +1,6 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
 public sealed class GreyPrinceNailSlamCollider : Module {
-	public override bool DefaultEnabled => true;
-
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
 	private protected override void Load() =>
