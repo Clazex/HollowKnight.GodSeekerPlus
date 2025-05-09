@@ -38,21 +38,11 @@ public sealed class GreyPrinceToggle : Module {
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
-	private protected override void Load() {
+	private protected override void Load() =>
 		handle.Enable();
 
-		if (Ref.GM?.sceneName == "GG_Workshop") {
-			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
-		}
-	}
-
-	private protected override void Unload() {
+	private protected override void Unload() =>
 		handle.Disable();
-
-		if (Ref.GM?.sceneName == "GG_Workshop" && PlayerDataR?.bossRushMode == true) {
-			Ref.HC.transform.SetPosition2D(2, 9); // leave HoG
-		}
-	}
 
 	private static IEnumerator SetupScene(GameObject dreamSwitch) {
 		yield return new WaitUntil(() => dreamSwitch
@@ -86,7 +76,7 @@ public sealed class GreyPrinceToggle : Module {
 			dreamImpactPrefab = toggle.dreamImpactPrefab;
 			dreamImpactScale = toggle.dreamImpactScale;
 			dreamImpactPoint = toggle.dreamImpactPoint;
-			UObject.DestroyImmediate(toggle);
+			DestroyImmediate(toggle);
 		}
 
 		public void Start() {

@@ -25,32 +25,26 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 
 	private void ReadFields() {
-		booleans = boolFields.Values.Flatten().ToDictionary(
-			pair => pair.Key,
-			pair => pair.Value.getter.Invoke()
-		);
+		static Dictionary<string, T> Read<T>(Dictionary<string, Dictionary<string, SettingInfo<T>>> fields) =>
+			fields.Values.Flatten().ToDictionary(
+				pair => pair.Key,
+				pair => pair.Value.getter.Invoke()
+			);
 
-		integers = intFields.Values.Flatten().ToDictionary(
-			pair => pair.Key,
-			pair => pair.Value.getter.Invoke()
-		);
-
-		floats = floatFields.Values.Flatten().ToDictionary(
-			pair => pair.Key,
-			pair => pair.Value.getter.Invoke()
-		);
-
-		enums = enumFields.Values.Flatten().ToDictionary(
-			pair => pair.Key,
-			pair => pair.Value.getter.Invoke()
-		);
+		booleans = Read(boolFields);
+		integers = Read(intFields);
+		floats = Read(floatFields);
+		enums = Read(enumFields);
 	}
 
 	private void WriteFields() {
-		boolFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(booleans![pair.Key]));
-		intFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(integers![pair.Key]));
-		floatFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(floats![pair.Key]));
-		enumFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(enums![pair.Key]));
+		static void Write<T>(Dictionary<string, Dictionary<string, SettingInfo<T>>> fields, Dictionary<string, T> values) =>
+			fields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(values![pair.Key]));
+		
+		Write(boolFields, booleans!);
+		Write(intFields, integers!);
+		Write(floatFields, floats!);
+		Write(enumFields, enums!);
 
 		booleans = null;
 		integers = null;

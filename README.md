@@ -55,7 +55,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Fast Dream Warp**: Remove dream warping charging time and particles when in boss scenes. Optionally allows skipping preparation time for immediate warping when up key is pressed not later than dream nail key.
   + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods. Optionally removes charging, cancellation cooldown and inertia.
   + **Keep Cocoon Lifeblood**: Keep lifeblood from cocoon when benching in the Pantheons.
-  + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with Door Default Begin.
+  + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with `Door Default Begin`.
   + **P5 Teleport**: Allow using the Dream Nail towards the lever which is used to unlock Godhome Atrium Roof to teleport to beside the Pantheon of Hallownest.
   + **Short Death Animation**: Skip part of the death animation when in boss scenes.
   + **Unlock Eternal Ordeal**: Auto unlock the Eternal Ordeal.
