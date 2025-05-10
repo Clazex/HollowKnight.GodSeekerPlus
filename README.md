@@ -11,11 +11,11 @@ Compatible with `Hollow Knight` 1.5.
 
 - **Boss Challenge**:
   + **Activate Fury**: Activate Fury of the Fallen on entry of boss scenes by setting health to 1.
-  + **Add Lifeblood**: Add configured amount of lifeblood on entry of Hall of Gods boss fight.
-  + **Add Soul**: Add configured amount of soul on entry of Hall of Gods boss fight.
+  + **Add Lifeblood**: Add configured amount (up to 35) of lifeblood on entry of Hall of Gods boss fight.
+  + **Add Soul**: Add configured amount (up to 198) of soul on entry of Hall of Gods boss fight.
   + **Carefree Melody Reset**: Reset Carefree Melody hit counter to maximum when entering Godhome non-boss scenes.
   + **Force Arrive Animation**: Force the arrive animation to be played when fighting Vengefly King, Xero, Hive Knight and Enraged Guardian in Hall of Gods.
-  + **Force Grey Prince Enter Type**: Force select enter type that Grey Prince use.
+  + **Force Grey Prince Enter Type**: Force select enter type that Grey Prince use (long or short).
   + **Halve Damage (HoG Ascended or above)**: Halve all the damage taken when challenging at Ascended difficulty or above in Hall of Gods.
   + **Halve Damage (HoG Attuned)**: Halve all the damage taken when challenging at Attuned difficulty in Hall of Gods.
   + **Halve Damage (Other Place)**: Halve all the damage taken when not in Godhome boss scenes.
@@ -24,7 +24,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Infinite Grimm Pufferfish**: When fighting in the Hall of Gods, make Troupe Master Grimm and Nightmare King Grimm only do pufferfish attack.
   + **Infinite Radiance Climbing**: When fighting in the Hall of Gods, starts Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.
-  + **Segmented P5**: Add a pantheon entry to the left of the entrance of the Land of Storms, at which you can select a segment of the Pantheon of Hallownest to challenge.
+  + **Segmented P5**: Add a pantheon entry to the left of the entrance of the Land of Storms, at which you can select a segment of the Pantheon of Hallownest to challenge (split at bench room).
 
 - **Bugfix**:
   + **Camera Keep Rumbling**: Prevent camera from keeping rumbling after scene transitions in Godhome.
@@ -49,11 +49,11 @@ Compatible with `Hollow Knight` 1.5.
 
 - **Quality of Life**:
   + **Complete Lower Difficulty**: Auto complete lower difficulties for boss statues if higher ones are completed. Triggers when opening challenge UI.
-  + **Correct Radiance HP**: Correct Absolute Radiance's health value to make her die at zero health.
+  + **Correct Radiance HP**: Adjust Absolute Radiance's health value to make her die at zero health. May conflict with modded boss.
   + **Door Default Begin**: Default selecting the Begin button when opening Pantheon Door UI.
   + **Eternal Ordeal Platform**: Add a platform at the entrance of the Eternal Ordeal.
   + **Fast Dash**: Remove dash cooldown when in Hall of Gods.
-  + **Fast Dream Warp**: Remove dream warping charging time and particles when in boss scenes. Optionally allows skipping preparation time for immediate warping when up key is pressed not later than dream nail key.
+  + **Fast Dream Warp**: Remove dream warping charging time and particles when in boss scenes. Optionally allows skipping preparation time for immediate warping, triggered when up key is pressed not later than dream nail key.
   + **Fast Super Dash**: Buff Super Dash speed in Hall of Gods. Optionally removes charging, cancellation cooldown and inertia.
   + **Keep Cocoon Lifeblood**: Keep lifeblood from cocoon when benching in the Pantheons.
   + **Memorize Bindings**: Memorize the Bindings selected last time, like difficulties in the Hall of Gods. Recommend using with `Door Default Begin`.
