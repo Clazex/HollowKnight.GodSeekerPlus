@@ -29,7 +29,12 @@ public sealed class FastSuperDash : Module {
 	}
 
 	private void ModifySuperDashFSM(PlayMakerFSM fsm) {
-		bool shouldActivate() => Loaded && Ref.GM.sceneName == "GG_Workshop";
+		bool shouldActivate() => Loaded
+			&& (Ref.GM.sceneName == "GG_Workshop"
+				|| (PlayerDataR.bossRushMode // For ColosseumOfFools module
+					&& Ref.GM.sceneName == "Room_Colosseum_01"
+				)
+			);
 		bool shouldRemoveWinding() => shouldActivate() && instantSuperDash;
 
 		var waitEvent = FsmEvent.GetFsmEvent("WAIT");

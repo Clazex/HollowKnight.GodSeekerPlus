@@ -42,6 +42,7 @@ Compatible with `Hollow Knight` 1.5.
   + **Use Own Music (WIP)**: Let bosses in pantheons use their own music as in Hall of Gods. (WIP, P1 only)
 
 - **Godseeker Mode**: (Only take effects when in Godseeker mode)
+  + **Colosseum of Fools**: Add a statue to the left of the God Tamer statue as an entrance to Colosseum of Fools. All trials are unlocked and give no reward. Death or dream warping inside leads back to the statue. Soul will be refilled infinitely in the entrace room. Other rooms are not accessible.
   + **Grey Prince Toggle**: Add a Dream Nail toggle beside Grey Prince statue to show and control whether Grey Prince will appear in the Pantheons or not.
   + **Unlock Pantheons**: Auto unlock Pantheon of Knight and the Pantheon of Hallownest, also activates some objects in the Godhome Atrium Roof.
   + **Unlock Radiance**: Auto unlock the Radiance in Hall of Gods.

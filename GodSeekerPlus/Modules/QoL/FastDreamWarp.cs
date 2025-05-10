@@ -1,3 +1,5 @@
+using GodSeekerPlus.Modules.GodseekerMode;
+
 using Osmi.FsmActions;
 
 namespace GodSeekerPlus.Modules.QoL;
@@ -13,6 +15,9 @@ public sealed class FastDreamWarp : Module {
 
 	public FastDreamWarp() =>
 		On.PlayMakerFSM.Start += ModifyDreamNailFSM;
+
+	private static bool ShouldActivate() => BossSceneController.IsBossScene
+		|| ColosseumOfFools.IsInGodseekerColosseum;
 
 	private void ModifyDreamNailFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
 		orig(self);
@@ -34,7 +39,7 @@ public sealed class FastDreamWarp : Module {
 				HeroActions actions = InputHandler.Instance.inputActions;
 				return Loaded
 					&& instantWarp
-					&& BossSceneController.IsBossScene
+					&& ShouldActivate()
 					&& actions.dreamNail.IsPressed
 					&& actions.up.IsPressed;
 			}
@@ -45,12 +50,12 @@ public sealed class FastDreamWarp : Module {
 			eventName = FsmEvent.Finished.Name,
 			toStateDefault = "Warp Charge",
 			toStateCustom = "Can Warp?",
-			shouldIntercept = () => Loaded && BossSceneController.IsBossScene
+			shouldIntercept = () => Loaded && ShouldActivate()
 		});
 
 		fsm.GetAction("Warp End", 8).Enabled = false;
 
-		fsm.AddAction("Warp End", new InvokePredicate(() => Loaded && BossSceneController.IsBossScene) {
+		fsm.AddAction("Warp End", new InvokePredicate(() => Loaded && ShouldActivate()) {
 			trueEvent = FsmEvent.Finished
 		});
 	}
