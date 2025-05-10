@@ -1,36 +1,28 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 public sealed class InfiniteGrimmPufferfish : Module {
-	private static readonly SceneEdit grimmHandle = new(
-		new("GG_Grimm", "Grimm Scene", "Grimm Boss"),
-		ModifyGrimmFSM
-	);
+	private protected override void Load() =>
+		On.PlayMakerFSM.Start += ModifyFSM;
 
-	private static readonly SceneEdit nkgHandle = new(
-		new("GG_Grimm_Nightmare", "Grimm Control", "Nightmare Grimm Boss"),
-		ModifyGrimmFSM
-	);
+	private protected override void Unload() =>
+		On.PlayMakerFSM.Start -= ModifyFSM;
 
-	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
+	private void ModifyFSM(On.PlayMakerFSM.orig_Start orig, PlayMakerFSM self) {
+		orig(self);
 
-	private protected override void Load() {
-		grimmHandle.Enable();
-		nkgHandle.Enable();
-	}
-
-	private protected override void Unload() {
-		grimmHandle.Disable();
-		nkgHandle.Disable();
-	}
-
-	private static void ModifyGrimmFSM(GameObject go) {
 		if (BossSequenceController.IsInSequence) {
 			return;
 		}
 
-		go.LocateMyFSM("Control")
-			.ChangeTransition("Out Pause", FsmEvent.Finished.Name, "Balloon Pos");
-
-		LogDebug("Grimm FSM modified");
+		if (self is {
+			gameObject: {
+				scene.name: "GG_Grimm" or "GG_Grimm_Nightmare",
+				name: "Grimm Boss"
+			},
+			FsmName: "Control"
+		}) {
+			self.ChangeTransition("Out Pause", FsmEvent.Finished.Name, "Balloon Pos");
+			Logger.LogDebug("Grimm FSM modified");
+		}
 	}
 }
