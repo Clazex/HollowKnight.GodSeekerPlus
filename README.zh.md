@@ -2,6 +2,8 @@
 
 [![Commitizen 友好](https://img.shields.io/badge/commitizen-友好-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+[English](./README.md) | 中文
+
 一个提升神居体验的《空洞骑士》模组
 
 适用于 `空洞骑士` 1.5。

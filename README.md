@@ -2,6 +2,8 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+English | [中文](./README.zh.md)
+
 A Hollow Knight mod to enhance your Godhome experience
 
 Compatible with `Hollow Knight` 1.5.
