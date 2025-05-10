@@ -1,9 +1,4 @@
-using Modding.Menu;
-using Modding.Menu.Config;
-
 using Satchel.BetterMenus;
-
-using UnityEngine.UI;
 
 using MenuButton = Satchel.BetterMenus.MenuButton;
 
@@ -13,12 +8,10 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 	bool ICustomMenuMod.ToggleButtonInsideMenu => true;
 
 	public MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) =>
-		satchelPresent
-			? ModMenu.GetSatchelMenuScreen(modListMenu, toggleDelegates)
-			: ModMenu.GetFallbackMenuScreen(modListMenu, toggleDelegates);
+		ModMenu.GetMenuScreen(modListMenu, toggleDelegates);
 
 	private static class ModMenu {
-		internal static bool dirty = true;
+		private static bool dirty = true;
 		private static Menu? menu = null;
 
 		static ModMenu() => On.Language.Language.DoSwitch += (orig, self) => {
@@ -26,17 +19,17 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			orig(self);
 		};
 
-		internal static MenuScreen GetSatchelMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
+		internal static MenuScreen GetMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
 			if (menu != null && !dirty) {
 				return menu.GetMenuScreen(modListMenu);
 			}
 
-			menu = new("ModName".Localize(), new[] {
+			menu = new("ModName".Localize(), [
 				toggleDelegates!.Value.CreateToggle(
 					"ModName".Localize(),
 					"ToggleButtonDesc".Localize()
 				)
-			});
+			]);
 
 			ModuleManager
 				.Modules
@@ -80,50 +73,5 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 			return menu.GetMenuScreen(modListMenu);
 		}
 
-		internal static MenuScreen GetFallbackMenuScreen(MenuScreen modListMenu, ModToggleDelegates? toggleDelegates) {
-			Logger.LogWarn("Satchel not found, using fallback menu");
-
-			MenuBuilder builder = MenuUtils.CreateMenuBuilderWithBackButton("ModName".Localize(), modListMenu, out _);
-			var toggler = (ModToggleDelegates) toggleDelegates!;
-
-			_ = builder.AddContent(
-				RegularGridLayout.CreateVerticalLayout(105f),
-				c => {
-					_ = c.AddHorizontalOption(
-						"ModName".Localize(),
-						new() {
-							ApplySetting = (_, i) => toggler.SetModEnabled(Convert.ToBoolean(i)),
-							RefreshSetting = (settings, _) =>
-								settings.optionList.SetOptionTo(Convert.ToInt32(toggler.GetModEnabled())),
-							CancelAction = _ => UIManager.instance.GoToDynamicMenu(modListMenu),
-							Description = new() {
-								Text = "ToggleButtonDesc".Localize()
-							},
-							Label = "ModName".Localize(),
-							Options = new string[] {
-								Lang.Get("MOH_OFF", "MainMenu"),
-								Lang.Get("MOH_ON", "MainMenu")
-							},
-							Style = HorizontalOptionStyle.VanillaStyle
-						},
-						out MenuOptionHorizontal toggle
-					);
-					toggle.menuSetting.RefreshValueFromGameSettings();
-
-					_ = c.AddTextPanel(
-						"SatchelNotFoundPrompt",
-						new RelVector2(new Vector2(1500f, 105f)),
-						new() {
-							Text = "SatchelNotFoundPrompt".Localize(),
-							Anchor = TextAnchor.MiddleCenter,
-							Font = TextPanelConfig.TextFont.TrajanBold,
-							Size = 46,
-						}
-					);
-				}
-			);
-
-			return builder.Build();
-		}
 	}
 }

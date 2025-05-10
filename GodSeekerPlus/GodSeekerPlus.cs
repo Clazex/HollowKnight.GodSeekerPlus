@@ -23,18 +23,8 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 	public override string GetMenuButtonText() =>
 		"ModName".Localize() + ' ' + Lang.Get("MAIN_OPTIONS", "MainMenu");
 
-	internal static bool satchelPresent = false;
-
-	static GodSeekerPlus() {
+	static GodSeekerPlus() =>
 		typeof(Exports).ModInterop();
-
-		try {
-			DetectSatchel();
-		} catch (System.IO.FileNotFoundException) {
-		} catch (Exception e) {
-			Logger.LogError(e.ToString());
-		}
-	}
 
 	public GodSeekerPlus() => Instance = this;
 
@@ -53,17 +43,5 @@ public sealed partial class GodSeekerPlus : Mod, ITogglableMod {
 		ModuleManager.Unload();
 
 		Active = false;
-	}
-
-	private static void DetectSatchel() {
-		try {
-			satchelPresent = typeof(Satchel.BetterMenus.Menu)
-				.GetConstructor(new[] {
-					typeof(string),
-					typeof(Satchel.BetterMenus.Element[])
-				}) != null;
-		} catch (TypeLoadException) {
-		} catch (MissingMethodException) {
-		}
 	}
 }

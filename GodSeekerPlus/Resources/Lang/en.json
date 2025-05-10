@@ -1,6 +1,5 @@
 {
 	"ModName": "Godseeker +",
-	"SatchelNotFoundPrompt": "Install Satchel >= v0.7.4 for full menu support",
 	"ToggleButtonDesc": "Toggle all effects of this mod",
 	"ResetModules": "Reset all modules to default state",
 	"Suppression": "Suppressed by {0}.",

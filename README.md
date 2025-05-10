@@ -6,8 +6,7 @@ English | [中文](./README.zh.md)
 
 A Hollow Knight mod to enhance your Godhome experience
 
-Compatible with `Hollow Knight` 1.5.
-**`Satchel` is required for in-game menu.**
+Compatible with `Hollow Knight` 1.5. Requires library `Satchel` and `Osmi`.
 
 ## Features
 
