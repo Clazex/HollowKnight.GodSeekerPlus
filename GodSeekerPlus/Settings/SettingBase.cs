@@ -39,12 +39,16 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 	private void WriteFields() {
 		static void Write<T>(Dictionary<string, Dictionary<string, SettingInfo<T>>> fields, Dictionary<string, T> values) =>
-			fields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(values![pair.Key]));
+			fields.Values.Flatten().ForEach(
+				pair => pair.Value.setter.Invoke(values![pair.Key]!)
+			);
 		
 		Write(boolFields, booleans!);
 		Write(intFields, integers!);
 		Write(floatFields, floats!);
-		Write(enumFields, enums!);
+		enumFields.Values.Flatten().ForEach(pair => pair.Value.setter.Invoke(
+			Enum.ToObject(pair.Value.fi.FieldType, enums![pair.Key]!)
+		));
 
 		booleans = null;
 		integers = null;
