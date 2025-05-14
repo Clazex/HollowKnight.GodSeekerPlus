@@ -26,7 +26,7 @@
 		<DebugType>portable</DebugType>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-		<PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)'))=./</PathMap>
+		<PathMap Condition="$(Configuration) == 'Release'">$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)'))=./</PathMap>
 	</PropertyGroup>
 
 	<PropertyGroup>
