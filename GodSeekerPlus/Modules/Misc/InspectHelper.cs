@@ -15,7 +15,13 @@ internal sealed class InspectHelper : Module {
 		Log("Creating Inspect Helper GameObject");
 	}
 
+	private sealed class Test {
+#if DEBUG
+#endif
+	}
+
 	private sealed class Inspector : MonoBehaviour {
+		public Test test;
 		public static GodSeekerPlus Instance => GodSeekerPlus.UnsafeInstance;
 		public static bool Active => GodSeekerPlus.Active;
 
@@ -25,6 +31,8 @@ internal sealed class InspectHelper : Module {
 		public static LocalSettings LocalSettings => Setting.Local;
 
 		public static Dict Dict => L11nUtil.dict;
+
+		void Awake() => test = new();
 
 		public static string Localize(string key) => L11nUtil.Localize(key);
 
