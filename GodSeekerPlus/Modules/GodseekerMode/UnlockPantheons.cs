@@ -1,12 +1,12 @@
 namespace GodSeekerPlus.Modules.GodseekerMode;
 
 public sealed class UnlockPantheons : Module {
-	private static readonly (string goName, string prompt)[] atriumRoofObjects = new[] {
+	private static readonly (string goName, string prompt)[] atriumRoofObjects = [
 		("Breakable Wall_Silhouette", "Land of Storms shortcut"),
 		("GG Fall Platform", "Stepping stone platform"),
 		("gg_roof_lever", "Stepping stone platform lever"),
 		("Secret Mask", "Mask above spa")
-	};
+	];
 
 	public override bool DefaultEnabled => true;
 

@@ -30,7 +30,7 @@ public sealed class NoDiveInvincibility : Module {
 		Apply(Loaded);
 	}
 
-	private void Apply(bool active) {
+	private static void Apply(bool active) {
 		if (spellControl == null) {
 			return;
 		}

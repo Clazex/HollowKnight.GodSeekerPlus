@@ -30,7 +30,7 @@ public sealed class DoorDefaultBegin : Module {
 		.Goto(0)
 		.GotoNext(
 			i => i.MatchLdloc(1),
-			i => i.MatchLdfld(typeof(BossDoorChallengeUI), "buttons")
+			i => i.MatchLdfld<BossDoorChallengeUI>("buttons")
 		)
 		.RemoveUntilEnd()
 

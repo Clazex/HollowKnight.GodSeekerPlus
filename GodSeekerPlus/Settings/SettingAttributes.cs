@@ -42,12 +42,11 @@ internal sealed class IntOptionAttribute : OptionAttribute {
 		}
 
 		options.Add(stop);
-
-		Options = options.ToArray();
+		Options = [..options];
 	}
 
 	internal IntOptionAttribute(int start, int stop, OptionType type) {
-		Options = new[] { start, stop };
+		Options = [start, stop];
 		Type = type;
 	}
 
@@ -69,12 +68,11 @@ internal sealed class FloatOptionAttribute : OptionAttribute {
 		}
 
 		options.Add(stop);
-
-		Options = options.ToArray();
+		Options = [..options];
 	}
 
 	internal FloatOptionAttribute(float start, float stop, OptionType type) {
-		Options = new[] { start, stop };
+		Options = [start, stop];
 		Type = type;
 	}
 

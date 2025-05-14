@@ -15,7 +15,7 @@ internal sealed class HalveDamage : Module {
 			return false;
 		}
 
-		foreach (Func<bool> predicate in ShouldFunctionHook.GetInvocationList()) {
+		foreach (Func<bool> predicate in ShouldFunctionHook.GetInvocationList().Cast<Func<bool>>()) {
 			if (predicate.Invoke()) {
 				return true;
 			}

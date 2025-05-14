@@ -1,10 +1,10 @@
 namespace GodSeekerPlus.Modules.Bugfix;
 
 public sealed class HUDDisplayChecker : Module {
-	private static readonly string[] sceneExclusions = new[] {
+	private static readonly string[] sceneExclusions = [
 		"GG_Hollow_Knight",
 		"GG_Radiance"
-	};
+	];
 
 	public override bool DefaultEnabled => true;
 

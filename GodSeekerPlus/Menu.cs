@@ -43,20 +43,20 @@ public sealed partial class GodSeekerPlus : ICustomMenuMod {
 					"",
 					() => new Menu(
 						$"Categories/{group.Key}".Localize(),
-						group.Map(module => Blueprints.HorizontalBoolOption(
-							$"Modules/{module.Name}".Localize(),
-							module.Suppressed
-								? string.Format(
-									"Suppression".Localize(),
-									module.suppressorMap.Values.Distinct().Join(", ")
-								)
-								: $"ToggleableLevel/{module.ToggleableLevel}".Localize(),
-							(val) => module.Enabled = val,
-							() => module.Enabled
-						))
-						.Concat(Setting.Global.GetMenuElements(group.Key))
-						.ToArray()
-					).GetMenuScreen(menu.menuScreen)
+						[
+							..group.Map(module => Blueprints.HorizontalBoolOption(
+								$"Modules/{module.Name}".Localize(),
+								module.Suppressed
+									? string.Format(
+										"Suppression".Localize(),
+										module.suppressorMap.Values.Distinct().Join(", ")
+									)
+									: $"ToggleableLevel/{module.ToggleableLevel}".Localize(),
+								(val) => module.Enabled = val,
+								() => module.Enabled
+							)),
+							..Setting.Global.GetMenuElements(group.Key),
+						]).GetMenuScreen(menu.menuScreen)
 				))
 				.ForEach(menu.AddElement);
 

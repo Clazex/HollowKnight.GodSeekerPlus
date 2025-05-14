@@ -1,14 +1,14 @@
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 public sealed class ForceArriveAnimation : Module {
-	private static readonly string[] scenes = {
+	private static readonly string[] scenes = [
 		"GG_Vengefly",
 		"GG_Vengefly_V",
 		"GG_Ghost_Xero",
 		"GG_Ghost_Xero_V",
 		"GG_Hive_Knight",
 		"GG_Crystal_Guardian_2"
-	};
+	];
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 

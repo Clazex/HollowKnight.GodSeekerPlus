@@ -39,7 +39,8 @@ public sealed class MorePantheonCaps : Module {
 
 			if (doorPDDict.TryGetValue(self.playerDataString, out int num)
 				&& GetRABCompletion(num)
-				&& self.completedNoHitsDisplay?.GetComponent<SpriteRenderer>() is SpriteRenderer sr
+				&& self.completedNoHitsDisplay != null
+				&& self.completedNoHitsDisplay.TryGetComponent<SpriteRenderer>(out SpriteRenderer sr)
 			) {
 				sr.transform.Translate(0, 0, -0.0801f);
 				sr.color = Color.black;

@@ -58,12 +58,12 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 
 
 	public SettingBase() {
-		FieldInfo[] fields = Assembly
+		FieldInfo[] fields = [..Assembly
 			.GetExecutingAssembly()
 			.GetTypesSafely()
 			.FlatMap(t => t.GetFields(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
 			.Filter(fi => Attribute.IsDefined(fi, typeof(TAttr)))
-			.ToArray();
+		];
 
 		boolFields = ProcessFields<bool>(fields);
 		intFields = ProcessFields<int>(fields);
@@ -155,9 +155,9 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 				options.Add(Blueprints.GenericHorizontalOption(
 					$"Settings/{name}".Localize(),
 					descPrefix + $"Modules/{fi.DeclaringType.Name}".Localize(),
-					Enum.GetValues(fi.FieldType).Cast<object>()
+					[..Enum.GetValues(fi.FieldType).Cast<object>()
 						.Map((val) => new EnumWrapper(name, fi.FieldType, val))
-						.ToArray(),
+					],
 					(val) => setter(val.Value),
 					() => new EnumWrapper(name, fi.FieldType, getter())
 				));
@@ -211,23 +211,17 @@ public abstract class SettingBase<TAttr> where TAttr : Attribute {
 		public Func<T> getter;
 		public Action<T> setter;
 
-		public void Deconstruct(out FieldInfo fi, out Func<T> getter, out Action<T> setter) {
+		public readonly void Deconstruct(out FieldInfo fi, out Func<T> getter, out Action<T> setter) {
 			fi = this.fi;
 			getter = this.getter;
 			setter = this.setter;
 		}
 	}
 
-	public class EnumWrapper : IFormattable {
-		public string Name { get; private init; }
-		public string Variant { get; private init; }
-		public object Value { get; private init; }
-
-		public EnumWrapper(string name, Type enumType, object value) {
-			Name = name;
-			Variant = Enum.GetName(enumType, value);
-			Value = value;
-		}
+	public class EnumWrapper(string name, Type enumType, object value) : IFormattable {
+		public string Name { get; private init; } = name;
+		public string Variant { get; private init; } = Enum.GetName(enumType, value);
+		public object Value { get; private init; } = value;
 
 		public override bool Equals(object obj) =>
 			obj is EnumWrapper other && other.Value.Equals(Value);

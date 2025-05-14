@@ -9,7 +9,7 @@ public sealed class UseOwnMusic : Module {
 
 	public override ToggleableLevel ToggleableLevel => ToggleableLevel.ChangeScene;
 
-	private static readonly SceneEdit[] handles = new SceneEdit[] {
+	private static readonly SceneEdit[] handles = [
 		// Pantheon 1
 		new(new("GG_Vengefly", "_SceneManager"), ModifySceneManagerGGMusicControl),
 		new(new("GG_Gruz_Mother", "_SceneManager"), ModifySceneManagerGGMusicControl),
@@ -59,7 +59,7 @@ public sealed class UseOwnMusic : Module {
 
 		// GG_Hollow_Knight = NoOp,
 		// GG_Radiance = NoOp
-	};
+	];
 
 	private protected override void Load() =>
 		handles.ForEach(handle => handle.Enable());

@@ -16,8 +16,7 @@ public sealed class CrossingOoma : Module {
 
 	private static void DestroyJelly(Scene prev, Scene next) {
 		if (prev.name is "GG_Uumuu" or "GG_Uumuu_V") {
-			JellyMarker[] markers = JellyMarker.markers.ToArray();
-
+			JellyMarker[] markers = [..JellyMarker.markers];
 			if (markers.Length == 0) {
 				return;
 			}

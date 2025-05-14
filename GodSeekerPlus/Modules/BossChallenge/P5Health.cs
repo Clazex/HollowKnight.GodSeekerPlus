@@ -30,7 +30,7 @@ public sealed class P5Health : Module {
 		ModHooks.TakeDamageHook -= FixDamage;
 	}
 
-	private static int OverrideLevel(BossSceneController self, int level) => 0;
+	private static int OverrideLevel(BossSceneController _1, int _2) => 0;
 
 	private static int FixDamage(ref int hazardType, int damage) => damage switch {
 		int i when i <= 0 => i,

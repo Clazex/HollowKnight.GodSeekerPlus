@@ -65,7 +65,7 @@ public sealed class GreyPrinceToggle : Module {
 
 		private ColorFader[] colorFaders;
 
-		private bool On {
+		private static bool On {
 			get => PlayerDataR.greyPrinceDefeated;
 			set => PlayerDataR.greyPrinceDefeated = value;
 		}
@@ -86,7 +86,7 @@ public sealed class GreyPrinceToggle : Module {
 		}
 
 		public void OnTriggerEnter2D(Collider2D collision) {
-			if (!gameObject.activeInHierarchy || collision.tag != "Dream Attack") {
+			if (!gameObject.activeInHierarchy || !collision.CompareTag("Dream Attack")) {
 				return;
 			}
 

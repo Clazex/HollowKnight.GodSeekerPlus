@@ -5,7 +5,7 @@ namespace GodSeekerPlus.Modules.BossChallenge;
 public sealed class SegmentedP5 : Module {
 	private const string dummySeqPD = "bossDoorStateTier5Segmented";
 
-	private static readonly (int start, int end)[] segments = new[] {
+	private static readonly (int start, int end)[] segments = [
 		(0, 10),
 		(11, 16),
 		(17, 22),
@@ -14,7 +14,7 @@ public sealed class SegmentedP5 : Module {
 		(36, 41),
 		(42, 48),
 		(49, 52)
-	};
+	];
 
 	[LocalSetting]
 	public static int selectedP5Segment = 0;
@@ -106,7 +106,9 @@ public sealed class SegmentedP5 : Module {
 		door.dreamReturnGate.LocateMyFSM("Boss Sequence Finish")
 			.RemoveTransition("Reset", FsmEvent.Finished.Name);
 
-		sequence ??= door.bossSequence;
+		if (sequence == null) {
+			sequence = door.bossSequence;
+		}
 
 		#endregion
 
@@ -195,7 +197,8 @@ public sealed class SegmentedP5 : Module {
 		selectBtn.transform.SetSiblingIndex(6);
 		selectBtn.GetComponent<RectTransform>().sizeDelta = new(440, 60);
 
-		if (selectBtn.Child("Text")?.GetComponent<Text>() is Text text) {
+		GameObject? selectBtnTextGo = selectBtn.Child("Text");
+		if (selectBtnTextGo != null && selectBtnTextGo.TryGetComponent<Text>(out Text? text)) {
 			selectBtnText = text;
 			UObject.Destroy(text.GetComponent<AutoLocalizeTextUI>());
 
@@ -322,7 +325,7 @@ public sealed class SegmentedP5 : Module {
 
 		yield return new WaitWhile(() => Ref.GM.gameState == GameState.PAUSED);
 
-		_ = Ref.HC.StartCoroutine("Die");
+		_ = Ref.HC.StartCoroutine(HeroControllerR.Die());
 
 		LogDebug("Force quiting Segmented P5 sequence");
 	}

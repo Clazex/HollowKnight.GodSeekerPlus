@@ -12,14 +12,18 @@
 		<RepositoryUrl>https://github.com/Clazex/HollowKnight.GodSeekerPlus</RepositoryUrl>
 
 		<LangVersion>12.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 		<TargetFramework>net472</TargetFramework>
-		<DebugType>portable</DebugType>
 		<RootNamespace>GodSeekerPlus</RootNamespace>
+
+		<AnalysisMode>Recommended</AnalysisMode>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<NoWarn>CA1861;CA2211</NoWarn>
 
 		<Optimize>True</Optimize>
 		<Deterministic>True</Deterministic>
-		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-		<Nullable>enable</Nullable>
+		<DebugType>portable</DebugType>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 		<PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)'))=./</PathMap>
@@ -121,6 +125,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.Unity.Analyzers" Version="1.22.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		
 		<PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
 
 		<PackageReference Include="Fody" Version="6.9.2" PrivateAssets="all" />

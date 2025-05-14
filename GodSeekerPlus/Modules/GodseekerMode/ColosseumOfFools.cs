@@ -137,7 +137,7 @@ public sealed class ColosseumOfFools : Module {
 
 	private static void SetupColosseumEntrance(Scene prev, Scene next) {
 		if (!PlayerDataR.bossRushMode || next.name != "Room_Colosseum_01") {
-			_ = Ref.HC?.gameObject.RemoveComponent<SoulFiller>();
+			_ = Ref.HC.gameObject.RemoveComponent<SoulFiller>();
 			return;
 		}
 

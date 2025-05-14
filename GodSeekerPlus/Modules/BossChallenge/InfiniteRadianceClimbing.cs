@@ -71,19 +71,19 @@ public sealed class InfiniteRadianceClimbing : Module {
 		fsm.InsertAction("Set Arena 1", new InvokeCoroutine(TeleportSetup), 0);
 
 		FsmState spawnPlatsState = fsm.GetValidState("Climb Plats1");
-		spawnPlatsState.Actions = new[] {
+		spawnPlatsState.Actions = [
 			spawnPlatsState.Actions[2], // Spawn plats
 			new InvokeMethod(() => fsm.gameObject.manageHealth(int.MaxValue))
-		};
+		];
 		(spawnPlatsState.Actions[0] as SendEventByName)!.delay = 0;
 
 		FsmState screamState = fsm.GetValidState("Scream");
-		screamState.Actions = new[] {
+		screamState.Actions = [
 			screamState.Actions[0], // Play audio clip
 			new InvokeMethod(() => rewindCoro ??= radCtrl!.StartCoroutine(Rewind())),
 			new Wait() { time = 60f }, // Wait for Rewind coroutine
 			screamState.Actions[7] // Reserved for compatibility with CorrectRadianceHP
-		};
+		];
 	}
 
 	private static IEnumerator TeleportSetup() {
@@ -170,6 +170,6 @@ public sealed class InfiniteRadianceClimbing : Module {
 
 	private static IEnumerator DelayedKill() {
 		yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
-		_ = Ref.HC.StartCoroutine("Die");
+		_ = Ref.HC.StartCoroutine(HeroControllerR.Die());
 	}
 }
