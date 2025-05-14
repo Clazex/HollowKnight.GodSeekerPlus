@@ -152,7 +152,7 @@
 			<OutputFiles Include="$(TargetDir)/*.*" />
 			<OutputFiles Remove="$(TargetDir)/*.dll" />
 			<OutputFiles Include="$(TargetPath)" />
-			<OutputFiles Include="$(ProjectRoot)/README.md" />
+			<OutputFiles Include="$(ProjectRoot)/*.md" />
 			<OutputFiles Include="$(ProjectRoot)/LICENSE" />
 		</ItemGroup>
 
