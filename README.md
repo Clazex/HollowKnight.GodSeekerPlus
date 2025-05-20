@@ -21,7 +21,7 @@ Compatible with `Hollow Knight` 1.5. Requires library `Satchel` and `Osmi`.
   + **Halve Damage (HoG Attuned)**: Halve all the damage taken when challenging at Attuned difficulty in Hall of Gods.
   + **Halve Damage (Other Place)**: Halve all the damage taken when not in Godhome boss scenes.
   + **Halve Damage (Pantheons)**: Halve all the damage taken when in pantheons.
-  + **Infinite Challenge**: Immediately restart Hall of Gods boss fights upon death. Can be configured to restart on success as well. Can use Dream Warp to return.
+  + **Infinite Challenge**: Immediately restart Hall of Gods boss fights upon death. Use Dream Warp to return. Can be configured to restart on success as well. Can be configured to restart music (Certain bosses may restart music anyways).
   + **Infinite Grimm Pufferfish**: When fighting in the Hall of Gods, make Troupe Master Grimm and Nightmare King Grimm only do pufferfish attack.
   + **Infinite Radiance Climbing**: When fighting in the Hall of Gods, starts Absolute Radiance boss fight from the end of Phase 2 and reset when starting final phase.
   + **P5 Health**: Reduce boss health in Ascended and Radiant difficulty to match with Attuned difficulty.

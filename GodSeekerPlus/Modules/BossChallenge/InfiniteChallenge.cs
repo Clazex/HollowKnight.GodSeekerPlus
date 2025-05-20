@@ -1,9 +1,15 @@
+using UnityEngine.Audio;
+
 namespace GodSeekerPlus.Modules.BossChallenge;
 
 public sealed class InfiniteChallenge : Module {
 	[GlobalSetting]
 	[BoolOption]
 	public static bool restartFightOnSuccess = false;
+
+	[GlobalSetting]
+	[BoolOption]
+	public static bool restartFightAndMusic = false;
 
 	public static readonly HashSet<Func<GameManager.SceneLoadInfo, bool>> returnScenePredicates = [
 		(info) => info.SceneName is "GG_Workshop"
@@ -58,6 +64,8 @@ public sealed class InfiniteChallenge : Module {
 
 			info.SceneName = currentSceneName;
 			info.EntryGateName = "door_dreamEnter";
+			
+			_ = GlobalCoroutineExecutor.Start(SetAudio(restartFightAndMusic));
 		}
 
 		setupEvent = null;
@@ -69,5 +77,22 @@ public sealed class InfiniteChallenge : Module {
 		yield return new WaitWhile(() => Ref.GM.IsInSceneTransition);
 
 		Ref.HC.EnableRenderer();
+	}
+
+	private static IEnumerator SetAudio(bool reset) {
+		AudioMixer mixer = Ref.GM.AudioManager.Reflect().musicSources[0].outputAudioMixerGroup.audioMixer;
+
+		if (reset) {
+			Ref.GM.AudioManager.Reflect().musicSources.ForEach(
+				i => i.Stop()
+			);
+			Ref.GM.AudioManager.Reflect().currentMusicCue = null;
+		} else {
+			mixer.FindSnapshot("Silent").TransitionTo(0.5f);
+		}
+
+		yield return new WaitUntil(() => Ref.GM.IsInSceneTransition);
+		yield return new WaitWhile(() => Ref.GM.IsInSceneTransition);
+		mixer.FindSnapshot("Normal").TransitionTo(0f);
 	}
 }

@@ -77,6 +77,7 @@
 	"Settings/lagTime": "卡顿时长",
 	"Settings/lifebloodAmount": "生命血数量",
 	"Settings/restartFightOnSuccess": "胜利时仍重启战斗",
+	"Settings/restartFightAndMusic": "重启战斗时重播音乐",
 	"Settings/soulAmount": "灵魂数量",
 	"SegmentedP5/SelectSegment": "选择分段",
 	"SegmentedP5/Segment/0": "反击蝇之王 - 骨钉大师奥罗 & 马托",
