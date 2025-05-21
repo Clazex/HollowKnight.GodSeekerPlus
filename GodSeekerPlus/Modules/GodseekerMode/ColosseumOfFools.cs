@@ -165,6 +165,14 @@ public sealed class ColosseumOfFools : Module {
 
 		_ = Ref.HC.gameObject.AddComponent<SoulFiller>();
 
+		// Open 2nd and 3rd trials
+		next.GetRootGameObjects()
+			.Filter(i => i.name is "Silver Trial Board" or "Gold Trial Board")
+			.Take(2)
+			.ForEach(i => i.LocateMyFSM("Conversation Control")
+				.RemoveAction("State Check", 0)
+			);
+
 		// Change transition
 		GameObject left1 = next.GetRootGameObject("left1")!;
 		TransitionPoint transition = left1.GetComponent<TransitionPoint>();
