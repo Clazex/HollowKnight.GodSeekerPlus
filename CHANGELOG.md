@@ -1,3 +1,26 @@
+# [v0.25.0](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.24.1...v0.25.0) (2025-05-21)
+
+### Bug Fixes
+
+* convert before assigning enum fields ([dc040ab](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/dc040abe6d9ba6818d8ebd6c0e696d851f017d3e))
+* delay exit colosseum ([0937f45](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/0937f45e58333cf6c79dfddc20bc22fdc7a52361))
+* infinite grimm pufferfish not working ([e923174](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/e923174761fc12398dde8320d94f7f06fb2fec4d))
+* options not showing ([429689b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/429689b65fc8e24df76b252cc28f5a03632e4c6a))
+* set colosseum completion ([fcf0567](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/fcf0567e33ac7069fded2eebac6a385e5639360f))
+* unlock trials ([0e3a92b](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/0e3a92b261cc396ff53ec05b613ec6980c44a777))
+
+### Features
+
+* always record rab ([6d9635a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/6d9635a0f3b485e025da79900ab8e07505b56f2a))
+* colosseum of fools ([cc81b2d](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/cc81b2d8dfcd137bb0a65abe2c4219f8b2d17643))
+* display module to which options belong ([5dcc5e9](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/5dcc5e9828f6fcb6376ba7c06eba3521c44ccc57))
+* fix for toggleable binding shell binding blue health bug ([fd2fd8a](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/fd2fd8adcf0a15127bec816466d15b4d4ebd3426))
+* mute crowd ([81e1f2c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/81e1f2cf8b7f1a5c9a742fd348f18305f4150c9d))
+* no defenders crest effect ([4a1f20c](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/4a1f20c4673cb5b073ec88c700d8c7dfb9889d9f)), closes [#48](https://github.com/Clazex/HollowKnight.GodSeekerPlus/issues/48)
+* restart music ([33ba00e](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/33ba00e6d49671313bd442d3b7247ebf4238841d))
+* support slider options ([2d60a65](https://github.com/Clazex/HollowKnight.GodSeekerPlus/commit/2d60a65766fa448b03c537397dddf73b53eaa2b6))
+
+
 # [v0.24.1](https://github.com/Clazex/HollowKnight.GodSeekerPlus/compare/v0.24.0...v0.24.1) (2023-06-12)
 
 ### Bug Fixes
