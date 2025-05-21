@@ -239,6 +239,7 @@ public sealed class ColosseumOfFools : Module {
 		FsmTransition transition = self.Fsm.GlobalTransitions
 			.First(i => i.EventName == "GIVE GEO");
 		FsmState targetState = self.GetValidState("Achieve Check");
+		targetState.Actions[0].Enabled = true; // Sets completion PD
 		transition.ToFsmState = targetState;
 		transition.ToState = targetState.Name;
 
