@@ -1,5 +1,7 @@
 using Osmi.FsmActions;
 
+using WaitUntil = UnityEngine.WaitUntil;
+
 namespace GodSeekerPlus.Modules.GodseekerMode;
 
 public sealed class ColosseumOfFools : Module {
@@ -28,13 +30,7 @@ public sealed class ColosseumOfFools : Module {
 		On.PlayMakerFSM.Start -= RemoveReward;
 
 		if (IsInGodseekerColosseum) {
-			Ref.GM.BeginSceneTransition(new() {
-				SceneName = "GG_Workshop",
-				EntryGateName = "left1",
-				EntryDelay = 0,
-				PreventCameraFadeOut = true,
-				Visualization = GameManager.SceneLoadVisualizations.GodsAndGlory,
-			});
+			_ = GlobalCoroutineExecutor.Start(Exit());
 		}
 	}
 
@@ -241,6 +237,18 @@ public sealed class ColosseumOfFools : Module {
 		self.GetVariable<FsmBool>("Shiny Item").Value = false;
 
 		LogDebug("Colosseum reward removal finished");
+	}
+
+	private static IEnumerator Exit() {
+		yield return new WaitUntil(() => Ref.GM.gameState == GameState.PLAYING);
+
+		Ref.GM.BeginSceneTransition(new() {
+			SceneName = "GG_Workshop",
+			EntryGateName = "left1",
+			EntryDelay = 0,
+			PreventCameraFadeOut = true,
+			Visualization = GameManager.SceneLoadVisualizations.GodsAndGlory,
+		});
 	}
 
 	private sealed class SoulFiller : MonoBehaviour {
